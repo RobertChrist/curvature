@@ -17,15 +17,18 @@ module.exports = function (args) {
 		verbose,						{ name: 'v', 				value: false					}, 
 		tabluarOutput: 					{ name: 't', 				value: false					},
 		noKML: 			 				{ name: 'noKML',			value: false 					},
-		km: 			 				{ name: 'km',				value: false 					},
+		km: 			 				{ name: 'km',				value: true 					},
 		colorize: 		 				{ name: 'colorize',			value: false 					},
 		file: 			 				{ name: 'file',				value: null 					},
 		outputPath: 	 				{ name: 'outputPath',		value: '.' 						},
 		outputBaseName:  				{ name: 'outputBaseName',	value: null, 	optional: true 	},
+		
 		minLength: 		 				{ name: 'minLength',		value: 1 						},
 		maxLength: 		 				{ name: 'maxLength',		value: 0 						},
 		minCurvature: 	 				{ name: 'minCurvature',		value: 300 						},
 		maxCurvature: 	 				{ name: 'maxCurvature',		value: 0 						},
+		straightSegmentSplitThreshold:  { name: 'straightSegmentSplitThreshold', value: 2414 },
+
 		level1MaxRadius: 				{ name: 'level1MaxRadius',	value: 175 						},
 		level2MaxRadius: 				{ name: 'level2MaxRadius',	value: 100 						},
 		level3MaxRadius: 				{ name: 'level3MaxRadius',	value: 60 						},
@@ -34,14 +37,16 @@ module.exports = function (args) {
 		level2Weight: 	 				{ name: 'level2Weight',		value: 1.3 						},
 		level3Weight: 	 				{ name: 'level3Weight',		value: 1.6 						},
 		level4Weight: 	 				{ name: 'level4Weight',		value: 2 						},
+		
 		minLatBound: 	 				{ name: 'minLatBound',		value: null, 	optional: true 	},
 		maxlatBound: 	 				{ name: 'maxlatBound',		value: null, 	optional: true  },
 		minLonBound: 	 				{ name: 'minLonBound',		value: null, 	optional: true  },
 		maxlonBound: 	 				{ name: 'maxlonBound',		value: null, 	optional: true  },
+		
 		addKML: 		 				{ name: 'addKML',			value: null, 	optional: true  },
+		
 		ignoredSurfaces: 				{ name: 'ignoredSurfaces',	value: 'dirt,unpaved,gravel,sand,grass,ground' },
-		highwayTypes: 	 				{ name: 'highwayTypes',		value: 'secondary,residential,tertiary,primary,primary_link,motorway,motorway_link,road,trunk,trunk_link,unclassified' },
-		straightSegmentSplitThreshold:  { name: 'straightSegmentSplitThreshold', value: 1.5 }
+		highwayTypes: 	 				{ name: 'highwayTypes',		value: 'secondary,residential,tertiary,primary,primary_link,motorway,motorway_link,road,trunk,trunk_link,unclassified' }
 	};
 
 	function hasValue(obj, prop) {

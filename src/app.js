@@ -38,56 +38,20 @@ var TabOutput 	 = require('./curvature.output').TabOutput;
 var SingleColorKmlOutput 	= require('./curvature.output').SingleColorKmlOutput;
 var MultiColorKmlOutput 	= require('./curvature.output').MultiColorKmlOutput;
 
-
-var getCollector = function (args) {
-	var RoadCollectorConfig = new RoadCollectorConfig()
-
-	var collector = new RoadCollector();
-	
-	collector.verbose = args.v;
-	collector.ignoredSurfaces = args.ignoredSurfaces.split(',');
-	collector.roads = args.highwayTypes.split(',');
-	collector.level1MaxRadius = args.level1MaxRadius;
-	collector.level1Weight = args.level1Weight;
-	collector.level2MaxRadius = args.level2MaxRadius;
-	collector.level2Weight = args.level2Weight;
-	collector.level3MaxRadius = args.level3MaxRadius;
-	collector.level3Weight = args.level3Weight;
-	collector.level4MaxRadius = args.level4MaxRadius;
-	collector.level4Weight = args.level4Weight;
-	collector.minLatBound = args.minLatBound;
-	collector.maxLatBound = args.maxLatBound;
-	collector.minLonBound = args.minLonBound;
-	collector.maxLonBound = args.maxLonBound;
-	collector.straightSegmentSplitThreshold = args.straightSegmentSplitThreshold * 1609;
-
-	return collector;
-};
-
-var getOutputPath = function (args, fileName) {
-	var path;
-	if (!args.outputPath) 
-		path = os.path.dirname(fileName);
-	else 
-		path = args.outputPath;
-
-	return path;
-};
-
-var getBasename = function (args, filename) {
+var getBasename = function (settings, filename) {
 	var basename;
-	if (!args.outputBasename) {
+	if (!settings.outputBasename) {
 		basename = os.path.basename(fileName);
 		parts = os.path.splitext(basename);
 		basename = parts[0];
 	} else {
-		basename = os.path.basename(args.outputBasename);
+		basename = os.path.basename(settings.outputBasename);
 	}
 
 	return basename;
 };
 
-var writeKMLFile = function (colorize, kmUnits, defaultFilter, ways, path, basename) {
+var writeKMLFile = function (colorize, kmUnits, defaultFilter, roads, path, basename) {
 	var kml;
 	if (colorize)
 		kml = MultiColorKmlOutput(defaultFilter);
@@ -97,7 +61,7 @@ var writeKMLFile = function (colorize, kmUnits, defaultFilter, ways, path, basen
 	if (kmUnits)
 		kml.units = 'km';
 
-	kml.write(ways, path, basename);
+	kml.write(roads, path, basename);
 };
 
 var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, useKM) {
@@ -132,39 +96,38 @@ var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, us
 			console.log("Ignoring unknown key '" + key + "'' passed to --addKML\n");
 	}
 
-	writeKMLFile(colorize, useKM, filter, collector.ways, path, basename);
+	writeKMLFile(colorize, useKM, filter, collector.getRoads(), path, basename);
 };
 
-var parseFile = function (args, file, collector, filter) {
-	if (args.v)
-		console.log("Loading {" + file.name + "}\n");
+var parseFile = function (settings, file, collector, filter) {
+	if (settings.verbose)
+		console.log("Loading {" + file.name + "}");
 		
 	collector.loadFile(file.name);
 	
-	// Output our tabular data
-	if (args.t) {
-		var tab = TabOutput(defaultFilter);
-		tab.output(collector.ways);
+	if (args.tabluarOutput) {
+		var tab = new TabOutput(filter);
+		tab.output(collector.getRoads());
 	}
 	
-	if (args.noKML) 
-		return ;
-
-	if (args.v) 
-		console.log("generating KML output\n");
-
-	var path = getOutputPath(args, file.name);
-	var basename = getBasename(args, file.name);
-
-	writeKMLFile(args.colorize, args.KM, filter, collector.ways, path, basename);
-
-	if (!args.addKML)
+	if (settings.noKML) 
 		return;
 
-	for (var k = 0, l = args.addKML.length; k < l; k++) {
-		var optString = args.addKML[k]; 
+	if (settings.verbose) 
+		console.log("generating KML output");
 
-		generateAdditionalKMLFile(args.colorize, optString, filter);
+	var path = !settings.outputPath ? os.path.dirname(file.name) : settings.outputPath;
+	var basename = getBasename(settings, file.name);
+
+	writeKMLFile(settings.colorize, settings.KM, filter, collector.getRoads(), path, basename);
+
+	if (!settings.addKML)
+		return;
+
+	for (var k = 0, l = settings.addKML.length; k < l; k++) {
+		var optString = settings.addKML[k]; 
+
+		generateAdditionalKMLFile(settings.colorize, optString, filter);
 	}
 };
 
@@ -180,9 +143,24 @@ var defaultFilter = new RoadFilter(settings.minLength.value,
 								   settings.minCurvature.value, 
 								   settings.maxCurvature.value);
 
-var collector = getCollector(settings);
+var collector = new RoadCollector(settings.verbose, 
+								  settings.minLatBound, 
+								  settings.maxLatBound, 
+								  settings.minLonBound, 
+								  settings.maxLatBound, 
+								  settings.roadTypes.split(','), 
+								  settings.ignoredSurfaces.split(','), 
+								  settings.straightSegmentSplitThreshold, 
+								  settings.level1MaxRadius, 
+								  settings.level1Weight, 
+								  settings.level2MaxRadius, 
+								  settings.level2Weight, 
+								  settings.level3MaxRadius, 
+								  settings.level3Weight, 
+								  settings.level4MaxRadius, 
+								  settings.level4Weight);
 
 parseFile(settings, settings.file, collector, defaultFilter);
 
-if (settings.v)
-	console.log("done.\n");
+if (settings.verbose)
+	console.log("done.");
