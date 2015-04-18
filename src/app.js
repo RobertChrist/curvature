@@ -33,7 +33,7 @@
 var _parser 	 = require('./commandLineParser');
 var Config	 	 = require('./Config');
 var RoadFilter 	 = require('./RoadFilter');
-var WayCollector = require('./WayCollector');
+var RoadCollector= require('./RoadCollector');
 var TabOutput 	 = require('./curvature.output').TabOutput;
 var SingleColorKmlOutput 	= require('./curvature.output').SingleColorKmlOutput;
 var MultiColorKmlOutput 	= require('./curvature.output').MultiColorKmlOutput;
@@ -42,7 +42,7 @@ var MultiColorKmlOutput 	= require('./curvature.output').MultiColorKmlOutput;
 var getCollector = function (args) {
 	var RoadCollectorConfig = new RoadCollectorConfig()
 
-	var collector = new WayCollector();
+	var collector = new RoadCollector();
 	
 	collector.verbose = args.v;
 	collector.ignoredSurfaces = args.ignoredSurfaces.split(',');

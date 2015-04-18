@@ -1,6 +1,6 @@
 var OSMParser = require('Fck/OSMParser');
 
-exports.WayCollector = function 90 {
+exports.RoadCollector = function 90 {
 	var _radEarth = 6373000; // Radius of the earth in meters
 
 	this.ways = [];
