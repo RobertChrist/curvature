@@ -1,6 +1,6 @@
 ![Vermont Route 17](http://www2.adamfranco.com/curvature/images/Page_Mill_Rd.jpg)
 
-curvature.py
+curvature.js
 ============
 
 Find roads that are the most curved or twisty based on [Open Street Map](http://www.openstreetmap.org/) (OSM) data.
@@ -41,7 +41,7 @@ License: GNU General Public License Version 3 or later
 
 Examples
 --------
-Below are links to some example KML files generated with curvature.py. Additional files can
+Below are links to some example KML files generated with curvature.js Additional files can
 be found at [adamfranco.com/curvature/](http://www2.adamfranco.com/curvature/).
 
 * A basic KML file generated with default options using the
@@ -57,7 +57,7 @@ be found at [adamfranco.com/curvature/](http://www2.adamfranco.com/curvature/).
   in a sea of otherwise bland options. While more curvy roads will also be included, roads
   in the 300-600 range tend to be pleasant rather than exciting.
   
-  `./curvature.py -v vermont.osm`
+  `./curvature.js -v vermont.osm`
   
   [vermont.c_300.kml](http://www2.adamfranco.com/curvature/kml/north_america/us/vermont.c_300.kml)  
   [vermont-bristol.c_300.kml](http://www2.adamfranco.com/curvature/kml/north_america/us/vermont-bristol.c_300.kml)
@@ -84,7 +84,7 @@ of paved roads](http://www.nytimes.com/1996/06/24/us/in-slow-paced-vermont-the-d
   There will be many roads that are quite fun but don't quite make the cut, but all of the
   roads listed will be very curvy.
   
-  `./curvature.py -v --min_curvature 1000 vermont.osm`
+  `./curvature.js -v --min_curvature 1000 vermont.osm`
   
   [vermont.c_1000.kml](http://www2.adamfranco.com/curvature/kml/north_america/us/vermont.c_1000.kml)  
   [vermont-bristol.c_1000.kml](http://www2.adamfranco.com/curvature/kml/north_america/us/vermont-bristol.c_1000.kml)
@@ -98,7 +98,7 @@ of paved roads](http://www.nytimes.com/1996/06/24/us/in-slow-paced-vermont-the-d
   Zoom on corners to see the shading. Green segments do not contribute to the 'curvature' value
   while yellow, orange, and red segments do.
   
-  `./curvature.py -v --colorize --add_kml min_curvature=1000 vermont.osm`
+  `./curvature.js -v --colorize --add_kml min_curvature=1000 vermont.osm`
   
   [vermont.c_300.multicolor.kml](http://www2.adamfranco.com/curvature/kml/north_america/us/vermont.c_300.multicolor.kml) 
   [vermont.c_1000.multicolor.kml](http://www2.adamfranco.com/curvature/kml/north_america/us/vermont.c_1000.multicolor.kml)  
@@ -109,7 +109,7 @@ of paved roads](http://www.nytimes.com/1996/06/24/us/in-slow-paced-vermont-the-d
   of 1000 using the [california.osm](http://download.geofabrik.de/openstreetmap/north-america/us/california.osm.bz2) 
   file (after unzipping). 
   
-  `./curvature.py -v --max_lat_bound 38.5 --min_lat_bound 36.5 --min_lon_bound -123.25 --max_lon_bound -121.0 --output_basename california-bay-area --min_curvature 1000 --add_kml colorize=1 california.osm`
+  `./curvature.js -v --max_lat_bound 38.5 --min_lat_bound 36.5 --min_lon_bound -123.25 --max_lon_bound -121.0 --output_basename california-bay-area --min_curvature 1000 --add_kml colorize=1 california.osm`
   
    [california-bay-area.1000.kml](http://www2.adamfranco.com/curvature/kml/north_america/us/california-bay-area.1000.kml) ([view in Google Maps](http://goo.gl/maps/uU1R9))  
    [california-bay-area.1000.multicolor.kml](http://www2.adamfranco.com/curvature/kml/north_america/us/california-bay-area.1000.multicolor.kml)
@@ -121,18 +121,17 @@ of paved roads](http://www.nytimes.com/1996/06/24/us/in-slow-paced-vermont-the-d
 Installation
 ============
 
-This is a Python script, therefore you need a functional Python 2.7 or later environment on your computer. See
-http://python.org/
+This is a NodeJs script, therefore you need a NodeJs. See http://nodejs.org/
 
-curvature.py makes use of the imposm.parser which you can find at
+curvature.js makes use of the imposm.parser which you can find at
 [dev.omniscale.net/imposm.parser](http://dev.omniscale.net/imposm.parser/)
 
-Once your Python environment set up and the imposm.parser module installed, just download the
-curvature.py script and run it. There is no installation needed.
+Once your NodeJs environment set up and the imposm.parser module installed, just download the
+curvature.js script and run it. There is no installation needed.
 
 Usage
 =====
-curvature.py works with Open Street Map (OSM) XML data files. While you can export these from a
+curvature.js works with Open Street Map (OSM) XML data files. While you can export these from a
 small area directly from [openstreetmap.org](http://www.openstreetmap.org/) , you are limited to a
 small area with a limited number of points so that you don't overwhelm the OSM system. A better
 alternative is to download daily exports of OSM data for your region from
@@ -141,16 +140,16 @@ alternative is to download daily exports of OSM data for your region from
 This script was developed using downloads of the US state OSM data provided at:
 [download.geofabrik.de/openstreetmap](http://download.geofabrik.de/openstreetmap/north-america/us/)
 
-Once you have downloaded a .osm file that you wish to work with, you can run curvature.py with its
+Once you have downloaded a .osm file that you wish to work with, you can run curvature.js with its
 default options:
 
-<code>./curvature.py -v vermont.osm</code>
+<code>./curvature.js -v vermont.osm</code>
 
 This will generate a vermont.osm.kml file that includes lines for all of the matched segments.
 
 Use
 
-<code>./curvature.py -h</code>
+<code>./curvature.js -h</code>
 
 for more options.
 

@@ -1,19 +1,25 @@
 
-class WayFilter(object):
-	min_curvature = 0
-	max_curvature = 0
-	min_length = 0
-	max_length = 0
+module.exports = function () {
+	this.minCurvature = 0;
+	this.maxCurvature = 0;
+	this.minLength = 0;
+	this.maxLength = 0;
 	
-	def filter(self, ways):
-		if self.min_length > 0:
-			ways = filter(lambda w: w['length'] / 1609 > self.min_length, ways)
-		if self.max_length > 0:
-			ways = filter(lambda w: w['length'] / 1609 < self.max_length, ways)
-		if self.min_curvature > 0:
-			ways = filter(lambda w: w['curvature'] > self.min_curvature, ways)
-		if self.max_curvature > 0:
-			ways = filter(lambda w: w['curvature'] < self.max_curvature, ways)
-		return ways
+	// I think ways is supposed to be a private param
+	this.filter = function (ways) {
+		if this.minLength > 0:
+			ways = this.filter(lambda w: w['length'] / 1609 > this.minLength, ways)
 		
-	
+		if this.maxLength > 0:
+			ways = this.filter(lambda w: w['length'] / 1609 < this.maxLength, ways)
+		
+		if this.minCurvature > 0:
+			ways = this.filter(lambda w: w['curvature'] > this.minCurvature, ways)
+		
+		if this.maxCurvature > 0:
+			ways = this.filter(lambda w: w['curvature'] < this.maxCurvature, ways)
+		
+		return ways
+	};
+
+};
