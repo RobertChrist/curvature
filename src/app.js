@@ -1,4 +1,4 @@
-/** curvature.py
+/** curvature.js
 *
 * Find roads that are the most curved or twisty based on Open Street Map (OSM) data.
 *
@@ -31,25 +31,17 @@
 */
 
 var _parser 	 = require('./commandLineParser');
+var Config	 	 = require('./Config');
+var RoadFilter 	 = require('./RoadFilter');
 var WayCollector = require('./WayCollector');
-var WayFilter 	 = require('./WayFilter');
 var TabOutput 	 = require('./curvature.output').TabOutput;
 var SingleColorKmlOutput 	= require('./curvature.output').SingleColorKmlOutput;
 var MultiColorKmlOutput 	= require('./curvature.output').MultiColorKmlOutput;
 
 
-var getDefaultFilter = function (args) {
-	var defaultFilter = new WayFilter();
-	
-	defaultFilter.minLength = args.minLength;
-	defaultFilter.maxLength = args.maxLength;
-	defaultFilter.minCurvature = args.minCurvature;
-	defaultFilter.maxCurvature = args.maxCurvature;
-
-	return defaultFilter;
-};
-
 var getCollector = function (args) {
+	var RoadCollectorConfig = new RoadCollectorConfig()
+
 	var collector = new WayCollector();
 	
 	collector.verbose = args.v;
@@ -179,15 +171,18 @@ var parseFile = function (args, file, collector, filter) {
 
 /* ---------- Main Script ---------- */
 var args = _parser.parseArgs();
+var config = new Config(args);
 
-var defaultFilter = getDefaultFilter(args);
-var collector = getCollector(args);
+var settings = config.settings;
 
-for (var i = 0, j = args.file.length; i < j; i++) {
-	var file = args.file[i];
+var defaultFilter = new RoadFilter(settings.minLength.value, 
+								   settings.maxLength.value, 
+								   settings.minCurvature.value, 
+								   settings.maxCurvature.value);
 
-	parseFile(args, args.file[i], collector, defaultFilter);
-}
+var collector = getCollector(settings);
 
-if (args.v)
+parseFile(settings, settings.file, collector, defaultFilter);
+
+if (settings.v)
 	console.log("done.\n");
