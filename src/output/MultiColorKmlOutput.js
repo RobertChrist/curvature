@@ -1,43 +1,75 @@
-import sys
-import math
+var _util = require('util');
+var KmlOutput = require('./KmlOutput');
 
-class MultiColorKmlOutput(KmlOutput):
-	def _filename_suffix(self):
-		return '.multicolor'
-	
-	def _write_ways(self, f, ways):
-		f.write('	<Style id="folderStyle">\n')
-		f.write('		<ListStyle>\n')
-		f.write('			<listItemType>checkHideChildren</listItemType>\n')
-		f.write('		</ListStyle>\n')
-		f.write('	</Style>\n')
+var MultiColorKmlOutput = module.exports = function (defaultFilter) {
+    MultiColorKmlOutput.super_.call(this, defaultFilter);
+
+    var _self = this;
+    var _allowWhitespaceRegex = new RegExp('%20', 'g');
+
+	this.writeWays = function (ways) {
+	    var result = '';
+		result += '	<Style id="folderStyle">\n';
+		result += '		<ListStyle>\n';
+		result += '			<listItemType>checkHideChildren</listItemType>\n';
+		result += '		</ListStyle>\n';
+		result += '	</Style>\n';
 		
-		for way in ways:
-			f.write('	<Folder>\n')
-			f.write('		<styleUrl>#folderStyle</styleUrl>\n')
-			f.write('		<name>' + escape(way['name']) + '</name>\n')
-			f.write('		<description>' + self.get_description(way) + '</description>\n')
-			current_curvature_level = 0
-			i = 0
-			for segment in way['segments']:
-				if segment['curvature_level'] != current_curvature_level or not i:
-					current_curvature_level = segment['curvature_level']
-					# Close the open LineString
-					if i:
-						f.write('</coordinates>\n')
-						f.write('			</LineString>\n')
-						f.write('		</Placemark>\n')
-					# Start a new linestring for this level
-					f.write('		<Placemark>\n')
-					f.write('			<styleUrl>#lineStyle%d</styleUrl>\n' % (current_curvature_level))
-					f.write('			<LineString>\n')
-					f.write('				<tessellate>1</tessellate>\n')
-					f.write('				<coordinates>')
-					f.write("%.6f,%6f " %(segment['start'][1], segment['start'][0]))
-				f.write("%.6f,%6f " %(segment['end'][1], segment['end'][0]))
-				i = i + 1
-			if i:
-				f.write('</coordinates>\n')
-				f.write('			</LineString>\n')
-				f.write('		</Placemark>\n')
-			f.write('	</Folder>\n')
+		for (var i = 0, j = ways.length; i < j; i++) {
+			var way = ways[i];
+
+			var tempResult = 	'	<Folder>\n\'' +
+							 	'		<styleUrl>#folderStyle</styleUrl>\n' +
+							 	'		<name>' + escape(way.name).replace(_allowWhitespaceRegex, ' ') + '</name>\n' +
+							 	'		<description>' + _self.getDescription(way) + '</description>\n';
+			
+			var currentCurvatureLevel = 0;
+
+			var index = 0;
+			var segments = way.segments;
+			for (var k = 0, l = segments.length; k < l; k++) {
+				var segment = segments[k];
+			
+				if (segment.curvature_level != currentCurvatureLevel || !index) {
+					currentCurvatureLevel = segment.curvatureLevel;
+					
+					// Close the open LineString
+					if (index)
+						tempResult += 	'</coordinates>\n' +
+										'		</LineString>\n' + 
+										'		</Placemark>\n';
+
+					// Start a new linestring for this level
+					tempResult += 	'	<Placemark>\n' +
+								  	'		<styleUrl>#lineStyle' + currentCurvatureLevel + '</styleUrl>\n' +
+								  	'		<LineString>\n' +
+								  	'			<tessellate>1</tessellate>\n' +
+								  	'			<coordinates>';
+
+					tempResult += _util.format("%d,%d ", segment.start.lon.toFixed(6), segment.start.lat.toFixed(6));
+				}
+
+				tempResult += _util.format("%d,%d ", segment.end.lon.toFixed(6), segment.end.lat.toFixed(6));
+				index++;
+			}
+
+			if (index) {
+				tempResult += 	'</coordinates>\n' + 
+								'		</LineString>\n' + 
+								'	</Placemark>\n';
+			}
+
+		    tempResult += '	</Folder>\n';
+            
+            result += tempResult;
+		}
+
+		return result;
+	};
+};
+
+_util.inherits(MultiColorKmlOutput, KmlOutput);
+
+MultiColorKmlOutput.prototype.filenameSuffix = function() {
+    return '.multicolor';
+};

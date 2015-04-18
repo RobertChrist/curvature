@@ -1,0 +1,5 @@
+Make sure we don't break the gpl.
+
+WaysCalculator is not only turning ways into length 0, but returns a 0 length array as well.  There's a bug in there somewhere.
+
+windows git mangled capitalization of files again, fix.

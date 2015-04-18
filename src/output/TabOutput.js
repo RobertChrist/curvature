@@ -1,10 +1,18 @@
-import sys
-import math
+var _util = require('util');
+var OutputBase = require('./OutputBase');
 
-class TabOutput(Output):
-	def output(self, ways):
-		ways = self.filter_and_sort(ways)
-		
-		print "Curvature	Length (mi) Distance (mi)	Id				Name  			County"
-		for way in ways:
-			print '%d	%9.2f	%9.2f	%10s	%25s	%20s' % (way['curvature'], way['length'] / 1609, way['distance'] / 1609, way['id'], way['name'], way['county'])
+var TabOutput = module.exports = function () {
+
+	this.output = function (ways, logger) {
+		ways = this.filterAndSort(ways);
+
+		logger.log('Curvature	Length(mi)	Distance (mi)	Id	Name	County');
+		for (var i = 0, j = ways.length; i < j; i++) {
+			var way = ways[i];
+			logger.log(way.curvature + '\t' + way.length + '\t' /1609 + '\t' + way.distance / 1609 + '\t' +
+				way.id + '\t' + way.name + '\t'	+ way.county);
+		}
+	};
+};
+
+_util.inherits(TabOutput, OutputBase);

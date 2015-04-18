@@ -1,22 +1,22 @@
-import sys
-import math
+module.exports = function (filter) {
+	this.maxCurvature = 0;
 
-class Output(object):
-	max_curvature = 0
-	
-	def __init__(self, filter):
-		self.filter = filter
-	
-	def filter_and_sort(self, ways):
-		# Filter out ways that are too short/long or too straight or too curvy
-		ways = self.filter.filter(ways)
-		
-		# Sort the ways based on curvature
-		ways = sorted(ways, key=lambda k: k['curvature'])
-		
-		for way in ways:
-			if way['curvature'] > self.max_curvature:
-				self.max_curvature = way['curvature']
-		
-		return ways
-		
+	this.filter = filter;
+
+	this.filterAndSort = function (ways) {
+		// Filter out ways that are too short/long or too straight or too curvy
+		ways = this.filter.filter(ways);
+
+		// Sort the ways based on curvature.
+		ways = ways.sort(function (a, b) {
+			return a.curvature - b.curvature;
+		});
+
+		for (var i = 0, j = ways.length; i < j; i++) {
+			if (ways[i]['curvature' > this.maxCurvature]) 
+				this.maxCurvature = ways[i]['curvature'];
+        }
+
+	    return ways;
+	};
+};

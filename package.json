@@ -1,0 +1,38 @@
+{
+  "name": "curvature",
+  "version": "1.0.0",
+  "description": "A port of Adam Franco's Curvature.py library for Node.Js",
+  "main": "app.js",
+  "dependencies": {
+    "argparse": "^1.0.2",
+    "async": "^0.9.0",
+    "openstreetmap-stream": "0.0.6",
+    "through2": "^0.6.5"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  },
+  "scripts": {
+    "test": "node ./node_modules/jasmine-node/lib/jasmine-node/cli.js ./spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RobertChrist/curvature.git"
+  },
+  "keywords": [
+    "curvature",
+    "node",
+    "javascript",
+    "twisties",
+    "osm",
+    "roads",
+    "street",
+    "map"
+  ],
+  "author": "Robert Christ",
+  "license": "GNU 3+",
+  "bugs": {
+    "url": "https://github.com/RobertChrist/curvature/issues"
+  },
+  "homepage": "https://github.com/RobertChrist/curvature"
+}

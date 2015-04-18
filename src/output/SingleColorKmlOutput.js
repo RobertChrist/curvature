@@ -1,51 +1,76 @@
-import sys
-import math
+var _util = require('util');
+var KmlOutput = require('./KmlOutput');
 
-class SingleColorKmlOutput(KmlOutput):
-	
-	def get_styles(self):
-		styles = {'lineStyle0':{'color':'F000E010'}} # Straight roads
+var SingleColorKmlOutput = module.exports = function (defaultFilter) {
+    SingleColorKmlOutput.super_.call(this, defaultFilter);
+
+    var _self = this;
+    var _allowWhitespaceRegex = new RegExp('%20', 'g');
+
+	function levelForCurvature (curvature) {
+		var offset = _self.filter.minCurvature > 0 ? _self.filter.minCurvature : 0;
 		
-		# Add a style for each level in a gradient from yellow to red (00FFFF - 0000FF)
-		for i in range(256):
-			styles['lineStyle{}'.format(i + 1)] = {'color':'F000{:02X}FF'.format(255 - i)}
-		return styles
-	
-	def _write_ways(self, f, ways):
+		if (curvature < offset)
+			return 0;
 		
-		for way in ways:
-			if 'segments' not in way or not len(way['segments']):
-# 				sys.stderr.write("\nError: way has no segments: {} \n".format(way['name']))
-				continue
-			f.write('	<Placemark>\n')
-			f.write('		<styleUrl>#' + self.line_style(way) + '</styleUrl>\n')
-			f.write('		<name>' + escape(way['name']) + '</name>\n')
-			f.write('		<description>' + self.get_description(way) + '</description>\n')
-			f.write('		<LineString>\n')
-			f.write('			<tessellate>1</tessellate>\n')
-			f.write('			<coordinates>')
-			f.write("%.6f,%6f " %(way['segments'][0]['start'][1], way['segments'][0]['start'][0]))
-			for segment in way['segments']:
-				f.write("%.6f,%6f " %(segment['end'][1], segment['end'][0]))
-			f.write('</coordinates>\n')
-			f.write('		</LineString>\n')
-			f.write('	</Placemark>\n')
-	
-	def level_for_curvature(self, curvature):
-		if self.filter.min_curvature > 0:
-			offset = self.filter.min_curvature
-		else:
-			offset = 0
+		var curvaturePct = (curvature - offset) / (_self.maxCurvature - offset);
 		
-		if curvature < offset:
-			return 0
+		// Use the square route of the ratio to give a better differentiation between
+		// lower-curvature ways
+		var colorPct = Math.sqrt(curvaturePct);
+		var level = Math.round(255 * colorPct) + 1;
 		
-		curvature_pct = (curvature - offset) / (self.max_curvature - offset)
-		# Use the square route of the ratio to give a better differentiation between
-		# lower-curvature ways
-		color_pct = math.sqrt(curvature_pct)
-		level = int(round(255 * color_pct)) + 1		
-		return level
+		return level;
+	}
 	
-	def line_style(self, way):
-		return 'lineStyle{}'.format(self.level_for_curvature(way['curvature']))
+	function lineStyle (way) {
+		return 'lineStyle' + levelForCurvature(way.curvature);
+	}
+
+	this.writeWays = function (ways) {
+	    var result = '';
+
+		for (var i = 0, j = ways.length; i < j; i++) {
+			var way = ways[i];
+			if (!way.segments || !way.segments.length) {
+				// _logger.log('Error: way has no segments: ' + way['name']);
+				continue;
+			}
+
+            var tempResult =    '	<Placemark>\n' +
+								'		<styleUrl>#' + lineStyle(way) + '</styleUrl>\n' +
+								'		<name>' + escape(way.name).replace(_allowWhitespaceRegex, ' ') + '</name>\n' +
+								'		<description>' + _self.getDescription(way) + '</description>\n' +
+								'		<LineString>\n' +
+								'			<tessellate>1</tessellate>\n' +
+								'			<coordinates>';
+
+			tempResult += _util.format('%d,%d ', way.segments[0]['start'].lon.toFixed(6), way.segments[0]['start'].lat.toFixed(6));
+				
+			var segments = way.segments;
+			for (var k = 0, l = segments.length; k < l; k++) {
+				var segment = segments[k];
+				tempResult += _util.format("%d,%d ", segment.end.lon.toFixed(6), segment.end.lat.toFixed(6));
+			}
+				
+			result += 	tempResult + 
+						'</coordinates>\n' +
+						'		</LineString>\n' +
+						'	</Placemark>\n';
+        }
+
+	    return result;
+	};
+};
+
+_util.inherits(SingleColorKmlOutput, KmlOutput);
+
+SingleColorKmlOutput.prototype.getStyles = function () {
+	var styles = { 'lineStyle0':{'color':'F000E010'} }; // Straight ways
+	
+	// Add a style for each level in a gradient from yellow to red (00FFFF - 0000FF)
+	for (var i = 0, j = 256; i < j; i++)
+		styles['lineStyle' + (i + 1)] = {'color':'F000' + (255 - i).toString(16) + 'FF' };
+
+	return styles;
+};
