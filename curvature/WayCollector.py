@@ -5,6 +5,39 @@ import copy
 from imposm.parser import OSMParser
 rad_earth_m = 6373000 # Radius of the earth in meters
 
+# From http://www.johndcook.com/python_longitude_latitude.html
+def distance_on_unit_sphere(lat1, long1, lat2, long2):
+	if lat1 == lat2	 and long1 == long2:
+		return 0
+
+	# Convert latitude and longitude to 
+	# spherical coordinates in radians.
+	degrees_to_radians = math.pi/180.0
+		
+	# phi = 90 - latitude
+	phi1 = (90.0 - lat1)*degrees_to_radians
+	phi2 = (90.0 - lat2)*degrees_to_radians
+		
+	# theta = longitude
+	theta1 = long1*degrees_to_radians
+	theta2 = long2*degrees_to_radians
+		
+	# Compute spherical distance from spherical coordinates.
+		
+	# For two locations in spherical coordinates 
+	# (1, theta, phi) and (1, theta, phi)
+	# cosine( arc length ) = 
+	#	 sin phi sin phi' cos(theta-theta') + cos phi cos phi'
+	# distance = rho * arc length
+	
+	cos = (math.sin(phi1)*math.sin(phi2)*math.cos(theta1 - theta2) + 
+		   math.cos(phi1)*math.cos(phi2))
+	arc = math.acos( cos )
+
+	# Remember to multiply arc by the radius of the earth 
+	# in your favorite set of units to get length.
+	return arc
+	
 # simple class that handles the parsed OSM data.
 class WayCollector(object):
 	ways = []
@@ -315,82 +348,3 @@ class WayCollector(object):
 			return segment['length'] * self.level_1_weight
 		else:
 			return 0
-	
-class NoCurvatureWayCollector(WayCollector):
-	def calculate_distance_and_curvature(self, way):
-		way['distance'] = 0.0
-		way['curvature'] = 0.0
-		way['length'] = 0.0
-		start = self.coords[way['refs'][0]]
-		end = self.coords[way['refs'][-1]]
-		second = 0
-		third = 0
-		segments = []
-		for ref in way['refs']:
-			first = self.coords[ref]
-			
-			if not second:
-				second = first
-				continue
-			
-			if not third:
-				third = second
-				second = first
-				continue
-						
-			if not len(segments):
-				# Add the first segment using the first point
-				segments.append({'start': third, 'end': second})
-			
-			# Add our latest segment
-			segments.append({'start': second, 'end': first})
-			
-			third = second
-			second = first
-		
-		# Special case for two-coordinate ways
-		if len(way['refs']) == 2:
-			segments.append({'start': self.coords[way['refs'][0]], 'end': self.coords[way['refs'][1]]})
-		
-		way['segments'] = segments
-
-		# Calculate the curvature as a weighted distance traveled at each curvature.
-		way['curvature'] = 0
-		for segment in segments:
-			segment['radius'] = 0
-			segment['curvature_level'] = 0
-		
-	
-
-# From http://www.johndcook.com/python_longitude_latitude.html
-def distance_on_unit_sphere(lat1, long1, lat2, long2):
-	if lat1 == lat2	 and long1 == long2:
-		return 0
-
-	# Convert latitude and longitude to 
-	# spherical coordinates in radians.
-	degrees_to_radians = math.pi/180.0
-		
-	# phi = 90 - latitude
-	phi1 = (90.0 - lat1)*degrees_to_radians
-	phi2 = (90.0 - lat2)*degrees_to_radians
-		
-	# theta = longitude
-	theta1 = long1*degrees_to_radians
-	theta2 = long2*degrees_to_radians
-		
-	# Compute spherical distance from spherical coordinates.
-		
-	# For two locations in spherical coordinates 
-	# (1, theta, phi) and (1, theta, phi)
-	# cosine( arc length ) = 
-	#	 sin phi sin phi' cos(theta-theta') + cos phi cos phi'
-	# distance = rho * arc length
-	
-	cos = (math.sin(phi1)*math.sin(phi2)*math.cos(theta1 - theta2) + 
-		   math.cos(phi1)*math.cos(phi2))
-	arc = math.acos( cos )
-
-	# Remember to multiply arc by the radius of the earth 
-	# in your favorite set of units to get length.
-	return arc
