@@ -29,7 +29,7 @@ var MultiColorKmlOutput = module.exports = function (KmlOutput) {
 				var segment = segments[k];
 			
 				if (segment['curvature_level'] != currentCurvatureLevel || !index) {
-					currentCurvatureLevel = segment['curvature_level'];
+					currentCurvatureLevel = segment['curvatureLevel'];
 					
 					// Close the open LineString
 					if index {

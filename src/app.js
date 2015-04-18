@@ -41,10 +41,10 @@ var MultiColorKmlOutput 	= require('./curvature.output').MultiColorKmlOutput;
 var getDefaultFilter = function (args) {
 	var defaultFilter = new WayFilter();
 	
-	defaultFilter.min_length = args.minLength;
-	defaultFilter.max_length = args.maxLength;
-	defaultFilter.min_curvature = args.minCurvature;
-	defaultFilter.max_curvature = args.maxCurvature;
+	defaultFilter.minLength = args.minLength;
+	defaultFilter.maxLength = args.maxLength;
+	defaultFilter.minCurvature = args.minCurvature;
+	defaultFilter.maxCurvature = args.maxCurvature;
 
 	return defaultFilter;
 };
@@ -53,21 +53,21 @@ var getCollector = function (args) {
 	var collector = new WayCollector();
 	
 	collector.verbose = args.v;
-	collector.ignored_surfaces = args.ignoredSurfaces.split(',');
+	collector.ignoredSurfaces = args.ignoredSurfaces.split(',');
 	collector.roads = args.highwayTypes.split(',');
-	collector.level_1_max_radius = args.level1MaxRadius;
-	collector.level_1_weight = args.level1Weight;
-	collector.level_2_max_radius = args.level2MaxRadius;
-	collector.level_2_weight = args.level2Weight;
-	collector.level_3_max_radius = args.level3MaxRadius;
-	collector.level_3_weight = args.level3Weight;
-	collector.level_4_max_radius = args.level4MaxRadius;
-	collector.level_4_weight = args.level4Weight;
-	collector.min_lat_bound = args.minLatBound;
-	collector.max_lat_bound = args.maxLatBound;
-	collector.min_lon_bound = args.minLonBound;
-	collector.max_lon_bound = args.maxLonBound;
-	collector.straight_segment_split_threshold = args.straightSegmentSplitThreshold * 1609;
+	collector.level1MaxRadius = args.level1MaxRadius;
+	collector.level1Weight = args.level1Weight;
+	collector.level2MaxRadius = args.level2MaxRadius;
+	collector.level2Weight = args.level2Weight;
+	collector.level3MaxRadius = args.level3MaxRadius;
+	collector.level3Weight = args.level3Weight;
+	collector.level4MaxRadius = args.level4MaxRadius;
+	collector.level4Weight = args.level4Weight;
+	collector.minLatBound = args.minLatBound;
+	collector.maxLatBound = args.maxLatBound;
+	collector.minLonBound = args.minLonBound;
+	collector.maxLonBound = args.maxLonBound;
+	collector.straightSegmentSplitThreshold = args.straightSegmentSplitThreshold * 1609;
 
 	return collector;
 };
@@ -129,13 +129,13 @@ var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, us
 			else
 				colorize = 0;
 		} else if (key === 'minCurvature')
-			filter.min_curvature = float(value);
+			filter.minCurvature = float(value);
 		else if (key == 'maxCurvature')
-			filter.max_curvature = float(value);
+			filter.maxCurvature = float(value);
 		else if (key == 'minLength')
-			filter.min_length = float(value);
+			filter.minLength = float(value);
 		else if (key == 'maxLength')
-			filter.max_length = float(value);
+			filter.maxLength = float(value);
 		else
 			console.log("Ignoring unknown key '" + key + "'' passed to --addKML\n");
 	}
@@ -147,7 +147,7 @@ var parseFile = function (args, file, collector, filter) {
 	if (args.v)
 		console.log("Loading {" + file.name + "}\n");
 		
-	collector.load_file(file.name);
+	collector.loadFile(file.name);
 	
 	// Output our tabular data
 	if (args.t) {
