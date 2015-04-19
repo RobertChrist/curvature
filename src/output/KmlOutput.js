@@ -26,7 +26,7 @@ var KmlOutput = module.exports = function () {
 			if (style['color'])
 				style['color'] = 'F0FFFFFF';
 
-			f.write('	<Style id="' + id + '">\n')
+			f.write('	<Style id="' + i + '">\n')
 			f.write('		<LineStyle>\n')
 			f.write('			<color>' + style['color'] + '</color>\n')
 			f.write('			<width>' + style['width'] + '</width>\n')
