@@ -6,7 +6,7 @@ var MultiColorKmlOutput = module.exports = function (KmlOutput) {
 		return '.multicolor';
 	}
 	
-	this.writeRoads = function (roads) {
+	this.writeWays = function (ways) {
 		var result;
 
 		result += '	<Style id="folderStyle">\n';
@@ -15,18 +15,18 @@ var MultiColorKmlOutput = module.exports = function (KmlOutput) {
 		result += '		</ListStyle>\n';
 		result += '	</Style>\n';
 		
-		for (var i = 0, j = roads.length; i < j; i++) {
-			var road = roads[i];
+		for (var i = 0, j = ways.length; i < j; i++) {
+			var way = ways[i];
 
 			var tempResult = '	<Folder>\n\
 									<styleUrl>#folderStyle</styleUrl>\n\
-									<name>' + escape(road['name']) + '</name>\n\
-									<description>' + this.getDescription(road) + '</description>\n';
+									<name>' + escape(way['name']) + '</name>\n\
+									<description>' + this.getDescription(way) + '</description>\n';
 			
 			var currentCurvatureLevel = 0;
 
 			var index = 0;
-			var segments = road['segments'];
+			var segments = way['segments'];
 			for (var k = 0, l = segments.length; k < l; k++) {
 				var segment = segments[k];
 			

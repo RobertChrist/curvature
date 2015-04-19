@@ -32,8 +32,8 @@
 
 var _parser 	 = require('./commandLineParser');
 var Config	 	 = require('./Config');
-var RoadFilter 	 = require('./RoadFilter');
-var RoadCollector= require('./RoadCollector');
+var WayFilter 	 = require('./WayFilter');
+var WayCollector= require('./WayCollector');
 var TabOutput 	 = require('./curvature.output').TabOutput;
 var SingleColorKmlOutput 	= require('./curvature.output').SingleColorKmlOutput;
 var MultiColorKmlOutput 	= require('./curvature.output').MultiColorKmlOutput;
@@ -51,7 +51,7 @@ var getBasename = function (settings, filename) {
 	return basename;
 };
 
-var writeKMLFile = function (colorize, kmUnits, defaultFilter, roads, path, basename) {
+var writeKMLFile = function (colorize, kmUnits, defaultFilter, ways, path, basename) {
 	var kml;
 	if (colorize)
 		kml = MultiColorKmlOutput(defaultFilter);
@@ -61,7 +61,7 @@ var writeKMLFile = function (colorize, kmUnits, defaultFilter, roads, path, base
 	if (kmUnits)
 		kml.units = 'km';
 
-	kml.write(roads, path, basename);
+	kml.write(ways, path, basename);
 };
 
 var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, useKM) {
@@ -96,7 +96,7 @@ var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, us
 			console.log("Ignoring unknown key '" + key + "'' passed to --addKML\n");
 	}
 
-	writeKMLFile(colorize, useKM, filter, collector.getRoads(), path, basename);
+	writeKMLFile(colorize, useKM, filter, collector.getWays(), path, basename);
 };
 
 var parseFile = function (settings, file, collector, filter) {
@@ -107,7 +107,7 @@ var parseFile = function (settings, file, collector, filter) {
 	
 	if (args.tabluarOutput) {
 		var tab = new TabOutput(filter);
-		tab.output(collector.getRoads());
+		tab.output(collector.getWays());
 	}
 	
 	if (settings.noKML) 
@@ -119,7 +119,7 @@ var parseFile = function (settings, file, collector, filter) {
 	var path = !settings.outputPath ? os.path.dirname(file.name) : settings.outputPath;
 	var basename = getBasename(settings, file.name);
 
-	writeKMLFile(settings.colorize, settings.KM, filter, collector.getRoads(), path, basename);
+	writeKMLFile(settings.colorize, settings.KM, filter, collector.getWays(), path, basename);
 
 	if (!settings.addKML)
 		return;
@@ -138,17 +138,17 @@ var config = new Config(args);
 
 var settings = config.settings;
 
-var defaultFilter = new RoadFilter(settings.minLength.value, 
+var defaultFilter = new WayFilter(settings.minLength.value, 
 								   settings.maxLength.value, 
 								   settings.minCurvature.value, 
 								   settings.maxCurvature.value);
 
-var collector = new RoadCollector(settings.verbose, 
+var collector = new WayCollector(settings.verbose, 
 								  settings.minLatBound, 
 								  settings.maxLatBound, 
 								  settings.minLonBound, 
 								  settings.maxLatBound, 
-								  settings.roadTypes.split(','), 
+								  settings.wayTypes.split(','), 
 								  settings.ignoredSurfaces.split(','), 
 								  settings.straightSegmentSplitThreshold, 
 								  settings.level1MaxRadius, 

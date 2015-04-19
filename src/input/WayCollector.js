@@ -1,6 +1,6 @@
 var OSMParser = require('Fck/OSMParser');
 
-exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound, maxLatBound, roadTypes, ignoredSurfaces, straightSegmentSplitThreshold,
+exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound, maxLatBound, wayTypes, ignoredSurfaces, straightSegmentSplitThreshold,
 								  _level1MaxRadius, _level1Weight, _level2MaxRadius, _level2Weight, _level3MaxRadius, _level3Weight, _level4MaxRadius, _level4Weight) {
 	
 	/* --------- Constants ---------- */
@@ -8,7 +8,7 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 
 
 	/* --------- Object State --------- */
-	var _roads = [], _numRoads = 0;
+	var _ways = [], _numWays = 0;
 	var _coords = {}, _numCoords = 0;
 	var _coordsMarker = 1;
 
@@ -23,7 +23,7 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 		_level3MaxRadius = level3MaxRadius, _level3Weight = level3Weight,
 		_level4MaxRadius = level4MaxRadius, _level4Weight = level4Weight;
 
-	var _roadTypes = roadTypes, 
+	var _wayTypes = wayTypes, 
 		_ignoredSurfaces = ignoredSurfaces,
 		_straightSegmentSplitThreshold = straightSegmentSplitThreshold;
 
@@ -31,8 +31,8 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 	/* --------- Local Methods --------- */
 
 	function resetObjectState () {
-		_roads = [];
-		_numRoads = 0;
+		_ways = [];
+		_numWays = 0;
 		_coords = {};
 		_numCoords = 0;
 	}
@@ -92,12 +92,12 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 		return 0;
 	}
 
-	function splitWaySections (road) {
+	function splitWaySections (way) {
 		var sections = [];
 
 		// Special case where ways will never be split
 		if (_straightSegmentSplitThreshold <= 0) {
-			sections.push(road);
+			sections.push(way);
 			return sections;
 		}
 
@@ -106,8 +106,8 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 			straightStart = null,
 			straightDistance = 0;
 
-		for (var i = 0, j = road['segments'].length; i < j; i++) {
-			var segment = road['segments'][i];
+		for (var i = 0, j = way['segments'].length; i < j; i++) {
+			var segment = way['segments'][i];
 
 			// Reset the straight distance if we have a significant curve
 			if (segment['curvature']) {
@@ -128,8 +128,8 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 			// If we are more than about 1.5 miles of straight, split off the last curved part.
 			if (straightDistance > _straightSegmentSplitThreshold && straightStart > 0 && curveDistance > 0) {
 				
-				var section = JSON.parse(JSON.stringify(road));
-				section['segments'] = road['segments'][curveStart || straightStart];
+				var section = JSON.parse(JSON.stringify(way));
+				section['segments'] = way['segments'][curveStart || straightStart];
 
 				var refEnd = straightStart + 1;
 				section['curvature'] = 0;
@@ -152,8 +152,8 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 
 		// Add any remaining curved section to the sections
 		if (curveDistance > 0) {
-			var newSection = JSON.parse(JSON.stringify(road));
-			newSection['segments'] = road['segments'][curveStart];
+			var newSection = JSON.parse(JSON.stringify(way));
+			newSection['segments'] = way['segments'][curveStart];
 			newSection['curvature'] = 0;
 			newSection['length'] = 0;
 			for (var i = 0, j = section['segments'].length; i < j; i++) {
@@ -172,19 +172,19 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 		return sections;
 	}
 
-	function calculateDistanceAndCurvature (road) {
-		road['distance'] = 0.0;
-		road['curvature'] = 0.0;
-		road['length'] = 0.o;
-		var start = _coords[road['refs'][0]],
-			end = _coords[road['refs'][road['refs'].length - 1]];
+	function calculateDistanceAndCurvature (way) {
+		way['distance'] = 0.0;
+		way['curvature'] = 0.0;
+		way['length'] = 0.o;
+		var start = _coords[way['refs'][0]],
+			end = _coords[way['refs'][way['refs'].length - 1]];
 
-		road['distance'] = distanceOnUnitSphere(start[0], start[1], end[0], end[1]) * RADIUS_EARTH;
+		way['distance'] = distanceOnUnitSphere(start[0], start[1], end[0], end[1]) * RADIUS_EARTH;
 
 		var second = 0, third = 0, segments = [];
 
-		for (var i = 0, j = road['refs'].length; i < j; i++) {
-			var ref = road['refs'][i];
+		for (var i = 0, j = way['refs'].length; i < j; i++) {
+			var ref = way['refs'][i];
 			var first = _coords[ref];
 
 			if (!second) {
@@ -193,7 +193,7 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 			}
 
 			var firstSecondLength = distanceOnUnitSphere(first[0], first[1], second[0], second[1]) * RADIUS_EARTH;
-			road['length'] += firstSecondLength;
+			way['length'] += firstSecondLength;
 
 			if (!third) {
 				third = second;
@@ -235,14 +235,14 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 		}
 
 		// special case for two-coordinate ways
-		if (road['refs'].length == 2) 
-			segments.push({ 'start': _coords[road['refs'][0]], 'end': _coords[road['refs'][1]], 'length': firstSecondLength, 'radius': 100000 });
+		if (way['refs'].length == 2) 
+			segments.push({ 'start': _coords[way['refs'][0]], 'end': _coords[way['refs'][1]], 'length': firstSecondLength, 'radius': 100000 });
 
-		road['segments'] = segments;
-		delete road['refs'];  // refs are no longer needed now that we have loaded our segments.
+		way['segments'] = segments;
+		delete way['refs'];  // refs are no longer needed now that we have loaded our segments.
 
 		// calculate the curvature as a weighted distance traveled at each curvature.
-		road['curvature'] = 0;
+		way['curvature'] = 0;
 		for (var i = 0, j = segments.length; i < j; i++) {
 			var segment = segments[i];
 
@@ -257,7 +257,7 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 			else
 				segment['curvatureLevel'] = 0;
 
-			road['curvature'] += getCurvatureForSegment(segment);
+			way['curvature'] += getCurvatureForSegment(segment);
 		}
 	}
 
@@ -266,11 +266,11 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 		var index = 0;
 
 		if (_verbose)
-			marker = _roads.length < 100 ? 1 : Math.floor(_roads.length / 100);
+			marker = _ways.length < 100 ? 1 : Math.floor(_ways.length / 100);
 
 		var sections = [];
-		while (_roads.length) {
-			var road = _roads.pop();
+		while (_ways.length) {
+			var way = _ways.pop();
 
 			if (_verbose) {
 				index++;
@@ -279,15 +279,15 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 			}
 
 			try {
-				calculateDistanceAndCurvature(road);
-				roadSections = splitWaySections(road);
-				sections.push.apply(sections, roadSections);
+				calculateDistanceAndCurvature(way);
+				waySections = splitWaySections(way);
+				sections.push.apply(sections, waySections);
 			} catch (err) {
 				continue;
 			}
 		}
 
-		_roads = sections;
+		_ways = sections;
 
 		if (_verbose)
 			console.log('');
@@ -325,13 +325,13 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 		}
 	}
 
-	function roadsCallback (roads) {
+	function waysCallback (ways) {
 
-		for (var i = 0, j = roads.length; i < j; i++) {
-			var road = roads[i];
-			var osmId = road.osmId, tags = way.tags, refs = way.tags;
+		for (var i = 0, j = ways.length; i < j; i++) {
+			var way = ways[i];
+			var osmId = way.osmId, tags = way.tags, refs = way.tags;
 
-			// ignore circular roads (Maybe we don't need this)
+			// ignore circular ways (Maybe we don't need this)
 			if (refs[0] === refs[refs.length - 1])
 				continue;
 
@@ -341,23 +341,23 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 			if (tags['surface'] && _ignoredSurfaces.indexOf(tags['surface']) !== -1)
 				continue;
 
-			if (!tags['highway'] || _roadTypes.indexOf(tags['highway']) === -1)
+			if (!tags['highway'] || _wayTypes.indexOf(tags['highway']) === -1)
 				continue;
 
-			var newRoad = { 'id': osmId, 'type': tags['highway'], 'refs': refs };
+			var newWay = { 'id': osmId, 'type': tags['highway'], 'refs': refs };
 
 			if (!tags['name'])
-				newRoad['name'] = tags['ref'];
+				newWay['name'] = tags['ref'];
 			else if (tags['ref'])
-				newRoad['name'] = tags['name'] + "(" + tags["ref"] + ")";
+				newWay['name'] = tags['name'] + "(" + tags["ref"] + ")";
 			else
-				newRoad['name'] = tags['name'];
+				newWay['name'] = tags['name'];
 
-			newRoad['county'] = tags['tiger:county'] ? tags['tiger:county'] : '';
+			newWay['county'] = tags['tiger:county'] ? tags['tiger:county'] : '';
 
-			newRoad['surface'] = tags['surface'] ? tags['surface'] : 'unknown';
+			newWay['surface'] = tags['surface'] ? tags['surface'] : 'unknown';
 
-			_roads.push(newRoad);
+			_ways.push(newWay);
 
 			for (var k = 0, l = refs.length; k < l; k++) {
 				delete _coords[refs[k]];
@@ -366,9 +366,9 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 			if (!_verbose)
 				continue;
 
-			_numRoads++;
+			_numWays++;
 
-			if (!(_numRoads % 100))
+			if (!(_numWays % 100))
 				console.log('-');
 		}
 	}
@@ -381,11 +381,11 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 		if (_verbose)
 			console.log('loading ways, each "-" is 100 ways, each row is 10,000 ways');
 
-		var p = new OSMParser(roadsCallback);
+		var p = new OSMParser(waysCallback);
 		p.parse(fileName);
 
 		if (_verbose) {
-			console.log(_roads.length + " ways matched in " + fileName + ", " + 
+			console.log(_ways.length + " ways matched in " + fileName + ", " + 
 				" coordinates will be loaded, each '.' is 1% complete");
 
 			var total = _coords;	// todo: this will fail, in js its an {}
@@ -405,7 +405,7 @@ exports.RoadCollector = function (verbose, minLatBound, maxLatBound, minLonBound
 		}
 	};
 
-	this.getRoads = function () {
-		return _roads;
+	this.getways = function () {
+		return _ways;
 	}
 };

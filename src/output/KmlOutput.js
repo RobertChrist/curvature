@@ -72,7 +72,7 @@ var KmlOutput = module.exports = function () {
 
 	this.getStyles = function () {
 		return {
-			'lineStyle0':{'color':'F000E010'}, // Straight roads
+			'lineStyle0':{'color':'F000E010'}, // Straight ways
 			'lineStyle1':{'color':'F000FFFF'}, // Level 1 turns
 			'lineStyle2':{'color':'F000AAFF'}, // Level 2 turns
 			'lineStyle3':{'color':'F00055FF'}, // Level 3 turns
@@ -80,12 +80,12 @@ var KmlOutput = module.exports = function () {
 		};
 	};
 
-	this.write = function (roads, path, basename) {
-		roads = this.filterAndSort(roads);
-		roads.reverse()
+	this.write = function (ways, path, basename) {
+		ways = this.filterAndSort(ways);
+		ways.reverse()
 		
 		var kmlDoc = this.writeHeader();
-		kmlDoc += this.writeRoads(roads);
+		kmlDoc += this.writeWays(ways);
 		kmlDoc += writeFooter();
 		
 		fs.writeFileSync(path + '/' + getFilename(basename), kmlDoc);

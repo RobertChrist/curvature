@@ -3,14 +3,14 @@ var OutputBase = require('./OutputBase');
 
 var TabOutput = module.exports = function () {
 
-	this.output = function (roads) {
-		roads = this.filterAndSort(roads);
+	this.output = function (ways) {
+		ways = this.filterAndSort(ways);
 
 		console.log('Curvature	Length(mi)	Distance (mi)	Id	Name	County');
-		for (var i = 0, j = roads.length; i < j; i++;) {
-			var road = roads[i];
-			console.log(road['curvature'] + '	' + road['length'] + '	' /1609 + '	' + road['distance'] / 1609 + '	' +
-				road['id'] + '	' + road['name'] + '	'	+ road['county']);
+		for (var i = 0, j = ways.length; i < j; i++;) {
+			var way = ways[i];
+			console.log(way['curvature'] + '	' + way['length'] + '	' /1609 + '	' + way['distance'] / 1609 + '	' +
+				way['id'] + '	' + way['name'] + '	'	+ way['county']);
 		}
 	};
 };
