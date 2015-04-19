@@ -1,4 +1,5 @@
-var OSMParser = require('Fck/OSMParser');
+var osm = require('openstreetmap-stream'),
+	through = require('through2');
 
 exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound, maxLatBound, wayTypes, ignoredSurfaces, straightSegmentSplitThreshold,
 								  _level1MaxRadius, _level1Weight, _level2MaxRadius, _level2Weight, _level3MaxRadius, _level3Weight, _level4MaxRadius, _level4Weight) {
@@ -381,8 +382,19 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 		if (_verbose)
 			console.log('loading ways, each "-" is 100 ways, each row is 10,000 ways');
 
-		var p = new OSMParser(waysCallback);
-		p.parse(fileName);
+		
+		osm.createReadStream(fileName)
+			.pipe(through.obj( function (data, enc, next) {
+				if (data.type === 'node')
+					coordsCallback(data);
+				else if (data.type === 'way')
+					waysCallback(data);
+
+				next();
+			}));
+
+		// var p = new OSMParser(waysCallback);
+		// p.parse(fileName);
 
 		if (_verbose) {
 			console.log(_ways.length + " ways matched in " + fileName + ", " + 
@@ -392,8 +404,8 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 			_coordsMarker = total < 100 ? 1 : Math.floor(total / 100);
 		}
 
-		p = new OSMParser(coordsCallback);
-		p.parse(fileName);
+		// p = new OSMParser(coordsCallback);
+		// p.parse(fileName);
 
 		if (_verbose)
 			console.log('coordinates loaded, calulating curvature, each "." is 1% complete.');
