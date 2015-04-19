@@ -33,33 +33,32 @@ var SingleColorKmlOutput = module.exports = function () {
 		return styles;
 	};
 
-	this.writeRoads = function (f, roads) {
+	this.writeRoads = function (roads) {
+		var result;
 
 		for (var i = 0, j = roads.length; i < j; i++) {
-			
 			if (!road['segments'] || !road['segments'].length) {
 				// console.log('Error: road has no segments: ' + road['name']);
 				continue;
 			}
 
-			f.write('	<Placemark>\n');
-			f.write('		<styleUrl>#' + this.lineStyle(road) + '</styleUrl>\n');
-			f.write('		<name>' + escape(road['name']) + '</name>\n');
-			f.write('		<description>' + this.getDescription(road) + '</description>\n');
-			f.write('		<LineString>\n');
-			f.write('			<tessellate>1</tessellate>\n');
-			f.write('			<coordinates>');
-			f.write("%.6f,%6f " %(road['segments'][0]['start'][1], road['segments'][0]['start'][0]));
+			var tempResult = 	'	<Placemark>\n\
+								<styleUrl>#' + this.lineStyle(road) + '</styleUrl>\n\
+								<name>' + escape(road['name']) + '</name>\n\
+								<description>' + this.getDescription(road) + '</description>\n\
+								<LineString>\n\
+									<tessellate>1</tessellate>\n\
+									<coordinates>';
+
+			tempResult += 	"%.6f,%6f " %(road['segments'][0]['start'][1], road['segments'][0]['start'][0]);
 				
 			var segments = road['segments'];
 			for (var k = 0, l = segments.length; k < l; k++) {
 				var segment = segments[k];
-				f.write("%.6f,%6f " %(segment['end'][1], segment['end'][0]));
+				tempResult += "%.6f,%6f " %(segment['end'][1], segment['end'][0]);
 			}
 				
-			f.write('</coordinates>\n');
-			f.write('		</LineString>\n');
-			f.write('	</Placemark>\n');
+			result += tempResult + '</coordinates>\n</LineString>\n</Placemark>\n';
 		};
 	};
 };

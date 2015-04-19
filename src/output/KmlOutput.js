@@ -1,22 +1,23 @@
 var OutputBase = require('./OutputBase');
 var util = require('util');
-var codecs = require('Fck/codecs');
+var fs = require('fs');
 
 var KmlOutput = module.exports = function () {
 	var _units = 'mi';
 
-	function writeHeader (f) {
-		writeDocStart(f);
-		writeStyles(f, this.getStyles());
+	function writeHeader () {
+		return getDocStart() + writeStyles(getStyles());
 	}
 
-	function writeDocStart (f) {
-		f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-		f.write('<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">\n')
-		f.write('<Document>\n')
+	function writeDocStart () {
+		return '<?xml version="1.0" encoding="UTF-8"?>\n' + 
+		'<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">\n' +
+		'<Document>\n';
 	}
 
-	function writeStyles (f, styles) {
+	function writeStyles (styles) {
+		var result = '';
+
 		for (var i = 0, j = styles.length; i < j; i++) {
 			var style in styles[i];
 
@@ -26,18 +27,20 @@ var KmlOutput = module.exports = function () {
 			if (style['color'])
 				style['color'] = 'F0FFFFFF';
 
-			f.write('	<Style id="' + i + '">\n')
-			f.write('		<LineStyle>\n')
-			f.write('			<color>' + style['color'] + '</color>\n')
-			f.write('			<width>' + style['width'] + '</width>\n')
-			f.write('		</LineStyle>\n')
-			f.write('	</Style>\n')	
+			result += '	<Style id="' + i + '">\n';
+			result += '		<LineStyle>\n';
+			result += '			<color>' + style['color'] + '</color>\n';
+			result += '			<width>' + style['width'] + '</width>\n';
+			result += '		</LineStyle>\n';
+			result += '	</Style>\n');
 		}
+
+		return result;
 	}
 
-	function writeFooter (f) {
-		f.write('</Document>\n')
-		f.write('</kml>\n')
+	function writeFooter () {
+		return '</Document>\n' +
+			   '</kml>\n';
 	}
 
 	function filenameSuffix () {
@@ -81,14 +84,12 @@ var KmlOutput = module.exports = function () {
 		roads = this.filterAndSort(roads);
 		roads.reverse()
 		
-		f = codecs.open(path + '/' + this.getFilename(basename), 'w', "utf-8")
+		var kmlDoc = this.writeHeader();
+		kmlDoc += this.writeRoads(roads);
+		kmlDoc += writeFooter();
 		
-		this.writeHeader(f);
-		this.writeRoads(f);
-		this.writeFooter(f);
-		f.close()
+		fs.writeFileSync(path + '/' + getFilename(basename), kmlDoc);
 	};
-
 };
 
 util.inherits(KmlOutput, OutputBase);
