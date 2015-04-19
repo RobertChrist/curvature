@@ -37,15 +37,16 @@ var WayCollector= require('./WayCollector');
 var TabOutput 	 = require('./curvature.output').TabOutput;
 var SingleColorKmlOutput 	= require('./curvature.output').SingleColorKmlOutput;
 var MultiColorKmlOutput 	= require('./curvature.output').MultiColorKmlOutput;
+var path = require('path');
 
 var getBasename = function (settings, filename) {
 	var basename;
 	if (!settings.outputBasename) {
-		basename = os.path.basename(fileName);
-		parts = os.path.splitext(basename);
+		basename = path.basename(fileName);
+		parts = path.split(basename);
 		basename = parts[0];
 	} else {
-		basename = os.path.basename(settings.outputBasename);
+		basename = path.basename(settings.outputBasename);
 	}
 
 	return basename;
@@ -116,7 +117,7 @@ var parseFile = function (settings, file, collector, filter) {
 	if (settings.verbose) 
 		console.log("generating KML output");
 
-	var path = !settings.outputPath ? os.path.dirname(file.name) : settings.outputPath;
+	var path = !settings.outputPath ? path.dirname(file.name) : settings.outputPath;
 	var basename = getBasename(settings, file.name);
 
 	writeKMLFile(settings.colorize, settings.KM, filter, collector.getWays(), path, basename);
