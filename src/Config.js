@@ -1,18 +1,12 @@
 /* Holds all of the configuration settings for this application.
  * This object mainly exists so we aren't tied to commandLineParser.js, 
  * as well as giving us a centralized place to do validation on the user input.
- * 
- * If not args are passed in, settings will take default values.
- * To initialize to something else, an object can be passed into the constructor.
- * An exception will be thrown if anything is updated to a grossly invalid value.
- * 
- * @param {object} args - An optional object with key values that match settings object.
- * 		For example, to update settings.minLatbound and settings.tabularOutput, pass in { tabularOutput: true, minLatBound: null };
- * 		No error will be thrown if the passed in object contains incorrect keys, but nothing will be updated either.
  */
 module.exports = function (args) {
+	var _self = this;
+
 	this.settings = {
-		verbose,						{ name: 'v', 				value: false					}, 
+		verbose:						{ name: 'v', 				value: false					}, 
 		tabluarOutput: 					{ name: 't', 				value: false					},
 		noKML: 			 				{ name: 'noKML',			value: false 					},
 		km: 			 				{ name: 'km',				value: true 					},
@@ -37,9 +31,9 @@ module.exports = function (args) {
 		level4Weight: 	 				{ name: 'level4Weight',		value: 2 						},
 		
 		minLatBound: 	 				{ name: 'minLatBound',		value: null, 	optional: true 	},
-		maxlatBound: 	 				{ name: 'maxlatBound',		value: null, 	optional: true  },
+		maxLatBound: 	 				{ name: 'maxLatBound',		value: null, 	optional: true  },
 		minLonBound: 	 				{ name: 'minLonBound',		value: null, 	optional: true  },
-		maxlonBound: 	 				{ name: 'maxlonBound',		value: null, 	optional: true  },
+		maxLonBound: 	 				{ name: 'maxLonBound',		value: null, 	optional: true  },
 		
 		addKML: 		 				{ name: 'addKML',			value: null, 	optional: true  },
 		
@@ -51,14 +45,14 @@ module.exports = function (args) {
 		return obj[prop] !== undefined && obj[prop] !== null;
 	}
 
-	function ensureValue = function (obj, prop) {
+	function ensureValue (obj, prop) {
 		if (!hasValue(obj, prop))
 			throw new Error(prop + ' was not specified.');
 	}
 
 	// Throws an exception if any non-optional parameter is missing a value.
 	function validate() {
-		var settings = this.settings;
+		var settings = _self.settings;
 
 		for (var setting in settings) {
 			if (!setting.optional)
@@ -88,15 +82,12 @@ module.exports = function (args) {
 	 * @param {object} args - An object with key values that match settings object.
 	 * 		For example, to update minLatbound and tabularOutput, pass in { tabularOutput: true, minLatBound: null };
 	 */
-	function updateSettings (args) {
+	this.updateSettings = function (args) {
 		for (var setting in this.settings) {
 			if (hasValue(args, setting))
-				this.settings[setting].value = arg[setting];
+				this.settings[setting].value = args[setting];
 		}
 
 		validate();
-	}
-
-	if (args)
-		this.updateSettings(args);
+	};
 };

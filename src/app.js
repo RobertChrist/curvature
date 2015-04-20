@@ -32,12 +32,11 @@
 
 var _path = require('path');
 var _parser 	 = require('./commandLineParser');
-var Config	 	 = require('./Config');
 var WayFilter 	 = require('./WayFilter');
-var WayCollector = require('./WayCollector');
-var TabOutput 	 = require('./curvature.output').TabOutput;
-var SingleColorKmlOutput 	= require('./curvature.output').SingleColorKmlOutput;
-var MultiColorKmlOutput 	= require('./curvature.output').MultiColorKmlOutput;
+var WayCollector = require('./input/WayCollector');
+var TabOutput 	 = require('./output/TabOutput');
+var SingleColorKmlOutput 	= require('./output/SingleColorKmlOutput');
+var MultiColorKmlOutput 	= require('./output/MultiColorKmlOutput');
 
 var getBasename = function (settings, fileName) {
 	var basename;
@@ -135,10 +134,7 @@ var parseFile = function (settings, file, collector, filter) {
 
 
 /* ---------- Main Script ---------- */
-var args = _parser.parseArgs();
-var config = new Config(args);
-
-var settings = config.settings;
+var settings = _parser.parseArgs();
 
 var defaultFilter = new WayFilter(settings.minLength.value, 
 								   settings.maxLength.value, 
