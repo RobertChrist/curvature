@@ -1,7 +1,7 @@
 var KmlOutput = require('./KmlOutput');
 var util = require('util');
 
-var MultiColorKmlOutput = module.exports = function (KmlOutput) {
+var MultiColorKmlOutput = module.exports = function () {
 	function filenameSuffix () {
 		return '.multicolor';
 	}
@@ -52,10 +52,10 @@ var MultiColorKmlOutput = module.exports = function (KmlOutput) {
 			}
 
 			if (index) {
-				tempReuslt += '</coordinates>\n</LineString>\n</Placemark>\n';
+				tempResult += '</coordinates>\n</LineString>\n</Placemark>\n';
 			}
 
-			result += tempReuslt + '	</Folder>\n';
+			result += tempResult + '	</Folder>\n';
 		}
 
 		return result;

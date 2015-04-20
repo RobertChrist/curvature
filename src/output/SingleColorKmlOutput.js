@@ -14,7 +14,7 @@ var SingleColorKmlOutput = module.exports = function () {
 		// Use the square route of the ratio to give a better differentiation between
 		// lower-curvature ways
 		var colorPct = Math.sqrt(curvaturePct);
-		var level = int(round(255 * colorPct)) + 1;
+		var level = Math.round(255 * colorPct) + 1;
 		
 		return level;
 	}
@@ -24,7 +24,7 @@ var SingleColorKmlOutput = module.exports = function () {
 	}
 
 	this.getStyles = function () {
-		var styles = {'lineStyle0':{'color':'F000E010'}} // Straight ways
+		var styles = {'lineStyle0':{'color':'F000E010'}}; // Straight ways
 		
 		// Add a style for each level in a gradient from yellow to red (00FFFF - 0000FF)
 		for (var i = 0, j = 256; i < j; i++)
@@ -37,13 +37,14 @@ var SingleColorKmlOutput = module.exports = function () {
 		var result;
 
 		for (var i = 0, j = ways.length; i < j; i++) {
+			var way = ways[i];
 			if (!way['segments'] || !way['segments'].length) {
 				// console.log('Error: way has no segments: ' + way['name']);
 				continue;
 			}
 
 			var tempResult = 	'	<Placemark>\n\
-								<styleUrl>#' + this.lineStyle(way) + '</styleUrl>\n\
+								<styleUrl>#' + lineStyle(way) + '</styleUrl>\n\
 								<name>' + escape(way['name']) + '</name>\n\
 								<description>' + this.getDescription(way) + '</description>\n\
 								<LineString>\n\
@@ -59,7 +60,7 @@ var SingleColorKmlOutput = module.exports = function () {
 			}
 				
 			result += tempResult + '</coordinates>\n</LineString>\n</Placemark>\n';
-		};
+		}
 	};
 };
 

@@ -39,11 +39,11 @@ var SingleColorKmlOutput 	= require('./curvature.output').SingleColorKmlOutput;
 var MultiColorKmlOutput 	= require('./curvature.output').MultiColorKmlOutput;
 var path = require('path');
 
-var getBasename = function (settings, filename) {
+var getBasename = function (settings, fileName) {
 	var basename;
 	if (!settings.outputBasename) {
 		basename = path.basename(fileName);
-		parts = path.split(basename);
+		var parts = path.split(basename);
 		basename = parts[0];
 	} else {
 		basename = path.basename(settings.outputBasename);
@@ -55,9 +55,9 @@ var getBasename = function (settings, filename) {
 var writeKMLFile = function (colorize, kmUnits, defaultFilter, ways, path, basename) {
 	var kml;
 	if (colorize)
-		kml = MultiColorKmlOutput(defaultFilter);
+		kml = new MultiColorKmlOutput(defaultFilter);
 	else
-		kml = SingleColorKmlOutput(defaultFilter);
+		kml = new SingleColorKmlOutput(defaultFilter);
 	
 	if (kmUnits)
 		kml.units = 'km';
@@ -65,8 +65,9 @@ var writeKMLFile = function (colorize, kmUnits, defaultFilter, ways, path, basen
 	kml.write(ways, path, basename);
 };
 
-var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, useKM) {
-	var filter = copy.copy(defaultFilter);
+var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, useKM, basename) {
+	var filter = new WayFilter(defaultFilter.minLength, defaultFilter.maxLength, defaultFilter.minCurvature, defaultFilter.maxCurvature);
+
 	var opts = optString.split(',');
 
 	for (var i = 0, j = opts.length; i < j; i++) {
@@ -86,13 +87,13 @@ var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, us
 			else
 				colorize = 0;
 		} else if (key === 'minCurvature')
-			filter.minCurvature = float(value);
+			filter.minCurvature = value;	// when debugging, check that value is a number.
 		else if (key == 'maxCurvature')
-			filter.maxCurvature = float(value);
+			filter.maxCurvature = value;
 		else if (key == 'minLength')
-			filter.minLength = float(value);
+			filter.minLength = value;
 		else if (key == 'maxLength')
-			filter.maxLength = float(value);
+			filter.maxLength = value;
 		else
 			console.log("Ignoring unknown key '" + key + "'' passed to --addKML\n");
 	}
@@ -128,7 +129,7 @@ var parseFile = function (settings, file, collector, filter) {
 	for (var k = 0, l = settings.addKML.length; k < l; k++) {
 		var optString = settings.addKML[k]; 
 
-		generateAdditionalKMLFile(settings.colorize, optString, filter);
+		generateAdditionalKMLFile(settings.colorize, optString, filter, basename);
 	}
 };
 

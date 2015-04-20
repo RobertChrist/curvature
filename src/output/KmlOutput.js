@@ -6,7 +6,7 @@ var KmlOutput = module.exports = function () {
 	var _units = 'mi';
 
 	function writeHeader () {
-		return getDocStart() + writeStyles(getStyles());
+		return writeDocStart() + writeStyles(this.getStyles());
 	}
 
 	function writeDocStart () {
@@ -19,7 +19,7 @@ var KmlOutput = module.exports = function () {
 		var result = '';
 
 		for (var i = 0, j = styles.length; i < j; i++) {
-			var style in styles[i];
+			var style = styles[i];
 
 			if (!style['width'])
 				style['width'] = 4;
@@ -32,7 +32,7 @@ var KmlOutput = module.exports = function () {
 			result += '			<color>' + style['color'] + '</color>\n';
 			result += '			<width>' + style['width'] + '</width>\n';
 			result += '		</LineStyle>\n';
-			result += '	</Style>\n');
+			result += '	</Style>\n';
 		}
 
 		return result;
@@ -48,23 +48,23 @@ var KmlOutput = module.exports = function () {
 	}
 
 	function getFilename (basename) {
-		var filename = basename + '.c_{0:.0f}'.format(this.filter.minCurvature;
+		var filename = basename + '.c_{0:.0f}'.format(this.filter.minCurvature);
 
-		if this.filter.maxCurvature > 0
+		if (this.filter.maxCurvature > 0)
 			filename += '-{0:.0f}'.format(this.filter.maxCurvature);
 
-		if this.filter.minLength != 1 or this.filter.maxLength > 0
+		if (this.filter.minLength != 1 || this.filter.maxLength > 0)
 			filename += '.l_{0:.0f}'.format(this.filter.minLength);
 
-		if this.filter.maxLength > 0:
+		if (this.filter.maxLength > 0)
 			filename += '-{0:.0f}'.format(this.filter.maxLength);
 
-		filename += this.filenameSuffix() + '.kml'
+		filename += filenameSuffix() + '.kml';
 		return filename;
 	}
 
 	this.getDescription = function (way) {
-		if (_units === 'km'):
+		if (_units === 'km')
 			return 'Curvature: %.2f\nDistance: %.2f km\nType: %s\nSurface: %s' % (way['curvature'], way['length'] / 1000, way['type'], way['surface']);
 		else
 			return 'Curvature: %.2f\nDistance: %.2f mi\nType: %s\nSurface: %s' % (way['curvature'], way['length'] / 1609, way['type'], way['surface']);
@@ -82,9 +82,9 @@ var KmlOutput = module.exports = function () {
 
 	this.write = function (ways, path, basename) {
 		ways = this.filterAndSort(ways);
-		ways.reverse()
+		ways.reverse();
 		
-		var kmlDoc = this.writeHeader();
+		var kmlDoc = writeHeader();
 		kmlDoc += this.writeWays(ways);
 		kmlDoc += writeFooter();
 		

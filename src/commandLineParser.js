@@ -17,9 +17,9 @@ var args = [
 	[ ['--' + _config.level1MaxRadius], { type: 'int', 			defaultValue: _config.level1MaxRadius.value,help: 'the maximum radius of a curve (in meters) that will be considered part of level 1. Curves with radii larger than this will be considered straight. The default is 175' }],
 	[ ['--' + _config.level1Weight], 	{ type: 'float', 		defaultValue: _config.level1Weight.value, 	help: 'the weight to give segments that are classified as level 1. Default 1' }],
 	[ ['--' + _config.level2MaxRadius], { type: 'int', 			defaultValue: _config.level2MaxRadius.value,help: 'the maximum radius of a curve (in meters) that will be considered part of level 2. The default is 100' }],
-	[ ['--' + _config.level2Weight],  	{ type: 'float', 		defaultValue: _config.level2Weight.value.3, help: 'the weight to give segments that are classified as level 2. Default 1.3' }],
+	[ ['--' + _config.level2Weight],  	{ type: 'float', 		defaultValue: _config.level2Weight.value, 	help: 'the weight to give segments that are classified as level 2. Default 1.3' }],
 	[ ['--' + _config.level3MaxRadius], { type: 'int', 			defaultValue: _config.level3MaxRadius.value,help: 'the maximum radius of a curve (in meters) that will be considered part of level 3. The default is 60' }],
-	[ ['--' + _config.level3Weight],  	{ type: 'float', 		defaultValue: _config.level3Weight.value.6, help: 'the weight to give segments that are classified as level 3. Default 1.6' }],
+	[ ['--' + _config.level3Weight],  	{ type: 'float', 		defaultValue: _config.level3Weight.value,   help: 'the weight to give segments that are classified as level 3. Default 1.6' }],
 	[ ['--' + _config.level4MaxRadius], { type: 'int', 			defaultValue: _config.level4MaxRadius.value,help: 'the maximum radius of a curve (in meters) that will be considered part of level 4. The default is 30' }],
 	[ ['--' + _config.level4Weight],  	{ type: 'float', 		defaultValue: _config.level4Weight.value, 	help: 'the weight to give segments that are classified as level 4. Default 2' }],
 	[ ['--' + _config.minLatBound],		{ type: 'float', 		defaultValue: _config.minLatBound.value, 	help: 'The minimum latitude to include.'}],
@@ -32,7 +32,7 @@ var args = [
 	[ ['--' + _config.straightSegmentSplitThreshold], { type: 'float', 	defaultValue: _config.straightSegmentSplitThreshold.value, help: 'If a way has a series of non-curved segments longer than this (miles), the way will be split on that straight section. Use 0 to never split ways. The default is 1.5' }]
 ];
 
-module.exports = parser = new ArgumentParser({
+var parser = module.exports = new ArgumentParser({
 	description: 'Find the roads that are most twisty in an Open Street Map (OSM) XML file.'
 });
 

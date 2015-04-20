@@ -11,8 +11,6 @@
  * 		No error will be thrown if the passed in object contains incorrect keys, but nothing will be updated either.
  */
 module.exports = function (args) {
-	var _self = this;	// todo: I can never remember, do we need this?
-
 	this.settings = {
 		verbose,						{ name: 'v', 				value: false					}, 
 		tabluarOutput: 					{ name: 't', 				value: false					},
@@ -54,13 +52,13 @@ module.exports = function (args) {
 	}
 
 	function ensureValue = function (obj, prop) {
-		if (!hasValue(args, prop))
+		if (!hasValue(obj, prop))
 			throw new Error(prop + ' was not specified.');
 	}
 
 	// Throws an exception if any non-optional parameter is missing a value.
 	function validate() {
-		var settings = _self.settings;
+		var settings = this.settings;
 
 		for (var setting in settings) {
 			if (!setting.optional)

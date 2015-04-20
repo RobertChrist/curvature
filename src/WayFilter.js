@@ -23,7 +23,7 @@ module.exports = function (minLength, maxLength, minCurvature, maxCurvature) {
 		if (this.maxLength > 0)
 			filterBy = function (way) { return way['length'] / 1609 < this.maxLength; };
 		
-		if (this.minCurvature > 0) {
+		if (this.minCurvature > 0)
 			filterBy = function (way) { return way['curvature'] > this.minCurvature; };
 		
 		if (this.maxCurvature > 0)

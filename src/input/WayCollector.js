@@ -1,8 +1,8 @@
 var osm = require('openstreetmap-stream'),
 	through = require('through2');
 
-exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound, maxLatBound, wayTypes, ignoredSurfaces, straightSegmentSplitThreshold,
-								  _level1MaxRadius, _level1Weight, _level2MaxRadius, _level2Weight, _level3MaxRadius, _level3Weight, _level4MaxRadius, _level4Weight) {
+exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound, maxLonBound, wayTypes, ignoredSurfaces, straightSegmentSplitThreshold,
+								  level1MaxRadius, level1Weight, level2MaxRadius, level2Weight, level3MaxRadius, level3Weight, level4MaxRadius, level4Weight) {
 	
 	/* --------- Constants ---------- */
 	var RADIUS_EARTH = 6373000; // In meters
@@ -52,12 +52,12 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 		var degreesToRadians = Math.pi/180.0;
 			
 		// phi = 90 - latitude
-		var phi1 = (90.0 - lat1) * degreesToRadians
-		var phi2 = (90.0 - lat2) * degreesToRadians
+		var phi1 = (90.0 - lat1) * degreesToRadians;
+		var phi2 = (90.0 - lat2) * degreesToRadians;
 			
 		// theta = longitude
-		var theta1 = long1 * degreesToRadians
-		var theta2 = long2 * degreesToRadians
+		var theta1 = long1 * degreesToRadians;
+		var theta2 = long2 * degreesToRadians;
 			
 		// Compute spherical distance from spherical coordinates.
 			
@@ -135,7 +135,7 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 				var refEnd = straightStart + 1;
 				section['curvature'] = 0;
 				section['length'] = 0;
-				for (k = 0, l = section['segments'].length; k < l; k++) {
+				for (var k = 0, l = section['segments'].length; k < l; k++) {
 					var sectSegment = section['segments'][k];
 					section['curvature'] += getCurvatureForSegment(sectSegment);
 					section['length'] += sectSegment['length'];
@@ -157,17 +157,18 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 			newSection['segments'] = way['segments'][curveStart];
 			newSection['curvature'] = 0;
 			newSection['length'] = 0;
-			for (var i = 0, j = section['segments'].length; i < j; i++) {
-				var sectSegment = section['segments'][i];
-				section['curvature'] += getCurvatureForSegment(sectSegment);
-				section['length'] += sectSegment['length'];
+
+			for (var m = 0, n = newSection['segments'].length; m < n; m++) {
+				var newSectSegment = newSection['segments'][n];
+				newSection['curvature'] += getCurvatureForSegment(newSectSegment);
+				newSection['length'] += newSectSegment['length'];
 			}
 
-			var start = section['segments'][0]['start'];
-			var lastSectionIndex = section['segments'].length - 1;
-			var end = section['segments'][lastSectionIndex]['end'];
-			section['distance'] = distanceOnUnitSphere(start[0], start[1], end[0], end[1]) * RADIUS_EARTH;
-			sections.push(section);
+			var newStart = newSection['segments'][0]['start'];
+			var newLastSectionIndex = newSection['segments'].length - 1;
+			var newEnd = newSection['segments'][newLastSectionIndex]['end'];
+			newSection['distance'] = distanceOnUnitSphere(newStart[0], newStart[1], newEnd[0], newEnd[1]) * RADIUS_EARTH;
+			sections.push(newSection);
 		}
 
 		return sections;
@@ -176,13 +177,14 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 	function calculateDistanceAndCurvature (way) {
 		way['distance'] = 0.0;
 		way['curvature'] = 0.0;
-		way['length'] = 0.o;
+		way['length'] = 0.0;
 		var start = _coords[way['refs'][0]],
 			end = _coords[way['refs'][way['refs'].length - 1]];
 
 		way['distance'] = distanceOnUnitSphere(start[0], start[1], end[0], end[1]) * RADIUS_EARTH;
 
 		var second = 0, third = 0, segments = [];
+		var firstSecondLength;
 
 		for (var i = 0, j = way['refs'].length; i < j; i++) {
 			var ref = way['refs'][i];
@@ -193,9 +195,10 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 				continue;
 			}
 
-			var firstSecondLength = distanceOnUnitSphere(first[0], first[1], second[0], second[1]) * RADIUS_EARTH;
+			firstSecondLength = distanceOnUnitSphere(first[0], first[1], second[0], second[1]) * RADIUS_EARTH;
 			way['length'] += firstSecondLength;
 
+			var secondThirdLength;
 			if (!third) {
 				third = second;
 				second = first;
@@ -205,7 +208,7 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 
 			var firstThirdLength = distanceOnUnitSphere(first[0], first[1], third[0], third[1]) * RADIUS_EARTH;
 			var r = 0;
-			if (firstThirdLength > 0 && firstSecondLength > 0 and secondThirdLength > 0) {
+			if (firstThirdLength > 0 && firstSecondLength > 0 && secondThirdLength > 0) {
 				var a = firstSecondLength,
 					b = secondThirdLength,
 					c = firstThirdLength;
@@ -244,8 +247,8 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 
 		// calculate the curvature as a weighted distance traveled at each curvature.
 		way['curvature'] = 0;
-		for (var i = 0, j = segments.length; i < j; i++) {
-			var segment = segments[i];
+		for (var k = 0, l = segments.length; k < l; k++) {
+			var segment = segments[k];
 
 			if (segment['radius'] < _level4MaxRadius)
 				segment['curvatureLevel'] = 4;
@@ -292,7 +295,7 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 
 		if (_verbose)
 			console.log('');
-	};
+	}
 
 	function coordsCallback (coords) {
 		
@@ -419,5 +422,5 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 
 	this.getways = function () {
 		return _ways;
-	}
+	};
 };
