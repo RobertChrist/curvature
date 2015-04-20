@@ -1,6 +1,6 @@
+var _util = require('util');
+var _fs = require('fs');
 var OutputBase = require('./OutputBase');
-var util = require('util');
-var fs = require('fs');
 
 var KmlOutput = module.exports = function () {
 	var _units = 'mi';
@@ -88,8 +88,8 @@ var KmlOutput = module.exports = function () {
 		kmlDoc += this.writeWays(ways);
 		kmlDoc += writeFooter();
 		
-		fs.writeFileSync(path + '/' + getFilename(basename), kmlDoc);
+		_fs.writeFileSync(path + '/' + getFilename(basename), kmlDoc);
 	};
 };
 
-util.inherits(KmlOutput, OutputBase);
+_util.inherits(KmlOutput, OutputBase);

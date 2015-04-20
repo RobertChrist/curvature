@@ -1,4 +1,4 @@
-var util = require('util');
+var _util = require('util');
 var OutputBase = require('./OutputBase');
 
 var TabOutput = module.exports = function () {
@@ -15,4 +15,4 @@ var TabOutput = module.exports = function () {
 	};
 };
 
-util.inherits(TabOutput, OutputBase);
+_util.inherits(TabOutput, OutputBase);

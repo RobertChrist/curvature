@@ -1,5 +1,5 @@
+var _util = require('util');
 var KmlOutput = require('./KmlOutput');
-var util = require('util');
 
 var SingleColorKmlOutput = module.exports = function () {
 	
@@ -64,4 +64,4 @@ var SingleColorKmlOutput = module.exports = function () {
 	};
 };
 
-util.inherits(SingleColorKmlOutput, KmlOutput);
+_util.inherits(SingleColorKmlOutput, KmlOutput);

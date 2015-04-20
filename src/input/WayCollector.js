@@ -1,8 +1,13 @@
-var osm = require('openstreetmap-stream'),
-	through = require('through2');
+var _osm = require('openstreetmap-stream'),
+	_through = require('through2');
 
-exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound, maxLonBound, wayTypes, ignoredSurfaces, straightSegmentSplitThreshold,
-								  level1MaxRadius, level1Weight, level2MaxRadius, level2Weight, level3MaxRadius, level3Weight, level4MaxRadius, level4Weight) {
+exports.WayCollector = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegmentSplitThreshold,
+								  _minLatBound, _maxLatBound, 
+								  _minLonBound, _maxLonBound, 
+								  _level1MaxRadius, _level1Weight, 
+								  _level2MaxRadius, _level2Weight, 
+								  _level3MaxRadius, _level3Weight, 
+								  _level4MaxRadius, _level4Weight) {
 	
 	/* --------- Constants ---------- */
 	var RADIUS_EARTH = 6373000; // In meters
@@ -12,22 +17,6 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 	var _ways = [], _numWays = 0;
 	var _coords = {}, _numCoords = 0;
 	var _coordsMarker = 1;
-
-
-	/* --------- Class - Configuration (ie, readonly) --------- */
-	var _verbose = verbose;
-	var _minLatBound = minLatBound, _maxLatBound = maxLatBound,
-		_minLonBound = minLonBound, _maxLonBound = maxLonBound;
-	
-	var _level1MaxRadius = level1MaxRadius, _level1Weight = level1Weight,
-		_level2MaxRadius = level2MaxRadius, _level2Weight = level2Weight,
-		_level3MaxRadius = level3MaxRadius, _level3Weight = level3Weight,
-		_level4MaxRadius = level4MaxRadius, _level4Weight = level4Weight;
-
-	var _wayTypes = wayTypes, 
-		_ignoredSurfaces = ignoredSurfaces,
-		_straightSegmentSplitThreshold = straightSegmentSplitThreshold;
-
 
 	/* --------- Local Methods --------- */
 
@@ -301,7 +290,7 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 		
 		for (var i = 0, j = coords.length; i < j; i++) {
 			var coord = coords[i];
-			var osmId = coord.osmId, lon = coord.lon, lat = coord.lat;
+			var _osmId = coord._osmId, lon = coord.lon, lat = coord.lat;
 
 			if (_minLatBound && lat < _minLatBound) 
 				continue;
@@ -315,10 +304,10 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 			if (_maxLonBound && lon > _maxLonBound)
 				continue;
 
-			if (_coords[osmId]) 
+			if (_coords[_osmId]) 
 				continue;
 
-			_coords[osmId] = {'lat': lat, 'lon': lon};
+			_coords[_osmId] = {'lat': lat, 'lon': lon};
 
 			if (_verbose) {
 				_numCoords++;
@@ -333,7 +322,7 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 
 		for (var i = 0, j = ways.length; i < j; i++) {
 			var way = ways[i];
-			var osmId = way.osmId, tags = way.tags, refs = way.tags;
+			var _osmId = way._osmId, tags = way.tags, refs = way.tags;
 
 			// ignore circular ways (Maybe we don't need this)
 			if (refs[0] === refs[refs.length - 1])
@@ -348,7 +337,7 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 			if (!tags['highway'] || _wayTypes.indexOf(tags['highway']) === -1)
 				continue;
 
-			var newWay = { 'id': osmId, 'type': tags['highway'], 'refs': refs };
+			var newWay = { 'id': _osmId, 'type': tags['highway'], 'refs': refs };
 
 			if (!tags['name'])
 				newWay['name'] = tags['ref'];
@@ -386,8 +375,8 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 			console.log('loading ways, each "-" is 100 ways, each row is 10,000 ways');
 
 		
-		osm.createReadStream(fileName)
-			.pipe(through.obj( function (data, enc, next) {
+		_osm.createReadStream(fileName)
+			.pipe(_through.obj( function (data, enc, next) {
 				if (data.type === 'node')
 					coordsCallback(data);
 				else if (data.type === 'way')
@@ -396,7 +385,7 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 				next();
 			}));
 
-		// var p = new OSMParser(waysCallback);
+		// var p = new _OSMParser(waysCallback);
 		// p.parse(fileName);
 
 		if (_verbose) {
@@ -407,7 +396,7 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 			_coordsMarker = total < 100 ? 1 : Math.round(total / 100);
 		}
 
-		// p = new OSMParser(coordsCallback);
+		// p = new _OSMParser(coordsCallback);
 		// p.parse(fileName);
 
 		if (_verbose)

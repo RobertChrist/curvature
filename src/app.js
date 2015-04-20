@@ -30,23 +30,23 @@
 * License: GNU General Public License Version 3 or later
 */
 
+var _path = require('path');
 var _parser 	 = require('./commandLineParser');
 var Config	 	 = require('./Config');
 var WayFilter 	 = require('./WayFilter');
-var WayCollector= require('./WayCollector');
+var WayCollector = require('./WayCollector');
 var TabOutput 	 = require('./curvature.output').TabOutput;
 var SingleColorKmlOutput 	= require('./curvature.output').SingleColorKmlOutput;
 var MultiColorKmlOutput 	= require('./curvature.output').MultiColorKmlOutput;
-var path = require('path');
 
 var getBasename = function (settings, fileName) {
 	var basename;
 	if (!settings.outputBasename) {
-		basename = path.basename(fileName);
-		var parts = path.split(basename);
+		basename = _path.basename(fileName);
+		var parts = _path.split(basename);
 		basename = parts[0];
 	} else {
-		basename = path.basename(settings.outputBasename);
+		basename = _path.basename(settings.outputBasename);
 	}
 
 	return basename;
@@ -118,7 +118,7 @@ var parseFile = function (settings, file, collector, filter) {
 	if (settings.verbose) 
 		console.log("generating KML output");
 
-	var path = !settings.outputPath ? path.dirname(file.name) : settings.outputPath;
+	var path = !settings.outputPath ? _path.dirname(file.name) : settings.outputPath;
 	var basename = getBasename(settings, file.name);
 
 	writeKMLFile(settings.colorize, settings.KM, filter, collector.getWays(), path, basename);

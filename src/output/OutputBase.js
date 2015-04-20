@@ -1,4 +1,3 @@
-
 module.exports = function (filter) {
 	this.maxCurvature = 0;
 

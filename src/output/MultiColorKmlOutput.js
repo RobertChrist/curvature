@@ -1,5 +1,5 @@
+var _util = require('util');
 var KmlOutput = require('./KmlOutput');
-var util = require('util');
 
 var MultiColorKmlOutput = module.exports = function () {
 	function filenameSuffix () {
@@ -62,4 +62,4 @@ var MultiColorKmlOutput = module.exports = function () {
 	};
 };
 
-util.inherits(MultiColorKmlOutput, KmlOutput);
+_util.inherits(MultiColorKmlOutput, KmlOutput);
