@@ -270,7 +270,7 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 		var index = 0;
 
 		if (_verbose)
-			marker = _ways.length < 100 ? 1 : Math.floor(_ways.length / 100);
+			marker = _ways.length < 100 ? 1 : Math.round(_ways.length / 100);
 
 		var sections = [];
 		while (_ways.length) {
@@ -404,7 +404,7 @@ exports.WayCollector = function (verbose, minLatBound, maxLatBound, minLonBound,
 				" coordinates will be loaded, each '.' is 1% complete");
 
 			var total = _coords;	// todo: this will fail, in js its an {}
-			_coordsMarker = total < 100 ? 1 : Math.floor(total / 100);
+			_coordsMarker = total < 100 ? 1 : Math.round(total / 100);
 		}
 
 		// p = new OSMParser(coordsCallback);
