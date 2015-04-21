@@ -43,10 +43,6 @@ var KmlOutput = module.exports = function () {
 			   '</kml>\n';
 	}
 
-	function filenameSuffix () {
-		return '';
-	}
-
 	function getFilename (basename) {
 		var filename = basename + '.c_{0:.0f}'.format(this.filter.minCurvature);
 
@@ -89,7 +85,11 @@ var KmlOutput = module.exports = function () {
 		kmlDoc += writeFooter();
 		
 		_fs.writeFileSync(path + '/' + getFilename(basename), kmlDoc);
-	};
+    };
+    
+    this.filenameSuffix = function () {
+        return '';
+    };
 };
 
 _util.inherits(KmlOutput, OutputBase);

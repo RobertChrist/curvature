@@ -60,7 +60,9 @@ var SingleColorKmlOutput = module.exports = function () {
 			}
 				
 			result += tempResult + '</coordinates>\n</LineString>\n</Placemark>\n';
-		}
+        }
+
+	    return result;
 	};
 };
 

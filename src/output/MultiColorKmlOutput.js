@@ -2,9 +2,9 @@ var _util = require('util');
 var KmlOutput = require('./KmlOutput');
 
 var MultiColorKmlOutput = module.exports = function () {
-	function filenameSuffix () {
-		return '.multicolor';
-	}
+    this.filenameSuffix = function() {
+        return '.multicolor';
+    };
 	
 	this.writeWays = function (ways) {
 		var result;

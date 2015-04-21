@@ -273,7 +273,7 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 
 			try {
 				calculateDistanceAndCurvature(way);
-				waySections = splitWaySections(way);
+				var waySections = splitWaySections(way);
 				sections.push.apply(sections, waySections);
 			} catch (err) {
 				continue;
@@ -290,7 +290,7 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 		
 		for (var i = 0, j = coords.length; i < j; i++) {
 			var coord = coords[i];
-			var _osmId = coord._osmId, lon = coord.lon, lat = coord.lat;
+			var osmId = coord.id, lon = coord.lon, lat = coord.lat;
 
 			if (_minLatBound && lat < _minLatBound) 
 				continue;
@@ -304,10 +304,10 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 			if (_maxLonBound && lon > _maxLonBound)
 				continue;
 
-			if (_coords[_osmId]) 
+			if (_coords[osmId]) 
 				continue;
 
-			_coords[_osmId] = {'lat': lat, 'lon': lon};
+			_coords[osmId] = {'lat': lat, 'lon': lon};
 
 			if (_verbose) {
 				_numCoords++;
@@ -322,7 +322,7 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 
 		for (var i = 0, j = ways.length; i < j; i++) {
 			var way = ways[i];
-			var _osmId = way._osmId, tags = way.tags, refs = way.tags;
+			var osmId = way.id, tags = way.tags, refs = way.tags;
 
 			// ignore circular ways (Maybe we don't need this)
 			if (refs[0] === refs[refs.length - 1])
@@ -337,7 +337,7 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 			if (!tags['highway'] || _wayTypes.indexOf(tags['highway']) === -1)
 				continue;
 
-			var newWay = { 'id': _osmId, 'type': tags['highway'], 'refs': refs };
+			var newWay = { 'id': osmId, 'type': tags['highway'], 'refs': refs };
 
 			if (!tags['name'])
 				newWay['name'] = tags['ref'];
