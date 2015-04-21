@@ -2,7 +2,7 @@
  * This object mainly exists so we aren't tied to commandLineParser.js, 
  * as well as giving us a centralized place to do validation on the user input.
  */
-module.exports = function (args) {
+module.exports = function () {
 	var _self = this;
 
 	this.settings = {
