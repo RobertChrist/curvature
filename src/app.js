@@ -87,11 +87,11 @@ var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, us
 				colorize = 0;
 		} else if (key === 'minCurvature')
 			filter.minCurvature = value;	// when debugging, check that value is a number.
-		else if (key == 'maxCurvature')
+		else if (key === 'maxCurvature')
 			filter.maxCurvature = value;
-		else if (key == 'minLength')
+		else if (key === 'minLength')
 			filter.minLength = value;
-		else if (key == 'maxLength')
+		else if (key === 'maxLength')
 			filter.maxLength = value;
 		else
 			console.log("Ignoring unknown key '" + key + "'' passed to --addKML\n");
