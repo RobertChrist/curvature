@@ -142,23 +142,23 @@ var defaultFilter = new WayFilter(settings.minLength.value,
 								   settings.minCurvature.value, 
 								   settings.maxCurvature.value);
 
-var collector = new WayCollector(settings.verbose, 
-								  settings.minLatBound, 
-								  settings.maxLatBound, 
-								  settings.minLonBound, 
-								  settings.maxLatBound, 
-								  settings.wayTypes.split(','), 
-								  settings.ignoredSurfaces.split(','), 
-								  settings.straightSegmentSplitThreshold, 
-								  settings.level1MaxRadius, 
-								  settings.level1Weight, 
-								  settings.level2MaxRadius, 
-								  settings.level2Weight, 
-								  settings.level3MaxRadius, 
-								  settings.level3Weight, 
-								  settings.level4MaxRadius, 
-								  settings.level4Weight);
-
+var collector = new WayCollector(settings.verbose.value, 
+								  settings.minLatBound.value, 
+								  settings.maxLatBound.value, 
+								  settings.minLonBound.value, 
+								  settings.maxLatBound.value, 
+								  settings.wayTypes.value.split(','), 
+								  settings.ignoredSurfaces.value.split(','), 
+								  settings.straightSegmentSplitThreshold.value, 
+								  settings.level1MaxRadius.value, 
+								  settings.level1Weight.value, 
+								  settings.level2MaxRadius.value, 
+								  settings.level2Weight.value, 
+								  settings.level3MaxRadius.value, 
+								  settings.level3Weight.value, 
+								  settings.level4MaxRadius.value, 
+								  settings.level4Weight.value);
+console.log(collector);
 parseFile(settings, settings.file, collector, defaultFilter);
 
 if (settings.verbose)
