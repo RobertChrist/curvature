@@ -134,7 +134,8 @@ var parseFile = function (settings, file, collector, filter) {
 
 
 /* ---------- Main Script ---------- */
-var settings = _parser.parseArgs();
+var config = _parser.parseArgs();
+var settings = config.settings;
 
 var defaultFilter = new WayFilter(settings.minLength.value, 
 								   settings.maxLength.value, 
