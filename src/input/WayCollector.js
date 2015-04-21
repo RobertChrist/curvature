@@ -1,7 +1,7 @@
 var _osm = require('openstreetmap-stream'),
 	_through = require('through2');
 
-exports.WayCollector = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegmentSplitThreshold,
+module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegmentSplitThreshold,
 								  _minLatBound, _maxLatBound, 
 								  _minLonBound, _maxLonBound, 
 								  _level1MaxRadius, _level1Weight, 
