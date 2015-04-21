@@ -52,11 +52,7 @@ var getBasename = function (settings, fileName) {
 };
 
 var writeKMLFile = function (colorize, kmUnits, defaultFilter, ways, path, basename) {
-	var kml;
-	if (colorize)
-		kml = new MultiColorKmlOutput(defaultFilter);
-	else
-		kml = new SingleColorKmlOutput(defaultFilter);
+    var kml = colorize ? new MultiColorKmlOutput(defaultFilter) : new SingleColorKmlOutput(defaultFilter);
 	
 	if (kmUnits)
 		kml.units = 'km';
