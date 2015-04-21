@@ -82,6 +82,26 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 		return 0;
 	}
 
+	function getSectionDistance(section) {
+		var newStart = newSection['segments'][0]['start'];
+		var newLastSectionIndex = newSection['segments'].length - 1;
+		var newEnd = newSection['segments'][newLastSectionIndex]['end'];
+		return distanceOnUnitSphere(newStart[0], newStart[1], newEnd[0], newEnd[1]) * RADIUS_EARTH;
+	}
+
+	function getSectionLengthAndCurvature(section) {
+		var curvature = 0;
+		var length = 0;
+		
+		for (var k = 0, l = section['segments'].length; k < l; k++) {
+			var sectSegment = section['segments'][k];
+			curvature += getCurvatureForSegment(sectSegment);
+			length += sectSegment['length'];
+		}
+
+		return { curvature: curvature, length: length };
+	}
+
 	function splitWaySections (way) {
 		var sections = [];
 
@@ -121,19 +141,11 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 				var section = JSON.parse(JSON.stringify(way));
 				section['segments'] = way['segments'][curveStart || straightStart];
 
-				var refEnd = straightStart + 1;
-				section['curvature'] = 0;
-				section['length'] = 0;
-				for (var k = 0, l = section['segments'].length; k < l; k++) {
-					var sectSegment = section['segments'][k];
-					section['curvature'] += getCurvatureForSegment(sectSegment);
-					section['length'] += sectSegment['length'];
-				}
+				var curveAndLength = getSectionLengthAndCurvature(section);
+				section['curvature'] = curveAndLength.curvature;
+				section['length'] = curveAndLength.length;
 
-				var start = section['segments'][0]['start'];
-				var lastSectionIndex = section['segments'].length - 1;
-				var end = section['segments'][lastSectionIndex]['end'];
-				section['distance'] = distanceOnUnitSphere(start[0], start[1], end[0], end[1]) * RADIUS_EARTH;
+				section['distance'] = getSectionDistance(section);
 				sections.push(section);
 				curveDistance = 0;
 				curveStart = null;
@@ -144,19 +156,12 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 		if (curveDistance > 0) {
 			var newSection = JSON.parse(JSON.stringify(way));
 			newSection['segments'] = way['segments'][curveStart];
-			newSection['curvature'] = 0;
-			newSection['length'] = 0;
+			
+			var curveAndLength = getSectionLengthAndCurvature(section);
+			section['curvature'] = curveAndLength.curvature;
+			section['length'] = curveAndLength.length;
 
-			for (var m = 0, n = newSection['segments'].length; m < n; m++) {
-				var newSectSegment = newSection['segments'][n];
-				newSection['curvature'] += getCurvatureForSegment(newSectSegment);
-				newSection['length'] += newSectSegment['length'];
-			}
-
-			var newStart = newSection['segments'][0]['start'];
-			var newLastSectionIndex = newSection['segments'].length - 1;
-			var newEnd = newSection['segments'][newLastSectionIndex]['end'];
-			newSection['distance'] = distanceOnUnitSphere(newStart[0], newStart[1], newEnd[0], newEnd[1]) * RADIUS_EARTH;
+			newSection['distance'] = getSectionDistance(section);
 			sections.push(newSection);
 		}
 
