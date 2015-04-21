@@ -40,12 +40,12 @@ var MultiColorKmlOutput 	= require('./output/MultiColorKmlOutput');
 
 var getBasename = function (settings, fileName) {
 	var basename;
-	if (!settings.outputBasename) {
+	if (!settings.outputBasename.value) {
 		basename = _path.basename(fileName);
 		var parts = _path.split(basename);
 		basename = parts[0];
 	} else {
-		basename = _path.basename(settings.outputBasename);
+		basename = _path.basename(settings.outputBasename.value);
 	}
 
 	return basename;
@@ -101,34 +101,34 @@ var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, us
 };
 
 var parseFile = function (settings, file, collector, filter) {
-	if (settings.verbose)
+	if (settings.verbose.value)
 		console.log("Loading {" + file.name + "}");
 		
 	collector.loadFile(file.name);
 	
-	if (args.tabluarOutput) {
+	if (settings.tabluarOutput.value) {
 		var tab = new TabOutput(filter);
 		tab.output(collector.getWays());
 	}
 	
-	if (settings.noKML) 
+	if (settings.noKML.value) 
 		return;
 
-	if (settings.verbose) 
+	if (settings.verbose.value) 
 		console.log("generating KML output");
 
-	var path = !settings.outputPath ? _path.dirname(file.name) : settings.outputPath;
-	var basename = getBasename(settings, file.name);
+	var path = !settings.outputPath.value ? _path.dirname(file.name) : settings.outputPath.value;
+	var basename = getBasename(settings, file.value.name);
 
-	writeKMLFile(settings.colorize, settings.KM, filter, collector.getWays(), path, basename);
+	writeKMLFile(settings.colorize.value, settings.KM.value, filter, collector.getWays(), path, basename);
 
-	if (!settings.addKML)
+	if (!settings.addKML.value)
 		return;
 
-	for (var k = 0, l = settings.addKML.length; k < l; k++) {
-		var optString = settings.addKML[k]; 
+	for (var k = 0, l = settings.addKML.value.length; k < l; k++) {
+		var optString = settings.addKML.value[k]; 
 
-		generateAdditionalKMLFile(settings.colorize, optString, filter, basename);
+		generateAdditionalKMLFile(settings.colorize.value, optString, filter, basename);
 	}
 };
 
@@ -159,7 +159,7 @@ var collector = new WayCollector(settings.verbose.value,
 								  settings.level4MaxRadius.value, 
 								  settings.level4Weight.value);
 
-parseFile(settings, settings.file, collector, defaultFilter);
+parseFile(settings, settings.file.value, collector, defaultFilter);
 
 if (settings.verbose)
 	console.log("done.");
