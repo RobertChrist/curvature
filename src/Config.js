@@ -45,18 +45,18 @@ module.exports = function (args) {
 		return obj[prop] !== undefined && obj[prop] !== null;
 	}
 
-	function ensureValue (obj, prop) {
-		if (!hasValue(obj, prop))
-			throw new Error(prop + ' was not specified.');
-	}
-
 	// Throws an exception if any non-optional parameter is missing a value.
 	function validate() {
 		var settings = _self.settings;
 
-		for (var setting in settings) {
-			if (!setting.optional)
-				ensureValue(setting, 'value');
+        for (var paramName in settings) {
+            var setting = settings[paramName];
+
+            if (setting.optional)
+                continue;
+
+			if (!hasValue(setting, 'value'))
+			    throw new Error(paramName + ' was not specified');
 		}
 
 		if (settings.level1MaxRadius > settings.level2MaxRadius ||
