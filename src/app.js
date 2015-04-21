@@ -158,7 +158,7 @@ var collector = new WayCollector(settings.verbose.value,
 								  settings.level3Weight.value, 
 								  settings.level4MaxRadius.value, 
 								  settings.level4Weight.value);
-console.log(collector);
+
 parseFile(settings, settings.file, collector, defaultFilter);
 
 if (settings.verbose)
