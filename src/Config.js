@@ -79,14 +79,16 @@ module.exports = function (args) {
 
 	/* Updates the public settings of this object, but throws an exception if any value was updated to an invalid value.
 	 * No error will be thrown if the passed in object contains incorrect keys, but nothing will be updated either.
-	 * @param {object} args - An object with key values that match settings object.
-	 * 		For example, to update minLatbound and tabularOutput, pass in { tabularOutput: true, minLatBound: null };
+	 * @param {object} args - An object with key values that match the names parameter in the settings object.
+	 * 		For example, to update minLatbound and tabularOutput, pass in { t: true, minLatBound: null };
 	 */
-	this.updateSettings = function (args) {
-		for (var setting in this.settings) {
-			if (hasValue(args, setting))
-				this.settings[setting].value = args[setting];
-		}
+	this.updateSettingsByName = function (args) {
+        for (var setting in this.settings) {
+            var name = this.settings[setting].name;
+            
+            if (hasValue(args, name))
+                this.settings[setting].value = args[name];
+        }
 
 		validate();
 	};
