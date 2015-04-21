@@ -83,10 +83,10 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 	}
 
 	function getSectionDistance(section) {
-		var newStart = newSection['segments'][0]['start'];
-		var newLastSectionIndex = newSection['segments'].length - 1;
-		var newEnd = newSection['segments'][newLastSectionIndex]['end'];
-		return distanceOnUnitSphere(newStart[0], newStart[1], newEnd[0], newEnd[1]) * RADIUS_EARTH;
+		var start = section['segments'][0]['start'];
+		var lastSectionIndex = section['segments'].length - 1;
+		var end = section['segments'][lastSectionIndex]['end'];
+		return distanceOnUnitSphere(start[0], start[1], end[0], end[1]) * RADIUS_EARTH;
 	}
 
 	function getSectionLengthAndCurvature(section) {
@@ -100,6 +100,18 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 		}
 
 		return { curvature: curvature, length: length };
+	}
+
+	function getCurveRatedSection (way, startPoint) {
+		var section = JSON.parse(JSON.stringify(way));
+		section['segments'] = way['segments'][startPoint];
+
+		var curveAndLength = getSectionLengthAndCurvature(section);
+		section['curvature'] = curveAndLength.curvature;
+		section['length'] = curveAndLength.length;
+
+		section['distance'] = getSectionDistance(section);
+		return section;
 	}
 
 	function splitWaySections (way) {
@@ -132,38 +144,21 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 				// add to our straight distance
 				if (straightStart === null)
 					straightStart = i;
+				
 				straightDistance += segment['length'];
 			}
 
 			// If we are more than about 1.5 miles of straight, split off the last curved part.
 			if (straightDistance > _straightSegmentSplitThreshold && straightStart > 0 && curveDistance > 0) {
-				
-				var section = JSON.parse(JSON.stringify(way));
-				section['segments'] = way['segments'][curveStart || straightStart];
-
-				var curveAndLength = getSectionLengthAndCurvature(section);
-				section['curvature'] = curveAndLength.curvature;
-				section['length'] = curveAndLength.length;
-
-				section['distance'] = getSectionDistance(section);
-				sections.push(section);
+				sections.push(getCurveRatedSection(curveStart || straightStart));
 				curveDistance = 0;
 				curveStart = null;
 			}
 		}
 
 		// Add any remaining curved section to the sections
-		if (curveDistance > 0) {
-			var newSection = JSON.parse(JSON.stringify(way));
-			newSection['segments'] = way['segments'][curveStart];
-			
-			var curveAndLength = getSectionLengthAndCurvature(section);
-			section['curvature'] = curveAndLength.curvature;
-			section['length'] = curveAndLength.length;
-
-			newSection['distance'] = getSectionDistance(section);
-			sections.push(newSection);
-		}
+		if (curveDistance > 0)
+			sections.push(getCurveRatedSection(curveStart));
 
 		return sections;
 	}
