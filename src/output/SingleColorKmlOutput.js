@@ -1,8 +1,9 @@
 var _util = require('util');
 var KmlOutput = require('./KmlOutput');
 
-var SingleColorKmlOutput = module.exports = function () {
-	
+var SingleColorKmlOutput = module.exports = function (defaultFilter) {
+    SingleColorKmlOutput.super_.call(this, defaultFilter);
+
 	function levelForCurvature (curvature) {
 		var offset = this.filter.minCurvature > 0 ? this.filter.minCurvature : 0;
 		

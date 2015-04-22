@@ -2,7 +2,9 @@ var _util = require('util');
 var _fs = require('fs');
 var OutputBase = require('./OutputBase');
 
-var KmlOutput = module.exports = function () {
+var KmlOutput = module.exports = function (defaultFilter) {
+    KmlOutput.super_.call(this, defaultFilter);
+
 	var _units = 'mi';
 
 	function writeHeader () {

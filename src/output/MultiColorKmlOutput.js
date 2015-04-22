@@ -1,7 +1,9 @@
 var _util = require('util');
 var KmlOutput = require('./KmlOutput');
 
-var MultiColorKmlOutput = module.exports = function () {
+var MultiColorKmlOutput = module.exports = function (defaultFilter) {
+    MultiColorKmlOutput.super_.call(this, defaultFilter);
+
     this.filenameSuffix = function() {
         return '.multicolor';
     };
