@@ -1,5 +1,6 @@
 var _osm = require('openstreetmap-stream'),
-	_through = require('through2');
+    _through = require('through2'),
+    _fs = require('fs');
 
 module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegmentSplitThreshold,
 								  _minLatBound, _maxLatBound, 
@@ -368,48 +369,61 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 
 	/* --------- Public Methods --------- */
 
-	this.loadFile = function (fileName) {
+	this.loadFile = function (fileName, cb) {
 		resetObjectState();
 
 		if (_verbose)
 			console.log('loading ways, each "-" is 100 ways, each row is 10,000 ways');
 
-		
-		_osm.createReadStream(fileName)
-			.pipe(_through.obj( function (data, enc, next) {
-				if (data.type === 'node')
-					coordsCallback(data);
-				else if (data.type === 'way')
-					waysCallback(data);
+	    var count = 0;
+	    _osm.createReadStream(fileName)
+	        .pipe(_through.obj(
+                function (data, enc, next) {
+	                if (data.type === 'node')
+                        coordsCallback(data);
+                
+                    if (count === 0) {
+                        count++;
+                        // coords come before ways in the file.
+                        if (_verbose) {
+                            console.log(_ways.length + " ways matched in " + fileName + ", " + 
+				                        " coordinates will be loaded, each '.' is 1% complete");
+                    
+                            var total = _coords;	// todo: this will fail, in js its an {}
+                            _coordsMarker = total < 100 ? 1 : Math.round(total / 100);
+                        }
+                    }
 
-				next();
-			}));
+	                if (data.type === 'way')
+	                    waysCallback(data);
 
-		// var p = new _OSMParser(waysCallback);
-		// p.parse(fileName);
+	                next();
+	            }, function() {
+                    if (_verbose) {
+                        console.log(_ways.length + " ways matched in " + fileName + ", " + 
+				    " coordinates will be loaded, each '.' is 1% complete");
+                    
+                        var total = _coords;	// todo: this will fail, in js its an {}
+                        _coordsMarker = total < 100 ? 1 : Math.round(total / 100);
+                    }
+                
+                    // p = new _OSMParser(coordsCallback);
+                    // p.parse(fileName);
+                
+                    if (_verbose)
+                        console.log('coordinates loaded, calulating curvature, each "." is 1% complete.');
+                
+                    calculate();
+                
+                    if (_verbose)
+                        console.log("calculation complete");
 
-		if (_verbose) {
-			console.log(_ways.length + " ways matched in " + fileName + ", " + 
-				" coordinates will be loaded, each '.' is 1% complete");
-
-			var total = _coords;	// todo: this will fail, in js its an {}
-			_coordsMarker = total < 100 ? 1 : Math.round(total / 100);
-		}
-
-		// p = new _OSMParser(coordsCallback);
-		// p.parse(fileName);
-
-		if (_verbose)
-			console.log('coordinates loaded, calulating curvature, each "." is 1% complete.');
-
-		calculate();
-
-		if (_verbose) {
-			console.log("calculation complete");
-		}
+                    cb();
+                })
+            );
 	};
 
-	this.getways = function () {
+	this.getWays = function () {
 		return _ways;
 	};
 };

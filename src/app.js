@@ -31,7 +31,8 @@
 */
 
 var _path = require('path');
-var _parser 	 = require('./commandLineParser');
+var _parser = require('./commandLineParser');
+var _async = require('async');
 var WayFilter 	 = require('./WayFilter');
 var WayCollector = require('./input/WayCollector');
 var TabOutput 	 = require('./output/TabOutput');
@@ -40,10 +41,8 @@ var MultiColorKmlOutput 	= require('./output/MultiColorKmlOutput');
 
 var getBasename = function (settings, fileName) {
 	var basename;
-	if (!settings.outputBasename.value) {
+	if (!settings.outputBasename || !settings.outputBasename.value) {
 		basename = _path.basename(fileName);
-		var parts = _path.split(basename);
-		basename = parts[0];
 	} else {
 		basename = _path.basename(settings.outputBasename.value);
 	}
@@ -53,7 +52,7 @@ var getBasename = function (settings, fileName) {
 
 var writeKMLFile = function (colorize, kmUnits, defaultFilter, ways, path, basename) {
     var kml = colorize ? new MultiColorKmlOutput(defaultFilter) : new SingleColorKmlOutput(defaultFilter);
-	
+    
 	if (kmUnits)
 		kml.units = 'km';
 
@@ -96,36 +95,41 @@ var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, us
 	writeKMLFile(colorize, useKM, filter, collector.getWays(), path, basename);
 };
 
-var parseFile = function (settings, file, collector, filter) {
-	if (settings.verbose.value)
-		console.log("Loading {" + file.name + "}");
-		
-	collector.loadFile(file.name);
-	
-	if (settings.tabluarOutput.value) {
-		var tab = new TabOutput(filter);
-		tab.output(collector.getWays());
-	}
-	
-	if (settings.noKML.value) 
-		return;
+var parseFile = function (settings, fileNameAndPath, collector, filter) {
+    if (settings.verbose.value)
+		console.log("Loading {" + fileNameAndPath + "}");
 
-	if (settings.verbose.value) 
-		console.log("generating KML output");
-
-	var path = !settings.outputPath.value ? _path.dirname(file.name) : settings.outputPath.value;
-	var basename = getBasename(settings, file.value.name);
-
-	writeKMLFile(settings.colorize.value, settings.KM.value, filter, collector.getWays(), path, basename);
-
-	if (!settings.addKML.value)
-		return;
-
-	for (var k = 0, l = settings.addKML.value.length; k < l; k++) {
-		var optString = settings.addKML.value[k]; 
-
-		generateAdditionalKMLFile(settings.colorize.value, optString, filter, basename);
-	}
+    _async.series([
+        function(cb) { collector.loadFile(fileNameAndPath, cb);}
+    ], function (err) {
+        if (err)
+            throw err;
+        
+        if (settings.tabluarOutput.value) {
+            var tab = new TabOutput(filter);
+            tab.output(collector.getWays());
+        }
+        
+        if (settings.noKML.value)
+            return;
+        
+        if (settings.verbose.value)
+            console.log("generating KML output");
+        
+        var path = !settings.outputPath.value ? _path.dirname(fileNameAndPath) : settings.outputPath.value;
+        var basename = getBasename(settings, fileNameAndPath);
+        
+        writeKMLFile(settings.colorize.value, settings.km.value, filter, collector.getWays(), path, basename);
+        
+        if (!settings.addKML.value)
+            return;
+        
+        for (var k = 0, l = settings.addKML.value.length; k < l; k++) {
+            var optString = settings.addKML.value[k];
+            
+            generateAdditionalKMLFile(settings.colorize.value, optString, filter, basename);
+        }
+    });
 };
 
 
@@ -155,7 +159,7 @@ var collector = new WayCollector(settings.verbose.value,
 								  settings.level4MaxRadius.value, 
 								  settings.level4Weight.value);
 
-parseFile(settings, settings.file.value, collector, defaultFilter);
+parseFile(settings, _path.resolve(settings.file.value), collector, defaultFilter);
 
 if (settings.verbose)
 	console.log("done.");
