@@ -31,11 +31,11 @@
 */
 
 var _parser = require('./input/commandLineParser');
-var _runner = require('./curvatureRunner');
 var Logger = require('./Logger');
 var WayFilter 	 = require('./WayFilter');
 var WayCollector = require('./input/WayCollector');
 var WayCalculator = require('./WayCalculator');
+var CurvatureRunner = require('./CurvatureRunner');
 
 
 /* ---------- Main Script ---------- */
@@ -68,4 +68,14 @@ var collector = new WayCollector( logger,
 								  settings.minLonBound.value, 
 								  settings.maxLatBound.value);
 
-_runner.run(logger, settings, defaultFilter, collector);
+var runner = new CurvatureRunner(logger,
+								 settings.file.value,
+								 settings.tabluarOutput.value,
+								 settings.outputBasename,
+								 settings.noKML.value,
+								 settings.colorize.value,
+								 settings.outputPath.value, 
+								 settings.km.value,
+								 settings.addKML.value);
+
+runner.run(defaultFilter, collector);
