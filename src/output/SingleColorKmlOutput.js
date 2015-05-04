@@ -40,7 +40,7 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 		for (var i = 0, j = ways.length; i < j; i++) {
 			var way = ways[i];
 			if (!way['segments'] || !way['segments'].length) {
-				// console.log('Error: way has no segments: ' + way['name']);
+				// _logger.log('Error: way has no segments: ' + way['name']);
 				continue;
 			}
 

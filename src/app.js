@@ -31,8 +31,9 @@
 */
 
 var _path = require('path');
-var _parser = require('./commandLineParser');
+var _parser = require('./input/commandLineParser');
 var _async = require('async');
+var Logger = require('./Logger');
 var WayFilter 	 = require('./WayFilter');
 var WayCollector = require('./input/WayCollector');
 var TabOutput 	 = require('./output/TabOutput');
@@ -59,7 +60,7 @@ var writeKMLFile = function (colorize, kmUnits, defaultFilter, ways, path, basen
 	kml.write(ways, path, basename);
 };
 
-var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, useKM, basename) {
+var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, useKM, basename, logger) {
 	var filter = new WayFilter(defaultFilter.minLength, defaultFilter.maxLength, defaultFilter.minCurvature, defaultFilter.maxCurvature);
 
 	var opts = optString.split(',');
@@ -70,7 +71,7 @@ var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, us
 		var key = opt[0];
 		
 		if (opt.length < 2) {
-			console.log("Key '" + key + "' passed to --addKML has no value, ignoring.\n");
+			logger.forceLog("Key '" + key + "' passed to --addKML has no value, ignoring.\n");
 			continue;
 		}
 
@@ -89,15 +90,14 @@ var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, us
 		else if (key === 'maxLength')
 			filter.maxLength = value;
 		else
-			console.log("Ignoring unknown key '" + key + "'' passed to --addKML\n");
+			logger.forceLog("Ignoring unknown key '" + key + "'' passed to --addKML\n");
 	}
 
 	writeKMLFile(colorize, useKM, filter, collector.getWays(), path, basename);
 };
 
-var parseFile = function (settings, fileNameAndPath, collector, filter) {
-    if (settings.verbose.value)
-		console.log("Loading {" + fileNameAndPath + "}");
+var parseFile = function (settings, fileNameAndPath, collector, filter, logger) {
+	logger.log(settings, "Loading {" + fileNameAndPath + "}")
 
     _async.series([
         function(cb) { collector.loadFile(fileNameAndPath, cb);}
@@ -107,14 +107,13 @@ var parseFile = function (settings, fileNameAndPath, collector, filter) {
         
         if (settings.tabluarOutput.value) {
             var tab = new TabOutput(filter);
-            tab.output(collector.getWays());
+            tab.output(collector.getWays(), logger);
         }
         
         if (settings.noKML.value)
             return;
         
-        if (settings.verbose.value)
-            console.log("generating KML output");
+        logger.log(settings, "generating KML output");
         
         var path = !settings.outputPath.value ? _path.dirname(fileNameAndPath) : settings.outputPath.value;
         var basename = getBasename(settings, fileNameAndPath);
@@ -127,22 +126,26 @@ var parseFile = function (settings, fileNameAndPath, collector, filter) {
         for (var k = 0, l = settings.addKML.value.length; k < l; k++) {
             var optString = settings.addKML.value[k];
             
-            generateAdditionalKMLFile(settings.colorize.value, optString, filter, basename);
+            generateAdditionalKMLFile(settings.colorize.value, optString, filter, basename, logger);
         }
     });
 };
 
 
 /* ---------- Main Script ---------- */
+
+
 var config = _parser.parseArgs();
 var settings = config.settings;
+var logger = new Logger(settings.verbose.value);
 
 var defaultFilter = new WayFilter(settings.minLength.value, 
 								   settings.maxLength.value, 
 								   settings.minCurvature.value, 
 								   settings.maxCurvature.value);
 
-var collector = new WayCollector(settings.verbose.value, 
+var collector = new WayCollector(logger,
+								  settings.verbose.value, 
 								  settings.minLatBound.value, 
 								  settings.maxLatBound.value, 
 								  settings.minLonBound.value, 
@@ -159,7 +162,6 @@ var collector = new WayCollector(settings.verbose.value,
 								  settings.level4MaxRadius.value, 
 								  settings.level4Weight.value);
 
-parseFile(settings, _path.resolve(settings.file.value), collector, defaultFilter);
+parseFile(settings, _path.resolve(settings.file.value), collector, defaultFilter, logger);
 
-if (settings.verbose)
-	console.log("done.");
+logger.forceLog("done.");

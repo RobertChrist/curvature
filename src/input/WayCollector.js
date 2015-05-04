@@ -2,7 +2,7 @@ var _osm = require('openstreetmap-stream'),
     _through = require('through2'),
     _fs = require('fs');
 
-module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegmentSplitThreshold,
+module.exports = function (_logger, _verbose, _wayTypes, _ignoredSurfaces, _straightSegmentSplitThreshold,
 								  _minLatBound, _maxLatBound, 
 								  _minLonBound, _maxLonBound, 
 								  _level1MaxRadius, _level1Weight, 
@@ -269,7 +269,7 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 			if (_verbose) {
 				index++;
 				if (!index % marker)
-					console.log('.');
+					_logger.log('.');
 			}
 
 			try {
@@ -283,8 +283,7 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 
 		_ways = sections;
 
-		if (_verbose)
-			console.log('');
+		_logger.log('');
 	}
 
 	function coordsCallback (coords) {
@@ -314,7 +313,7 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 				_numCoords++;
 
 				if (!(_numCoords % _coordsMarker))
-					console.log('.');
+					_logger.log('.');
 			}
 		}
 	}
@@ -363,7 +362,7 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 			_numWays++;
 
 			if (!(_numWays % 100))
-				console.log('-');
+				_logger.log('-');
 		}
 	}
 
@@ -372,8 +371,7 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 	this.loadFile = function (fileName, cb) {
 		resetObjectState();
 
-		if (_verbose)
-			console.log('loading ways, each "-" is 100 ways, each row is 10,000 ways');
+		_logger.log('loading ways, each "-" is 100 ways, each row is 10,000 ways');
 
 	    var count = 0;
 	    _osm.createReadStream(fileName)
@@ -386,7 +384,7 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
                         count++;
                         // coords come before ways in the file.
                         if (_verbose) {
-                            console.log(_ways.length + " ways matched in " + fileName + ", " + 
+                            _logger.log(_ways.length + " ways matched in " + fileName + ", " + 
 				                        " coordinates will be loaded, each '.' is 1% complete");
                     
                             var total = _coords;	// todo: this will fail, in js its an {}
@@ -400,7 +398,7 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
 	                next();
 	            }, function() {
                     if (_verbose) {
-                        console.log(_ways.length + " ways matched in " + fileName + ", " + 
+                        _logger.log(_ways.length + " ways matched in " + fileName + ", " + 
 				    " coordinates will be loaded, each '.' is 1% complete");
                     
                         var total = _coords;	// todo: this will fail, in js its an {}
@@ -410,13 +408,11 @@ module.exports = function ( _verbose, _wayTypes, _ignoredSurfaces, _straightSegm
                     // p = new _OSMParser(coordsCallback);
                     // p.parse(fileName);
                 
-                    if (_verbose)
-                        console.log('coordinates loaded, calulating curvature, each "." is 1% complete.');
+                    _logger.log('coordinates loaded, calulating curvature, each "." is 1% complete.');
                 
                     calculate();
                 
-                    if (_verbose)
-                        console.log("calculation complete");
+                    _logger.log("calculation complete");
 
                     cb();
                 })
