@@ -30,110 +30,14 @@
 * License: GNU General Public License Version 3 or later
 */
 
-var _path = require('path');
 var _parser = require('./input/commandLineParser');
-var _async = require('async');
+var _runner = require('./curvatureRunner');
 var Logger = require('./Logger');
 var WayFilter 	 = require('./WayFilter');
 var WayCollector = require('./input/WayCollector');
-var TabOutput 	 = require('./output/TabOutput');
-var SingleColorKmlOutput 	= require('./output/SingleColorKmlOutput');
-var MultiColorKmlOutput 	= require('./output/MultiColorKmlOutput');
-
-var getBasename = function (settings, fileName) {
-	var basename;
-	if (!settings.outputBasename || !settings.outputBasename.value) {
-		basename = _path.basename(fileName);
-	} else {
-		basename = _path.basename(settings.outputBasename.value);
-	}
-
-	return basename;
-};
-
-var writeKMLFile = function (colorize, kmUnits, defaultFilter, ways, path, basename) {
-    var kml = colorize ? new MultiColorKmlOutput(defaultFilter) : new SingleColorKmlOutput(defaultFilter);
-    
-	if (kmUnits)
-		kml.units = 'km';
-
-	kml.write(ways, path, basename);
-};
-
-var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, useKM, basename, logger) {
-	var filter = new WayFilter(defaultFilter.minLength, defaultFilter.maxLength, defaultFilter.minCurvature, defaultFilter.maxCurvature);
-
-	var opts = optString.split(',');
-
-	for (var i = 0, j = opts.length; i < j; i++) {
-		var opt = opts[i];
-		opt = opt.split('=');
-		var key = opt[0];
-		
-		if (opt.length < 2) {
-			logger.forceLog("Key '" + key + "' passed to --addKML has no value, ignoring.\n");
-			continue;
-		}
-
-		var value = opt[1];
-		if (key === 'colorize') {
-			if (typeof value === "number")
-				colorize = 1;
-			else
-				colorize = 0;
-		} else if (key === 'minCurvature')
-			filter.minCurvature = value;	// when debugging, check that value is a number.
-		else if (key === 'maxCurvature')
-			filter.maxCurvature = value;
-		else if (key === 'minLength')
-			filter.minLength = value;
-		else if (key === 'maxLength')
-			filter.maxLength = value;
-		else
-			logger.forceLog("Ignoring unknown key '" + key + "'' passed to --addKML\n");
-	}
-
-	writeKMLFile(colorize, useKM, filter, collector.getWays(), path, basename);
-};
-
-var parseFile = function (settings, fileNameAndPath, collector, filter, logger) {
-	logger.log(settings, "Loading {" + fileNameAndPath + "}")
-
-    _async.series([
-        function(cb) { collector.loadFile(fileNameAndPath, cb);}
-    ], function (err) {
-        if (err)
-            throw err;
-        
-        if (settings.tabluarOutput.value) {
-            var tab = new TabOutput(filter);
-            tab.output(collector.getWays(), logger);
-        }
-        
-        if (settings.noKML.value)
-            return;
-        
-        logger.log(settings, "generating KML output");
-        
-        var path = !settings.outputPath.value ? _path.dirname(fileNameAndPath) : settings.outputPath.value;
-        var basename = getBasename(settings, fileNameAndPath);
-        
-        writeKMLFile(settings.colorize.value, settings.km.value, filter, collector.getWays(), path, basename);
-        
-        if (!settings.addKML.value)
-            return;
-        
-        for (var k = 0, l = settings.addKML.value.length; k < l; k++) {
-            var optString = settings.addKML.value[k];
-            
-            generateAdditionalKMLFile(settings.colorize.value, optString, filter, basename, logger);
-        }
-    });
-};
 
 
 /* ---------- Main Script ---------- */
-
 
 var config = _parser.parseArgs();
 var settings = config.settings;
@@ -162,6 +66,4 @@ var collector = new WayCollector( logger,
 								  settings.level4MaxRadius.value, 
 								  settings.level4Weight.value);
 
-parseFile(settings, _path.resolve(settings.file.value), collector, defaultFilter, logger);
-
-logger.forceLog("done.");
+_runner.run(logger, settings, defaultFilter, collector);
