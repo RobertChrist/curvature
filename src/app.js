@@ -35,6 +35,7 @@ var _runner = require('./curvatureRunner');
 var Logger = require('./Logger');
 var WayFilter 	 = require('./WayFilter');
 var WayCollector = require('./input/WayCollector');
+var WayCalculator = require('./WayCalculator');
 
 
 /* ---------- Main Script ---------- */
@@ -48,15 +49,7 @@ var defaultFilter = new WayFilter(settings.minLength.value,
 								   settings.minCurvature.value, 
 								   settings.maxCurvature.value);
 
-var collector = new WayCollector( logger,
-								  settings.verbose.value, 
-								  settings.minLatBound.value, 
-								  settings.maxLatBound.value, 
-								  settings.minLonBound.value, 
-								  settings.maxLatBound.value, 
-								  settings.wayTypes.value.split(','), 
-								  settings.ignoredSurfaces.value.split(','), 
-								  settings.straightSegmentSplitThreshold.value, 
+var calculator = new WayCalculator(settings.straightSegmentSplitThreshold.value, 
 								  settings.level1MaxRadius.value, 
 								  settings.level1Weight.value, 
 								  settings.level2MaxRadius.value, 
@@ -65,5 +58,14 @@ var collector = new WayCollector( logger,
 								  settings.level3Weight.value, 
 								  settings.level4MaxRadius.value, 
 								  settings.level4Weight.value);
+
+var collector = new WayCollector( logger,
+								  calculator,
+								  settings.wayTypes.value.split(','), 
+								  settings.ignoredSurfaces.value.split(','),
+								  settings.minLatBound.value, 
+								  settings.maxLatBound.value, 
+								  settings.minLonBound.value, 
+								  settings.maxLatBound.value);
 
 _runner.run(logger, settings, defaultFilter, collector);
