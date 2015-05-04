@@ -144,7 +144,7 @@ var defaultFilter = new WayFilter(settings.minLength.value,
 								   settings.minCurvature.value, 
 								   settings.maxCurvature.value);
 
-var collector = new WayCollector(logger,
+var collector = new WayCollector( logger,
 								  settings.verbose.value, 
 								  settings.minLatBound.value, 
 								  settings.maxLatBound.value, 
