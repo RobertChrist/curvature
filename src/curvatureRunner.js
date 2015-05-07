@@ -6,16 +6,16 @@ var MultiColorKmlOutput 	= require('./output/MultiColorKmlOutput');
 
 module.exports = function (_logger, _fileName, _outputDataToLogger, _baseName, _skipKMLFile, _colorize, _outputPath, _useKM, _additionalKML) {
 
-    var writeKMLFile = function (colorize, kmUnits, defaultFilter, ways, path, basename) {
+    function writeKMLFile (colorize, kmUnits, defaultFilter, ways, path, basename) {
         var kml = colorize ? new MultiColorKmlOutput(defaultFilter) : new SingleColorKmlOutput(defaultFilter);
         
     	if (kmUnits)
     		kml.units = 'km';
 
     	kml.write(ways, path, basename);
-    };
+    }
 
-    var generateAdditionalKMLFile = function (colorize, optString, defaultFilter, useKM, basename) {
+    function generateAdditionalKMLFile (colorize, optString, defaultFilter, useKM, basename) {
     	var filter = new WayFilter(defaultFilter.minLength, defaultFilter.maxLength, defaultFilter.minCurvature, defaultFilter.maxCurvature);
 
     	var opts = optString.split(',');
@@ -49,7 +49,7 @@ module.exports = function (_logger, _fileName, _outputDataToLogger, _baseName, _
     	}
 
     	writeKMLFile(colorize, useKM, filter, collector.getWays(), path, basename);
-    };
+    }
 
     this.run = function (filter, wayCollector) {
         var fileNameAndPath;
