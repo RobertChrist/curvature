@@ -90,7 +90,7 @@ module.exports = function (_logger, _fileName, _outputDataToLogger, _baseName, _
     		if (_skipKMLFile)
                 return cb();
 
-            _logger.log("generating KML output");
+            _logger.log("Generating KML file.");
             
             var path = !_outputPath ? _path.dirname(fileNameAndPath) : _outputPath;
             writeKMLFile(_colorize, _useKM, filter, wayCollector.getWays(), path, outputFileBaseName);
@@ -102,6 +102,8 @@ module.exports = function (_logger, _fileName, _outputDataToLogger, _baseName, _
     		if (!_additionalKML)
                 return;
             
+            _logger.log("Generating additional kml files.");
+
             for (var k = 0, l = _additionalKML.length; k < l; k++) {
                 var optString = _additionalKML[k];
                 
