@@ -5,6 +5,7 @@ var RADIUS_EARTH = 6373000; // In meters
  * on a sphere of radius 1.  So multiple by the radius of the earth
  * to find the real life distance, in your measurement units of choice.
  * @credit: http://www.johndcook.com/python_longitude_latitude.html
+ * @returns {Number} - 0-1 value.
  */
 function distanceOnUnitSphere (lat1, long1, lat2, long2) {
 	if (lat1 === lat2 && long1 === long2)
@@ -40,12 +41,16 @@ function distanceOnUnitSphere (lat1, long1, lat2, long2) {
 	return arc;
 };
 
+/* @returns {Number} - Determines the distance between two lat/long points on the surface of the earth,
+ * assuming a straight line, in meters.
+ */
 exports.distanceBetweenPoints = function (lat1, long1, lat2, long2) {
 	return distanceOnUnitSphere(lat1, long1, lat2, long2) * RADIUS_EARTH; 
 }
 
-/* Circumcircle radius calculation from http://www.mathopenref.com/trianglecircumcircle.html
- */
+/* @credit http://www.mathopenref.com/trianglecircumcircle.html
+ * @returns {Number} - Give three lengths of the sides of a triange, return the 
+ * radius of the smallest possible circle that can enclose that triangle. */
 exports.circumcircleRadius = function (ab, bc, ac) {
 	return (ab * bc * ac) / Math.sqrt(Math.abs(ab + bc + ac) * (bc + ac - ab) * (ab + bc - ac));
 }

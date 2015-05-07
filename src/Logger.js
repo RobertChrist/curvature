@@ -3,5 +3,7 @@
  */
 module.exports = function (verbose) {
 	this.log = verbose ? console.log : function (message) { }
+
+	/* Will log the message, regardless of this logger's verbosity setting */
 	this.forceLog = console.log;
 }

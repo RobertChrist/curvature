@@ -44,6 +44,10 @@ args.map(function (arg) {
 	argParser.addArgument(arg[0], arg[1]);
 });
 
+/* Reads the arguments on the command line that were passed into this exe, 
+ * and returns a configuration object with the requested settings.  Will additionally
+ * validate the user input, and throw exceptions as necessary.
+ */
 exports.parseArgs = function () {
 	var results = argParser.parseArgs();
 

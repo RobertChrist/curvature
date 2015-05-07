@@ -1,13 +1,30 @@
 var _path = require('path');
 var _async = require('async');
-var TabOutput 	 = require('./output/TabOutput');
-var SingleColorKmlOutput 	= require('./output/SingleColorKmlOutput');
-var MultiColorKmlOutput 	= require('./output/MultiColorKmlOutput');
+var TabOutput = require('./output/TabOutput');
+var SingleColorKmlOutput = require('./output/SingleColorKmlOutput');
+var MultiColorKmlOutput = require('./output/MultiColorKmlOutput');
 
-module.exports = function (_logger, _fileName, _outputDataToLogger, _baseName, _skipKMLFile, _colorize, _outputPath, _useKM, _additionalKML) {
+/* Using the passed in, pre configured objects, runs the actual curvature program.
+ * 
+ * @param {Logger} _logger - The instance we should log with.
+ * @param {string} _fileName - The relative or absolute name or name and path of the file we should load.
+ * @param {bool} _outputDataToLogger - Whether we should output all of the parsed file data
+ * 		into the passed in logger instance.
+ * @param {string } _baseName - Optional - Output files should share this base file name.
+ * @param {bool} _skipKMLFile - If true, the output file is not created.
+ * @param {bool} _colorize - The output KML file should include colorized styles (red/orange/yellow/etc)
+ * @param {bool} _useKM - If true, program will output values in kilometers.
+ * @param {obj} _additionalKML - Multiple files can be created using this option, see README.md
+ */
+module.exports = function (_logger, _fileName, _outputDataToLogger, _baseName, 
+						   _skipKMLFile, _colorize, _outputPath, _useKM, _additionalKML) {
 
+	/* Instantiate the correct KML file writer, and then write the output file.
+	 * TODO: 
+	 */
     function writeKMLFile (colorize, kmUnits, defaultFilter, ways, path, basename) {
-        var kml = colorize ? new MultiColorKmlOutput(defaultFilter) : new SingleColorKmlOutput(defaultFilter);
+        var kml = colorize ? new MultiColorKmlOutput(defaultFilter) 
+        				   : new SingleColorKmlOutput(defaultFilter);
         
     	if (kmUnits)
     		kml.units = 'km';
@@ -16,7 +33,8 @@ module.exports = function (_logger, _fileName, _outputDataToLogger, _baseName, _
     }
 
     function generateAdditionalKMLFile (colorize, optString, defaultFilter, useKM, basename) {
-    	var filter = new WayFilter(defaultFilter.minLength, defaultFilter.maxLength, defaultFilter.minCurvature, defaultFilter.maxCurvature);
+    	var filter = new WayFilter(defaultFilter.minLength, defaultFilter.maxLength, 
+    							   defaultFilter.minCurvature, defaultFilter.maxCurvature);
 
     	var opts = optString.split(',');
 

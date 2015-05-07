@@ -1,5 +1,19 @@
 var _mathUtils = require('./mathUtils');
 
+/* This object is responsible for calculating the curvature of ways, given
+ * a set of ways, and their corresponding coordinates.
+ * 
+ * @param {Logger} _logger - The instance we should log with.
+ * @param {Number} _straightSegmentSplitThreshold - TODO: 
+ * @param {Number} _level1MaxRadius - TODO:
+ * @param {Number} _level1Weight - TODO:
+ * @param {Number} _level2MaxRadius -TODO: 
+ * @param {Number} _level2Weight - TODO:
+ * @param {Number} _level3MaxRadius - TODO:
+ * @param {Number} _level3Weight - TODO:
+ * @param {Number} _level4MaxRadius - TODO:
+ * @param {Number} _level4Weight - TODO:
+ */
 module.exports = function (_logger,
                            _straightSegmentSplitThreshold,
 						   _level1MaxRadius, _level1Weight, 
@@ -7,6 +21,11 @@ module.exports = function (_logger,
 						   _level3MaxRadius, _level3Weight, 
 						   _level4MaxRadius, _level4Weight) {
 
+	/* Returns a scalar value for the "curviness" of the way segment.
+	 *
+	 * @param {obj} segment - The portion of the curve to determine the curviness for.
+	 * @returns {Number} - The curviness rating.
+	 */ 
 	function getCurvatureForSegment (segment) {
 		if (segment.radius < _level4MaxRadius)
 			return segment.length * _level4Weight;
@@ -23,6 +42,12 @@ module.exports = function (_logger,
 		return 0;
 	}
 
+	/* Determines how long the given section is in real life (assuming a straight line),
+	 * using the latitude and longitude arguments on the section argument.
+	 * 
+	 * @param {obj} section - The portion of the curve to determine the curivness for.
+	 * @returns {Number} - The distance between these two points on the earth.
+	 */
 	function getSectionDistance(section) {
 		var start = section.segments[0].start;
 		var lastSectionIndex = section.segments.length - 1;
@@ -30,6 +55,14 @@ module.exports = function (_logger,
 		return _mathUtils.distanceBetweenPoints(start[0], start[1], end[0], end[1]);
 	}
 
+	/* Iterates over the segments of the section, and sums the curviness
+	 * and length of each section in order to determine the total curviness and length
+	 * of this entire road section.
+	 * 
+	 * @param {obj} section - An entire turn, made up of sub segments.
+	 * @returns {obj} - { curvature: the Curviness Rating, 
+ 			length: The length of the section }
+	 */
 	function getSectionLengthAndCurvature(section) {
 		var curvature = 0;
 		var length = 0;
@@ -43,6 +76,7 @@ module.exports = function (_logger,
 		return { curvature: curvature, length: length };
 	}
 
+	/* TODO: */
 	function getCurveRatedSection (way, startPoint) {
 		var section = JSON.parse(JSON.stringify(way));
 		section.segments = way.segments[startPoint];
@@ -55,6 +89,7 @@ module.exports = function (_logger,
 		return section;
 	}
 
+	/* TODO: */
 	function splitWaySections (way) {
 		var sections = [];
 
@@ -90,7 +125,9 @@ module.exports = function (_logger,
 			}
 
 			// If we are more than about 1.5 miles of straight, split off the last curved part.
-			if (straightDistance > _straightSegmentSplitThreshold && straightStart > 0 && curveDistance > 0) {
+			if (straightDistance > _straightSegmentSplitThreshold && 
+				straightStart > 0 && curveDistance > 0) {
+				
 				sections.push(getCurveRatedSection(curveStart || straightStart));
 				curveDistance = 0;
 				curveStart = null;
@@ -194,6 +231,13 @@ module.exports = function (_logger,
 		}
 	}
 
+	/* Using the passed in arguments, determines the curviness of each way, 
+	 * and each segment of each way. 
+	 * 
+	 * @param {obj[]} ways - The roads to calculate curviness of.
+	 * @param {obj} coords - The coordinates the ways reference.
+	 * @returns {obj[]} - The ways, updated with their new curve and distaince information.
+	 */
 	this.calculate = function (ways, coords) {
 		var sections = [];
 
