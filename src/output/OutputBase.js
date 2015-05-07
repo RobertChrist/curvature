@@ -9,7 +9,7 @@ module.exports = function (filter) {
 
 		// Sort the ways based on curvature.
 		ways = ways.sort(function (a, b) {
-			return a['curvature'] - b['curvature'];
+			return a.curvature - b.curvature;
 		});
 
 		for (var i = 0, j = ways.length; i < j; i++) {

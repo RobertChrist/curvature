@@ -22,18 +22,18 @@ var MultiColorKmlOutput = module.exports = function (defaultFilter) {
 
 			var tempResult = '	<Folder>\n\
 									<styleUrl>#folderStyle</styleUrl>\n\
-									<name>' + escape(way['name']) + '</name>\n\
+									<name>' + escape(way.name) + '</name>\n\
 									<description>' + this.getDescription(way) + '</description>\n';
 			
 			var currentCurvatureLevel = 0;
 
 			var index = 0;
-			var segments = way['segments'];
+			var segments = way.segments;
 			for (var k = 0, l = segments.length; k < l; k++) {
 				var segment = segments[k];
 			
-				if (segment['curvature_level'] != currentCurvatureLevel || !index) {
-					currentCurvatureLevel = segment['curvatureLevel'];
+				if (segment.curvature_level != currentCurvatureLevel || !index) {
+					currentCurvatureLevel = segment.curvatureLevel;
 					
 					// Close the open LineString
 					if (index)
@@ -46,10 +46,10 @@ var MultiColorKmlOutput = module.exports = function (defaultFilter) {
 											<tessellate>1</tessellate>\n\
 												<coordinates>';
 
-					tempResult += "%.6f,%6f " %(segment['start'][1], segment['start'][0]);
+					tempResult += "%.6f,%6f " %(segment.start[1], segment.start[0]);
 				}
 
-				tempResult += "%.6f,%6f " %(segment['end'][1], segment['end'][0]);
+				tempResult += "%.6f,%6f " %(segment.end[1], segment.end[0]);
 				index++;
 			}
 

@@ -23,16 +23,16 @@ var KmlOutput = module.exports = function (defaultFilter) {
 		for (var i = 0, j = styles.length; i < j; i++) {
 			var style = styles[i];
 
-			if (!style['width'])
-				style['width'] = 4;
+			if (!style.width)
+				style.width = 4;
 
-			if (style['color'])
-				style['color'] = 'F0FFFFFF';
+			if (style.color)
+				style.color = 'F0FFFFFF';
 
 			result += '	<Style id="' + i + '">\n';
 			result += '		<LineStyle>\n';
-			result += '			<color>' + style['color'] + '</color>\n';
-			result += '			<width>' + style['width'] + '</width>\n';
+			result += '			<color>' + style.color + '</color>\n';
+			result += '			<width>' + style.width + '</width>\n';
 			result += '		</LineStyle>\n';
 			result += '	</Style>\n';
 		}
@@ -63,9 +63,9 @@ var KmlOutput = module.exports = function (defaultFilter) {
 
 	this.getDescription = function (way) {
 		if (_units === 'km')
-			return 'Curvature: %.2f\nDistance: %.2f km\nType: %s\nSurface: %s' % (way['curvature'], way['length'] / 1000, way['type'], way['surface']);
+			return 'Curvature: %.2f\nDistance: %.2f km\nType: %s\nSurface: %s' % (way.curvature, way.length / 1000, way.type, way.surface);
 		else
-			return 'Curvature: %.2f\nDistance: %.2f mi\nType: %s\nSurface: %s' % (way['curvature'], way['length'] / 1609, way['type'], way['surface']);
+			return 'Curvature: %.2f\nDistance: %.2f mi\nType: %s\nSurface: %s' % (way.curvature, way.length / 1609, way.type, way.surface);
 	};
 
 	this.getStyles = function () {

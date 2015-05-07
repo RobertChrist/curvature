@@ -21,7 +21,7 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 	}
 	
 	function lineStyle (way) {
-		return 'lineStyle' + levelForCurvature(way['curvature']);
+		return 'lineStyle' + levelForCurvature(way.curvature);
 	}
 
 	this.getStyles = function () {
@@ -39,25 +39,25 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 
 		for (var i = 0, j = ways.length; i < j; i++) {
 			var way = ways[i];
-			if (!way['segments'] || !way['segments'].length) {
+			if (!way.segments || !way.segments.length) {
 				// _logger.log('Error: way has no segments: ' + way['name']);
 				continue;
 			}
 
 			var tempResult = 	'	<Placemark>\n\
 								<styleUrl>#' + lineStyle(way) + '</styleUrl>\n\
-								<name>' + escape(way['name']) + '</name>\n\
+								<name>' + escape(way.name) + '</name>\n\
 								<description>' + this.getDescription(way) + '</description>\n\
 								<LineString>\n\
 									<tessellate>1</tessellate>\n\
 									<coordinates>';
 
-			tempResult += 	"%.6f,%6f " %(way['segments'][0]['start'][1], way['segments'][0]['start'][0]);
+			tempResult += 	"%.6f,%6f " %(way.segments[0]['start'][1], way.segments[0]['start'][0]);
 				
-			var segments = way['segments'];
+			var segments = way.segments;
 			for (var k = 0, l = segments.length; k < l; k++) {
 				var segment = segments[k];
-				tempResult += "%.6f,%6f " %(segment['end'][1], segment['end'][0]);
+				tempResult += "%.6f,%6f " %(segment.end[1], segment.end[0]);
 			}
 				
 			result += tempResult + '</coordinates>\n</LineString>\n</Placemark>\n';
