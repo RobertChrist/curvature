@@ -49,15 +49,16 @@ var defaultFilter = new WayFilter(settings.minLength.value,
 								   settings.minCurvature.value, 
 								   settings.maxCurvature.value);
 
-var calculator = new WayCalculator(settings.straightSegmentSplitThreshold.value, 
-								  settings.level1MaxRadius.value, 
-								  settings.level1Weight.value, 
-								  settings.level2MaxRadius.value, 
-								  settings.level2Weight.value, 
-								  settings.level3MaxRadius.value, 
-								  settings.level3Weight.value, 
-								  settings.level4MaxRadius.value, 
-								  settings.level4Weight.value);
+var calculator = new WayCalculator(logger,
+                                   settings.straightSegmentSplitThreshold.value, 
+								   settings.level1MaxRadius.value, 
+								   settings.level1Weight.value, 
+								   settings.level2MaxRadius.value, 
+								   settings.level2Weight.value, 
+								   settings.level3MaxRadius.value, 
+								   settings.level3Weight.value, 
+								   settings.level4MaxRadius.value, 
+								   settings.level4Weight.value);
 
 var collector = new WayCollector( logger,
 								  calculator,

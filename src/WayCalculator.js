@@ -1,6 +1,7 @@
 var _mathUtils = require('./mathUtils');
 
-module.exports = function (_straightSegmentSplitThreshold,
+module.exports = function (_logger,
+                           _straightSegmentSplitThreshold,
 						   _level1MaxRadius, _level1Weight, 
 						   _level2MaxRadius, _level2Weight, 
 						   _level3MaxRadius, _level3Weight, 
@@ -194,9 +195,8 @@ module.exports = function (_straightSegmentSplitThreshold,
 	}
 
 	this.calculate = function (ways, coords) {
-		var index = 0;
-
 		var sections = [];
+
 		while (ways.length) {
 			var way = ways.pop();
 
@@ -205,6 +205,7 @@ module.exports = function (_straightSegmentSplitThreshold,
 				var waySections = splitWaySections(way);
 				sections.push.apply(sections, waySections);
 			} catch (err) {
+			    _logger.forceLog(err);
 				continue;
 			}
 		}
