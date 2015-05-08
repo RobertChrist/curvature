@@ -83,7 +83,7 @@ module.exports = function () {
 			throw new Error('straightSegmentSplitThreshold must be greater than 0');
 
 		var fileName = settings.file.value;
-		if (fileName.indexOf('osm.pbf', fileName.length - 'osm.pbf'.length) !== -1)
+		if (fileName.indexOf('osm.pbf', fileName.length - 'osm.pbf'.length) === -1)
 			throw new Error('Curvature.js requires the input file be of type osm.pbf ' + 
 				'due to our dependency on openstreetmap-stream.');
 	}
