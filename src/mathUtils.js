@@ -13,16 +13,16 @@ function distanceOnUnitSphere (lat1, long1, lat2, long2) {
 
 	// Convert latitude and longitude to 
 	// spherical coordinates in radians.
-	var degreesToRadians = Math.pi/180.0;
-		
+	var degreesToRadians = Math.PI/180.0;
+
 	// phi = 90 - latitude
 	var phi1 = (90.0 - lat1) * degreesToRadians;
 	var phi2 = (90.0 - lat2) * degreesToRadians;
-		
+
 	// theta = longitude
 	var theta1 = long1 * degreesToRadians;
 	var theta2 = long2 * degreesToRadians;
-		
+
 	// Compute spherical distance from spherical coordinates.
 		
 	// For two locations in spherical coordinates 
@@ -33,7 +33,7 @@ function distanceOnUnitSphere (lat1, long1, lat2, long2) {
 	
 	var cos = (Math.sin(phi1) * Math.sin(phi2) * Math.cos(theta1 - theta2) + 
 		   	Math.cos(phi1) * Math.cos(phi2));
-	
+
 	var arc = Math.acos(cos);
 
 	// Remember to multiply arc by the radius of the earth 
@@ -48,9 +48,12 @@ exports.distanceBetweenPoints = function (lat1, long1, lat2, long2) {
 	return distanceOnUnitSphere(lat1, long1, lat2, long2) * RADIUS_EARTH; 
 }
 
-/* @credit http://www.mathopenref.com/trianglecircumcircle.html
+/* Takes the lengths of three sides of a triangle, and returns the radius
+ * of a circle that is drawn through the three points of the triangle.
+ * Values returned will be incorrect if lengths are <= 0.
+ * @credit http://www.mathopenref.com/trianglecircumcircle.html
  * @returns {Number} - Give three lengths of the sides of a triange, return the 
  * radius of the smallest possible circle that can enclose that triangle. */
 exports.circumcircleRadius = function (ab, bc, ac) {
-	return (ab * bc * ac) / Math.sqrt(Math.abs(ab + bc + ac) * (bc + ac - ab) * (ab + bc - ac));
+	return (ab * bc * ac) / Math.sqrt(Math.abs((ab + bc + ac) * (bc + ac - ab) * (ac + ab - bc) * (ab + bc - ac)));
 }
