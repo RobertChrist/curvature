@@ -13,10 +13,6 @@ describe('Config', function () {
 		it('is a function', function () {
 			expect(typeof Config).toBe('function');
 		});
-
-		it('throws an error if not used as a constructor', function () {
-			expect(Config).toThrow();
-		});
 	});
 
 	describe('Settings', function () {

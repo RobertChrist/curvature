@@ -3,6 +3,7 @@ var _mathUtils = require('./mathUtils');
 /* This object is responsible for calculating the curvature of ways, given
  * a set of ways, and their corresponding coordinates.
  * 
+ * @class
  * @param {Logger} _logger - The instance we should log with.
  * @param {Number} _straightSegmentSplitThreshold - TODO: 
  * @param {Number} _level1MaxRadius - TODO:

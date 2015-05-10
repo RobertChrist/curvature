@@ -1,15 +1,13 @@
 /* Once the OSM data has been parsed, we filter out ways that don't meet
  * our search criteria.  That filtering logic is held here.
  *
+ * @class
  * @param {number} minLength - ways shorter than this are not worth reporting on.
  * @param {number} maxLength - ways longer than this are not worth reporting on.
  * @param {number} minCurvature - ways less curvy than this are too boring.
  * @param {number} maxCurvature - ways curvier than this are too scary.
  */
-module.exports = function WayFilter (minLength, maxLength, minCurvature, maxCurvature) {
-	if (!(this instanceof WayFilter))
-		throw new Error('Constructor functions must be called with new');
-
+module.exports = function (minLength, maxLength, minCurvature, maxCurvature) {
 	this.minLength = minLength;
 	this.maxLength = maxLength;
 	this.minCurvature = minCurvature;

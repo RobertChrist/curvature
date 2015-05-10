@@ -6,6 +6,7 @@ var MultiColorKmlOutput = require('./output/MultiColorKmlOutput');
 
 /* Using the passed in, pre configured objects, runs the actual curvature program.
  * 
+ * @class
  * @param {Logger} _logger - The instance we should log with.
  * @param {string} _fileName - The relative or absolute name or name and path of the file we should load.
  * @param {bool} _outputDataToLogger - Whether we should output all of the parsed file data

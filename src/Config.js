@@ -1,11 +1,9 @@
 /* Holds all of the configuration settings for this application.
  * This object mainly exists so we aren't tied to commandLineParser.js, 
  * as well as giving us a centralized place to do validation on the user input.
+ * @class
  */
-module.exports = function Config () {
-	if (!(this instanceof Config))
-		throw new Error('Constructor functions must be called with new');
-
+module.exports = function () {
 	this.settings = {
 		verbose:						{ name: 'v', 				value: false					}, 
 		tabularOutput: 					{ name: 't', 				value: false					},

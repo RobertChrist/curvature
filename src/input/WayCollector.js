@@ -5,6 +5,7 @@ var _osm = require('openstreetmap-stream'),
 /* WayCollector is responsible for parsing an osm.pbf file for the ways and coordinates
  * stored within.  It can currently only read osm.pbf, not osm.bz2 files.
  *
+ * @class
  * @param {Logger} _logger - Our logging instance.
  * @param {WayCalculator} _wayCalculator - The instance we should use to calculate way curvature.
  * @param {string[]} _wayTypes - Acceptable road types to return.  All others should be ignored.

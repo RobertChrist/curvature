@@ -6,10 +6,6 @@ describe('Logger', function () {
 			expect(typeof _target).toBe('function');
 		});
 
-		it('throws an error if not used as a constructor', function () {
-			expect(_target).toThrow();
-		});
-
 		it('has a logging function', function () {
 			var logger = new _target();
 			expect(logger.log).toBeTruthy();
