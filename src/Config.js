@@ -2,12 +2,13 @@
  * This object mainly exists so we aren't tied to commandLineParser.js, 
  * as well as giving us a centralized place to do validation on the user input.
  */
-module.exports = function () {
-	var _self = this;
+module.exports = function Config () {
+	if (!(this instanceof Config))
+		throw new Error('Constructor functions must be called with new');
 
 	this.settings = {
 		verbose:						{ name: 'v', 				value: false					}, 
-		tabluarOutput: 					{ name: 't', 				value: false					},
+		tabularOutput: 					{ name: 't', 				value: false					},
 		noKML: 			 				{ name: 'noKML',			value: false 					},
 		km: 			 				{ name: 'km',				value: true 					},
 		colorize: 		 				{ name: 'colorize',			value: false 					},
@@ -18,6 +19,8 @@ module.exports = function () {
 		minLength: 		 				{ name: 'minLength',		value: 1 						},
 		maxLength: 		 				{ name: 'maxLength',		value: 0 						},
 		minCurvature: 	 				{ name: 'minCurvature',		value: 300 						},
+		
+		//TODO: setting max curvature to 0 by default is crazy, should be null, then we can validate max > min.  Fix after fixing wayFilter.
 		maxCurvature: 	 				{ name: 'maxCurvature',		value: 0 						},
 		straightSegmentSplitThreshold:  { name: 'straightSegmentSplitThreshold', value: 2414 },
 
@@ -52,11 +55,9 @@ module.exports = function () {
 	/* Checks the current state of this.settings.  Throws an exception if any 
 	 * required value is missing, or a clearly invalid value is detected.
 	 */
-	function validate() {
-		var settings = _self.settings;
-
-        for (var paramName in settings) {
-            var setting = settings[paramName];
+	function validate(settings) {
+        for (var settingsKey in settings) {
+        	var setting = settings[settingsKey];
 
             if (setting.optional)
                 continue;
@@ -65,21 +66,21 @@ module.exports = function () {
 			    throw new Error(paramName + ' was not specified');
 		}
 
-		if (settings.level1MaxRadius > settings.level2MaxRadius ||
-			  settings.level2MaxRadius > settings.level3MaxRadius ||
-			  settings.level3MaxRadius > settings.level4MaxRadius)
+		if (settings.level1MaxRadius.value < settings.level2MaxRadius.value ||
+			  settings.level2MaxRadius.value < settings.level3MaxRadius.value ||
+			  settings.level3MaxRadius.value < settings.level4MaxRadius.value)
 			throw new Error('Max Radius settings are out of order.  Level 1 must be > Level 2, etc.');
 
-		if (settings.level1MaxRadius < 0 ||
-			settings.level2MaxRadius < 0 || 
-			settings.level3MaxRadius < 0 || 
-			settings.level4MaxRadius < 0)
+		if (settings.level1MaxRadius.value < 0 ||
+			settings.level2MaxRadius.value < 0 || 
+			settings.level3MaxRadius.value < 0 || 
+			settings.level4MaxRadius.value < 0)
 			throw new Error('Max radius settings must be positive.');
 
-		if (settings.minLength < 0 || settings.maxLength < 0) 
+		if (settings.minLength.value < 0 || settings.maxLength.value < 0) 
 			throw new Error('Road min and max length settings must be 0 or greater.');
 
-		if (settings.straightSegmentSplitThreshold <= 0)
+		if (settings.straightSegmentSplitThreshold.value <= 0)
 			throw new Error('straightSegmentSplitThreshold must be greater than 0');
 
 		var fileName = settings.file.value;
@@ -90,17 +91,26 @@ module.exports = function () {
 
 	/* Updates the public settings of this object, but throws an exception if any value was updated to an invalid value.
 	 * No error will be thrown if the passed in object contains incorrect keys, but nothing will be updated either.
-	 * @param {object} args - An object with key values that match the names parameter in the settings object.
+	 * @param {object} updates - An object literal with key values that match the names parameter in the settings object.
 	 * 		For example, to update minLatbound and tabularOutput, pass in { t: true, minLatBound: null };
 	 */
-	this.updateSettingsByName = function (args) {
-        for (var setting in this.settings) {
-            var name = this.settings[setting].name;
-            
-            if (hasValue(args, name))
-                this.settings[setting].value = args[name];
-        }
+	this.updateSettingsByName = function (updates) {
+		var settingsClone = JSON.parse(JSON.stringify(this.settings));
 
-		validate();
+		for (var updateKey in updates) {
+			if (!updates.hasOwnProperty(updateKey))
+				continue;
+
+			for (var settingkey in settingsClone) {
+				if (settingsClone[settingkey].name === updateKey) {
+					settingsClone[settingkey].value = updates[updateKey];
+					break;
+				}
+			}
+		}
+
+		validate(settingsClone);
+
+		this.settings = settingsClone;
 	};
 };

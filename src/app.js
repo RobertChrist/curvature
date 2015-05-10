@@ -71,7 +71,7 @@ var collector = new WayCollector( logger,
 
 var runner = new CurvatureRunner(logger,
 								 settings.file.value,
-								 settings.tabluarOutput.value,
+								 settings.tabularOutput.value,
 								 settings.outputBasename,
 								 settings.noKML.value,
 								 settings.colorize.value,

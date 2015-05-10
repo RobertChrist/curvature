@@ -6,7 +6,10 @@
  * @param {number} minCurvature - ways less curvy than this are too boring.
  * @param {number} maxCurvature - ways curvier than this are too scary.
  */
-module.exports = function (minLength, maxLength, minCurvature, maxCurvature) {
+module.exports = function WayFilter (minLength, maxLength, minCurvature, maxCurvature) {
+	if (!(this instanceof WayFilter))
+		throw new Error('Constructor functions must be called with new');
+
 	this.minLength = minLength;
 	this.maxLength = maxLength;
 	this.minCurvature = minCurvature;
