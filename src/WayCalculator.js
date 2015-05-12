@@ -242,9 +242,8 @@ module.exports = function (_logger,
 	this.calculate = function (ways, coords) {
 		var sections = [];
 
-		while (ways.length) {
-			var way = ways.pop();
-
+		var way;
+		while (way = ways.pop()) {
 			try {
 				calculateDistanceAndCurvature(way, coords);
 				var waySections = splitWaySections(way);
