@@ -48,7 +48,8 @@ module.exports = function (_logger, _wayCalculator, _wayTypes, _ignoredSurfaces,
         if (_coords[osmId]) 
             return;
 
-        _coords[osmId] = {'lat': lat, 'lon': lon};
+        if (_coords[osmId])
+            _coords[osmId] = {'lat': lat, 'lon': lon};
     }
 
     /* This function takes in a way that was read from the file, and if
@@ -90,8 +91,18 @@ module.exports = function (_logger, _wayCalculator, _wayTypes, _ignoredSurfaces,
         _ways.push(newWay);
 
         for (var k = 0, l = refs.length; k < l; k++) {
-            delete _coords[refs[k]];
+            _coords[refs[i]] = true;
         }
+    }
+
+    function readFile(fileNameAndPath, onRead, cb) {
+        _osm.createReadStream(fileNameAndPath)
+            .pipe(_through.obj(
+                onRead,
+                function() {
+                    cb();
+                })
+            );
     }
 
     /* Will parse the file located at the input fileNameAndPath looking for ways and coordinates,
@@ -107,37 +118,42 @@ module.exports = function (_logger, _wayCalculator, _wayTypes, _ignoredSurfaces,
 
         _logger.log('Now loading file, this operation may take awhile.');
 
-	    _osm.createReadStream(fileNameAndPath)
-	        .pipe(_through.obj(
-                function (data, enc, next) {
-                    // TODO: due to the nature of node streams, it would be faster to batch these
-                    // into arrays, and then do parallel processing on them,
-                    // but that obviously comes with memory concerns.  For now, I've ripped out all 
-                    // logging here, to make this simpler, but that should probably be re-added.
+        readFile(fileNameAndPath, function (data, enc, next) {
 
-                    if (data.type === 'node') 
-                        coordCallback(data);
+            if (data.type === 'way')
+                waysCallback(data);
 
-                    if (data.type === 'way')
-                        waysCallback(data);
+        }, function (err, res) {
+            _logger.log('Loading Ways complete');
+            if (err)
+                return cb(err);
 
-	                next();
-	            }, function() {
-	            	if (!_ways.length)
-	            		throw new Error('A problem was encountered, no data was loaded from file.  ' + 
-	            			'This is most likely because the input file was osm.bz2 and not osm.pbf!');
+            readFile(fileNameAndPath, function (data, enc, next) {
+                if (data.type === 'node') 
+                    coordCallback(data);
 
-                    _logger.log('FILE LOADING COMPLETE!');
-                    _logger.log('Calulating curvature, this may take a while.');
+            }, function (err, res) {
+                _logger.log('Loading coords complete');
 
-                    // todo: why is this called here?  why not from curvature runner?
-                    _ways = _wayCalculator.calculate(_ways, _coords);
-                    
-                    _logger.log("Calculation complete.");
+                if (err)
+                    return cb(err);
 
-                    cb();
-                })
-            );
+                if (!_ways.length)
+                    return cb('A problem was encountered, no data was loaded from file.  ' + 
+                        'This is most likely because the input file was osm.bz2 and not osm.pbf!');
+
+                _logger.log('FILE LOADING COMPLETE!');
+                _logger.log('Calulating curvature, this may take a while.');
+
+                // todo: why is this called here?  why not from curvature runner?
+                _ways = _wayCalculator.calculate(_ways, _coords);
+                
+                _logger.log("Calculation complete.");
+
+                cb();
+            })
+        })
+	    
 	};
 
 	/* Returns the ways that were parsed from the file during this.loadFile
