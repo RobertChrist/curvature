@@ -3,13 +3,10 @@ var _fs = require('fs');
 var OutputBase = require('./OutputBase');
 
 var KmlOutput = module.exports = function (defaultFilter) {
+	var _self = this;
     KmlOutput.super_.call(this, defaultFilter);
 
 	var _units = 'mi';
-
-	function writeHeader () {
-		return writeDocStart() + writeStyles(this.getStyles());
-	}
 
 	function writeDocStart () {
 		return '<?xml version="1.0" encoding="UTF-8"?>\n' + 
@@ -39,6 +36,10 @@ var KmlOutput = module.exports = function (defaultFilter) {
 
 		return result;
 	}
+    
+    function writeHeader() {
+        return writeDocStart() + writeStyles(_self.getStyles());
+    }
 
 	function writeFooter () {
 		return '</Document>\n' +
@@ -46,36 +47,30 @@ var KmlOutput = module.exports = function (defaultFilter) {
 	}
 
 	function getFilename (basename) {
-		var filename = basename + '.c_{0:.0f}'.format(this.filter.minCurvature);
+		var filename = _util.format(basename + '.c_%d', _self.filter.minCurvature);
 
-		if (this.filter.maxCurvature > 0)
-			filename += '-{0:.0f}'.format(this.filter.maxCurvature);
+		if (_self.filter.maxCurvature > 0)
+			filename += _util.format('-%d', Math.round(_self.filter.maxCurvature));
 
-		if (this.filter.minLength != 1 || this.filter.maxLength > 0)
-			filename += '.l_{0:.0f}'.format(this.filter.minLength);
+		if (_self.filter.minLength !== 1 || _self.filter.maxLength > 0)
+			filename += _util.format('.l_%d', Math.round(_self.filter.minLength));
 
-		if (this.filter.maxLength > 0)
-			filename += '-{0:.0f}'.format(this.filter.maxLength);
+		if (_self.filter.maxLength > 0)
+			filename += _util.format('-%d', Math.round(this.filter.maxLength));
 
-		filename += filenameSuffix() + '.kml';
+		filename += _self.filenameSuffix() + '.kml';
 		return filename;
-	}
+    }
+    
+    function roundToTwoDecimals(num) {
+        return Math.round(num * 100) / 100;
+    }
 
 	this.getDescription = function (way) {
 		if (_units === 'km')
-			return 'Curvature: %.2f\nDistance: %.2f km\nType: %s\nSurface: %s' % (way.curvature, way.length / 1000, way.type, way.surface);
+			return 'Curvature: %d\nDistance: %d km\nType: %s\nSurface: %s' % (roundToTwoDecimals(way.curvature), roundToTwoDecimals(way.length / 1000), way.type, way.surface);
 		else
-			return 'Curvature: %.2f\nDistance: %.2f mi\nType: %s\nSurface: %s' % (way.curvature, way.length / 1609, way.type, way.surface);
-	};
-
-	this.getStyles = function () {
-		return {
-			'lineStyle0':{'color':'F000E010'}, // Straight ways
-			'lineStyle1':{'color':'F000FFFF'}, // Level 1 turns
-			'lineStyle2':{'color':'F000AAFF'}, // Level 2 turns
-			'lineStyle3':{'color':'F00055FF'}, // Level 3 turns
-			'lineStyle4':{'color':'F00000FF'}, // Level 4 turns
-		};
+			return 'Curvature: %d\nDistance: %d mi\nType: %s\nSurface: %s' % (roundToTwoDecimals(way.curvature), roundToTwoDecimals(way.length / 1609), way.type, way.surface);
 	};
 
 	this.write = function (ways, path, basename) {
@@ -88,10 +83,21 @@ var KmlOutput = module.exports = function (defaultFilter) {
 		
 		_fs.writeFileSync(path + '/' + getFilename(basename), kmlDoc);
     };
-    
-    this.filenameSuffix = function () {
-        return '';
-    };
 };
 
 _util.inherits(KmlOutput, OutputBase);
+
+KmlOutput.prototype.filenameSuffix = function () {
+    return '';
+};
+
+KmlOutput.prototype.getStyles = function () {
+    return {
+        'lineStyle0': { 'color': 'F000E010' }, // Straight ways
+        'lineStyle1': { 'color': 'F000FFFF' }, // Level 1 turns
+        'lineStyle2': { 'color': 'F000AAFF' }, // Level 2 turns
+        'lineStyle3': { 'color': 'F00055FF' }, // Level 3 turns
+        'lineStyle4': { 'color': 'F00000FF' }  // Level 4 turns
+    };
+};
+

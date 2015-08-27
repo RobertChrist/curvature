@@ -24,18 +24,8 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 		return 'lineStyle' + levelForCurvature(way.curvature);
 	}
 
-	this.getStyles = function () {
-		var styles = {'lineStyle0':{'color':'F000E010'}}; // Straight ways
-		
-		// Add a style for each level in a gradient from yellow to red (00FFFF - 0000FF)
-		for (var i = 0, j = 256; i < j; i++)
-			styles['lineStyle' + (i + 1)] = {'color':'F000' + (255 - i).toString(16) + 'FF' };
-
-		return styles;
-	};
-
 	this.writeWays = function (ways) {
-		var result;
+	    var result = '';
 
 		for (var i = 0, j = ways.length; i < j; i++) {
 			var way = ways[i];
@@ -68,3 +58,13 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 };
 
 _util.inherits(SingleColorKmlOutput, KmlOutput);
+
+SingleColorKmlOutput.prototype.getStyles = function () {
+	var styles = {'lineStyle0':{'color':'F000E010'}}; // Straight ways
+	
+	// Add a style for each level in a gradient from yellow to red (00FFFF - 0000FF)
+	for (var i = 0, j = 256; i < j; i++)
+		styles['lineStyle' + (i + 1)] = {'color':'F000' + (255 - i).toString(16) + 'FF' };
+
+	return styles;
+};

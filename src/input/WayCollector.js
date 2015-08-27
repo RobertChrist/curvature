@@ -90,7 +90,7 @@ module.exports = function (_logger, _wayCalculator, _wayTypes, _ignoredSurfaces,
 
         _ways.push(newWay);
 
-        for (var k = 0, l = refs.length; k < l; k++) {
+        for (var i = 0, j = refs.length; i < j; i++) {
             _coords[refs[i]] = true;
         }
     }
@@ -123,6 +123,8 @@ module.exports = function (_logger, _wayCalculator, _wayTypes, _ignoredSurfaces,
             if (data.type === 'way')
                 waysCallback(data);
 
+            next();
+
         }, function (err, res) {
             _logger.log('Loading Ways complete');
             if (err)
@@ -131,6 +133,7 @@ module.exports = function (_logger, _wayCalculator, _wayTypes, _ignoredSurfaces,
             readFile(fileNameAndPath, function (data, enc, next) {
                 if (data.type === 'node') 
                     coordCallback(data);
+                next();
 
             }, function (err, res) {
                 _logger.log('Loading coords complete');

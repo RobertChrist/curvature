@@ -15,6 +15,8 @@ module.exports = function (filter) {
 		for (var i = 0, j = ways.length; i < j; i++) {
 			if (ways[i]['curvature' > this.maxCurvature]) 
 				this.maxCurvature = ways[i]['curvature'];
-		}
+        }
+
+	    return ways;
 	};
 };

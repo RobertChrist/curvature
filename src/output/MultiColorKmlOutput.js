@@ -4,10 +4,6 @@ var KmlOutput = require('./KmlOutput');
 var MultiColorKmlOutput = module.exports = function (defaultFilter) {
     MultiColorKmlOutput.super_.call(this, defaultFilter);
 
-    this.filenameSuffix = function() {
-        return '.multicolor';
-    };
-	
 	this.writeWays = function (ways) {
 		var result;
 
@@ -65,3 +61,7 @@ var MultiColorKmlOutput = module.exports = function (defaultFilter) {
 };
 
 _util.inherits(MultiColorKmlOutput, KmlOutput);
+
+MultiColorKmlOutput.prototype.filenameSuffix = function() {
+    return '.multicolor';
+};

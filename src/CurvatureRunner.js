@@ -119,7 +119,7 @@ module.exports = function (_logger, _fileName, _outputDataToLogger, _baseName,
 
     	var outputAdditionalFile = function (cb) {
     		if (!_additionalKML)
-                return;
+                return cb();
             
             _logger.log("Generating additional kml files.");
 

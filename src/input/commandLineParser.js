@@ -51,7 +51,7 @@ args.map(function (arg) {
 exports.parseArgs = function () {
 	var results = argParser.parseArgs();
 
-	config.updateSettingssByName(results);
+	config.updateSettingsByName(results);
 
 	return config;
 }

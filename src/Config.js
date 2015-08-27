@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 /* Holds all of the configuration settings for this application.
  * This object mainly exists so we aren't tied to commandLineParser.js, 
  * as well as giving us a centralized place to do validation on the user input.
@@ -85,6 +87,15 @@ module.exports = function () {
 		if (fileName.indexOf('osm.pbf', fileName.length - 'osm.pbf'.length) === -1)
 			throw new Error('Curvature.js requires the input file be of type osm.pbf ' + 
 				'due to our dependency on openstreetmap-stream.');
+
+	    if (settings.outputPath) {
+            try {
+                fs.mkdirSync(settings.outputPath.value);
+            } catch (e) {
+                if (e.code !== 'EEXIST')
+                    throw e;
+            }
+	    }
 	}
 
 	/* Updates the public settings of this object, but throws an exception if any value was updated to an invalid value.
