@@ -3,9 +3,9 @@ var _fs = require('fs');
 var OutputBase = require('./OutputBase');
 
 var KmlOutput = module.exports = function (defaultFilter) {
-	var _self = this;
     KmlOutput.super_.call(this, defaultFilter);
-
+    
+    var _self = this;
 	var _units = 'mi';
 
 	function writeDocStart () {
