@@ -42,10 +42,10 @@ var MultiColorKmlOutput = module.exports = function (defaultFilter) {
 											<tessellate>1</tessellate>\n\
 												<coordinates>';
 
-					tempResult += "%.6f,%6f " %(segment.start[1], segment.start[0]);
+					tempResult += "%d,%d " %(segment.start[1].toFixed(6), segment.start[0].toFixed(6));
 				}
 
-				tempResult += "%.6f,%6f " %(segment.end[1], segment.end[0]);
+				tempResult += "%d,%d " %(segment.end[1].toFixed(6), segment.end[0].toFixed(6));
 				index++;
 			}
 

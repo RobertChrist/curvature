@@ -118,45 +118,45 @@ module.exports = function (_logger, _wayCalculator, _wayTypes, _ignoredSurfaces,
 
         _logger.log('Now loading file, this operation may take awhile.');
 
-        readFile(fileNameAndPath, function (data, enc, next) {
+	    readFile(fileNameAndPath, function(data, enc, next) {
 
-            if (data.type === 'way')
-                waysCallback(data);
+	        if (data.type === 'way')
+	            waysCallback(data);
 
-            next();
+	        next();
 
-        }, function (err, res) {
-            _logger.log('Loading Ways complete');
-            if (err)
-                return cb(err);
+	    }, function(err, res) {
+	        _logger.log('Loading Ways complete');
+	        if (err)
+	            return cb(err);
 
-            readFile(fileNameAndPath, function (data, enc, next) {
-                if (data.type === 'node') 
-                    coordCallback(data);
-                next();
+	        readFile(fileNameAndPath, function(data, enc, next) {
+	            if (data.type === 'node')
+	                coordCallback(data);
+	            next();
 
-            }, function (err, res) {
-                _logger.log('Loading coords complete');
+	        }, function(err, res) {
+	            _logger.log('Loading coords complete');
 
-                if (err)
-                    return cb(err);
+	            if (err)
+	                return cb(err);
 
-                if (!_ways.length)
-                    return cb('A problem was encountered, no data was loaded from file.  ' + 
-                        'This is most likely because the input file was osm.bz2 and not osm.pbf!');
+	            if (!_ways.length)
+	                return cb('A problem was encountered, no data was loaded from file.  ' +
+	                    'This is most likely because the input file was osm.bz2 and not osm.pbf!');
 
-                _logger.log('FILE LOADING COMPLETE!');
-                _logger.log('Calulating curvature, this may take a while.');
+	            _logger.log('FILE LOADING COMPLETE!');
+	            _logger.log('Calulating curvature, this may take a while.');
 
-                // todo: why is this called here?  why not from curvature runner?
-                _ways = _wayCalculator.calculate(_ways, _coords);
-                
-                _logger.log("Calculation complete.");
+	            // todo: why is this called here?  why not from curvature runner?
+	            _ways = _wayCalculator.calculate(_ways, _coords);
 
-                cb();
-            })
-        })
-	    
+	            _logger.log("Calculation complete.");
+
+	            cb();
+	        });
+	    });
+
 	};
 
 	/* Returns the ways that were parsed from the file during this.loadFile

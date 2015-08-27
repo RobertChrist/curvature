@@ -42,12 +42,12 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 									<tessellate>1</tessellate>\n\
 									<coordinates>';
 
-			tempResult += 	"%.6f,%6f " %(way.segments[0]['start'][1], way.segments[0]['start'][0]);
+			tempResult += 	"%d,%d " %(way.segments[0]['start'][1].toFixed(6), way.segments[0]['start'][0].toFixed(6));
 				
 			var segments = way.segments;
 			for (var k = 0, l = segments.length; k < l; k++) {
 				var segment = segments[k];
-				tempResult += "%.6f,%6f " %(segment.end[1], segment.end[0]);
+				tempResult += "%d,%d " %(segment.end[1].toFixed(6), segment.end[0].toFixed(6));
 			}
 				
 			result += tempResult + '</coordinates>\n</LineString>\n</Placemark>\n';

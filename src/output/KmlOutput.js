@@ -62,15 +62,11 @@ var KmlOutput = module.exports = function (defaultFilter) {
 		return filename;
     }
     
-    function roundToTwoDecimals(num) {
-        return Math.round(num * 100) / 100;
-    }
-
 	this.getDescription = function (way) {
 		if (_units === 'km')
-			return 'Curvature: %d\nDistance: %d km\nType: %s\nSurface: %s' % (roundToTwoDecimals(way.curvature), roundToTwoDecimals(way.length / 1000), way.type, way.surface);
+			return 'Curvature: %d\nDistance: %d km\nType: %s\nSurface: %s' % (way.curvature.toFixed(2), (way.length / 1000).toFixed(2), way.type, way.surface);
 		else
-			return 'Curvature: %d\nDistance: %d mi\nType: %s\nSurface: %s' % (roundToTwoDecimals(way.curvature), roundToTwoDecimals(way.length / 1609), way.type, way.surface);
+			return 'Curvature: %d\nDistance: %d mi\nType: %s\nSurface: %s' % (way.curvature.toFixed(2), (way.length / 1609).toFixed(2), way.type, way.surface);
 	};
 
 	this.write = function (ways, path, basename) {
