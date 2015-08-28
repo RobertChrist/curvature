@@ -32,7 +32,8 @@
 
 var _parser = require('./input/commandLineParser');
 var Logger = require('./Logger');
-var WayFilter 	 = require('./WayFilter');
+var WayFilter = require('./WayFilter');
+var WayParser = require('./input/WayParser');
 var WayCollector = require('./input/WayCollector');
 var WayCalculator = require('./WayCalculator');
 var CurvatureRunner = require('./CurvatureRunner');
@@ -49,6 +50,13 @@ var defaultFilter = new WayFilter(settings.minLength.value,
 								   settings.minCurvature.value, 
 								   settings.maxCurvature.value);
 
+var parser = new WayParser(settings.wayTypes.value.split(','), 
+							settings.ignoredSurfaces.value.split(','),
+							settings.minLatBound.value, 
+							settings.maxLatBound.value, 
+							settings.minLonBound.value, 
+							settings.maxLatBound.value);
+
 var calculator = new WayCalculator(logger,
                                    settings.straightSegmentSplitThreshold.value, 
 								   settings.level1MaxRadius.value, 
@@ -61,13 +69,8 @@ var calculator = new WayCalculator(logger,
 								   settings.level4Weight.value);
 
 var collector = new WayCollector( logger,
-								  calculator,
-								  settings.wayTypes.value.split(','), 
-								  settings.ignoredSurfaces.value.split(','),
-								  settings.minLatBound.value, 
-								  settings.maxLatBound.value, 
-								  settings.minLonBound.value, 
-								  settings.maxLatBound.value);
+								  parser,
+                                  calculator);
 
 var runner = new CurvatureRunner(logger,
 								 settings.file.value,
