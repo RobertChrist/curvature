@@ -37,8 +37,7 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 				continue;
 			}
 
-            var tempResult =    '' +
-                        	    '	<Placemark>\n' +
+            var tempResult =    '	<Placemark>\n' +
 								'		<styleUrl>#' + lineStyle(way) + '</styleUrl>\n' +
 								'		<name>' + escape(way.name).replace(_allowWhitespaceRegex, ' ') + '</name>\n' +
 								'		<description>' + _self.getDescription(way) + '</description>\n' +

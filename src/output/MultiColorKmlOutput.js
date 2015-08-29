@@ -4,6 +4,7 @@ var KmlOutput = require('./KmlOutput');
 var MultiColorKmlOutput = module.exports = function (defaultFilter) {
     MultiColorKmlOutput.super_.call(this, defaultFilter);
 
+    var _self = this;
     var _allowWhitespaceRegex = new RegExp('%20', 'g');
 
 	this.writeWays = function (ways) {
@@ -20,7 +21,7 @@ var MultiColorKmlOutput = module.exports = function (defaultFilter) {
 			var tempResult = 	'	<Folder>\n\'' +
 							 	'		<styleUrl>#folderStyle</styleUrl>\n' +
 							 	'		<name>' + escape(way.name).replace(_allowWhitespaceRegex, ' ') + '</name>\n' +
-							 	'		<description>' + this.getDescription(way) + '</description>\n';
+							 	'		<description>' + _self.getDescription(way) + '</description>\n';
 			
 			var currentCurvatureLevel = 0;
 
