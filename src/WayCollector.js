@@ -32,8 +32,6 @@ module.exports = function (_logger, _wayParser, _wayCalculator) {
 	this.loadFile = function (fileNameAndPath, cb) {
         _ways = [];
 
-        _logger.log('Now loading file, this operation may take awhile.');
-
 	    readFile(fileNameAndPath, function(data, enc, next) {
 
 	        if (data.type === 'way')
@@ -42,7 +40,7 @@ module.exports = function (_logger, _wayParser, _wayCalculator) {
 	        next();
 
 	    }, function(err) {
-	        _logger.log('Loading Ways complete');
+	        _logger.log('Loading Ways complete.  Now loading coordinates.');
 	        if (err)
 	            return cb(err);
 
@@ -53,7 +51,7 @@ module.exports = function (_logger, _wayParser, _wayCalculator) {
 	            next();
 
 	        }, function(err) {
-	            _logger.log('Loading coords complete');
+	            _logger.log('Loading coords complete.  Verifying loaded data.');
 
 	            if (err)
 	                return cb(err);
@@ -69,9 +67,9 @@ module.exports = function (_logger, _wayParser, _wayCalculator) {
 
 	            _ways = _wayCalculator.calculate(results.ways, results.coords);
 
-	            _logger.log("Calculation complete.");
+	            _logger.log("Calculations complete.");
 
-	            cb();
+	            cb(null, _ways);
 	        });
 	    });
 	};
@@ -81,7 +79,4 @@ module.exports = function (_logger, _wayParser, _wayCalculator) {
 	 * @output {obj[]} - The ways that were parsed from the file, complete 
 	 *	with their calculated curvature and additional information.
 	 */
-	this.getWays = function () {
-		return _ways;
-	};
 };

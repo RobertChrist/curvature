@@ -30,25 +30,23 @@
 * License: GNU General Public License Version 3 or later
 */
 
+var _path = require('path');
 var _cmlParser = require('./input/commandLineParser');
 var Logger = require('./logging/Logger');
 var WayFilter = require('./WayFilter');
 var WayParser = require('./WayParser');
 var WayCollector = require('./WayCollector');
 var WayCalculator = require('./WayCalculator');
-var CurvatureRunner = require('./CurvatureRunner');
+var OutputService = require('./output/OutputService');
 
 
-/* ---------- Main Script ---------- */
+/* ---------- New up dependencies ---------- */
 
 var config = _cmlParser.parseArgs();
 var settings = config.settings;
 var logger = new Logger(settings.verbose.value);
 
-var defaultFilter = new WayFilter(settings.minLength.value, 
-								   settings.maxLength.value, 
-								   settings.minCurvature.value, 
-								   settings.maxCurvature.value);
+logger.forceLog('curvature is starting.');
 
 var wayParser = new WayParser(settings.wayTypes.value.split(','), 
 							settings.ignoredSurfaces.value.split(','),
@@ -72,14 +70,40 @@ var collector = new WayCollector( logger,
 								  wayParser,
                                   calculator);
 
-var runner = new CurvatureRunner(logger,
-								 settings.file.value,
-								 settings.tabularOutput.value,
-								 settings.outputBasename,
-								 settings.noKML.value,
-								 settings.colorize.value,
-								 settings.outputPath.value, 
-								 settings.km.value,
-								 settings.addKML.value);
+var filter = new WayFilter(settings.minLength.value, 
+								   settings.maxLength.value, 
+								   settings.minCurvature.value, 
+								   settings.maxCurvature.value);
 
-runner.run(defaultFilter, collector);
+var outputService = new OutputService(logger);
+
+
+/* ---------- Basic configuration ---------- */
+
+var outputBaseName = settings.outputBaseName.value;
+var outputPath = settings.outputPath.value;
+
+var fileNameAndPath = _path.resolve(settings.file.value);
+var outputFileBaseName = outputBaseName ? _path.basename(outputBaseName) : _path.basename(fileNameAndPath);
+var path = !outputPath ? _path.dirname(fileNameAndPath) : outputPath;
+
+
+/* ---------- Main Script ---------- */
+
+logger.log('Now loading ' + fileNameAndPath + ', this operation may take awhile.');
+
+collector.loadFile(fileNameAndPath, function (err, ways) {
+    if (err)
+        throw err;
+
+    logger.log('Building output.');
+
+    outputService.outputResults(ways, filter, outputFileBaseName, path, 
+    							settings.colorize.value, 
+    							settings.km.value, 
+    							settings.tabularOutput.value, 
+    							settings.noKML.value, 
+    							settings.addKML.value);
+
+    logger.forceLog('curvature has finished successfully.');
+});
