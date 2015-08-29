@@ -30,7 +30,7 @@
 * License: GNU General Public License Version 3 or later
 */
 
-var _parser = require('./input/commandLineParser');
+var _cmlParser = require('./input/commandLineParser');
 var Logger = require('./logging/Logger');
 var WayFilter = require('./WayFilter');
 var WayParser = require('./WayParser');
@@ -41,7 +41,7 @@ var CurvatureRunner = require('./CurvatureRunner');
 
 /* ---------- Main Script ---------- */
 
-var config = _parser.parseArgs();
+var config = _cmlParser.parseArgs();
 var settings = config.settings;
 var logger = new Logger(settings.verbose.value);
 
@@ -50,7 +50,7 @@ var defaultFilter = new WayFilter(settings.minLength.value,
 								   settings.minCurvature.value, 
 								   settings.maxCurvature.value);
 
-var parser = new WayParser(settings.wayTypes.value.split(','), 
+var wayParser = new WayParser(settings.wayTypes.value.split(','), 
 							settings.ignoredSurfaces.value.split(','),
 							settings.minLatBound.value, 
 							settings.maxLatBound.value, 
@@ -69,7 +69,7 @@ var calculator = new WayCalculator(logger,
 								   settings.level4Weight.value);
 
 var collector = new WayCollector( logger,
-								  parser,
+								  wayParser,
                                   calculator);
 
 var runner = new CurvatureRunner(logger,

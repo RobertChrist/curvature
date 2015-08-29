@@ -132,7 +132,6 @@ module.exports = function (_logger, _fileName, _outputDataToLogger, _baseName,
             cb();
     	};
 
-
     	_logger.forceLog('curvature is starting.');
 
         _async.waterfall([
