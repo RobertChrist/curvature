@@ -3,7 +3,7 @@ var OutputBase = require('./OutputBase');
 
 var TabOutput = module.exports = function () {
 
-	this.output = function (ways, logger) {
+	this.write = function (ways, logger) {
 		ways = this.filterAndSort(ways);
 
 		logger.log('Curvature	Length(mi)	Distance (mi)	Id	Name	County');

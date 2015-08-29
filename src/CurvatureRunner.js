@@ -89,7 +89,7 @@ module.exports = function (_logger, _fileName, _outputDataToLogger, _baseName,
     	var outputDataToLogger = function (cb) {
             if (_outputDataToLogger) {
                 var tab = new TabOutput(filter);
-                tab.output(wayCollector.getWays(), _logger);
+                tab.write(wayCollector.getWays(), _logger);
             }
 
             cb();
