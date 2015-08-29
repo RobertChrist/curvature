@@ -63,7 +63,7 @@ module.exports = function () {
                 continue;
 
 			if (!hasValue(setting, 'value'))
-			    throw new Error(paramName + ' was not specified');
+			    throw new Error(settingsKey + ' was not specified');
 		}
 
 		if (settings.level1MaxRadius.value < settings.level2MaxRadius.value ||

@@ -1,6 +1,7 @@
 ﻿var TabOutput = require('./writers/TabOutput');
 var SingleColorKmlOutput = require('./writers/SingleColorKmlOutput');
 var MultiColorKmlOutput = require('./writers/MultiColorKmlOutput');
+var WayFilter = require('../WayFilter');
 
 /* This module is responsible for newing up the correct output writing classes,
  * and using them to write the result output in the correct formats and locations.

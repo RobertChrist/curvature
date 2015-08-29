@@ -256,5 +256,5 @@ module.exports = function (_logger,
 		}
 
 		return sections;
-	}
-}
+	};
+};
