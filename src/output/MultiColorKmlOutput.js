@@ -4,9 +4,10 @@ var KmlOutput = require('./KmlOutput');
 var MultiColorKmlOutput = module.exports = function (defaultFilter) {
     MultiColorKmlOutput.super_.call(this, defaultFilter);
 
-	this.writeWays = function (ways) {
-		var result;
+    var _allowWhitespaceRegex = new RegExp('%20', 'g');
 
+	this.writeWays = function (ways) {
+	    var result = '';
 		result += '	<Style id="folderStyle">\n';
 		result += '		<ListStyle>\n';
 		result += '			<listItemType>checkHideChildren</listItemType>\n';
@@ -16,10 +17,10 @@ var MultiColorKmlOutput = module.exports = function (defaultFilter) {
 		for (var i = 0, j = ways.length; i < j; i++) {
 			var way = ways[i];
 
-			var tempResult = '	<Folder>\n\
-									<styleUrl>#folderStyle</styleUrl>\n\
-									<name>' + escape(way.name) + '</name>\n\
-									<description>' + this.getDescription(way) + '</description>\n';
+			var tempResult = 	'	<Folder>\n\'' +
+							 	'		<styleUrl>#folderStyle</styleUrl>\n' +
+							 	'		<name>' + escape(way.name).replace(_allowWhitespaceRegex, ' ') + '</name>\n' +
+							 	'		<description>' + this.getDescription(way) + '</description>\n';
 			
 			var currentCurvatureLevel = 0;
 
@@ -33,27 +34,33 @@ var MultiColorKmlOutput = module.exports = function (defaultFilter) {
 					
 					// Close the open LineString
 					if (index)
-						tempResult += '</coordinates>\n</LineString>\n</Placemark>\n';
+						tempResult += 	'</coordinates>\n' +
+										'		</LineString>\n' + 
+										'		</Placemark>\n';
 
 					// Start a new linestring for this level
-					tempResult += '		<Placemark>\n\
-											<styleUrl>#lineStyle' + currentCurvatureLevel + '</styleUrl>\n\
-											<LineString>\n\
-											<tessellate>1</tessellate>\n\
-												<coordinates>';
+					tempResult += 	'	<Placemark>\n' +
+								  	'		<styleUrl>#lineStyle' + currentCurvatureLevel + '</styleUrl>\n' +
+								  	'		<LineString>\n' +
+								  	'			<tessellate>1</tessellate>\n' +
+								  	'			<coordinates>';
 
-					tempResult += "%d,%d " %(segment.start[1].toFixed(6), segment.start[0].toFixed(6));
+					tempResult += _util.format("%d,%d ", segment.start.lon.toFixed(6), segment.start.lat.toFixed(6));
 				}
 
-				tempResult += "%d,%d " %(segment.end[1].toFixed(6), segment.end[0].toFixed(6));
+				tempResult += _util.format("%d,%d ", segment.end.lon.toFixed(6), segment.end.lat.toFixed(6));
 				index++;
 			}
 
 			if (index) {
-				tempResult += '</coordinates>\n</LineString>\n</Placemark>\n';
+				tempResult += 	'</coordinates>\n' + 
+								'		</LineString>\n' + 
+								'	</Placemark>\n';
 			}
 
-			result += tempResult + '	</Folder>\n';
+		    tempResult += '	</Folder>\n';
+            
+            result += tempResult;
 		}
 
 		return result;

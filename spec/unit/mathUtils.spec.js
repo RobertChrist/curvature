@@ -1,4 +1,4 @@
-var _target = require('../src/mathUtils');
+var _target = require('../../src/mathUtils');
 
 describe ('mathUtils', function () {
 	describe ('circumcircleRadius', function () {

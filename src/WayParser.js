@@ -34,11 +34,10 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
         if (_maxLonBound && lon > _maxLonBound)
             return;
 
-        if (_coords[osmId])
+        if (!_coords[osmId])
             return;
-
-        if (_coords[osmId])
-            _coords[osmId] = { 'lat': lat, 'lon': lon };
+        
+        _coords[osmId] = { 'lat': lat, 'lon': lon };
     };
     
     /* This function takes in a way that was read from the file, and if

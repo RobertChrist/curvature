@@ -31,10 +31,10 @@
 */
 
 var _parser = require('./input/commandLineParser');
-var Logger = require('./Logger');
+var Logger = require('./logging/Logger');
 var WayFilter = require('./WayFilter');
-var WayParser = require('./input/WayParser');
-var WayCollector = require('./input/WayCollector');
+var WayParser = require('./WayParser');
+var WayCollector = require('./WayCollector');
 var WayCalculator = require('./WayCalculator');
 var CurvatureRunner = require('./CurvatureRunner');
 

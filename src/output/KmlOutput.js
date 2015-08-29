@@ -9,7 +9,8 @@ var KmlOutput = module.exports = function (defaultFilter) {
 	var _units = 'mi';
 
 	function writeDocStart () {
-		return '<?xml version="1.0" encoding="UTF-8"?>\n' + 
+        return '' +
+        '<?xml version="1.0" encoding="UTF-8"?>\n' + 
 		'<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">\n' +
 		'<Document>\n';
 	}
@@ -17,22 +18,22 @@ var KmlOutput = module.exports = function (defaultFilter) {
 	function writeStyles (styles) {
 		var result = '';
 
-		for (var i = 0, j = styles.length; i < j; i++) {
-			var style = styles[i];
-
+	    Object.keys(styles).forEach(function(key) {
+	        var style = styles[key];
+	        
 			if (!style.width)
 				style.width = 4;
 
-			if (style.color)
+			if (!style.color)
 				style.color = 'F0FFFFFF';
 
-			result += '	<Style id="' + i + '">\n';
+			result += '	<Style id="' + key + '">\n';
 			result += '		<LineStyle>\n';
 			result += '			<color>' + style.color + '</color>\n';
 			result += '			<width>' + style.width + '</width>\n';
 			result += '		</LineStyle>\n';
-			result += '	</Style>\n';
-		}
+            result += '	</Style>\n';
+	    });
 
 		return result;
 	}
@@ -64,9 +65,9 @@ var KmlOutput = module.exports = function (defaultFilter) {
     
 	this.getDescription = function (way) {
 		if (_units === 'km')
-			return 'Curvature: %d\nDistance: %d km\nType: %s\nSurface: %s' % (way.curvature.toFixed(2), (way.length / 1000).toFixed(2), way.type, way.surface);
+			return _util.format('Curvature: %d\nDistance: %d km\nType: %s\nSurface: %s', way.curvature.toFixed(2), (way.length / 1000).toFixed(2), way.type, way.surface);
 		else
-			return 'Curvature: %d\nDistance: %d mi\nType: %s\nSurface: %s' % (way.curvature.toFixed(2), (way.length / 1609).toFixed(2), way.type, way.surface);
+			return _util.format('Curvature: %d\nDistance: %d mi\nType: %s\nSurface: %s', way.curvature.toFixed(2), (way.length / 1609).toFixed(2), way.type, way.surface);
 	};
 
 	this.write = function (ways, path, basename) {
@@ -96,4 +97,3 @@ KmlOutput.prototype.getStyles = function () {
         'lineStyle4': { 'color': 'F00000FF' }  // Level 4 turns
     };
 };
-

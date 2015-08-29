@@ -53,7 +53,7 @@ module.exports = function (_logger,
 		var start = section.segments[0].start;
 		var lastSectionIndex = section.segments.length - 1;
 		var end = section.segments[lastSectionIndex].end;
-		return _mathUtils.distanceBetweenPoints(start[0], start[1], end[0], end[1]);
+		return _mathUtils.distanceBetweenPoints(start.lat, start.lon, end.lat, end.lon);
 	}
 
 	/* Iterates over the segments of the section, and sums the curviness
@@ -68,8 +68,8 @@ module.exports = function (_logger,
 		var curvature = 0;
 		var length = 0;
 		
-		for (var k = 0, l = section.segments.length; k < l; k++) {
-			var sectSegment = section.segments[k];
+		for (var i = 0, j = section.segments.length; i < j; i++) {
+			var sectSegment = section.segments[i];
 			curvature += getCurvatureForSegment(sectSegment);
 			length += sectSegment.length;
 		}
@@ -78,9 +78,10 @@ module.exports = function (_logger,
 	}
 
 	/* TODO: */
-	function getCurveRatedSection (way, startPoint) {
+	function getCurveRatedSection (way, startPoint, endPoint) {
 		var section = JSON.parse(JSON.stringify(way));
-		section.segments = way.segments[startPoint];
+
+		section.segments = !endPoint ? way.segments.slice(startPoint) : way.segments.slice(startPoint, endPoint);
 
 		var curveAndLength = getSectionLengthAndCurvature(section);
 		section.curvature = curveAndLength.curvature;
@@ -109,7 +110,7 @@ module.exports = function (_logger,
 			var segment = way.segments[i];
 
 			// Reset the straight distance if we have a significant curve
-			if (segment.curvature) {
+			if (segment.curvatureLevel) {
 				// Ignore any preceding long straight sections
 				if (straightDistance > _straightSegmentSplitThreshold || curveStart === null)
 					curveStart = i;
@@ -129,7 +130,7 @@ module.exports = function (_logger,
 			if (straightDistance > _straightSegmentSplitThreshold && 
 				straightStart > 0 && curveDistance > 0) {
 				
-				sections.push(getCurveRatedSection(curveStart || straightStart));
+				sections.push(getCurveRatedSection(way, curveStart, straightStart));
 				curveDistance = 0;
 				curveStart = null;
 			}
@@ -137,7 +138,7 @@ module.exports = function (_logger,
 
 		// Add any remaining curved section to the sections
 		if (curveDistance > 0)
-			sections.push(getCurveRatedSection(curveStart));
+			sections.push(getCurveRatedSection(way, curveStart));
 
 		return sections;
 	}
@@ -152,7 +153,7 @@ module.exports = function (_logger,
 		var start = coords[way.refs[0]],
 			end = coords[way.refs[way.refs.length - 1]];
 
-		way.distance = _mathUtils.distanceBetweenPoints(start[0], start[1], end[0], end[1]);
+		way.distance = _mathUtils.distanceBetweenPoints(start.lat, start.lon, end.lat, end.lon);
 
 		var second = 0, third = 0, segments = [];
 		var firstSecondLength;
@@ -166,7 +167,7 @@ module.exports = function (_logger,
 				continue;
 			}
 
-			firstSecondLength = _mathUtils.distanceBetweenPoints(first[0], first[1], second[0], second[1]);
+			firstSecondLength = _mathUtils.distanceBetweenPoints(first.lat, first.lon, second.lat, second.lon);
 			way.length += firstSecondLength;
 
 			var secondThirdLength;
@@ -178,7 +179,7 @@ module.exports = function (_logger,
 			}
 
 			// ignore curvature from zero-distance
-			var firstThirdLength = _mathUtils.distanceBetweenPoints(first[0], first[1], third[0], third[1]);
+			var firstThirdLength = _mathUtils.distanceBetweenPoints(first.lat, first.lon, third.lat, third.lon);
 			var r = 0;
 			if (firstThirdLength > 0 && firstSecondLength > 0 && secondThirdLength > 0) {
 				r = _mathUtils.circumcircleRadius(firstThirdLength, firstSecondLength, secondThirdLength);

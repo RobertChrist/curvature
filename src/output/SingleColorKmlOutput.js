@@ -4,13 +4,16 @@ var KmlOutput = require('./KmlOutput');
 var SingleColorKmlOutput = module.exports = function (defaultFilter) {
     SingleColorKmlOutput.super_.call(this, defaultFilter);
 
+    var _self = this;
+    var _allowWhitespaceRegex = new RegExp('%20', 'g');
+
 	function levelForCurvature (curvature) {
-		var offset = this.filter.minCurvature > 0 ? this.filter.minCurvature : 0;
+		var offset = _self.filter.minCurvature > 0 ? _self.filter.minCurvature : 0;
 		
 		if (curvature < offset)
 			return 0;
 		
-		var curvaturePct = (curvature - offset) / (this.maxCurvature - offset);
+		var curvaturePct = (curvature - offset) / (_self.maxCurvature - offset);
 		
 		// Use the square route of the ratio to give a better differentiation between
 		// lower-curvature ways
@@ -34,23 +37,27 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 				continue;
 			}
 
-			var tempResult = 	'	<Placemark>\n\
-								<styleUrl>#' + lineStyle(way) + '</styleUrl>\n\
-								<name>' + escape(way.name) + '</name>\n\
-								<description>' + this.getDescription(way) + '</description>\n\
-								<LineString>\n\
-									<tessellate>1</tessellate>\n\
-									<coordinates>';
+            var tempResult =    '' +
+                        	    '	<Placemark>\n' +
+								'		<styleUrl>#' + lineStyle(way) + '</styleUrl>\n' +
+								'		<name>' + escape(way.name).replace(_allowWhitespaceRegex, ' ') + '</name>\n' +
+								'		<description>' + _self.getDescription(way) + '</description>\n' +
+								'		<LineString>\n' +
+								'			<tessellate>1</tessellate>\n' +
+								'			<coordinates>';
 
-			tempResult += 	"%d,%d " %(way.segments[0]['start'][1].toFixed(6), way.segments[0]['start'][0].toFixed(6));
+			tempResult += _util.format('%d,%d ', way.segments[0]['start'].lon.toFixed(6), way.segments[0]['start'].lat.toFixed(6));
 				
 			var segments = way.segments;
 			for (var k = 0, l = segments.length; k < l; k++) {
 				var segment = segments[k];
-				tempResult += "%d,%d " %(segment.end[1].toFixed(6), segment.end[0].toFixed(6));
+				tempResult += _util.format("%d,%d ", segment.end.lon.toFixed(6), segment.end.lat.toFixed(6));
 			}
 				
-			result += tempResult + '</coordinates>\n</LineString>\n</Placemark>\n';
+			result += 	tempResult + 
+						'</coordinates>\n' +
+						'		</LineString>\n' +
+						'	</Placemark>\n';
         }
 
 	    return result;
@@ -60,7 +67,7 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 _util.inherits(SingleColorKmlOutput, KmlOutput);
 
 SingleColorKmlOutput.prototype.getStyles = function () {
-	var styles = {'lineStyle0':{'color':'F000E010'}}; // Straight ways
+	var styles = { 'lineStyle0':{'color':'F000E010'} }; // Straight ways
 	
 	// Add a style for each level in a gradient from yellow to red (00FFFF - 0000FF)
 	for (var i = 0, j = 256; i < j; i++)

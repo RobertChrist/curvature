@@ -1,4 +1,4 @@
-var Config = require('../src/Config');
+var Config = require('../../../src/input/Config');
 
 // A new Config object.
 var _target;
@@ -38,7 +38,7 @@ describe('Config', function () {
 				for (var i = 0, j = keys.length; i < j; i++) {
 					var key = keys[i];
 
-					if (_target.settings[key].name === name)
+					if (_target.settings[key].name === name) 
 						return key;
 				}
 			}

@@ -1,4 +1,4 @@
-var Config = require('../Config');
+var Config = require('./Config');
 var ArgumentParser = require('argparse').ArgumentParser;
 
 var config = new Config();

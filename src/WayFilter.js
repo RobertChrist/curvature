@@ -8,6 +8,8 @@
  * @param {number} maxCurvature - ways curvier than this are too scary.
  */
 module.exports = function (minLength, maxLength, minCurvature, maxCurvature) {
+    var _self = this;
+
 	this.minLength = minLength;
 	this.maxLength = maxLength;
 	this.minCurvature = minCurvature;
@@ -21,16 +23,16 @@ module.exports = function (minLength, maxLength, minCurvature, maxCurvature) {
 		var filterBy = function () { return true; };
 
 		if (this.minLength > 0) 
-			filterBy = function (way) { return way.length / 1609 > this.minLength; };
+			filterBy = function (way) { return way.length / 1609 > _self.minLength; };
 		
 		if (this.maxLength > 0)
-			filterBy = function (way) { return way.length / 1609 < this.maxLength; };
+			filterBy = function (way) { return way.length / 1609 < _self.maxLength; };
 		
 		if (this.minCurvature > 0)
-			filterBy = function (way) { return way.curvature > this.minCurvature; };
+			filterBy = function (way) { return way.curvature > _self.minCurvature; };
 		
 		if (this.maxCurvature > 0)
-			filterBy = function (way) { return way.curvature < this.maxCurvature; };
+			filterBy = function (way) { return way.curvature < _self.maxCurvature; };
 		
 		return ways.filter(filterBy);
 	};
