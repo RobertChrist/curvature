@@ -39,14 +39,14 @@ function distanceOnUnitSphere (lat1, long1, lat2, long2) {
 	// Remember to multiply arc by the radius of the earth 
 	// in your favorite set of units to get length.
 	return arc;
-};
+}
 
 /* @returns {Number} - Determines the distance between two lat/long points on the surface of the earth,
  * assuming a straight line, in meters.
  */
 exports.distanceBetweenPoints = function (lat1, long1, lat2, long2) {
 	return distanceOnUnitSphere(lat1, long1, lat2, long2) * RADIUS_EARTH; 
-}
+};
 
 /* Takes the lengths of three sides of a triangle, and returns the radius
  * of a circle that is drawn through the three points of the triangle.
@@ -56,4 +56,4 @@ exports.distanceBetweenPoints = function (lat1, long1, lat2, long2) {
  * radius of the smallest possible circle that can enclose that triangle. */
 exports.circumcircleRadius = function (ab, bc, ac) {
 	return (ab * bc * ac) / Math.sqrt(Math.abs((ab + bc + ac) * (bc + ac - ab) * (ac + ab - bc) * (ab + bc - ac)));
-}
+};

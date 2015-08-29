@@ -45,7 +45,7 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 								'			<tessellate>1</tessellate>\n' +
 								'			<coordinates>';
 
-			tempResult += _util.format('%d,%d ', way.segments[0]['start'].lon.toFixed(6), way.segments[0]['start'].lat.toFixed(6));
+			tempResult += _util.format('%d,%d ', way.segments[0].start.lon.toFixed(6), way.segments[0].start.lat.toFixed(6));
 				
 			var segments = way.segments;
 			for (var k = 0, l = segments.length; k < l; k++) {

@@ -54,4 +54,4 @@ exports.parseArgs = function () {
 	config.updateSettingsByName(results);
 
 	return config;
-}
+};

@@ -1,6 +1,5 @@
 var _osm = require('openstreetmap-stream'),
-    _through = require('through2'),
-    _fs = require('fs');
+    _through = require('through2');
 
 /* WayCollector is responsible for parsing an osm.pbf file for the ways and coordinates
  * stored within.  It can currently only read osm.pbf, not osm.bz2 files.
@@ -27,10 +26,12 @@ module.exports = function (_logger, _wayParser, _wayCalculator) {
      * 
      * @param {string} fileNameAndPath - the file location and name, ex: C:/RhodeIsland.osm.pbf  
      * 		The passed in file must be a pbf file.
-     * @param {function} cb - This will be called with no arguments on completion.
+     * @param {function} cb - This will be called on completion.  If no errors occurred, 
+ 	 *		the second argument will be the ways that were parsed from the file, complete
+ 	 * 		 with their calculated curvature and additional information.
      */
 	this.loadFile = function (fileNameAndPath, cb) {
-        _ways = [];
+        var ways = [];
 
 	    readFile(fileNameAndPath, function(data, enc, next) {
 
@@ -65,18 +66,12 @@ module.exports = function (_logger, _wayParser, _wayCalculator) {
 	            _logger.log('FILE LOADING COMPLETE!');
 	            _logger.log('Calulating curvature, this may take a while.');
 
-	            _ways = _wayCalculator.calculate(results.ways, results.coords);
+	            ways = _wayCalculator.calculate(results.ways, results.coords);
 
 	            _logger.log("Calculations complete.");
 
-	            cb(null, _ways);
+	            cb(null, ways);
 	        });
 	    });
 	};
-
-	/* Returns the ways that were parsed from the file during this.loadFile
-	 * 
-	 * @output {obj[]} - The ways that were parsed from the file, complete 
-	 *	with their calculated curvature and additional information.
-	 */
 };
