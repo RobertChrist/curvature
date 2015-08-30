@@ -5,15 +5,15 @@ var _mathUtils = require('./mathUtils');
  * 
  * @class
  * @param {Logger} _logger - The instance we should log with.
- * @param {Number} _straightSegmentSplitThreshold - TODO: 
- * @param {Number} _level1MaxRadius - TODO:
- * @param {Number} _level1Weight - TODO:
- * @param {Number} _level2MaxRadius -TODO: 
- * @param {Number} _level2Weight - TODO:
- * @param {Number} _level3MaxRadius - TODO:
- * @param {Number} _level3Weight - TODO:
- * @param {Number} _level4MaxRadius - TODO:
- * @param {Number} _level4Weight - TODO:
+ * @param {Number} _straightSegmentSplitThreshold - If a way has a series of non-curved segments longer than this (miles), the way will be split on that straight section. 
+ * @param {Number} _level1MaxRadius - The max meters of a radius of level 1.
+ * @param {Number} _level1Weight - The weight given to segments of level 1.
+ * @param {Number} _level2MaxRadius -The max meters of a radius of level 2. 
+ * @param {Number} _level2Weight - The weight given to segments of level 2.
+ * @param {Number} _level3MaxRadius - The max meters of a radius of level 3.
+ * @param {Number} _level3Weight - The weight given to segments of level 3.
+ * @param {Number} _level4MaxRadius - The max meters of a radius of level 4.
+ * @param {Number} _level4Weight - The weight given to segments of level 4.
  */
 module.exports = function (_logger,
                            _straightSegmentSplitThreshold,
@@ -77,7 +77,13 @@ module.exports = function (_logger,
 		return { curvature: curvature, length: length };
 	}
 
-	/* TODO: */
+	/* Split the way into segments, and calculate their curvature, length and distance.
+	 *
+	 * @param {way} way - The way to calculate.
+	 * @param {int} startPoint - The first segment index of the way.
+	 * @param {int} endPoint - (optional) - The end segment index of the array.
+	 * @returns {way} a deep clone of the way, with added calculated curvature, length and distance.
+	 */
 	function getCurveRatedSection (way, startPoint, endPoint) {
 		var section = JSON.parse(JSON.stringify(way));
 

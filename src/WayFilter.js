@@ -16,6 +16,7 @@ module.exports = function (minLength, maxLength, minCurvature, maxCurvature) {
 	this.maxCurvature = maxCurvature;
 	
 	/* Filters the passed in array, returning only ways that match this class's settings. 
+	 *
 	 * @param {array} ways - An array of way objects. 
 	 * @returns {array} ways - A subset of the passed in ways array, that matched our filtering.
 	 */

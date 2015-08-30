@@ -46,6 +46,7 @@ module.exports = function () {
 	};
 
 	/* Tests that obj[prop] !== undefined && !== null.
+	 *
 	 * @param {object} obj - The object with said property.
 	 * @param {key} prop -  The property to test for.
 	 */
@@ -53,7 +54,7 @@ module.exports = function () {
 		return obj[prop] !== undefined && obj[prop] !== null;
 	}
 
-	/* Checks the current state of this.settings.  Throws an exception if any 
+	/* Checks the current state of the passed in settings object.  Throws an exception if any 
 	 * required value is missing, or a clearly invalid value is detected.
 	 */
 	function validate(settings) {
@@ -101,6 +102,7 @@ module.exports = function () {
 
 	/* Updates the public settings of this object, but throws an exception if any value was updated to an invalid value.
 	 * No error will be thrown if the passed in object contains incorrect keys, but nothing will be updated either.
+	 *
 	 * @param {object} updates - An object literal with key values that match the names parameter in the settings object.
 	 * 		For example, to update minLatbound and tabularOutput, pass in { t: true, minLatBound: null };
 	 */

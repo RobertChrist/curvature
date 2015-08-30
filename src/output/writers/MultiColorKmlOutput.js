@@ -1,12 +1,23 @@
 var _util = require('util');
 var KmlOutput = require('./KmlOutput');
 
+/* Responsible for writing a multi-colored kml file to disk, where
+ * the colors of the ways, correspond to their curvieness.
+ *
+ * @class
+ * @augments KmlOutput
+ * @param {WayFilter} - The filter that should be be run on the inputted ways, 
+ * 		to determine whether to write them into the file.
+ */
 var MultiColorKmlOutput = module.exports = function (defaultFilter) {
     MultiColorKmlOutput.super_.call(this, defaultFilter);
 
     var _self = this;
     var _allowWhitespaceRegex = new RegExp('%20', 'g');
 
+    /* @inheritDoc
+     * @augments writeWays on KmlOutput
+     */
 	this.writeWays = function (ways) {
 	    var result = '';
 		result += '	<Style id="folderStyle">\n';
@@ -70,6 +81,9 @@ var MultiColorKmlOutput = module.exports = function (defaultFilter) {
 
 _util.inherits(MultiColorKmlOutput, KmlOutput);
 
+/* @inheritDoc
+ * @augments filenameSuffix on KmlOutput
+ */
 MultiColorKmlOutput.prototype.filenameSuffix = function() {
     return '.multicolor';
 };

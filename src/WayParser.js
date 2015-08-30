@@ -16,6 +16,9 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
     
     /* This function takes in a coord that was read from the file, and if
      * it matches through our configuration, adds it to the local _coords object.
+     * Coords are only loaded into memory if they have been marked as necessary by a way
+     * that was passed into parseWay, which means all ways must be parsed before any coords are parsed.
+     * This is done as a memory saving technique.
      * 
      * @param {obj} coord - The raw data instance read from the osm file. 
      */
@@ -42,8 +45,10 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
     
     /* This function takes in a way that was read from the file, and if
      * it matches through our configuration, adds it to the local _ways object.
-     * It also seems to delete things from the _coords object, but currently that is buggy, 
-     * and I don't know why.  TODO: 
+     * All coordinates that are included in the way are marked as true, in the local coords object.
+     * When parseCoord is called, only coords marked as true will be updated to include latitude and longitude
+     * data as a memory savings.  This means, however, that parseWay must be called for all ways before 
+     * parseCoords is called for any coord.
      * 
      * @param {obj} way - The raw data instance read from the osm file. 
      */
@@ -83,6 +88,7 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
         }
     };
 
+    /* @returns {{ways: '[]', coords: {}}} - Returns an object of all parsed coordinates and ways */
     this.getResults = function() {
         return { ways: _ways, coords: _coords };
     };
