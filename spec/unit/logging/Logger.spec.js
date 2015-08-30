@@ -1,4 +1,4 @@
-var _target = require('../../src/Logger');
+var _target = require('../../../src/logging/Logger');
 
 describe('Logger', function () {
 	describe('Constructor', function () {

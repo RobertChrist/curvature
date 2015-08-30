@@ -21,20 +21,18 @@ module.exports = function (minLength, maxLength, minCurvature, maxCurvature) {
 	 * @returns {array} ways - A subset of the passed in ways array, that matched our filtering.
 	 */
 	this.filter = function (ways) {
-		var filterBy = function () { return true; };
-
 		if (this.minLength > 0) 
-			filterBy = function (way) { return way.length / 1609 > _self.minLength; };
+			ways = ways.filter(function (way) { return way.length / 1609 > _self.minLength; });
 		
 		if (this.maxLength > 0)
-			filterBy = function (way) { return way.length / 1609 < _self.maxLength; };
+			ways = ways.filter(function (way) { return way.length / 1609 < _self.maxLength; });
 		
 		if (this.minCurvature > 0)
-			filterBy = function (way) { return way.curvature > _self.minCurvature; };
+			ways = ways.filter(function (way) { return way.curvature > _self.minCurvature; });
 		
 		if (this.maxCurvature > 0)
-			filterBy = function (way) { return way.curvature < _self.maxCurvature; };
+			ways = ways.filter(function (way) { return way.curvature < _self.maxCurvature; });
 		
-		return ways.filter(filterBy);
+		return ways;
 	};
 };
