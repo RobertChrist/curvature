@@ -251,7 +251,6 @@ module.exports = function (_logger,
 				sections.push.apply(sections, waySections);
 			} catch (err) {
 			    _logger.forceLog(err);
-				continue;
 			}
 		}
 

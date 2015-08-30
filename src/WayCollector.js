@@ -26,7 +26,9 @@ module.exports = function (_logger, _wayParser, _wayCalculator) {
      * 
      * @param {string} fileNameAndPath - the file location and name, ex: C:/RhodeIsland.osm.pbf  
      * 		The passed in file must be a pbf file.
-     * @param {function} cb - This will be called with no arguments on completion.
+     * @param {function} cb - This will be called on completion.  If no errors occurred, 
+ 	 *		the second argument will be the ways that were parsed from the file, complete
+ 	 * 		 with their calculated curvature and additional information.
      */
 	this.loadFile = function (fileNameAndPath, cb) {
         var ways = [];
@@ -72,10 +74,4 @@ module.exports = function (_logger, _wayParser, _wayCalculator) {
 	        });
 	    });
 	};
-
-	/* Returns the ways that were parsed from the file during this.loadFile
-	 * 
-	 * @output {obj[]} - The ways that were parsed from the file, complete 
-	 *	with their calculated curvature and additional information.
-	 */
 };

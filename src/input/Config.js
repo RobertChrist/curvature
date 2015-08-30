@@ -3,6 +3,7 @@ var fs = require('fs');
 /* Holds all of the configuration settings for this application.
  * This object mainly exists so we aren't tied to commandLineParser.js, 
  * as well as giving us a centralized place to do validation on the user input.
+ *
  * @class
  */
 module.exports = function () {
@@ -27,7 +28,7 @@ module.exports = function () {
 		level1MaxRadius: 				{ name: 'level1MaxRadius',	value: 175 						},
 		level2MaxRadius: 				{ name: 'level2MaxRadius',	value: 100 						},
 		level3MaxRadius: 				{ name: 'level3MaxRadius',	value: 60 						},
-		level4MaxRadius: 				{ name: 'level4MaxRadius',	value: 2 						},
+		level4MaxRadius: 				{ name: 'level4MaxRadius',	value: 30 						},
 		level1Weight: 	 				{ name: 'level1Weight',		value: 1 						},
 		level2Weight: 	 				{ name: 'level2Weight',		value: 1.3 						},
 		level3Weight: 	 				{ name: 'level3Weight',		value: 1.6 						},
