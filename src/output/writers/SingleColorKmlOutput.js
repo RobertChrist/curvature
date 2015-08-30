@@ -1,12 +1,29 @@
 var _util = require('util');
 var KmlOutput = require('./KmlOutput');
 
+
+/* Responsible for writing a single-colored kml file to disk, where
+ * variance within the color corresponds to the way's curvieness.
+ *
+ * @class
+ * @augments KmlOutput
+ * @param {WayFilter} - The filter that should be be run on the inputted ways, 
+ * 		to determine whether to write them into the file.
+ */
 var SingleColorKmlOutput = module.exports = function (defaultFilter) {
     SingleColorKmlOutput.super_.call(this, defaultFilter);
 
     var _self = this;
     var _allowWhitespaceRegex = new RegExp('%20', 'g');
 
+    /* Returns a value between 1 and 256 that corresponds to the level of 
+	 * curvature for the passed in argument as compared to the max curvature
+	 * that will be written to this file, so that the single color for this kml 
+	 * file can be shaded appropriately.
+	 *
+	 * @param {number} curvature - The curvature to get a shading level for .
+	 * @returns {int} - A number between 1 and 256 that corresponds to the passed in argument.
+     */
 	function levelForCurvature (curvature) {
 		var offset = _self.filter.minCurvature > 0 ? _self.filter.minCurvature : 0;
 		
@@ -23,10 +40,14 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 		return level;
 	}
 	
+	/* @returns {string} - A linestyle that should have a single color style associated with it. */
 	function lineStyle (way) {
 		return 'lineStyle' + levelForCurvature(way.curvature);
 	}
 
+    /* @inheritDoc
+     * @augments writeWays on KmlOutput
+     */
 	this.writeWays = function (ways) {
 	    var result = '';
 
@@ -65,6 +86,9 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 
 _util.inherits(SingleColorKmlOutput, KmlOutput);
 
+/* @inheritDoc
+ * @augments getStyles on KmlOutput
+ */
 SingleColorKmlOutput.prototype.getStyles = function () {
 	var styles = { 'lineStyle0':{'color':'F000E010'} }; // Straight ways
 	

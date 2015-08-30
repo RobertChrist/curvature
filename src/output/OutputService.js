@@ -10,6 +10,13 @@ var WayFilter = require('../WayFilter');
  */
 module.exports = function(_logger) {
 
+    /* Returns a kml file writer that is configured according to the passed in arguments.
+     *
+     * @param {bool} colorize - Should the kml file be multicolored or not?
+     * @param {bool} kmUnits - Should the file be in kilometers, or miles?
+     * @param {WayFilter} filter - The filter that should be used to determine if a way should be written.
+     * @returns {KmlOutput} kmlWriter - The kmlWriter instance that will write the kml file.
+     */
     function getKMLWriter(colorize, kmUnits, filter) {
         var kml = colorize ? new MultiColorKmlOutput(filter) 
                            : new SingleColorKmlOutput(filter);
@@ -20,6 +27,13 @@ module.exports = function(_logger) {
         return kml;
     }
 
+    /* A function that will parse colorize, optString, and defaultFilter, and returns
+     * the objects required to get a kmlWriter for writing additional kml files.
+     * 
+     * @param {bool} colorize - Should the kml file be multicolored or not?
+     * @param {string, delimited by ,} optString - The options for the additional kml files.
+     * @param {WayFilter} filter - The filter that should supply default values if not otherwise specified in optstring.
+     */
     function parseOptions(colorize, optString, defaultFilter) {
         var filter = new WayFilter(defaultFilter.minLength, defaultFilter.maxLength, 
     							   defaultFilter.minCurvature, defaultFilter.maxCurvature);
@@ -57,12 +71,17 @@ module.exports = function(_logger) {
         return {'colorize': colorize, 'filter': filter};
     }
 
-    /* @param {string} fileNameAndPath - The relative or absolute name or name and path of the file we should load.
-     * @param {bool} outputToScreen - Whether we should output the results to the screen 
-     * @param {string } baseName - Optional - Output files should share this base file name.
-     * @param {bool} skipKMLFile - If true, the output file is not created.
-     * @param {bool} colorize - The output KML file should include colorized styles (red/orange/yellow/etc)
-     * @param {bool} useKM - If true, program will output values in kilometers.
+    /* Filters the input ways with the filter, and output the results in the manner and to the locations
+     * specified by the other input arguments. 
+     *
+     * @param {[way]} ways - All of our calculated way objects.
+     * @param {WayFilter} filter - The filter that should be used to determine if a way should be outputted or ignored.
+     * @param {string} outputFileBaseName - Optional - Output files should share this string in the file name.
+     * @param {string} path - The directory the output file should be saved to.
+     * @param {bool} colorize - Should the output KML file should include colorized styles (red/orange/yellow/etc)?
+     * @param {bool} useKM - If true, program will output values in kilometers.  Otherwise, miles.
+     * @param {bool} outputToScreen - If true, program will (also) output values to the logger object.
+     * @param {bool} skipKMLFile - If true, the output kml file is not created.
      * @param {obj} additionalKML - Multiple files can be created using this option, see README.md
      */
     this.outputResults = function(ways, filter, outputFileBaseName, path, colorize, useKM, outputToScreen, skipKMLFile, additionalKML) {
