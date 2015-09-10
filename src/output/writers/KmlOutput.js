@@ -14,7 +14,8 @@ var KmlOutput = module.exports = function (defaultFilter) {
     KmlOutput.super_.call(this, defaultFilter);
     
     var _self = this;
-	var _units = 'mi'; //TODO: This never gets set to km, is this a bug in original code?
+
+	this.units = 'mi';
 
 	/* Returns the string for the first lines of the kml document. 
 	 *
@@ -95,7 +96,7 @@ var KmlOutput = module.exports = function (defaultFilter) {
 	 * @returns {string} - The string description of the way.
      */
 	this.getDescription = function (way) {
-		var divideBy = _units === 'km' ? 1000 : 1609;
+		var divideBy = this.units === 'km' ? 1000 : 1609;
 
 		return _util.format('Curvature: %d\nDistance: %d km\nType: %s\nSurface: %s', way.curvature.toFixed(2), (way.length / divideBy).toFixed(2), way.type, way.surface);
 	};

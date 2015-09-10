@@ -141,10 +141,21 @@ describe ('KmlOutput.js', function () {
 			surface: 'paved'
 		};
 
-		var target = new KmlOutput(filter);
+		it ('returns mile based description', function () {
+			var target = new KmlOutput(filter);
 
-		var result = target.getDescription(way);
+			var result = target.getDescription(way);
 
-		expect('Curvature: 1\nDistance: .62 km\nType: highway\nSurface: paved')
+			expect('Curvature: 1\nDistance: .62 km\nType: highway\nSurface: paved')
+		});
+
+		it ('returns mile based description', function () {
+			var target = new KmlOutput(filter);
+			target.units = 'km';
+
+			var result = target.getDescription(way);
+
+			expect('Curvature: 1\nDistance: 1 km\nType: highway\nSurface: paved')
+		});
 	});
 });

@@ -26,7 +26,7 @@ describe ('SingleColorKmlOutput.js', function () {
 
 	describe ('writeWays', function () {
 		it ('is a function', function () {
-			expect(typeof SingleColorKmlOutput).toBe('function');
+			expect(typeof new SingleColorKmlOutput().writeWays).toBe('function');
 		});
 
 		// I'll cover testing this for real in the integration tests.

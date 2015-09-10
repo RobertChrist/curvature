@@ -34,7 +34,7 @@ describe ('MultiColorKmlOutput.js', function () {
 
 	describe('writeWays', function () {
 		it ('is a function', function () {
-			expect(typeof MultiColorKmlOutput).toBe('function');
+			expect(typeof new MultiColorKmlOutput().writeWays).toBe('function');
 		});
 
 		// I'll cover testing this for real in the integration tests.

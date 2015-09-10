@@ -35,6 +35,7 @@ module.exports = function(_logger) {
      * @param {WayFilter} filter - The filter that should supply default values if not otherwise specified in optstring.
      */
     function parseOptions(colorize, optString, defaultFilter) {
+        var tempColor = false;
         var filter = new WayFilter(defaultFilter.minLength, defaultFilter.maxLength, 
     							   defaultFilter.minCurvature, defaultFilter.maxCurvature);
         
@@ -52,23 +53,21 @@ module.exports = function(_logger) {
             
             var value = opt[1];
             if (key === 'colorize') {
-                if (typeof value === "number")
-                    colorize = 1;
-                else
-                    colorize = 0;
-            } else if (key === 'minCurvature')
-                filter.minCurvature = value;	// when debugging, check that value is a number.
+                tempColor = value == 1 ? true : false;
+            }
+            else if (key === 'minCurvature')
+                filter.minCurvature = parseFloat(value);	// when debugging, check that value is a number.
             else if (key === 'maxCurvature')
-                filter.maxCurvature = value;
+                filter.maxCurvature = parseFloat(value);
             else if (key === 'minLength')
-                filter.minLength = value;
+                filter.minLength = parseFloat(value);
             else if (key === 'maxLength')
-                filter.maxLength = value;
+                filter.maxLength = parseFloat(value);
             else
                 _logger.forceLog("Ignoring unknown key '" + key + "'' passed to --addKML\n");
         }
         
-        return {'colorize': colorize, 'filter': filter};
+        return {'colorize': tempColor, 'filter': filter};
     }
 
     /* Filters the input ways with the filter, and output the results in the manner and to the locations
@@ -108,8 +107,7 @@ module.exports = function(_logger) {
             for (var k = 0, l = additionalKML.length; k < l; k++) {
                 var optString = additionalKML[k];
 
-                var parsedOpts = parseOptions(optString);
-
+                var parsedOpts = parseOptions(colorize, optString, filter);
                 kmlWriter = getKMLWriter(parsedOpts.colorize, useKM, parsedOpts.filter);
                 kmlWriter.write(ways, path, outputFileBaseName);
             }
