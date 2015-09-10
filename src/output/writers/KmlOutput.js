@@ -14,7 +14,7 @@ var KmlOutput = module.exports = function (defaultFilter) {
     KmlOutput.super_.call(this, defaultFilter);
     
     var _self = this;
-	var _units = 'mi';
+	var _units = 'mi'; //TODO: This never gets set to km, is this a bug in original code?
 
 	/* Returns the string for the first lines of the kml document. 
 	 *

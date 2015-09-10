@@ -11,7 +11,8 @@
   },
   "devDependencies": {
     "jasmine-node": "^1.14.5",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "proxyquire": "^1.7.2"
   },
   "scripts": {
     "test": "node ./node_modules/jasmine-node/lib/jasmine-node/cli.js ./spec"
