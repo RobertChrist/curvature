@@ -93,8 +93,13 @@ SingleColorKmlOutput.prototype.getStyles = function () {
 	var styles = { 'lineStyle0':{'color':'F000E010'} }; // Straight ways
 	
 	// Add a style for each level in a gradient from yellow to red (00FFFF - 0000FF)
-	for (var i = 0, j = 256; i < j; i++)
-		styles['lineStyle' + (i + 1)] = {'color':'F000' + (255 - i).toString(16) + 'FF' };
+	for (var i = 0, j = 256; i < j; i++) {
+		var val = (255 - i).toString(16).toUpperCase();
+		if (val.length < 2)
+			val = '0' + val;
+
+		styles['lineStyle' + (i + 1)] = {'color':'F000' + val + 'FF' };
+	}
 
 	return styles;
 };
