@@ -47,15 +47,6 @@ describe ('OutputService.js', function () {
 			mockBaseName = null;
 		});
 
-		function assertMockCalledCorrectly(expectedNumTimes) {
-			expect(mockCalledTimes).toBe(expectedNumTimes);
-			console.log(mockPath)
-			console.log(path)
-			expect(_.isEqual(mockWays, ways)).toBe(true);
-			expect(_.isEqual(mockPath, path)).toBe(true);
-			expect(_.isEqual(mockBaseName, baseName)).toBe(true);
-		}
-
 		it ('is a function', function () {
 			expect(typeof new OutputService().outputResults).toBe('function');
 		});
@@ -69,16 +60,17 @@ describe ('OutputService.js', function () {
 				target = new mockedTarget(logger);
 			});
 
-			iit ('given output to screen, outputs to screen', function () {
+			it ('given output to screen, outputs to screen', function () {
 				target.outputResults(ways, filter, baseName, path, false, false, true, true, false);
 
-				assertMockCalledCorrectly(1);
+				expect(mockCalledTimes).toBe(1);
+				expect(_.isEqual(mockWays, ways)).toBe(true);
 			});
 
 			it ('told not to log, does not output to screen', function () {
 				target.outputResults(ways, filter, baseName, path, false, false, false, true, false);
 
-				assertMockCalledCorrectly(0);
+				expect(mockCalledTimes).toBe(0);
 			});
 		});
 		
@@ -94,13 +86,16 @@ describe ('OutputService.js', function () {
 			it ('file writes kml file', function () {
 				target.outputResults(ways, filter, baseName, path, false, false, false, false, false);
 
-				assertMockCalledCorrectly(1);
+				expect(mockCalledTimes).toBe(1);
+				expect(_.isEqual(mockWays, ways)).toBe(true);
+				expect(_.isEqual(mockPath, path)).toBe(true);
+				expect(_.isEqual(mockBaseName, baseName)).toBe(true);
 			});
 
 			it ('does not write kml file', function () {
 				target.outputResults(ways, filter, baseName, path, false, false, false, true, false);
 
-				assertMockCalledCorrectly(0);
+				expect(mockCalledTimes).toBe(0);
 			});
 
 			it ('uses km values', function () {
@@ -128,13 +123,16 @@ describe ('OutputService.js', function () {
 			it ('writes kml file', function () {
 				target.outputResults(ways, filter, baseName, path, true, false, false, false, false);
 
-				assertMockCalledCorrectly(1);
+				expect(mockCalledTimes).toBe(1);
+				expect(_.isEqual(mockWays, ways)).toBe(true);
+				expect(_.isEqual(mockPath, path)).toBe(true);
+				expect(_.isEqual(mockBaseName, baseName)).toBe(true);
 			});
 
 			it ('does not write kml file', function () {
 				target.outputResults(ways, filter, baseName, path, true, false, false, true, false);
 
-				assertMockCalledCorrectly(0);
+				expect(mockCalledTimes).toBe(0);
 			});
 
 			it ('uses km values', function () {
@@ -160,7 +158,10 @@ describe ('OutputService.js', function () {
 
 				target.outputResults(ways, filter, baseName, path, false, false, false, true, ['colorize=1,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0']);
 
-				assertMockCalledCorrectly(1);
+				expect(mockCalledTimes).toBe(1);
+				expect(_.isEqual(mockWays, ways)).toBe(true);
+				expect(_.isEqual(mockPath, path)).toBe(true);
+				expect(_.isEqual(mockBaseName, baseName)).toBe(true);
 			});
 
 			it ('write singlecolored', function () {
@@ -170,7 +171,10 @@ describe ('OutputService.js', function () {
 
 				target.outputResults(ways, filter, baseName, path, false, false, false, true, ['colorize=0,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0']);
 
-				assertMockCalledCorrectly(1);
+				expect(mockCalledTimes).toBe(1);
+				expect(_.isEqual(mockWays, ways)).toBe(true);
+				expect(_.isEqual(mockPath, path)).toBe(true);
+				expect(_.isEqual(mockBaseName, baseName)).toBe(true);
 			});
 
 			it ('updates filter settings', function () {
@@ -206,7 +210,7 @@ describe ('OutputService.js', function () {
 
 				target.outputResults(ways, filter, baseName, path, false, false, false, true, ['colorize=0', 'colorize=0']);
 
-				assertMockCalledCorrectly(2);
+				expect(mockCalledTimes).toBe(2);
 			});
 		});
 	});
