@@ -244,7 +244,7 @@ module.exports = function (_logger,
 	 * 
 	 * @param {obj[]} ways - The roads to calculate curviness of.
 	 * @param {obj} coords - The coordinates the ways reference.
-	 * @returns {obj[]} - The ways, updated with their new curve and distaince information.
+	 * @returns {obj[]} - The ways, updated with their new curve and distance information.
 	 */
 	this.calculate = function (ways, coords) {
 		var sections = [];

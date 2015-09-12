@@ -1,5 +1,4 @@
 var WayCollector = require('../../src/WayCollector');
-var _ = require('lodash');
 
 describe ('WayCollector', function () {
 
