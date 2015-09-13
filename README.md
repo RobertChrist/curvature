@@ -1,6 +1,6 @@
-#If you are looking for the active Node JS port, please switch to 
+#If you are looking for the active Node JS port, please switch to the branch
 
-[branch Port/Language_NodeJS, available here](https://github.com/RobertChrist/curvature/tree/Port/Language_NodeJs)
+[Port/Language_NodeJS](https://github.com/RobertChrist/curvature/tree/Port/Language_NodeJs)
 
 -----
 
