@@ -113,40 +113,48 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
             while (ways.length > 0) {
                 var baseWay = ways.pop();
 
-                // try to join to the begining or end
-                var unusedWays = [];
-                while (ways.length > 0) {
-                    var way = ways.pop();
+                // Loop through all our ways at least as many times as we have ways
+                // to be able to catch any that join onto the end after others have
+                // been joined on.
+                var maxLoop = ways.length;
+                for (var k = 0, l = maxLoop; k < l; k++) {
 
-                    // join to the end of the base in order
-                    if (baseWay.refs[baseWay.refs.length - 1] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
-                        baseWay.refs = baseWay.refs.concat(way.refs);
-                        if (baseWay.name !== way.name) {
-                            baseWay.name = route;
+                    // try to join to the begining or end
+                    var unusedWays = [];
+                    while (ways.length > 0) {
+                        var way = ways.pop();
+
+                        // join to the end of the base in order
+                        if (baseWay.refs[baseWay.refs.length - 1] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
+                            baseWay.refs = baseWay.refs.concat(way.refs);
+                            if (baseWay.name !== way.name) {
+                                baseWay.name = route;
+                            }
+                        }
+                        // join to the end of the base in reverse order
+                        else if (baseWay.refs[baseWay.refs.length - 1] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
+                            way.refs.reverse();
+                            baseWay.refs = baseWay.refs.concat(way.refs);
+                        }
+                        // join to the beginning of the base in order
+                        else if (baseWay.refs[0] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
+                            baseWay.refs = way.refs.concat(baseWay.refs);
+                        }
+                        // join to the beginning of the base in reverse order
+                        else if (baseWay.refs[0] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
+                            way.refs.reverse();
+                            baseWay.refs = way.refs.concat(baseWay.refs);
+                        }
+                        else {
+                            unusedWays.push(way);
                         }
                     }
-                    // join to the end of the base in reverse order
-                    else if (baseWay.refs[baseWay.refs.length - 1] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
-                        way.refs.reverse();
-                        baseWay.refs = baseWay.refs.concat(way.refs);
-                    }
-                    
-                    // join to the beginning of the base in order
-                    if (baseWay.refs[0] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
-                        baseWay.refs = way.refs.concat(baseWay.refs);
-                    }
-                    // join to the beginning of the base in reverse order
-                    else if (baseWay.refs[0] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
-                        way.refs.reverse();
-                        baseWay.refs = way.refs.concat(baseWay.refs);
-                    }
-                    else {
-                        unusedWays.push(way);
-                    }
+
+                    // Continue on joining the rest of the ways in this route.
+                    ways = unusedWays;
                 }
 
-                ways = unusedWays;
-
+                // Add this base way to our ways list
                 _self.ways.push(baseWay);
             }
         }
