@@ -85,6 +85,8 @@ var outputPath = settings.outputPath.value;
 
 var fileNameAndPath = _path.resolve(settings.file.value);
 var outputFileBaseName = outputBaseName ? _path.basename(outputBaseName) : _path.basename(fileNameAndPath);
+outputFileBaseName = outputFileBaseName.replace('.osm', '');
+
 var path = !outputPath ? _path.dirname(fileNameAndPath) : outputPath;
 
 
