@@ -91,7 +91,7 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
                 if (!_self.routes[route])
                     _self.routes[route] = [];
 
-                _self.routes[route].push(newWay);
+                _self.routes[route].push(JSON.parse(JSON.stringify(newWay)));
             }
         } 
         else {
