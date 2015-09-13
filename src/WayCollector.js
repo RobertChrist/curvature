@@ -41,15 +41,18 @@ module.exports = function (_logger, _wayParser, _wayCalculator) {
 
 	/* An internal function for WayCollector.js that we've made public to allow unit testing. */
     this._afterAllParsed = function (cb) {
-    	var results = _wayParser.getResults();
+        _logger.log('Consolidating parsed data.');
+        _wayParser.joinWays();
+        
+        var results = _wayParser.getResults();
 
         if (!results.ways.length)
             return cb('A problem was encountered, no data was loaded from file.  ' +
                 'This is most likely because the input file was osm.bz2 and not osm.pbf!');
 
         _logger.log('FILE LOADING COMPLETE!');
-        _logger.log('Calulating curvature, this may take a while.');
 
+        _logger.log('Calulating curvature, this may take a while.');
         var ways = _wayCalculator.calculate(results.ways, results.coords);
 
         _logger.log("Calculations complete.");

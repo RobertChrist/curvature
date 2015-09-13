@@ -5,6 +5,7 @@ describe ('WayCollector', function () {
 	var _parseWayCalled = false;
 	var _parseCoordCalled = false;
 	var _getResultsCalled = false;
+	var _joinWaysCalled = false;
 
 	var _loggerMock = {
 		log: function () {}
@@ -23,6 +24,9 @@ describe ('WayCollector', function () {
 			return {
 				ways: []
 			};
+		},
+		joinWays: function () {
+			_joinWaysCalled = true;
 		}
 	};
 
@@ -34,6 +38,7 @@ describe ('WayCollector', function () {
 		_parseWayCalled = false;
 		_parseCoordCalled = false;
 		_getResultsCalled = false;
+		_joinWaysCalled = false;
 
 		_target = new WayCollector(_loggerMock, _wayParserMock, _wayCalculatorMock);
 	});
@@ -122,6 +127,31 @@ describe ('WayCollector', function () {
 			});
 
 			expect(_getResultsCalled).toBe(true);
+		});
+
+		it ('tells parser to clean its data', function () {
+			_target._afterAllParsed(function (err, res) {
+			});
+
+			expect(_joinWaysCalled).toBe(true);
+		});
+
+		it ('tells parser to clean its data before calling calculate', function () {
+			var target = new WayCollector(_loggerMock, { 
+				joinWays: function () { 
+					_joinWaysCalled = true;
+					throw ''; }
+			}, _wayCalculatorMock);
+
+			var errorThrown = false;
+			try {
+				target._afterAllParsed(function (err, res) { });
+			} catch (e) {
+				errorThrown = true;
+				expect(_getResultsCalled).toBe(false);
+			}
+
+			if (!errorThrown) expect(false).toBe(true);
 		});
 
 		it ('throws error on null results', function () {

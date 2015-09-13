@@ -7,4 +7,6 @@ describe ('WayParser', function () {
 			expect(typeof WayParser).toBe('function');
 		});
 	});
+
+	//TODO:!
 });

@@ -13,6 +13,7 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
 
     var _ways = [];
     var _coords = {};
+    var _routes = {};
     
     /* This function takes in a coord that was read from the file, and if
      * it matches through our configuration, adds it to the local _coords object.
@@ -81,10 +82,75 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
 
         newWay.surface = tags.surface ? tags.surface : 'unknown';
 
-        _ways.push(newWay);
+        if (tags.ref) {
+            var route = tags.ref;
+            
+            if (!_self.routes[route])
+                _self.routes[route] = [];
+
+            _self.routes[route].push(newWay);
+        } else {
+            _ways.push(newWay);
+        }
 
         for (var i = 0, j = refs.length; i < j; i++) {
             _coords[refs[i]] = true;
+        }
+    };
+
+    /* Once all of the data has been parsed from its raw form,
+     * it still needs to be cleaned up to the state that we can work with it.
+     * So call this once all your way / coord parsing is done, and before calling getResults.
+     */
+    this.joinWays = function () {
+        // Join numbered routes end-to-end and add them to the way list.
+
+        var routeKeys = Object.keys(_self.routes);
+        for (var i = 0, j = routeKeys.length; i < j; i++) {
+            var route = routeKeys[i];
+            var ways = _self.routes[route];
+
+            while (ways.length > 0) {
+                var baseWay = ways.pop();
+
+                // try to join to the begining or end
+                for (var k = 0; k < ways.length; k++) {
+                    var unusedWays = [];
+                    while (ways.length > 0) {
+                        var way = ways.pop();
+
+                        // join to the end of the base in order
+                        if (baseWay.refs[baseWay.refs.length - 1] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
+                            baseWay.refs = baseWay.refs.concat(way.refs);
+                            if (baseWay.name !== way.name) {
+                                baseWay.name = route;
+                            }
+                        }
+                        // join to the end of the base in reverse order
+                        else if (baseWay.refs[baseWay.refs.length - 1] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
+                            way.refs.reverse();
+                            baseWay.refs = baseWay.refs.concat(way.refs);
+                        }
+                        
+                        // join to the beginning of the base in order
+                        if (baseWay.refs[0] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
+                            baseWay.refs = way.refs.concat(baseWay.refs);
+                        }
+                        // join to the beginning of the base in reverse order
+                        else if (baseWay.refs[0] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
+                            way.refs.reverse();
+                            baseWay.refs = way.refs.concat(baseWay.refs);
+                        }
+                        else {
+                            unusedWays.push(way);
+                        }
+                    }
+
+                    ways = unusedWays;
+                }
+
+                _self.ways.push(baseWay);
+            }
         }
     };
 
