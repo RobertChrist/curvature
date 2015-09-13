@@ -82,6 +82,12 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
 
         newWay.surface = tags.surface ? tags.surface : 'unknown';
 
+        // Add our ways to a route collection if we can match them either
+        // by route-number or alternatively, by name. These route-collections
+        // will later be joined into longer segments so that curvature
+        // calculations can extend over multiple way-segments that might be
+        // split due to bridges, local names, speed limits, or other metadata
+        // changes.
         if (tags.ref) {
 
             var routes = tags.ref.split(';');
@@ -95,7 +101,14 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
             }
         } 
         else {
-            _ways.push(newWay);
+            if (newWay.name) {
+                if (!_self.routes[newWay.name])
+                    _self.routes[newWay.name] = [];
+
+                _self.routes[newWay.name].push(newWay);
+            }
+            else
+                _ways.push(newWay);
         }
 
         for (var i = 0, j = refs.length; i < j; i++) {
