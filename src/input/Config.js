@@ -43,7 +43,7 @@ module.exports = function () {
 		
 		addKML: 		 				{ name: 'addKML',			value: null, 	optional: true  },
 		
-		ignoredSurfaces: 				{ name: 'ignoredSurfaces',	value: 'dirt,unpaved,gravel,sand,grass,ground' },
+		ignoredSurfaces: 				{ name: 'ignoredSurfaces',	value: 'dirt,unpaved,gravel,fine_gravel,sand,grass,ground' },
 		wayTypes: 	 				    { name: 'highwayTypes',		value: 'secondary,residential,tertiary,primary,primary_link,motorway,motorway_link,road,trunk,trunk_link,unclassified' }
 	};
 
