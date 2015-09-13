@@ -134,8 +134,19 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
                 // Loop through all our ways at least as many times as we have ways
                 // to be able to catch any that join onto the end after others have
                 // been joined on.
+                var tempLimit = 0;
                 var maxLoop = ways.length;
-                for (var k = 0, l = maxLoop; k < l; k++) {
+
+                // Start our first iteration with the "wayModified" flag set to True.
+                // After this first loop, if no ways get added to the base_way,
+                // there is no reason to keep looping until max_loop
+                var wayModified = true;
+                while (wayModified && tempLimit < maxLoop) {
+                    tempLimit = tempLimit + 1;
+
+                    // Set our modification flag to false so we can detect changes
+                    // to the base way.
+                    wayModified = false;
 
                     // try to join to the begining or end
                     var unusedWays = [];
@@ -144,6 +155,8 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
 
                         // join to the end of the base in order
                         if (baseWay.refs[baseWay.refs.length - 1] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
+                            wayModified = true;
+
                             // Drop the matching first-ref in the way so that we don't have a duplicate point.
                             way.refs.splice(0, 1);
 
@@ -154,6 +167,8 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
                         }
                         // join to the end of the base in reverse order
                         else if (baseWay.refs[baseWay.refs.length - 1] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
+                            wayModified = true;
+                            
                             way.refs.reverse();
                             
                             // Drop the matching first-ref in the way so that we don't have a duplicate point.
@@ -166,6 +181,8 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
                         }
                         // join to the beginning of the base in order
                         else if (baseWay.refs[0] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
+                            wayModified = true;
+                            
                             // Drop the matching last-ref in the way so that we don't have a duplicate point.
                             way.refs.splice(way.refs.length - 1, 1);
 
@@ -176,6 +193,8 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
                         }
                         // join to the beginning of the base in reverse order
                         else if (baseWay.refs[0] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
+                            wayModified = true;
+                            
                             way.refs.reverse();
 
                             // Drop the matching last-ref in the way so that we don't have a duplicate point.
