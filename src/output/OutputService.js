@@ -38,17 +38,19 @@ module.exports = function(_logger) {
     /* A function that will parse colorize, optString, and defaultFilter, and returns
      * the objects required to get a kmlWriter for writing additional kml files.
      * 
-     * @param {bool} colorize - Should the kml file be multicolored or not?
-     * @param {int} limitPoints - reduce the size out the output file (if colorize is false, only)
+     * @param {bool} colorize - If not specified in the opt string, the default colorize value for the file.
+     * @param {int} limitPoints - If not specified in the opt string, the default limit point value for the file.
+     * @param {string} path - If not specified in the optstring, the default directory the output file should be saved to.
      * @param {string, delimited by ,} optString - The options for the additional kml files.
      * @param {WayFilter} filter - The filter that should supply default values if not otherwise specified in optstring.
-     * @returns { 'colorize': bool, 'filter': WayFilter, 'limitPoints': int }
+     * @returns { 'colorize': bool, 'filter': WayFilter, 'limitPoints': int, 'path': path }
      */
-    function parseOptions(colorize, limitPoints, optString, defaultFilter) {
+    function parseOptions(colorize, limitPoints, path, optString, defaultFilter) {
         var tempColor = colorize;
         var filter = new WayFilter(defaultFilter.minLength, defaultFilter.maxLength, 
     							   defaultFilter.minCurvature, defaultFilter.maxCurvature);
         var tempLimitPoints = limitPoints;
+        var tempOutputPath = path;
 
         var opts = optString.split(',');
         
@@ -79,11 +81,13 @@ module.exports = function(_logger) {
                 if (t >= 2)
                     tempLimitPoints = t;
             }
+            else if (key === 'outputPath') 
+                tempOutputPath = value;
             else
                 _logger.forceLog("Ignoring unknown key '" + key + "'' passed to --addKML\n");
         }
         
-        return {'colorize': tempColor, 'filter': filter, 'limitPoints': tempLimitPoints };
+        return {'colorize': tempColor, 'filter': filter, 'limitPoints': tempLimitPoints, 'path': tempOutputPath };
     }
 
     /* Filters the input ways with the filter, and output the results in the manner and to the locations
@@ -124,9 +128,9 @@ module.exports = function(_logger) {
             for (var k = 0, l = additionalKML.length; k < l; k++) {
                 var optString = additionalKML[k];
 
-                var parsedOpts = parseOptions(colorize, limitPoints, optString, filter);
+                var parsedOpts = parseOptions(colorize, limitPoints, path, optString, filter);
                 kmlWriter = getKMLWriter(parsedOpts.colorize, parsedOpts.limitPoints, useKM, parsedOpts.filter);
-                kmlWriter.write(ways, path, outputFileBaseName);
+                kmlWriter.write(ways, parsedOpts.path, outputFileBaseName);
             }
         }
     };

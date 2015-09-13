@@ -47,10 +47,12 @@ describe ('OutputService.js', function () {
 			mockBaseName = null;
 		});
 
-		function assertMockCalled() {
+		function assertMockCalled(altPath) {
+			var expectedPath = altPath ? altPath : path;
+
 			expect(mockCalledTimes).toBe(1);
 			expect(_.isEqual(mockWays, ways)).toBe(true);
-			expect(_.isEqual(mockPath, path)).toBe(true);
+			expect(_.isEqual(mockPath, expectedPath)).toBe(true);
 			expect(_.isEqual(mockBaseName, baseName)).toBe(true);
 		}
 
@@ -299,6 +301,16 @@ describe ('OutputService.js', function () {
 				assertMockCalled();
 			});
 
+			it ('can have alternative path', function () {
+				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/ReducedPointsSingleColorKmlOutput': OutputBaseMock });
+
+				target = new mockedTarget(logger);
+
+				target.outputResults(ways, filter, baseName, path, false, 3, false, false, true, ['outputPath=asdf']);
+
+				assertMockCalled('asdf');
+			});
+
 			it ('can write multiple files', function () {
 				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/SingleColorKmlOutput': OutputBaseMock });
 
@@ -308,6 +320,8 @@ describe ('OutputService.js', function () {
 
 				expect(mockCalledTimes).toBe(2);
 			});
+
+
 		});
 	});
 });
