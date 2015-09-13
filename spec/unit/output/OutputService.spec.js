@@ -12,6 +12,7 @@ describe ('OutputService.js', function () {
 		});
 	});
 
+
 	describe('outputResults', function () {
 		var logger = new Logger();
 		var ways = [{ someKey: 'someValue' }];
@@ -25,18 +26,32 @@ describe ('OutputService.js', function () {
 		var mockWays = null;
 		var mockPath = null;
 		var mockBaseName = null;
+		var mockRelativeColor = false;
 
-		var OutputBaseMock = function (filter) {
-			mockFilter = filter;
 
-			this.write = function (calledWays, calledPath, calledBaseName) { 
+		function getOutputMock(mockType) {
+			var mockWrite = function (calledWays, calledPath, calledBaseName) { 
 				mockCalledTimes++;
 				mockUnits = this.units;
 				mockWays = calledWays;
 				mockPath = calledPath;
 				mockBaseName = calledBaseName;
 			};
-		};
+
+			var returnMe;
+			if (mockType === 'SingleColorKmlOutput')
+				returnMe = function (relativeColor, filter) { mockFilter = filter; mockRelativeColor = relativeColor; this.write = mockWrite; };
+			else if (mockType === 'ReducedPointsSingleColorKmlOutput')
+				returnMe = function (limitPoints, relativeColor, filter) { mockFilter = filter; mockRelativeColor = relativeColor; this.write = mockWrite; }
+			else if (mockType === 'MultiColorKmlOutput' || mockType === 'TabOutput')
+				returnMe = function (filter) { mockFilter = filter; this.write = mockWrite;  }
+
+			var locationString = './writers/' + mockType;
+			var proxyQuireMock = {};
+			proxyQuireMock[locationString] = returnMe;
+
+			return proxyquire('../../../src/output/OutputService', proxyQuireMock);
+		}
 
 		beforeEach(function () {
 			mockCalledTimes = 0;
@@ -64,20 +79,20 @@ describe ('OutputService.js', function () {
 			var target;
 
 			beforeEach(function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/TabOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('TabOutput');
 
 				target = new mockedTarget(logger);
 			});
 
 			it ('given output to screen, outputs to screen', function () {
-				target.outputResults(ways, filter, baseName, path, false, 0, false, true, true, false);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, true, true, false);
 
 				expect(mockCalledTimes).toBe(1);
 				expect(_.isEqual(mockWays, ways)).toBe(true);
 			});
 
 			it ('told not to log, does not output to screen', function () {
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, true, false);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, false);
 
 				expect(mockCalledTimes).toBe(0);
 			});
@@ -87,39 +102,51 @@ describe ('OutputService.js', function () {
 			var target;
 
 			beforeEach(function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/ReducedPointsSingleColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('ReducedPointsSingleColorKmlOutput');
 
 				target = new mockedTarget(logger);
 			});
 
 			it ('reduced kml writer is chosen if true, and multicolored isnt', function () {
-				target.outputResults(ways, filter, baseName, path, false, 4, false, false, false, false);
+				target.outputResults(ways, filter, baseName, path, false, false, 4, false, false, false, false);
 
 				assertMockCalled();
 			});
 
 			it ('reduced kml writer is not chosen if multicolored is true', function () {
-				target.outputResults(ways, filter, baseName, path, true, 4, false, false, true, false);
+				target.outputResults(ways, filter, baseName, path, false, true, 4, false, false, true, false);
 
 				expect(mockCalledTimes).toBe(0);
 			});
 
 			it ('reduced kml writer is not chosen if if false', function () {
-				target.outputResults(ways, filter, baseName, path, true, 0, false, false, true, false);
+				target.outputResults(ways, filter, baseName, path, false, true, 0, false, false, true, false);
 
 				expect(mockCalledTimes).toBe(0);
 			});
 
 			it ('uses km values', function () {
-				target.outputResults(ways, filter, baseName, path, false, 4, true, false, false, false);
+				target.outputResults(ways, filter, baseName, path, false, false, 4, true, false, false, false);
 
 				expect(mockUnits).toBe('km');
 			});
 
 			it ('uses miles', function () {
-				target.outputResults(ways, filter, baseName, path, false, 4, false, false, false, false);
+				target.outputResults(ways, filter, baseName, path, false, false, 4, false, false, false, false);
 
 				expect(mockUnits).toBe(undefined);
+			});
+
+			it ('with relative color', function () {
+				target.outputResults(ways, filter, baseName, path, true, false, 4, false, false, false, false);
+
+				expect(mockRelativeColor).toBe(true);
+			});
+
+			it ('without relative color', function () {
+				target.outputResults(ways, filter, baseName, path, false, false, 4, false, false, false, false);
+
+				expect(mockRelativeColor).toBe(false);
 			});
 		});
 
@@ -127,33 +154,45 @@ describe ('OutputService.js', function () {
 			var target;
 
 			beforeEach(function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/SingleColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('SingleColorKmlOutput');
 
 				target = new mockedTarget(logger);
 			});
 
 			it ('file writes kml file', function () {
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, false, false);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, false, false);
 
 				assertMockCalled();
 			});
 
 			it ('does not write kml file', function () {
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, true, false);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, false);
 
 				expect(mockCalledTimes).toBe(0);
 			});
 
 			it ('uses km values', function () {
-				target.outputResults(ways, filter, baseName, path, false, 0, true, false, false, false);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, true, false, false, false);
 
 				expect(mockUnits).toBe('km');
 			});
 
 			it ('uses miles', function () {
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, false, false);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, false, false);
 
 				expect(mockUnits).toBe(undefined);
+			});
+
+			it ('with relative color', function () {
+				target.outputResults(ways, filter, baseName, path, true, false, 0, false, false, false, false);
+
+				expect(mockRelativeColor).toBe(true);
+			});
+
+			it ('without relative color', function () {
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, false, false);
+
+				expect(mockRelativeColor).toBe(false);
 			});
 		});
 		
@@ -161,33 +200,45 @@ describe ('OutputService.js', function () {
 			var target;
 
 			beforeEach(function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/MultiColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('MultiColorKmlOutput');
 
 				target = new mockedTarget(logger);
 			});
 
 			it ('writes kml file', function () {
-				target.outputResults(ways, filter, baseName, path, true, 0, false, false, false, false);
+				target.outputResults(ways, filter, baseName, path, false, true, 0, false, false, false, false);
 
 				assertMockCalled();
 			});
 
 			it ('does not write kml file', function () {
-				target.outputResults(ways, filter, baseName, path, true, 0, false, false, true, false);
+				target.outputResults(ways, filter, baseName, path, false, true, 0, false, false, true, false);
 
 				expect(mockCalledTimes).toBe(0);
 			});
 
 			it ('uses km values', function () {
-				target.outputResults(ways, filter, baseName, path, true, 0, true, false, false, false);
+				target.outputResults(ways, filter, baseName, path, false, true, 0, true, false, false, false);
 
 				expect(mockUnits).toBe('km');
 			});
 
 			it ('uses miles', function () {
-				target.outputResults(ways, filter, baseName, path, true, 0, false, false, false, false);
+				target.outputResults(ways, filter, baseName, path, false, true, 0, false, false, false, false);
 
 				expect(mockUnits).toBe(undefined);
+			});
+
+			it ('with relative color', function () {
+				target.outputResults(ways, filter, baseName, path, true, true, 0, false, false, false, false);
+
+				expect(mockRelativeColor).toBe(false);
+			});
+
+			it ('without relative color', function () {
+				target.outputResults(ways, filter, baseName, path, false, true, 0, false, false, false, false);
+
+				expect(mockRelativeColor).toBe(false);
 			});
 		});
 
@@ -195,71 +246,71 @@ describe ('OutputService.js', function () {
 			var target;
 
 			it ('write multicolored', function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/MultiColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('MultiColorKmlOutput');
 
 				target = new mockedTarget(logger);
 
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, true, ['colorize=1,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0']);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, ['colorize=1,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0']);
 
 				assertMockCalled();
 			});
 
 			it ('write singlecolored', function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/SingleColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('SingleColorKmlOutput');
 
 				target = new mockedTarget(logger);
 
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, true, ['colorize=0,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0']);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, ['colorize=0,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0']);
 
 				assertMockCalled();
 			});
 
 			it ('write singlecolored (limitPoints)', function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/SingleColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('SingleColorKmlOutput');
 
 				target = new mockedTarget(logger);
 
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, true, ['colorize=0,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0,limitPoints=0']);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, ['colorize=0,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0,limitPoints=0']);
 
 				assertMockCalled();
 			});
 
 			it ('write multicolored (limitPoints)', function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/MultiColorKmlOutput': OutputBaseMock });
+				var mockedTarget =  getOutputMock('MultiColorKmlOutput');
 
 				target = new mockedTarget(logger);
 
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, true, ['colorize=1,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0,limitPoints=0']);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, ['colorize=1,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0,limitPoints=0']);
 
 				assertMockCalled();
 			});
 
 			it ('write multicolored (limitPoints - 5)', function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/MultiColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('MultiColorKmlOutput');
 
 				target = new mockedTarget(logger);
 
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, true, ['colorize=1,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0,limitPoints=5']);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, ['colorize=1,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0,limitPoints=5']);
 
 				assertMockCalled();
 			});
 
 			it ('write limitPoints', function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/ReducedPointsSingleColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('ReducedPointsSingleColorKmlOutput');
 
 				target = new mockedTarget(logger);
 
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, true, ['colorize=0,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0,limitPoints=5']);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, ['colorize=0,minLength=0,maxLength=0,minCurvature=0,maxCurvature=0,limitPoints=5']);
 
 				assertMockCalled();
 			});
 
 			it ('updates filter settings', function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/SingleColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('SingleColorKmlOutput');
 
 				target = new mockedTarget(logger);
 
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, true, ['colorize=0,minLength=2,maxLength=2,minCurvature=2,maxCurvature=2']);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, ['colorize=0,minLength=2,maxLength=2,minCurvature=2,maxCurvature=2']);
 
 				expect(mockFilter.minLength).toBe(2);
 				expect(mockFilter.maxLength).toBe(2);
@@ -268,11 +319,11 @@ describe ('OutputService.js', function () {
 			});
 
 			it ('respects default filter settings', function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/SingleColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('SingleColorKmlOutput');
 
 				target = new mockedTarget(logger);
 
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, true, ['colorize=0']);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, ['colorize=0']);
 
 				expect(mockFilter.minLength).toBe(1);
 				expect(mockFilter.maxLength).toBe(1);
@@ -281,42 +332,66 @@ describe ('OutputService.js', function () {
 			});
 
 
+			it ('respects default relative color settings', function () {
+				var mockedTarget = getOutputMock('SingleColorKmlOutput');
+
+				new mockedTarget(logger).outputResults(ways, filter, baseName, path, true, false, 0, false, false, true, ['minLength=2']);
+
+				expect(mockRelativeColor).toBe(true);
+			});
+
+			it ('can specifiy relative color', function () {
+				var mockedTarget = getOutputMock('SingleColorKmlOutput');
+
+				new mockedTarget(logger).outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, ['minLength=2,relativeColor=1']);
+
+				expect(mockRelativeColor).toBe(true);
+			});
+
+			it ('does not have to be relative color', function () {
+				var mockedTarget = getOutputMock('SingleColorKmlOutput');
+
+				new mockedTarget(logger).outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, ['minLength=2']);
+
+				expect(mockRelativeColor).toBe(false);
+			});
+
 			it ('respects default colorize settings', function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/SingleColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('SingleColorKmlOutput');
 
 				target = new mockedTarget(logger);
 
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, true, ['minLength=2,maxLength=2,minCurvature=2,maxCurvature=2']);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, ['minLength=2,maxLength=2,minCurvature=2,maxCurvature=2']);
 
 				assertMockCalled();
 			});
 
 			it ('respects default limit Points settings', function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/ReducedPointsSingleColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('ReducedPointsSingleColorKmlOutput');
 
 				target = new mockedTarget(logger);
 
-				target.outputResults(ways, filter, baseName, path, false, 3, false, false, true, ['minLength=2,maxLength=2,minCurvature=2,maxCurvature=2']);
+				target.outputResults(ways, filter, baseName, path, false, false, 3, false, false, true, ['minLength=2,maxLength=2,minCurvature=2,maxCurvature=2']);
 
 				assertMockCalled();
 			});
 
 			it ('can have alternative path', function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/ReducedPointsSingleColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('ReducedPointsSingleColorKmlOutput');
 
 				target = new mockedTarget(logger);
 
-				target.outputResults(ways, filter, baseName, path, false, 3, false, false, true, ['outputPath=asdf']);
+				target.outputResults(ways, filter, baseName, path, false, false, 3, false, false, true, ['outputPath=asdf']);
 
 				assertMockCalled('asdf');
 			});
 
 			it ('can write multiple files', function () {
-				var mockedTarget = proxyquire('../../../src/output/OutputService', {'./writers/SingleColorKmlOutput': OutputBaseMock });
+				var mockedTarget = getOutputMock('SingleColorKmlOutput');
 
 				target = new mockedTarget(logger);
 
-				target.outputResults(ways, filter, baseName, path, false, 0, false, false, true, ['colorize=0', 'colorize=0']);
+				target.outputResults(ways, filter, baseName, path, false, false, 0, false, false, true, ['colorize=0', 'colorize=0']);
 
 				expect(mockCalledTimes).toBe(2);
 			});

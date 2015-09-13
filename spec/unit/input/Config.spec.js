@@ -16,8 +16,8 @@ describe('Config', function () {
 	});
 
 	describe('Settings', function () {
-		it ('has 29 properties', function () {
-			expect(Object.keys(_target.settings).length).toBe(29);
+		it ('has 30 properties', function () {
+			expect(Object.keys(_target.settings).length).toBe(30);
 		});
 	});
 
@@ -49,6 +49,7 @@ describe('Config', function () {
 				'noKML': true,
 				'km': false,	// km is true by default
 				'colorize': true,
+				'relativeColor': true,
 				'limitPoints': 3,
 				'file': 'filename.osm.pbf',
 				'outputPath': 'filePath',

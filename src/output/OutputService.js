@@ -13,21 +13,22 @@ module.exports = function(_logger) {
 
     /* Returns a kml file writer that is configured according to the passed in arguments.
      *
+     * @param {bool} relativeColor - colors in file (if colorize is false) should be relative to max in file, or absolute?
      * @param {bool} colorize - Should the kml file be multicolored or not?
      * @param {int} limitPoints - reduce the size out the output file (if colorize is false, only)
      * @param {bool} kmUnits - Should the file be in kilometers, or miles?
      * @param {WayFilter} filter - The filter that should be used to determine if a way should be written.
      * @returns {KmlOutput} kmlWriter - The kmlWriter instance that will write the kml file.
      */
-    function getKMLWriter(colorize, limitPoints, kmUnits, filter) {
+    function getKMLWriter(relativeColor, colorize, limitPoints, kmUnits, filter) {
         var kml;
 
         if (colorize) 
             kml = new MultiColorKmlOutput(filter);
         else if (limitPoints)   // if 0, false is correct
-            kml = new ReducedPointsSingleColorKmlOutput(filter);
+            kml = new ReducedPointsSingleColorKmlOutput(limitPoints, relativeColor, filter);
         else
-            kml = new SingleColorKmlOutput(filter);
+            kml = new SingleColorKmlOutput(relativeColor, filter);
         
         if (kmUnits)
             kml.units = 'km';
@@ -38,19 +39,21 @@ module.exports = function(_logger) {
     /* A function that will parse colorize, optString, and defaultFilter, and returns
      * the objects required to get a kmlWriter for writing additional kml files.
      * 
+     * @param {bool} relativeColor - colors in file (if colorize is false) should be relative to max in file, or absolute?
      * @param {bool} colorize - If not specified in the opt string, the default colorize value for the file.
      * @param {int} limitPoints - If not specified in the opt string, the default limit point value for the file.
      * @param {string} path - If not specified in the optstring, the default directory the output file should be saved to.
      * @param {string, delimited by ,} optString - The options for the additional kml files.
      * @param {WayFilter} filter - The filter that should supply default values if not otherwise specified in optstring.
-     * @returns { 'colorize': bool, 'filter': WayFilter, 'limitPoints': int, 'path': path }
+     * @returns { 'colorize': bool, 'filter': WayFilter, 'limitPoints': int, 'path': path, 'relativeColor': relativeColor }
      */
-    function parseOptions(colorize, limitPoints, path, optString, defaultFilter) {
+    function parseOptions(relativeColor, colorize, limitPoints, path, optString, defaultFilter) {
         var tempColor = colorize;
         var filter = new WayFilter(defaultFilter.minLength, defaultFilter.maxLength, 
     							   defaultFilter.minCurvature, defaultFilter.maxCurvature);
         var tempLimitPoints = limitPoints;
         var tempOutputPath = path;
+        var tempRelativeColor = relativeColor;
 
         var opts = optString.split(',');
         
@@ -83,11 +86,13 @@ module.exports = function(_logger) {
             }
             else if (key === 'outputPath') 
                 tempOutputPath = value;
+            else if (key === 'relativeColor')
+                tempRelativeColor = value == 1 ? true: false;
             else
                 _logger.forceLog("Ignoring unknown key '" + key + "'' passed to --addKML\n");
         }
         
-        return {'colorize': tempColor, 'filter': filter, 'limitPoints': tempLimitPoints, 'path': tempOutputPath };
+        return {'colorize': tempColor, 'filter': filter, 'limitPoints': tempLimitPoints, 'path': tempOutputPath, 'relativeColor': tempRelativeColor };
     }
 
     /* Filters the input ways with the filter, and output the results in the manner and to the locations
@@ -97,6 +102,7 @@ module.exports = function(_logger) {
      * @param {WayFilter} filter - The filter that should be used to determine if a way should be outputted or ignored.
      * @param {string} outputFileBaseName - Optional - Output files should share this string in the file name.
      * @param {string} path - The directory the output file should be saved to.
+     * @param {bool} relativeColor - colors in file (if colorize is false) should be relative to max in file, or absolute?
      * @param {bool} colorize - Should the output KML file should include colorized styles (red/orange/yellow/etc)?
      * @param {int} limitPoints - reduce the size out the output file (if colorize is false, only)
      * @param {bool} useKM - If true, program will output values in kilometers.  Otherwise, miles.
@@ -104,7 +110,7 @@ module.exports = function(_logger) {
      * @param {bool} skipKMLFile - If true, the output kml file is not created.
      * @param {obj} additionalKML - Multiple files can be created using this option, see README.md
      */
-    this.outputResults = function(ways, filter, outputFileBaseName, path, colorize, limitPoints, useKM, outputToScreen, skipKMLFile, additionalKML) {
+    this.outputResults = function(ways, filter, outputFileBaseName, path, relativeColor, colorize, limitPoints, useKM, outputToScreen, skipKMLFile, additionalKML) {
         
         if (outputToScreen) {
             var tab = new TabOutput(filter);
@@ -117,7 +123,7 @@ module.exports = function(_logger) {
 
             _logger.log("Generating KML file.");
 
-            kmlWriter = getKMLWriter(colorize, limitPoints, useKM, filter);
+            kmlWriter = getKMLWriter(relativeColor, colorize, limitPoints, useKM, filter);
             kmlWriter.write(ways, path, outputFileBaseName);
         }
 
@@ -128,8 +134,8 @@ module.exports = function(_logger) {
             for (var k = 0, l = additionalKML.length; k < l; k++) {
                 var optString = additionalKML[k];
 
-                var parsedOpts = parseOptions(colorize, limitPoints, path, optString, filter);
-                kmlWriter = getKMLWriter(parsedOpts.colorize, parsedOpts.limitPoints, useKM, parsedOpts.filter);
+                var parsedOpts = parseOptions(relativeColor, colorize, limitPoints, path, optString, filter);
+                kmlWriter = getKMLWriter(parsedOpts.relativeColor, parsedOpts.colorize, parsedOpts.limitPoints, useKM, parsedOpts.filter);
                 kmlWriter.write(ways, parsedOpts.path, outputFileBaseName);
             }
         }

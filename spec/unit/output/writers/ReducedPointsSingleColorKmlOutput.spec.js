@@ -11,8 +11,8 @@ describe ('ReducedPointsSingleColorKmlOutput.js', function () {
 		});
 
 		it ('inherits from SingleColorKmlOutput', function () {
-			var target = new ReducedPointsSingleColorKmlOutput(2, filter);
-			var base = new SingleColorKmlOutput(filter);
+			var target = new ReducedPointsSingleColorKmlOutput(false, 2, filter);
+			var base = new SingleColorKmlOutput(false, filter);
 
 			var keys = Object.keys(base);
 

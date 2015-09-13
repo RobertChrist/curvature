@@ -11,7 +11,7 @@ describe ('SingleColorKmlOutput.js', function () {
 		});
 
 		it ('inherits from KmlOutput', function () {
-			var target = new SingleColorKmlOutput(filter);
+			var target = new SingleColorKmlOutput(false, filter);
 			var base = new KmlOutput(filter);
 
 			var keys = Object.keys(base);
@@ -26,7 +26,7 @@ describe ('SingleColorKmlOutput.js', function () {
 
 	describe ('writeSegments', function () {
 		it ('given no segments, throws exception', function () {
-			expect(new SingleColorKmlOutput(filter).writeSegments).toThrow();
+			expect(new SingleColorKmlOutput(false, filter).writeSegments).toThrow();
 		});
 
 		it ('given lots of decimal points, truncates to 6 decimals', function () {
@@ -41,7 +41,7 @@ describe ('SingleColorKmlOutput.js', function () {
 				}
 			}];
 
-			var result = new SingleColorKmlOutput(filter).writeSegments(segments);
+			var result = new SingleColorKmlOutput(false, filter).writeSegments(segments);
 			expect(result).toBe('1.234567,4.567891 9.876543,123456.456723 ');
 		});
 
@@ -57,7 +57,7 @@ describe ('SingleColorKmlOutput.js', function () {
 				}
 			}];
 
-			var result = new SingleColorKmlOutput(filter).writeSegments(segments);
+			var result = new SingleColorKmlOutput(false, filter).writeSegments(segments);
 			expect(result).toBe('1.230000,4.560000 9.876000,123456.450000 ');
 		});
 
@@ -73,20 +73,20 @@ describe ('SingleColorKmlOutput.js', function () {
 				}
 			}];
 
-			var result = new SingleColorKmlOutput(filter).writeSegments(segments);
+			var result = new SingleColorKmlOutput(false, filter).writeSegments(segments);
 			expect(result[result.length - 1]).toBe(' ');
 		});
 	});
 
 	describe ('getStyles', function () {
 		it ('returns an object', function () {
-			var result = new SingleColorKmlOutput(filter).getStyles();
+			var result = new SingleColorKmlOutput(false, filter).getStyles();
 			
 			expect(result).not.toBeNull();
 		});
 
 		it ('returns an object that has line styles for keys', function () {
-			var result = new SingleColorKmlOutput(filter).getStyles();
+			var result = new SingleColorKmlOutput(false, filter).getStyles();
 			
 			var keys = Object.keys(result);
 
@@ -103,7 +103,7 @@ describe ('SingleColorKmlOutput.js', function () {
 				return (typeof sNum === "string") && sNum.length === 6 && !isNaN(parseInt(sNum, 16));
 			}
 
-			var result = new SingleColorKmlOutput(filter).getStyles();
+			var result = new SingleColorKmlOutput(false, filter).getStyles();
 			
 			var keys = Object.keys(result);
 
@@ -120,7 +120,7 @@ describe ('SingleColorKmlOutput.js', function () {
 
 	describe ('writeWays', function () {
 		it ('given no ways, returns empty string', function () {
-			var result = new SingleColorKmlOutput(filter).writeWays([]);
+			var result = new SingleColorKmlOutput(false, filter).writeWays([]);
 
 			expect(result).toBe('');
 		});
@@ -128,7 +128,7 @@ describe ('SingleColorKmlOutput.js', function () {
 		it ('given empty way, returns empty string', function () {
 			var ways = [{ }];
 
-			var result = new SingleColorKmlOutput(filter).writeWays(ways);
+			var result = new SingleColorKmlOutput(false, filter).writeWays(ways);
 
 			expect(result).toBe('');
 		});
@@ -138,7 +138,7 @@ describe ('SingleColorKmlOutput.js', function () {
 				segments: null
 			}];
 
-			var result = new SingleColorKmlOutput(filter).writeWays(ways);
+			var result = new SingleColorKmlOutput(false, filter).writeWays(ways);
 
 			expect(result).toBe('');
 		});
@@ -162,7 +162,7 @@ describe ('SingleColorKmlOutput.js', function () {
 				segments: [{}]
 			}];
 
-			var target = new SingleColorKmlOutput(new WayFilter(3,3,3,3));
+			var target = new SingleColorKmlOutput(false, new WayFilter(3,3,3,3));
 			target.getDescription = function () { return 'seeGetDescriptionTests'; }
 			target.writeSegments = function () { return 'seeWriteSegmentTests'; }
 			
@@ -170,26 +170,6 @@ describe ('SingleColorKmlOutput.js', function () {
 			var result = target.writeWays(ways);
 
 			expect(result).toBe(getOneWayString(0, 'some name'));
-		});
-
-		it ('scales lineStyle by curvature', function () {
-			var ways = [{
-				name: 'some name',
-				curvature: 10,
-				segments: [{}]
-			}];
-
-			var filter = new WayFilter(0, 0, 0, 0);
-
-			var target = new SingleColorKmlOutput(filter);
-			target.maxCurvature = 100;
-			target.getDescription = function () { return 'seeGetDescriptionTests'; }
-			target.writeSegments = function () { return 'seeWriteSegmentTests'; }
-			
-
-			var result = target.writeWays(ways);
-
-			expect(result).toBe(getOneWayString(82, 'some name'));
 		});
 
 		it ('escapes name, but not whitespaces', function () {
@@ -201,7 +181,7 @@ describe ('SingleColorKmlOutput.js', function () {
 
 			var filter = new WayFilter(0, 0, 0, 0);
 
-			var target = new SingleColorKmlOutput(filter);
+			var target = new SingleColorKmlOutput(false, filter);
 			target.maxCurvature = 100;
 			target.getDescription = function () { return 'seeGetDescriptionTests'; }
 			target.writeSegments = function () { return 'seeWriteSegmentTests'; }
@@ -209,7 +189,150 @@ describe ('SingleColorKmlOutput.js', function () {
 
 			var result = target.writeWays(ways);
 
-			expect(result).toBe(getOneWayString(82, 'some name%3E'));
+			expect(result).toBe(getOneWayString(2, 'some name%3E'));
+		});
+
+		describe ('relative /absolute color tests', function () {
+			var ways = [{
+				name: 'some name',
+				curvature: 10,
+				segments: [{}]
+			}];
+
+			var filter = new WayFilter(0, 0, 0, 0);
+
+			function getOutputter (relativeColor, maxCurvature) {
+				var target = new SingleColorKmlOutput(relativeColor, filter);
+				target.maxCurvature = maxCurvature;
+				target.getDescription = function () { return 'seeGetDescriptionTests'; }
+				target.writeSegments = function () { return 'seeWriteSegmentTests'; }
+
+				return target;
+			}
+
+			describe ('absolute', function () {
+				it ('scales lineStyle by curvature', function () {
+					var target = getOutputter(false, 100);
+
+					ways[0].curvature = 0;
+
+					var result = target.writeWays(ways);
+
+					expect(result).toBe(getOneWayString(1, 'some name'));
+				});
+
+				it ('scales lineStyle by curvature', function () {
+					var target = getOutputter(false, 100);
+
+					ways[0].curvature = 10;
+
+					var result = target.writeWays(ways);
+
+					expect(result).toBe(getOneWayString(2, 'some name'));
+				});
+
+				it ('scales lineStyle by curvature', function () {
+					var target = getOutputter(false, 100);
+
+					ways[0].curvature = 40;
+
+					var result = target.writeWays(ways);
+
+					expect(result).toBe(getOneWayString(3, 'some name'));
+				});
+
+				it ('scales lineStyle by curvature', function () {
+					var target = getOutputter(false, 100);
+
+					ways[0].curvature = 80;
+
+					var result = target.writeWays(ways);
+
+					expect(result).toBe(getOneWayString(6, 'some name'));
+				});
+
+				it ('scales lineStyle by curvature', function () {
+					var target = getOutputter(false, 100);
+
+					ways[0].curvature = 40000;
+
+					var result = target.writeWays(ways);
+
+					expect(result).toBe(getOneWayString(506, 'some name'));
+				});
+
+				it ('scales lineStyle by curvature', function () {
+					var target = getOutputter(false, 100);
+
+					ways[0].curvature = 60000;
+
+					var result = target.writeWays(ways);
+
+					expect(result).toBe(getOneWayString(506, 'some name'));
+				});
+			});
+
+			describe ('relative', function () {
+				it ('scales lineStyle by curvature', function () {
+					var target = getOutputter(true, 100);
+
+					ways[0].curvature = 0;
+
+					var result = target.writeWays(ways);
+
+					expect(result).toBe(getOneWayString(1, 'some name'));
+				});
+
+				it ('scales lineStyle by curvature', function () {
+					var target = getOutputter(true, 100);
+
+					ways[0].curvature = 1;
+
+					var result = target.writeWays(ways);
+
+					expect(result).toBe(getOneWayString(24, 'some name'));
+				});
+
+				it ('scales lineStyle by curvature', function () {
+					var target = getOutputter(true, 100);
+
+					ways[0].curvature = 40;
+
+					var result = target.writeWays(ways);
+
+					expect(result).toBe(getOneWayString(430, 'some name'));
+				});
+
+				it ('scales lineStyle by curvature', function () {
+					var target = getOutputter(true, 100);
+
+					ways[0].curvature = 80;
+
+					var result = target.writeWays(ways);
+
+					expect(result).toBe(getOneWayString(498, 'some name'));
+				});
+
+				it ('scales lineStyle by curvature', function () {
+					var target = getOutputter(true, 100);
+
+					ways[0].curvature = 40000;
+
+					var result = target.writeWays(ways);
+
+					expect(result).toBe(getOneWayString(511, 'some name'));
+				});
+
+				it ('scales lineStyle by curvature', function () {
+					var target = getOutputter(true, 100);
+
+					ways[0].curvature = 60000;
+
+					var result = target.writeWays(ways);
+
+					expect(result).toBe(getOneWayString(511, 'some name'));
+				});
+			});
 		});
 	});
 });

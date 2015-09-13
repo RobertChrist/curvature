@@ -14,6 +14,7 @@ module.exports = function () {
 		km: 			 				{ name: 'km',				value: true 					},
 		colorize: 		 				{ name: 'colorize',			value: false 					},
 		limitPoints:					{ name: 'limitPoints',		value: 0						},
+		relativeColor: 					{ name: 'relativeColor', 	value: false					},
 		file: 			 				{ name: 'file',				value: null 					},
 		outputPath: 	 				{ name: 'outputPath',		value: '.' 						},
 		outputBaseName:  				{ name: 'outputBaseName',	value: null, 	optional: true 	},

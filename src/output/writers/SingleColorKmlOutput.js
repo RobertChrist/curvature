@@ -7,10 +7,11 @@ var KmlOutput = require('./KmlOutput');
  *
  * @class
  * @augments KmlOutput
+ * @param {bool} relativeColor - colors in file (if colorize is false) should be relative to max in file, or absolute?
  * @param {WayFilter} - The filter that should be be run on the inputted ways, 
  * 		to determine whether to write them into the file.
  */
-var SingleColorKmlOutput = module.exports = function (defaultFilter) {
+var SingleColorKmlOutput = module.exports = function (_relativeColor, defaultFilter) {
     SingleColorKmlOutput.super_.call(this, defaultFilter);
 
     var _self = this;
@@ -29,17 +30,21 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 
 		if (curvature < offset)
 			return 0;
-		
-		var curvaturePct = (curvature - offset) / (_self.maxCurvature - offset);
-		
-		// Use the square route of the ratio to give a better differentiation between
-		// lower-curvature ways
-		var colorPct = Math.sqrt(curvaturePct);
-		var level = Math.round(255 * colorPct) + 1;
-		
-		return level;
+
+		var curvaturePct;
+		if (_relativeColor)
+			curvaturePct = (curvature - offset) / (_self.maxCurvature - offset);
+		else
+			curvaturePct = Math.min((curvature - offset) / (40000 - offset), 1);
+
+		// Map ratio to a logarithmic scale to give a better differentiation
+		// between lower-curvature ways. 10,000 is max red.
+		// y = 1-1/(10^(x*2))
+		var colorPct = 1 - (1/Math.pow(10, curvaturePct * 2));
+
+		return Math.round(510 * colorPct) + 1;
 	}
-	
+
 	/* @returns {string} - A linestyle that should have a single color style associated with it. */
 	function lineStyle (way) {
 		return 'lineStyle' + levelForCurvature(way.curvature);
@@ -84,15 +89,25 @@ _util.inherits(SingleColorKmlOutput, KmlOutput);
  * @augments getStyles on KmlOutput
  */
 SingleColorKmlOutput.prototype.getStyles = function () {
+	function getIntAsBase16(i) {
+		var val = (i).toString(16).toUpperCase();
+		
+		if (val.length < 2)
+			val = '0' + val;
+
+		return val;
+	}
+
 	var styles = { 'lineStyle0':{'color':'F000E010'} }; // Straight ways
 	
 	// Add a style for each level in a gradient from yellow to red (00FFFF - 0000FF)
 	for (var i = 0, j = 256; i < j; i++) {
-		var val = (255 - i).toString(16).toUpperCase();
-		if (val.length < 2)
-			val = '0' + val;
+		styles['lineStyle' + (i + 1)] = {'color':'F000' + getIntAsBase16(255 - i) + 'FF' };
+	}
 
-		styles['lineStyle' + (i + 1)] = {'color':'F000' + val + 'FF' };
+	// Add a style for each level in a gradient from red to magenta (0000FF - FF00FF)
+	for (var i = 1, j = 256; i < j; i++) {
+		styles['lineStyle' + (i + 256).toString()] = { 'color': 'F0' + getIntAsBase16(i) + '00FF' };
 	}
 
 	return styles;

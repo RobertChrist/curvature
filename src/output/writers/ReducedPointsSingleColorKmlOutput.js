@@ -9,11 +9,12 @@ var SingleColorKmlOutput = require('./SingleColorKmlOutput');
  * @augments SingleColorKmlOutput
  * 
  * @param {int} limitPoints - The number of points per way.
+ * @param {bool} relativeColor - colors in file (if colorize is false) should be relative to max in file, or absolute?
  * @param {WayFilter} - The filter that should be be run on the inputted ways, 
  * 		to determine whether to write them into the file.
  */
-var ReducedPointsSingleColorKmlOutput = module.exports = function (_limitPoints, _defaultFilter) {
-    ReducedPointsSingleColorKmlOutput.super_.call(this, _defaultFilter);
+var ReducedPointsSingleColorKmlOutput = module.exports = function (_limitPoints, _relativeColor, _defaultFilter) {
+    ReducedPointsSingleColorKmlOutput.super_.call(this, _relativeColor, _defaultFilter);
 
     this.limitPoints = 2;
 
