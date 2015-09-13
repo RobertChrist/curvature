@@ -100,6 +100,7 @@ collector.loadFile(fileNameAndPath, function (err, ways) {
 
     outputService.outputResults(ways, filter, outputFileBaseName, path, 
     							settings.colorize.value, 
+    							settings.limitPoints.value,
     							settings.km.value, 
     							settings.tabularOutput.value, 
     							settings.noKML.value, 

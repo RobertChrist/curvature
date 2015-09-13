@@ -13,6 +13,7 @@ module.exports = function () {
 		noKML: 			 				{ name: 'noKML',			value: false 					},
 		km: 			 				{ name: 'km',				value: true 					},
 		colorize: 		 				{ name: 'colorize',			value: false 					},
+		limitPoints:					{ name: 'limitPoints',		value: 0						},
 		file: 			 				{ name: 'file',				value: null 					},
 		outputPath: 	 				{ name: 'outputPath',		value: '.' 						},
 		outputBaseName:  				{ name: 'outputBaseName',	value: null, 	optional: true 	},
@@ -98,6 +99,9 @@ module.exports = function () {
                     throw e;
             }
 	    }
+
+	    if (settings.limitPoints.value !== 0 && settings.limitPoints.value < 2)
+	    	throw new Error('--limit_points must be 0 or >= 2.\n');
 	}
 
 	/* Updates the public settings of this object, but throws an exception if any value was updated to an invalid value.

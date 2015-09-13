@@ -16,8 +16,8 @@ describe('Config', function () {
 	});
 
 	describe('Settings', function () {
-		it ('has 28 properties', function () {
-			expect(Object.keys(_target.settings).length).toBe(28);
+		it ('has 29 properties', function () {
+			expect(Object.keys(_target.settings).length).toBe(29);
 		});
 	});
 
@@ -49,6 +49,7 @@ describe('Config', function () {
 				'noKML': true,
 				'km': false,	// km is true by default
 				'colorize': true,
+				'limitPoints': 3,
 				'file': 'filename.osm.pbf',
 				'outputPath': 'filePath',
 				'outputBaseName': 'baseName',
@@ -192,6 +193,14 @@ describe('Config', function () {
 			expect(function () { target.updateSettingsByName({ file: 'someFileName.txt' }); }).toThrow();	
 			expect(function () { target.updateSettingsByName({ file: 'someFileName.osm' }); }).toThrow();	
 			expect(function () { target.updateSettingsByName({ file: 'someFileName.osm.bz2' }); }).toThrow();	
+		});
+
+		it ('Throws a validation error if limit Points is less than 2', function () {
+			var target = getNewFullyValidatedTarget();
+			expect(function () { target.updateSettingsByName({ limitPoints: 1 }); }).toThrow();
+			expect(function () { target.updateSettingsByName({ limitPoints: .5 }); }).toThrow();
+			expect(function () { target.updateSettingsByName({ limitPoints: 0 }); }).not.toThrow();
+			expect(function () { target.updateSettingsByName({ limitPoints: 3 }); }).not.toThrow();
 		});
 
 		it ('Does not update the settings, if the update failed validation', function () {
