@@ -131,6 +131,9 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
 
                         // join to the end of the base in order
                         if (baseWay.refs[baseWay.refs.length - 1] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
+                            // Drop the matching first-ref in the way so that we don't have a duplicate point.
+                            way.refs.splice(0, 1);
+
                             baseWay.refs = baseWay.refs.concat(way.refs);
                             if (baseWay.name !== way.name) {
                                 baseWay.name = route;
@@ -139,15 +142,26 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
                         // join to the end of the base in reverse order
                         else if (baseWay.refs[baseWay.refs.length - 1] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
                             way.refs.reverse();
+                            
+                            // Drop the matching first-ref in the way so that we don't have a duplicate point.
+                            way.refs.splice(0, 1);
+
                             baseWay.refs = baseWay.refs.concat(way.refs);
                         }
                         // join to the beginning of the base in order
                         else if (baseWay.refs[0] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
+                            // Drop the matching last-ref in the way so that we don't have a duplicate point.
+                            way.refs.splice(way.refs.length - 1, 1);
+
                             baseWay.refs = way.refs.concat(baseWay.refs);
                         }
                         // join to the beginning of the base in reverse order
                         else if (baseWay.refs[0] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
                             way.refs.reverse();
+
+                            // Drop the matching last-ref in the way so that we don't have a duplicate point.
+                            way.refs.splice(way.refs.length - 1, 1);
+                            
                             baseWay.refs = way.refs.concat(baseWay.refs);
                         }
                         else {
