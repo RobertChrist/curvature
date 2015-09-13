@@ -25,7 +25,7 @@ module.exports = function () {
 		
 		//TODO: setting max curvature to 0 by default is crazy, should be null, then we can validate max > min.  Fix after fixing wayFilter.
 		maxCurvature: 	 				{ name: 'maxCurvature',		value: 0 						},
-		straightSegmentSplitThreshold:  { name: 'straightSegmentSplitThreshold', value: 2414 },
+		straightSegmentSplitThreshold:  { name: 'straightSegmentSplitThreshold', value: 2414 },	// 2414 meters ~= 1.5 miles, 1609 ~= 1 mile
 
 		level1MaxRadius: 				{ name: 'level1MaxRadius',	value: 175 						},
 		level2MaxRadius: 				{ name: 'level2MaxRadius',	value: 100 						},
