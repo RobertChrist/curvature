@@ -51,9 +51,15 @@ var MultiColorKmlOutput = module.exports = function (defaultFilter) {
 										'		</Placemark>\n';
 
 					// Start a new linestring for this level
-					tempResult += 	'	<Placemark>\n' +
-								  	'		<styleUrl>#lineStyle' + currentCurvatureLevel + '</styleUrl>\n' +
-								  	'		<LineString>\n' +
+					tempResult += 	'	<Placemark>\n';
+								  	// +
+
+					if (segment.eliminated)
+						tempResult += '		<styleUrl>#eliminated</styleUrl>\n';
+					else
+						tempResult += '		<styleUrl>#lineStyle' + currentCurvatureLevel + '</styleUrl>\n';
+
+					tempResult += 	'		<LineString>\n' +
 								  	'			<tessellate>1</tessellate>\n' +
 								  	'			<coordinates>';
 

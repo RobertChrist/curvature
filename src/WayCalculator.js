@@ -22,6 +22,8 @@ module.exports = function (_logger,
 						   _level3MaxRadius, _level3Weight, 
 						   _level4MaxRadius, _level4Weight) {
 
+	var _keepEliminated = false;
+
 	/* Returns a scalar value for the "curviness" of the way segment.
 	 *
 	 * @param {obj} segment - The portion of the curve to determine the curviness for.
@@ -239,6 +241,101 @@ module.exports = function (_logger,
 		}
 	}
 
+	function filterDeflections(way) {
+		var segments = way.segments;
+
+		for (var i = 0, j = segments.length; i < j; i++) {
+			var segment = segments[i];
+
+			// While we are in straight segments, be wary of single-point (two-segment)
+			// deflections from our straight line if the next two segments are followed
+			// by a straight section. E.g. __/\__
+			// We want to differentiate a jog off of an otherwise straight line from a
+			// curve between two straight sections like these:
+			//     __ __    __
+			//   /        /   \
+			filterDeflectionOfStraightSegments(segments, i, 3);
+
+			// While we are in straight segments, be wary of two/three-point (three/four-segment)
+			// deflections from our straight line if the next two segments are followed
+			// by a straight section. E.g. __/\ _   __
+			//                                   \/
+			// We want to differentiate a jog off of an otherwise straight line from a
+			// curve between two straight sections like these:
+			//     __ __    __
+			//   /        /   \
+			filterDeflectionOfStraightSegments(segments, i, 4);
+			filterDeflectionOfStraightSegments(segments, i, 5);
+		}
+	}
+
+	function filterDeflectionOfStraightSegments(segments, startIndex, lookAhead) {
+		if (lookAhead < 3)
+			throw new Error('lookAhead must be 3 or more');
+
+		try {
+			var firstStraight = segments[startIndex];
+			var nextStraight = segments[startIndex + lookAhead];
+
+			// if (first_straight['curvature_level'] and not 'eliminated' in first_straight) or (next_straight['curvature_level'] and not 'eliminated' in next_straight):
+			if ( (firstStraight.curvatureLevel && !firstStraight.eliminated)  || (nextStraight.curvatureLevel && !nextStraight.eliminated))
+				return;
+
+			var headingA = getSegmentHeading(firstStraight);
+			var headingB = getSegmentHeading(nextStraight);
+			var headingDiff = Math.abs(headingA - headingB);
+			
+			// Compare the difference in heading to the angle that wold be expected
+			// for a curve just barely meeting our threshold for straight/curved.
+			var gapDistance = _mathUtils.distanceBetweenPoints(firstStraight.end[0], firstStraight.end[1], nextStraight.start[0], nextStraight.start[1]);
+			var minVariance = gapDistance / _level1MaxRadius;
+
+			if (Math.abs(headingDiff) < minVariance) {
+				// mark them as eliminated so that we can show them in the output
+				for (var i = startIndex + 1, j = startIndex + lookAhead - 1; i < j; i++) {
+					if (segments[i].curvatureLevel)
+						segments[i].eliminated = true;
+				}
+
+				if (!_keepEliminated) {
+					// unset the curvature level of the intermediate segments
+					for (var i = startIndex + 1, j = startIndex + lookAhead - 1; i < j; i++) {
+						segments[i].curvatureLevel = 0;
+					}
+				}
+			}
+		} catch (e) {	// index error, usually
+			return;
+		}
+	}
+
+	function getSegmentHeading(segment) {
+		return 180 + math.atan2((segment.end[0] - segment.start[0]),(segment.end[1] - segment.start[1])) * (180 / Math.PI);	//todo: move to math utils
+	}
+
+	/* TODO: This code isn't used anywhere, mistake?
+	function headingDiff(initial, final) {
+		if (initial > 360 || initial < 0 || final > 360 || final < 0)
+			throw new Error('Initital or final heainds are out of bounds, must be 0 - 360');
+
+		var diff = final - initial;
+		var absDiff = Math.abs(diff);
+
+		if (absDiff <= 180) {
+			if (absDiff == 180)
+				return absDiff;
+			else
+				return diff;
+		}		
+		else if  (final > initial) {
+			return absDiff - 360;
+		}
+		else {
+			return 360 - absDiff;
+		}
+	}
+	*/
+
 	/* Using the passed in arguments, determines the curviness of each way, 
 	 * and each segment of each way. 
 	 * 
@@ -253,6 +350,7 @@ module.exports = function (_logger,
 		while (way = ways.pop()) {
 			try {
 				calculateDistanceAndCurvature(way, coords);
+				filterDelections(way);
 				var waySections = splitWaySections(way);
 				sections.push.apply(sections, waySections);
 			} catch (err) {

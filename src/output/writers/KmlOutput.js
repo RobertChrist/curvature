@@ -225,6 +225,7 @@ KmlOutput.prototype.getStyles = function () {
         'lineStyle1': { 'color': 'F000FFFF' }, // Level 1 turns
         'lineStyle2': { 'color': 'F000AAFF' }, // Level 2 turns
         'lineStyle3': { 'color': 'F00055FF' }, // Level 3 turns
-        'lineStyle4': { 'color': 'F00000FF' }  // Level 4 turns
+        'lineStyle4': { 'color': 'F00000FF' },  // Level 4 turns
+        'eliminated': { 'color': 'F0000000' }	// Eliminated segments
     };
 };

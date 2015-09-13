@@ -39,7 +39,11 @@ describe ('KmlOutput.js', function () {
 			for (var i = 0, j = keys.length; i < j; i++) {
 				var key = keys[i];
 
-				expect(key.indexOf('lineStyle')).toBe(0);
+				var validStyleIndex = -1;
+				if (key.indexOf('lineStyle') > validStyleIndex) validStyleIndex = key.indexOf('lineStyle');
+				if (key.indexOf('eliminated') > validStyleIndex) validStyleIndex = key.indexOf('eliminated');
+
+				expect(validStyleIndex).toBe(0);
 				expect(key.length > 9).toBe(true);
 			}
 		});
