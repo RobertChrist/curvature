@@ -41,9 +41,12 @@ module.exports = function (_logger, _wayParser, _wayCalculator) {
 
 	/* An internal function for WayCollector.js that we've made public to allow unit testing. */
     this._afterAllParsed = function (cb) {
-        _logger.log('Consolidating parsed data.');
+        _logger.log('Consolidating parsed data, this may take a while.');
+        
         _wayParser.joinWays();
         
+        _logger.log("Data consoildation complete.");
+
         var results = _wayParser.getResults();
 
         if (!results.ways.length)

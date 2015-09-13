@@ -121,7 +121,7 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
      * So call this once all your way / coord parsing is done, and before calling getResults.
      */
     this.joinWays = function () {
-        // Join numbered routes end-to-end and add them to the way list.
+        // Join routes end-to-end and add them to the way list.
 
         var routeKeys = Object.keys(_self.routes);
         for (var i = 0, j = routeKeys.length; i < j; i++) {
