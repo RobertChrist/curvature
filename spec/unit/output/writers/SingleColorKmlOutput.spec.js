@@ -24,12 +24,58 @@ describe ('SingleColorKmlOutput.js', function () {
 		});
 	});
 
-	describe ('writeWays', function () {
-		it ('is a function', function () {
-			expect(typeof new SingleColorKmlOutput().writeWays).toBe('function');
+	describe ('writeSegments', function () {
+		it ('given no segments, throws exception', function () {
+			expect(new SingleColorKmlOutput(filter).writeSegments).toThrow();
 		});
 
-		// I'll cover testing this for real in the integration tests.
+		it ('given lots of decimal points, truncates to 6 decimals', function () {
+			var segments = [{
+				start: {
+					lon: 1.234567,
+					lat: 4.5678912
+				},
+				end: {
+					lon:9.8765432,
+					lat: 123456.456723
+				}
+			}];
+
+			var result = new SingleColorKmlOutput(filter).writeSegments(segments);
+			expect(result).toBe('1.234567,4.567891 9.876543,123456.456723 ');
+		});
+
+		it ('given few decimal points, pads 6 decimals', function () {
+			var segments = [{
+				start: {
+					lon: 1.23,
+					lat: 4.56
+				},
+				end: {
+					lon:9.876,
+					lat: 123456.45
+				}
+			}];
+
+			var result = new SingleColorKmlOutput(filter).writeSegments(segments);
+			expect(result).toBe('1.230000,4.560000 9.876000,123456.450000 ');
+		});
+
+		it ('result has trailing space', function () {
+			var segments = [{
+				start: {
+					lon: 1.23,
+					lat: 4.56
+				},
+				end: {
+					lon:9.876,
+					lat: 123456.45
+				}
+			}];
+
+			var result = new SingleColorKmlOutput(filter).writeSegments(segments);
+			expect(result[result.length - 1]).toBe(' ');
+		});
 	});
 
 	describe ('getStyles', function () {
@@ -69,6 +115,101 @@ describe ('SingleColorKmlOutput.js', function () {
 				expect(value.color).toBeTruthy();
 				expect(isHexColor(value.color.substring(2))).toBe(true); //(aRGB values)
 			}
+		});
+	});
+
+	describe ('writeWays', function () {
+		it ('given no ways, returns empty string', function () {
+			var result = new SingleColorKmlOutput(filter).writeWays([]);
+
+			expect(result).toBe('');
+		});
+
+		it ('given empty way, returns empty string', function () {
+			var ways = [{ }];
+
+			var result = new SingleColorKmlOutput(filter).writeWays(ways);
+
+			expect(result).toBe('');
+		});
+
+		it ('given way with no segments, returns empty string', function () {
+			var ways = [{
+				segments: null
+			}];
+
+			var result = new SingleColorKmlOutput(filter).writeWays(ways);
+
+			expect(result).toBe('');
+		});
+
+		function getOneWayString(lineStlyeNumber, name) {
+			return '	<Placemark>\n' +
+                '		<styleUrl>#lineStyle' + lineStlyeNumber + '</styleUrl>\n' +
+                '		<name>' + name + '</name>\n' +
+                '		<description>seeGetDescriptionTests</description>\n' +
+                '		<LineString>\n' +
+                '			<tessellate>1</tessellate>\n' +
+                '			<coordinates>seeWriteSegmentTests</coordinates>\n' +
+                '		</LineString>\n' +
+        		'	</Placemark>\n'
+		}
+
+		it ('way is less than min curvature', function () {
+			var ways = [{
+				name: 'some name',
+				curvature: 2,
+				segments: [{}]
+			}];
+
+			var target = new SingleColorKmlOutput(new WayFilter(3,3,3,3));
+			target.getDescription = function () { return 'seeGetDescriptionTests'; }
+			target.writeSegments = function () { return 'seeWriteSegmentTests'; }
+			
+
+			var result = target.writeWays(ways);
+
+			expect(result).toBe(getOneWayString(0, 'some name'));
+		});
+
+		it ('scales lineStyle by curvature', function () {
+			var ways = [{
+				name: 'some name',
+				curvature: 10,
+				segments: [{}]
+			}];
+
+			var filter = new WayFilter(0, 0, 0, 0);
+
+			var target = new SingleColorKmlOutput(filter);
+			target.maxCurvature = 100;
+			target.getDescription = function () { return 'seeGetDescriptionTests'; }
+			target.writeSegments = function () { return 'seeWriteSegmentTests'; }
+			
+
+			var result = target.writeWays(ways);
+
+			expect(result).toBe(getOneWayString(82, 'some name'));
+		});
+
+		it ('escapes name, but not whitespaces', function () {
+			var ways = [{
+				name: 'some name>',
+				curvature: 10,
+				segments: [{}]
+			}];
+
+			var filter = new WayFilter(0, 0, 0, 0);
+
+			var target = new SingleColorKmlOutput(filter);
+			target.maxCurvature = 100;
+			target.getDescription = function () { return 'seeGetDescriptionTests'; }
+			target.writeSegments = function () { return 'seeWriteSegmentTests'; }
+			
+
+			var result = target.writeWays(ways);
+
+			expect(result).toBe(getOneWayString(82, 'some name%3E'));
 		});
 	});
 });

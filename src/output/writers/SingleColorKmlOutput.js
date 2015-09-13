@@ -26,7 +26,7 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
      */
 	function levelForCurvature (curvature) {
 		var offset = _self.filter.minCurvature > 0 ? _self.filter.minCurvature : 0;
-		
+
 		if (curvature < offset)
 			return 0;
 		
@@ -66,13 +66,7 @@ var SingleColorKmlOutput = module.exports = function (defaultFilter) {
 								'			<tessellate>1</tessellate>\n' +
 								'			<coordinates>';
 
-			tempResult += _util.format('%d,%d ', way.segments[0].start.lon.toFixed(6), way.segments[0].start.lat.toFixed(6));
-				
-			var segments = way.segments;
-			for (var k = 0, l = segments.length; k < l; k++) {
-				var segment = segments[k];
-				tempResult += _util.format("%d,%d ", segment.end.lon.toFixed(6), segment.end.lat.toFixed(6));
-			}
+			tempResult += _self.writeSegments(way.segments)
 				
 			result += 	tempResult + 
 						'</coordinates>\n' +
@@ -102,4 +96,19 @@ SingleColorKmlOutput.prototype.getStyles = function () {
 	}
 
 	return styles;
+};
+
+/* Returns the kml file serialized string for the passed in segments. 
+ * 
+ * @abstract (optional)
+ */
+SingleColorKmlOutput.prototype.writeSegments = function (segments) {
+	var tempResult = _util.format('%s,%s ', segments[0].start.lon.toFixed(6), segments[0].start.lat.toFixed(6));
+			
+	for (var k = 0, l = segments.length; k < l; k++) {
+		var segment = segments[k];
+		tempResult += _util.format("%s,%s ", segment.end.lon.toFixed(6), segment.end.lat.toFixed(6));
+	}
+
+	return tempResult;
 };
