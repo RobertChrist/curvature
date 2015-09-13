@@ -114,40 +114,38 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
                 var baseWay = ways.pop();
 
                 // try to join to the begining or end
-                for (var k = 0; k < ways.length; k++) {
-                    var unusedWays = [];
-                    while (ways.length > 0) {
-                        var way = ways.pop();
+                var unusedWays = [];
+                while (ways.length > 0) {
+                    var way = ways.pop();
 
-                        // join to the end of the base in order
-                        if (baseWay.refs[baseWay.refs.length - 1] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
-                            baseWay.refs = baseWay.refs.concat(way.refs);
-                            if (baseWay.name !== way.name) {
-                                baseWay.name = route;
-                            }
-                        }
-                        // join to the end of the base in reverse order
-                        else if (baseWay.refs[baseWay.refs.length - 1] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
-                            way.refs.reverse();
-                            baseWay.refs = baseWay.refs.concat(way.refs);
-                        }
-                        
-                        // join to the beginning of the base in order
-                        if (baseWay.refs[0] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
-                            baseWay.refs = way.refs.concat(baseWay.refs);
-                        }
-                        // join to the beginning of the base in reverse order
-                        else if (baseWay.refs[0] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
-                            way.refs.reverse();
-                            baseWay.refs = way.refs.concat(baseWay.refs);
-                        }
-                        else {
-                            unusedWays.push(way);
+                    // join to the end of the base in order
+                    if (baseWay.refs[baseWay.refs.length - 1] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
+                        baseWay.refs = baseWay.refs.concat(way.refs);
+                        if (baseWay.name !== way.name) {
+                            baseWay.name = route;
                         }
                     }
-
-                    ways = unusedWays;
+                    // join to the end of the base in reverse order
+                    else if (baseWay.refs[baseWay.refs.length - 1] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
+                        way.refs.reverse();
+                        baseWay.refs = baseWay.refs.concat(way.refs);
+                    }
+                    
+                    // join to the beginning of the base in order
+                    if (baseWay.refs[0] === way.refs[way.refs.length - 1] && !baseWay.refs[way.refs[0]]) {
+                        baseWay.refs = way.refs.concat(baseWay.refs);
+                    }
+                    // join to the beginning of the base in reverse order
+                    else if (baseWay.refs[0] === way.refs[0] && !baseWay.refs[way.refs[way.refs.length - 1]]) {
+                        way.refs.reverse();
+                        baseWay.refs = way.refs.concat(baseWay.refs);
+                    }
+                    else {
+                        unusedWays.push(way);
+                    }
                 }
+
+                ways = unusedWays;
 
                 _self.ways.push(baseWay);
             }
