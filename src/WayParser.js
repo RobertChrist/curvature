@@ -83,13 +83,18 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
         newWay.surface = tags.surface ? tags.surface : 'unknown';
 
         if (tags.ref) {
-            var route = tags.ref;
-            
-            if (!_self.routes[route])
-                _self.routes[route] = [];
 
-            _self.routes[route].push(newWay);
-        } else {
+            var routes = tags.ref.split(';');
+            for (var i = 0, j = routes.length; i < j; i++) {
+                var route = routes[i];
+
+                if (!_self.routes[route])
+                    _self.routes[route] = [];
+
+                _self.routes[route].push(newWay);
+            }
+        } 
+        else {
             _ways.push(newWay);
         }
 
