@@ -69,6 +69,76 @@ var KmlOutput = module.exports = function (defaultFilter) {
 			   '</kml>\n';
 	}
 
+	/* Outputs a string for bounding box information.
+	 * This can allow other programs to generate region aware
+	 * compilations of these files.
+	 * @returns {string} - the kml string.
+	 */
+	function writeRegion (ways) {
+		var minLat = ways[0].segments[0].start[0];
+		var maxLat = ways[0].segments[0].start[0];
+		var minLon = ways[0].segments[0].start[1];
+		var maxLon = ways[0].segments[0].start[1];
+
+		for (var i = 0, j = ways.length; i < j; i++) {
+			var way = ways[i];
+
+			var wayMaxLat = getWayMaxMinLatLon(way, 'maxLat');
+			var wayMinLat = getWayMaxMinLatLon(way, 'minLat');
+			var wayMaxLon = getWayMaxMinLatLon(way, 'maxLon');
+			var wayMinLon = getWayMaxMinLatLon(way, 'minLon');
+
+			if (wayMaxLat > maxLat) maxLat = wayMaxLat;
+			if (wayMinLat < minLat) minLat = wayMinLat;
+			if (wayMaxLon > maxLon) maxLon = wayMaxLon;
+			if (wayMinLon < minLon) minLon = wayMinLon;
+		}
+
+			return	'	<!--\n' +
+					'	<Region>\n' +
+					'	<!--\n' +
+					'	<Region>\n' +
+					'		<LatLonBox>\n' +
+		_util.format('			<north>%s</north>\n', maxLat) +
+		_util.format('			<south>%.6f</south>\n', minLat) +
+// Note that this won't work for regions crossing longitude 180, but this
+// should only affect the Russian asian file
+		_util.format('			<east>%.6f</east>\n', maxLon) +
+		_util.format('			<west>%.6f</west>\n', minLon) +
+					'		</LatLonBox>\n' +
+					'	</Region>\n' +
+					'	-->\n';
+	}
+
+	/* Gets the min/max lat/lon value from the way.
+	 * @param {way} - The way.
+	 * @param {string} - The property.  Valid values are only: 'minLat', 'maxLat', 'minLon', 'maxLon' 
+	 * @returns {todo} - the min/max lat/lon value,
+	 */
+	function getWayMaxMinLatLon(way, property) {
+		if (!way[property] && way[property] !== 0)
+			storeWayRegion(way);
+
+		return way[property];
+	}
+	
+	/* Sets the min/max lat/lon properties on the passed in way */
+	function storeWayRegion(way) {
+		way.maxLat = way.segments[0].start[0];
+		way.minLat = way.segments[0].start[0];
+		way.maxLon = way.segments[0].start[1];
+		way.minLon = way.segments[0].start[1];
+
+		for (var i = 0, j = way.segments.length; i < j; i++) {
+			var segment = way.segments[i];
+
+			if (segment.end[0] > way.maxLat) way.maxLat = segment.end[0];
+			if (segment.end[0] < way.minLat) way.minLat = segment.end[0];
+			if (segment.end[1] > way.maxLon) way.maxLon = segment.end[1];
+			if (segment.end[1] < way.minLon) way.minLon = segment.end[1];
+		}
+	}
+
 	/* @returns {string} - the filename of the kml file that should be written to disk. */
 	function getFilename (basename) {
 		var filename = _util.format(basename + '.c_%d', _self.filter.minCurvature);
@@ -122,6 +192,7 @@ var KmlOutput = module.exports = function (defaultFilter) {
 		ways.reverse();
 		
 		var kmlDoc = writeHeader();
+		kmlDoc += writeRegion(ways);
 		kmlDoc += this.writeWays(ways);
 		kmlDoc += writeFooter();
 		

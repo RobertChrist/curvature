@@ -85,10 +85,18 @@ describe ('KmlOutput.js', function () {
 
 		var ways = [{
 				length: 1000,
-				curvature: 1
+				curvature: 1,
+				segments: [{
+					start: [0,1],
+					end: [0,1]
+				}]
 			}, {
 				length: 2000,
-				curvature: 3
+				curvature: 3,
+				segments: [{
+					start: [0,1],
+					end: [0,1]
+				}]
 			}];
 
 		it ('is a function', function () {
@@ -105,7 +113,7 @@ describe ('KmlOutput.js', function () {
 			expect(callWriteToDisk).toBe(true);
 		});
 
-		it ('includes each expeced section of the file in the final output', function () {
+		it ('includes each expected section of the file in the final output', function () {
 			var KmlOutputMocked = proxyquire('../../../../src/output/writers/KmlOutput', { 'fs': fsMock });
 
 			var target = new KmlOutputMocked(new WayFilter(1, 0, 0, 0));
@@ -115,12 +123,14 @@ describe ('KmlOutput.js', function () {
 			target.write(ways);
 
 			expect(writtenFile.indexOf('?xml version="1.0" encoding="UTF-8"?>') > -1).toBe(true);
+			expect(writtenFile.indexOf('<LatLonBox>') > -1).toBe(true)
 			expect(writtenFile.indexOf('<Style id="lineStyle0">') > -1).toBe(true);
 			expect(writtenFile.indexOf('WayLength:1') > -1).toBe(true);
 			expect(writtenFile.indexOf('/kml') > -1).toBe(true);
 		});
 
-		/* I'm going to skip these tests as just being low value, just to save time, personal project and all
+		/* TODO: 
+			I'm going to skip these tests as just being low value, just to save time, personal project and all
 			it ('serializes style object', function () { }); 
 
 			it ('all filename tests', function () { }); 
