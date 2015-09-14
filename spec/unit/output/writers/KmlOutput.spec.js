@@ -127,7 +127,7 @@ describe ('KmlOutput.js', function () {
 			target.write(ways);
 
 			expect(writtenFile.indexOf('?xml version="1.0" encoding="UTF-8"?>') > -1).toBe(true);
-			expect(writtenFile.indexOf('<LatLonBox>') > -1).toBe(true)
+			expect(writtenFile.indexOf('<LatLonBox>') > -1).toBe(true);
 			expect(writtenFile.indexOf('<Style id="lineStyle0">') > -1).toBe(true);
 			expect(writtenFile.indexOf('WayLength:1') > -1).toBe(true);
 			expect(writtenFile.indexOf('/kml') > -1).toBe(true);
@@ -160,7 +160,7 @@ describe ('KmlOutput.js', function () {
 
 			var result = target.getDescription(way);
 
-			expect('Curvature: 1\nDistance: .62 km\nType: highway\nSurface: paved')
+			expect('Curvature: 1\nDistance: .62 km\nType: highway\nSurface: paved');
 		});
 
 		it ('returns mile based description', function () {
@@ -169,7 +169,7 @@ describe ('KmlOutput.js', function () {
 
 			var result = target.getDescription(way);
 
-			expect('Curvature: 1\nDistance: 1 km\nType: highway\nSurface: paved')
+			expect('Curvature: 1\nDistance: 1 km\nType: highway\nSurface: paved');
 		});
 	});
 });

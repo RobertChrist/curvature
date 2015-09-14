@@ -59,50 +59,50 @@ describe ('WayFilter', function () {
 
 		// Length Tests
 		it ('given minLength filter value, filters on only minLength', function () {
-			testFilter(new WayFilter(1, 0, 0, 0), function (way) { return way.length / 1609 > 1; })
+			testFilter(new WayFilter(1, 0, 0, 0), function (way) { return way.length / 1609 > 1; });
 		});
 
 		it ('given maxLength filter value, filters on only maxLength', function () {
-			testFilter(new WayFilter(0, 1, 0, 0), function (way) { return way.length / 1609 < 1; })
+			testFilter(new WayFilter(0, 1, 0, 0), function (way) { return way.length / 1609 < 1; });
 		});
 
 		it ('given min and maxLength filter values, filters on lengths', function () {
-			testFilter(new WayFilter(1, 3, 0, 0), function (way) { return way.length / 1609 > 1 && way.length / 1609 < 3; })
+			testFilter(new WayFilter(1, 3, 0, 0), function (way) { return way.length / 1609 > 1 && way.length / 1609 < 3; });
 		});
 
 		// Curvature Tests
 		it ('given minCurv filter value, filters on only minCurv', function () {
-			testFilter(new WayFilter(0, 0, 1, 0), function (way) { return way.curvature > 1; })
+			testFilter(new WayFilter(0, 0, 1, 0), function (way) { return way.curvature > 1; });
 		});
 
 		it ('given maxCurv filter value, filters on only maxCurv', function () {
-			testFilter(new WayFilter(0, 0, 0, 1), function (way) { return way.curvature < 1; })
+			testFilter(new WayFilter(0, 0, 0, 1), function (way) { return way.curvature < 1; });
 		});
 
 		it ('given min and maxCurv filter values, filters on curvature', function () {
-			testFilter(new WayFilter(0, 0, 1, 3), function (way) { return way.curvature > 1 && way.curvature < 3; })
+			testFilter(new WayFilter(0, 0, 1, 3), function (way) { return way.curvature > 1 && way.curvature < 3; });
 		});
 
 		// Mixed Filter Tests
 		it ('given minLength and minCurv', function () {
-			testFilter(new WayFilter(1, 0, 1, 0), function (way) { return way.length / 1609 > 1 && way.curvature > 1; })
+			testFilter(new WayFilter(1, 0, 1, 0), function (way) { return way.length / 1609 > 1 && way.curvature > 1; });
 		});
 
 		it ('given maxCurv and maxLength', function () {
-			testFilter(new WayFilter(0, 2, 0, 1), function (way) { return way.length / 1609 < 2 && way.curvature < 1; })
+			testFilter(new WayFilter(0, 2, 0, 1), function (way) { return way.length / 1609 < 2 && way.curvature < 1; });
 		});
 
 		it ('given minLength and maxCurv', function () {
-			testFilter(new WayFilter(1, 0, 0, 1), function (way) { return way.length / 1609 > 1 && way.curvature < 1; })
+			testFilter(new WayFilter(1, 0, 0, 1), function (way) { return way.length / 1609 > 1 && way.curvature < 1; });
 		});
 
 		it ('given maxLength and minCurv', function () {
-			testFilter(new WayFilter(0, 2, 1, 0), function (way) { return way.length / 1609 < 2 && way.curvature > 1; })
+			testFilter(new WayFilter(0, 2, 1, 0), function (way) { return way.length / 1609 < 2 && way.curvature > 1; });
 		});
 
 		// All four specified
 		it ('given maxLength and minCurv', function () {
-			testFilter(new WayFilter(1, 3, 1, 3), function (way) { return way.length / 1609 > 1 && way.length / 1609 < 3 && way.curvature > 1 && way.curvature < 3; })
+			testFilter(new WayFilter(1, 3, 1, 3), function (way) { return way.length / 1609 > 1 && way.length / 1609 < 3 && way.curvature > 1 && way.curvature < 3; });
 		});
 
 		// Invalid inputs

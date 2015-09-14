@@ -71,7 +71,7 @@ var SingleColorKmlOutput = module.exports = function (_relativeColor, defaultFil
 								'			<tessellate>1</tessellate>\n' +
 								'			<coordinates>';
 
-			tempResult += _self.writeSegments(way.segments)
+			tempResult += _self.writeSegments(way.segments);
 				
 			result += 	tempResult + 
 						'</coordinates>\n' +
@@ -106,7 +106,7 @@ SingleColorKmlOutput.prototype.getStyles = function () {
 	}
 
 	// Add a style for each level in a gradient from red to magenta (0000FF - FF00FF)
-	for (var i = 1, j = 256; i < j; i++) {
+	for (i = 1, j = 256; i < j; i++) {
 		styles['lineStyle' + (i + 256).toString()] = { 'color': 'F0' + getIntAsBase16(i) + '00FF' };
 	}
 

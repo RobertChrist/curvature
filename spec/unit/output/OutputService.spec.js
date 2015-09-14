@@ -42,9 +42,9 @@ describe ('OutputService.js', function () {
 			if (mockType === 'SingleColorKmlOutput')
 				returnMe = function (relativeColor, filter) { mockFilter = filter; mockRelativeColor = relativeColor; this.write = mockWrite; };
 			else if (mockType === 'ReducedPointsSingleColorKmlOutput')
-				returnMe = function (limitPoints, relativeColor, filter) { mockFilter = filter; mockRelativeColor = relativeColor; this.write = mockWrite; }
+				returnMe = function (limitPoints, relativeColor, filter) { mockFilter = filter; mockRelativeColor = relativeColor; this.write = mockWrite; };
 			else if (mockType === 'MultiColorKmlOutput' || mockType === 'TabOutput')
-				returnMe = function (filter) { mockFilter = filter; this.write = mockWrite;  }
+				returnMe = function (filter) { mockFilter = filter; this.write = mockWrite;  };
 
 			var locationString = './writers/' + mockType;
 			var proxyQuireMock = {};

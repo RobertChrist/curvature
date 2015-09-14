@@ -94,18 +94,18 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
             for (var i = 0, j = routes.length; i < j; i++) {
                 var route = routes[i];
 
-                if (!_self.routes[route])
-                    _self.routes[route] = [];
+                if (!_routes[route])
+                    _routes[route] = [];
 
-                _self.routes[route].push(JSON.parse(JSON.stringify(newWay)));
+                _routes[route].push(JSON.parse(JSON.stringify(newWay)));
             }
         } 
         else {
             if (newWay.name) {
-                if (!_self.routes[newWay.name])
-                    _self.routes[newWay.name] = [];
+                if (!_routes[newWay.name])
+                    _routes[newWay.name] = [];
 
-                _self.routes[newWay.name].push(newWay);
+                _routes[newWay.name].push(newWay);
             }
             else
                 _ways.push(newWay);
@@ -123,10 +123,10 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
     this.joinWays = function () {
         // Join routes end-to-end and add them to the way list.
 
-        var routeKeys = Object.keys(_self.routes);
+        var routeKeys = Object.keys(_routes);
         for (var i = 0, j = routeKeys.length; i < j; i++) {
             var route = routeKeys[i];
-            var ways = _self.routes[route];
+            var ways = _routes[route];
 
             while (ways.length > 0) {
                 var baseWay = ways.pop();
@@ -215,7 +215,7 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
                 }
 
                 // Add this base way to our ways list
-                _self.ways.push(baseWay);
+                _ways.push(baseWay);
             }
         }
     };

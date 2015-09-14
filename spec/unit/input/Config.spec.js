@@ -78,7 +78,7 @@ describe('Config', function () {
 
 			_target.updateSettingsByName(updater);
 
-			var keys = Object.keys(updater)
+			var keys = Object.keys(updater);
 			for (var i = 0, j = keys.length; i < j; i++) {
 				var key = keys[i];
 
@@ -165,7 +165,7 @@ describe('Config', function () {
 			while (key = radiikeys.pop()) {
 				var updater = {};
 				updater[key] = -1;
-				expect(function () { target.updateSettingsByName(updater) }).toThrow();	
+				expect(function () { target.updateSettingsByName(updater) }).toThrow();
 			}
 		});
 
@@ -199,7 +199,7 @@ describe('Config', function () {
 		it ('Throws a validation error if limit Points is less than 2', function () {
 			var target = getNewFullyValidatedTarget();
 			expect(function () { target.updateSettingsByName({ limitPoints: 1 }); }).toThrow();
-			expect(function () { target.updateSettingsByName({ limitPoints: .5 }); }).toThrow();
+			expect(function () { target.updateSettingsByName({ limitPoints: 0.5 }); }).toThrow();
 			expect(function () { target.updateSettingsByName({ limitPoints: 0 }); }).not.toThrow();
 			expect(function () { target.updateSettingsByName({ limitPoints: 3 }); }).not.toThrow();
 		});
@@ -215,6 +215,6 @@ describe('Config', function () {
 
 			expect(target.settings.file.value).toBe(originalFileValue);
 			expect(target.settings.file.value).not.toBe('someFileName.txt');
-		})
+		});
 	});
 });

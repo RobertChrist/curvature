@@ -245,8 +245,6 @@ module.exports = function (_logger,
 		var segments = way.segments;
 
 		for (var i = 0, j = segments.length; i < j; i++) {
-			var segment = segments[i];
-
 			// While we are in straight segments, be wary of single-point (two-segment)
 			// deflections from our straight line if the next two segments are followed
 			// by a straight section. E.g. __/\__
@@ -299,7 +297,7 @@ module.exports = function (_logger,
 
 				if (!_keepEliminated) {
 					// unset the curvature level of the intermediate segments
-					for (var i = startIndex + 1, j = startIndex + lookAhead - 1; i < j; i++) {
+					for (i = startIndex + 1, j = startIndex + lookAhead - 1; i < j; i++) {
 						segments[i].curvatureLevel = 0;
 					}
 				}
@@ -310,7 +308,7 @@ module.exports = function (_logger,
 	}
 
 	function getSegmentHeading(segment) {
-		return 180 + math.atan2((segment.end[0] - segment.start[0]),(segment.end[1] - segment.start[1])) * (180 / Math.PI);	//todo: move to math utils
+		return 180 + Math.atan2((segment.end[0] - segment.start[0]),(segment.end[1] - segment.start[1])) * (180 / Math.PI);	//todo: move to math utils
 	}
 
 	/* TODO: This code isn't used anywhere, mistake?
@@ -350,7 +348,7 @@ module.exports = function (_logger,
 		while (way = ways.pop()) {
 			try {
 				calculateDistanceAndCurvature(way, coords);
-				filterDelections(way);
+				filterDeflections(way);
 				var waySections = splitWaySections(way);
 				sections.push.apply(sections, waySections);
 			} catch (err) {

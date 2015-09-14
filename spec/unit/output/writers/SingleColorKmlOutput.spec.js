@@ -152,7 +152,7 @@ describe ('SingleColorKmlOutput.js', function () {
                 '			<tessellate>1</tessellate>\n' +
                 '			<coordinates>seeWriteSegmentTests</coordinates>\n' +
                 '		</LineString>\n' +
-        		'	</Placemark>\n'
+        		'	</Placemark>\n';
 		}
 
 		it ('way is less than min curvature', function () {
@@ -163,8 +163,8 @@ describe ('SingleColorKmlOutput.js', function () {
 			}];
 
 			var target = new SingleColorKmlOutput(false, new WayFilter(3,3,3,3));
-			target.getDescription = function () { return 'seeGetDescriptionTests'; }
-			target.writeSegments = function () { return 'seeWriteSegmentTests'; }
+			target.getDescription = function () { return 'seeGetDescriptionTests'; };
+			target.writeSegments = function () { return 'seeWriteSegmentTests'; };
 			
 
 			var result = target.writeWays(ways);
@@ -183,8 +183,8 @@ describe ('SingleColorKmlOutput.js', function () {
 
 			var target = new SingleColorKmlOutput(false, filter);
 			target.maxCurvature = 100;
-			target.getDescription = function () { return 'seeGetDescriptionTests'; }
-			target.writeSegments = function () { return 'seeWriteSegmentTests'; }
+			target.getDescription = function () { return 'seeGetDescriptionTests'; };
+			target.writeSegments = function () { return 'seeWriteSegmentTests'; };
 			
 
 			var result = target.writeWays(ways);
@@ -204,8 +204,8 @@ describe ('SingleColorKmlOutput.js', function () {
 			function getOutputter (relativeColor, maxCurvature) {
 				var target = new SingleColorKmlOutput(relativeColor, filter);
 				target.maxCurvature = maxCurvature;
-				target.getDescription = function () { return 'seeGetDescriptionTests'; }
-				target.writeSegments = function () { return 'seeWriteSegmentTests'; }
+				target.getDescription = function () { return 'seeGetDescriptionTests'; };
+				target.writeSegments = function () { return 'seeWriteSegmentTests'; };
 
 				return target;
 			}

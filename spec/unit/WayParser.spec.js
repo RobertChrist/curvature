@@ -1,5 +1,4 @@
 var WayParser = require('../../src/WayParser');
-var _ = require('lodash');
 
 describe ('WayParser', function () {
 	describe ('constructor', function () {
