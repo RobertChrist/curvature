@@ -101,6 +101,7 @@ collector.loadFile(fileNameAndPath, function (err, ways) {
     logger.log('Building output.');
 
     outputService.outputResults(ways, filter, outputFileBaseName, path, 
+    							settings.relativeColor.value,
     							settings.colorize.value, 
     							settings.limitPoints.value,
     							settings.km.value, 
