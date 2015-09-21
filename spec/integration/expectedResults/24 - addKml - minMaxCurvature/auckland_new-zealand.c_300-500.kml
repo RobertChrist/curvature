@@ -1,0 +1,4223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<Style id="lineStyle60">
+		<LineStyle>
+			<color>F000C4FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle61">
+		<LineStyle>
+			<color>F000C3FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle62">
+		<LineStyle>
+			<color>F000C2FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle63">
+		<LineStyle>
+			<color>F000C1FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle64">
+		<LineStyle>
+			<color>F000C0FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle65">
+		<LineStyle>
+			<color>F000BFFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle66">
+		<LineStyle>
+			<color>F000BEFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle67">
+		<LineStyle>
+			<color>F000BDFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle68">
+		<LineStyle>
+			<color>F000BCFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle69">
+		<LineStyle>
+			<color>F000BBFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle209">
+		<LineStyle>
+			<color>F0002FFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle208">
+		<LineStyle>
+			<color>F00030FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle201">
+		<LineStyle>
+			<color>F00037FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle200">
+		<LineStyle>
+			<color>F00038FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle203">
+		<LineStyle>
+			<color>F00035FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle202">
+		<LineStyle>
+			<color>F00036FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle205">
+		<LineStyle>
+			<color>F00033FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle204">
+		<LineStyle>
+			<color>F00034FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle207">
+		<LineStyle>
+			<color>F00031FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle206">
+		<LineStyle>
+			<color>F00032FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle478">
+		<LineStyle>
+			<color>F0DE00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle479">
+		<LineStyle>
+			<color>F0DF00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle476">
+		<LineStyle>
+			<color>F0DC00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle477">
+		<LineStyle>
+			<color>F0DD00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle474">
+		<LineStyle>
+			<color>F0DA00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle475">
+		<LineStyle>
+			<color>F0DB00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle472">
+		<LineStyle>
+			<color>F0D800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle473">
+		<LineStyle>
+			<color>F0D900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle470">
+		<LineStyle>
+			<color>F0D600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle471">
+		<LineStyle>
+			<color>F0D700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle375">
+		<LineStyle>
+			<color>F07700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle374">
+		<LineStyle>
+			<color>F07600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle377">
+		<LineStyle>
+			<color>F07900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle376">
+		<LineStyle>
+			<color>F07800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle278">
+		<LineStyle>
+			<color>F01600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle279">
+		<LineStyle>
+			<color>F01700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle373">
+		<LineStyle>
+			<color>F07500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle372">
+		<LineStyle>
+			<color>F07400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle274">
+		<LineStyle>
+			<color>F01200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle275">
+		<LineStyle>
+			<color>F01300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle276">
+		<LineStyle>
+			<color>F01400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle277">
+		<LineStyle>
+			<color>F01500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle270">
+		<LineStyle>
+			<color>F00E00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle271">
+		<LineStyle>
+			<color>F00F00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle272">
+		<LineStyle>
+			<color>F01000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle273">
+		<LineStyle>
+			<color>F01100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle511">
+		<LineStyle>
+			<color>F0FF00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle510">
+		<LineStyle>
+			<color>F0FE00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle151">
+		<LineStyle>
+			<color>F00069FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle150">
+		<LineStyle>
+			<color>F0006AFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle153">
+		<LineStyle>
+			<color>F00067FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle152">
+		<LineStyle>
+			<color>F00068FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle155">
+		<LineStyle>
+			<color>F00065FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle154">
+		<LineStyle>
+			<color>F00066FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle157">
+		<LineStyle>
+			<color>F00063FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle156">
+		<LineStyle>
+			<color>F00064FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle159">
+		<LineStyle>
+			<color>F00061FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle158">
+		<LineStyle>
+			<color>F00062FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle124">
+		<LineStyle>
+			<color>F00084FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle125">
+		<LineStyle>
+			<color>F00083FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle126">
+		<LineStyle>
+			<color>F00082FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle127">
+		<LineStyle>
+			<color>F00081FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle120">
+		<LineStyle>
+			<color>F00088FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle121">
+		<LineStyle>
+			<color>F00087FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle122">
+		<LineStyle>
+			<color>F00086FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle123">
+		<LineStyle>
+			<color>F00085FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle128">
+		<LineStyle>
+			<color>F00080FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle129">
+		<LineStyle>
+			<color>F0007FFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle99">
+		<LineStyle>
+			<color>F0009DFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle98">
+		<LineStyle>
+			<color>F0009EFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle91">
+		<LineStyle>
+			<color>F000A5FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle90">
+		<LineStyle>
+			<color>F000A6FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle93">
+		<LineStyle>
+			<color>F000A3FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle92">
+		<LineStyle>
+			<color>F000A4FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle95">
+		<LineStyle>
+			<color>F000A1FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle94">
+		<LineStyle>
+			<color>F000A2FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle97">
+		<LineStyle>
+			<color>F0009FFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle96">
+		<LineStyle>
+			<color>F000A0FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle339">
+		<LineStyle>
+			<color>F05300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle338">
+		<LineStyle>
+			<color>F05200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle331">
+		<LineStyle>
+			<color>F04B00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle330">
+		<LineStyle>
+			<color>F04A00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle333">
+		<LineStyle>
+			<color>F04D00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle332">
+		<LineStyle>
+			<color>F04C00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle335">
+		<LineStyle>
+			<color>F04F00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle334">
+		<LineStyle>
+			<color>F04E00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle337">
+		<LineStyle>
+			<color>F05100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle336">
+		<LineStyle>
+			<color>F05000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle230">
+		<LineStyle>
+			<color>F0001AFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle231">
+		<LineStyle>
+			<color>F00019FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle232">
+		<LineStyle>
+			<color>F00018FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle233">
+		<LineStyle>
+			<color>F00017FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle234">
+		<LineStyle>
+			<color>F00016FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle235">
+		<LineStyle>
+			<color>F00015FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle236">
+		<LineStyle>
+			<color>F00014FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle237">
+		<LineStyle>
+			<color>F00013FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle238">
+		<LineStyle>
+			<color>F00012FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle239">
+		<LineStyle>
+			<color>F00011FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle28">
+		<LineStyle>
+			<color>F000E4FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle29">
+		<LineStyle>
+			<color>F000E3FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle24">
+		<LineStyle>
+			<color>F000E8FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle25">
+		<LineStyle>
+			<color>F000E7FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle26">
+		<LineStyle>
+			<color>F000E6FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle27">
+		<LineStyle>
+			<color>F000E5FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle20">
+		<LineStyle>
+			<color>F000ECFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle21">
+		<LineStyle>
+			<color>F000EBFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle22">
+		<LineStyle>
+			<color>F000EAFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle23">
+		<LineStyle>
+			<color>F000E9FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle425">
+		<LineStyle>
+			<color>F0A900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle424">
+		<LineStyle>
+			<color>F0A800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle427">
+		<LineStyle>
+			<color>F0AB00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle426">
+		<LineStyle>
+			<color>F0AA00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle348">
+		<LineStyle>
+			<color>F05C00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle349">
+		<LineStyle>
+			<color>F05D00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle423">
+		<LineStyle>
+			<color>F0A700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle422">
+		<LineStyle>
+			<color>F0A600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle344">
+		<LineStyle>
+			<color>F05800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle345">
+		<LineStyle>
+			<color>F05900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle346">
+		<LineStyle>
+			<color>F05A00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle347">
+		<LineStyle>
+			<color>F05B00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle340">
+		<LineStyle>
+			<color>F05400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle341">
+		<LineStyle>
+			<color>F05500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle342">
+		<LineStyle>
+			<color>F05600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle343">
+		<LineStyle>
+			<color>F05700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle421">
+		<LineStyle>
+			<color>F0A500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle420">
+		<LineStyle>
+			<color>F0A400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle281">
+		<LineStyle>
+			<color>F01900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle280">
+		<LineStyle>
+			<color>F01800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle283">
+		<LineStyle>
+			<color>F01B00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle282">
+		<LineStyle>
+			<color>F01A00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle285">
+		<LineStyle>
+			<color>F01D00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle284">
+		<LineStyle>
+			<color>F01C00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle287">
+		<LineStyle>
+			<color>F01F00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle286">
+		<LineStyle>
+			<color>F01E00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle160">
+		<LineStyle>
+			<color>F00060FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle161">
+		<LineStyle>
+			<color>F0005FFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle162">
+		<LineStyle>
+			<color>F0005EFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle163">
+		<LineStyle>
+			<color>F0005DFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle164">
+		<LineStyle>
+			<color>F0005CFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle165">
+		<LineStyle>
+			<color>F0005BFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle166">
+		<LineStyle>
+			<color>F0005AFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle167">
+		<LineStyle>
+			<color>F00059FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle429">
+		<LineStyle>
+			<color>F0AD00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle55">
+		<LineStyle>
+			<color>F000C9FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle54">
+		<LineStyle>
+			<color>F000CAFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle57">
+		<LineStyle>
+			<color>F000C7FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle56">
+		<LineStyle>
+			<color>F000C8FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle51">
+		<LineStyle>
+			<color>F000CDFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle50">
+		<LineStyle>
+			<color>F000CEFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle53">
+		<LineStyle>
+			<color>F000CBFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle52">
+		<LineStyle>
+			<color>F000CCFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle59">
+		<LineStyle>
+			<color>F000C5FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle58">
+		<LineStyle>
+			<color>F000C6FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle371">
+		<LineStyle>
+			<color>F07300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle370">
+		<LineStyle>
+			<color>F07200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle481">
+		<LineStyle>
+			<color>F0E100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle379">
+		<LineStyle>
+			<color>F07B00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle480">
+		<LineStyle>
+			<color>F0E000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle378">
+		<LineStyle>
+			<color>F07A00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle469">
+		<LineStyle>
+			<color>F0D500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle468">
+		<LineStyle>
+			<color>F0D400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle461">
+		<LineStyle>
+			<color>F0CD00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle460">
+		<LineStyle>
+			<color>F0CC00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle463">
+		<LineStyle>
+			<color>F0CF00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle462">
+		<LineStyle>
+			<color>F0CE00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle465">
+		<LineStyle>
+			<color>F0D100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle464">
+		<LineStyle>
+			<color>F0D000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle467">
+		<LineStyle>
+			<color>F0D300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle466">
+		<LineStyle>
+			<color>F0D200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle300">
+		<LineStyle>
+			<color>F02C00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle301">
+		<LineStyle>
+			<color>F02D00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle302">
+		<LineStyle>
+			<color>F02E00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle303">
+		<LineStyle>
+			<color>F02F00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle304">
+		<LineStyle>
+			<color>F03000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle305">
+		<LineStyle>
+			<color>F03100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle306">
+		<LineStyle>
+			<color>F03200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle307">
+		<LineStyle>
+			<color>F03300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle267">
+		<LineStyle>
+			<color>F00B00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle266">
+		<LineStyle>
+			<color>F00A00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle265">
+		<LineStyle>
+			<color>F00900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle264">
+		<LineStyle>
+			<color>F00800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle263">
+		<LineStyle>
+			<color>F00700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle262">
+		<LineStyle>
+			<color>F00600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle261">
+		<LineStyle>
+			<color>F00500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle260">
+		<LineStyle>
+			<color>F00400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle489">
+		<LineStyle>
+			<color>F0E900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle488">
+		<LineStyle>
+			<color>F0E800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle418">
+		<LineStyle>
+			<color>F0A200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle419">
+		<LineStyle>
+			<color>F0A300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle414">
+		<LineStyle>
+			<color>F09E00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle415">
+		<LineStyle>
+			<color>F09F00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle416">
+		<LineStyle>
+			<color>F0A000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle417">
+		<LineStyle>
+			<color>F0A100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle410">
+		<LineStyle>
+			<color>F09A00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle411">
+		<LineStyle>
+			<color>F09B00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle412">
+		<LineStyle>
+			<color>F09C00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle413">
+		<LineStyle>
+			<color>F09D00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle497">
+		<LineStyle>
+			<color>F0F100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle137">
+		<LineStyle>
+			<color>F00077FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle136">
+		<LineStyle>
+			<color>F00078FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle135">
+		<LineStyle>
+			<color>F00079FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle134">
+		<LineStyle>
+			<color>F0007AFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle133">
+		<LineStyle>
+			<color>F0007BFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle132">
+		<LineStyle>
+			<color>F0007CFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle131">
+		<LineStyle>
+			<color>F0007DFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle130">
+		<LineStyle>
+			<color>F0007EFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle139">
+		<LineStyle>
+			<color>F00075FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle138">
+		<LineStyle>
+			<color>F00076FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle88">
+		<LineStyle>
+			<color>F000A8FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle89">
+		<LineStyle>
+			<color>F000A7FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle86">
+		<LineStyle>
+			<color>F000AAFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle87">
+		<LineStyle>
+			<color>F000A9FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle84">
+		<LineStyle>
+			<color>F000ACFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle85">
+		<LineStyle>
+			<color>F000ABFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle82">
+		<LineStyle>
+			<color>F000AEFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle83">
+		<LineStyle>
+			<color>F000ADFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle80">
+		<LineStyle>
+			<color>F000B0FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle81">
+		<LineStyle>
+			<color>F000AFFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle223">
+		<LineStyle>
+			<color>F00021FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle222">
+		<LineStyle>
+			<color>F00022FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle221">
+		<LineStyle>
+			<color>F00023FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle189">
+		<LineStyle>
+			<color>F00043FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle227">
+		<LineStyle>
+			<color>F0001DFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle226">
+		<LineStyle>
+			<color>F0001EFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle225">
+		<LineStyle>
+			<color>F0001FFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle224">
+		<LineStyle>
+			<color>F00020FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle182">
+		<LineStyle>
+			<color>F0004AFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle183">
+		<LineStyle>
+			<color>F00049FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle180">
+		<LineStyle>
+			<color>F0004CFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle228">
+		<LineStyle>
+			<color>F0001CFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle186">
+		<LineStyle>
+			<color>F00046FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle187">
+		<LineStyle>
+			<color>F00045FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle184">
+		<LineStyle>
+			<color>F00048FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle185">
+		<LineStyle>
+			<color>F00047FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle11">
+		<LineStyle>
+			<color>F000F5FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle10">
+		<LineStyle>
+			<color>F000F6FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle13">
+		<LineStyle>
+			<color>F000F3FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle12">
+		<LineStyle>
+			<color>F000F4FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle15">
+		<LineStyle>
+			<color>F000F1FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle14">
+		<LineStyle>
+			<color>F000F2FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle17">
+		<LineStyle>
+			<color>F000EFFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle16">
+		<LineStyle>
+			<color>F000F0FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle19">
+		<LineStyle>
+			<color>F000EDFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle18">
+		<LineStyle>
+			<color>F000EEFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle450">
+		<LineStyle>
+			<color>F0C200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle451">
+		<LineStyle>
+			<color>F0C300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle452">
+		<LineStyle>
+			<color>F0C400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle453">
+		<LineStyle>
+			<color>F0C500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle454">
+		<LineStyle>
+			<color>F0C600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle455">
+		<LineStyle>
+			<color>F0C700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle359">
+		<LineStyle>
+			<color>F06700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle358">
+		<LineStyle>
+			<color>F06600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle357">
+		<LineStyle>
+			<color>F06500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle356">
+		<LineStyle>
+			<color>F06400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle355">
+		<LineStyle>
+			<color>F06300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle354">
+		<LineStyle>
+			<color>F06200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle353">
+		<LineStyle>
+			<color>F06100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle352">
+		<LineStyle>
+			<color>F06000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle351">
+		<LineStyle>
+			<color>F05F00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle350">
+		<LineStyle>
+			<color>F05E00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle168">
+		<LineStyle>
+			<color>F00058FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle169">
+		<LineStyle>
+			<color>F00057FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle289">
+		<LineStyle>
+			<color>F02100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle288">
+		<LineStyle>
+			<color>F02000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle179">
+		<LineStyle>
+			<color>F0004DFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle178">
+		<LineStyle>
+			<color>F0004EFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle173">
+		<LineStyle>
+			<color>F00053FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle172">
+		<LineStyle>
+			<color>F00054FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle171">
+		<LineStyle>
+			<color>F00055FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle170">
+		<LineStyle>
+			<color>F00056FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle177">
+		<LineStyle>
+			<color>F0004FFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle176">
+		<LineStyle>
+			<color>F00050FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle175">
+		<LineStyle>
+			<color>F00051FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle174">
+		<LineStyle>
+			<color>F00052FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle388">
+		<LineStyle>
+			<color>F08400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle389">
+		<LineStyle>
+			<color>F08500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle380">
+		<LineStyle>
+			<color>F07C00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle381">
+		<LineStyle>
+			<color>F07D00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle382">
+		<LineStyle>
+			<color>F07E00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle383">
+		<LineStyle>
+			<color>F07F00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle384">
+		<LineStyle>
+			<color>F08000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle385">
+		<LineStyle>
+			<color>F08100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle386">
+		<LineStyle>
+			<color>F08200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle387">
+		<LineStyle>
+			<color>F08300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle441">
+		<LineStyle>
+			<color>F0B900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle494">
+		<LineStyle>
+			<color>F0EE00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle495">
+		<LineStyle>
+			<color>F0EF00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle496">
+		<LineStyle>
+			<color>F0F000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle440">
+		<LineStyle>
+			<color>F0B800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle490">
+		<LineStyle>
+			<color>F0EA00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle491">
+		<LineStyle>
+			<color>F0EB00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle492">
+		<LineStyle>
+			<color>F0EC00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle493">
+		<LineStyle>
+			<color>F0ED00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle498">
+		<LineStyle>
+			<color>F0F200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle499">
+		<LineStyle>
+			<color>F0F300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle313">
+		<LineStyle>
+			<color>F03900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle312">
+		<LineStyle>
+			<color>F03800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle258">
+		<LineStyle>
+			<color>F00200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle259">
+		<LineStyle>
+			<color>F00300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle317">
+		<LineStyle>
+			<color>F03D00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle316">
+		<LineStyle>
+			<color>F03C00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle315">
+		<LineStyle>
+			<color>F03B00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle314">
+		<LineStyle>
+			<color>F03A00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle252">
+		<LineStyle>
+			<color>F00004FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle253">
+		<LineStyle>
+			<color>F00003FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle319">
+		<LineStyle>
+			<color>F03F00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle318">
+		<LineStyle>
+			<color>F03E00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle256">
+		<LineStyle>
+			<color>F00000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle257">
+		<LineStyle>
+			<color>F00100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle254">
+		<LineStyle>
+			<color>F00002FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle255">
+		<LineStyle>
+			<color>F00001FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle48">
+		<LineStyle>
+			<color>F000D0FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle49">
+		<LineStyle>
+			<color>F000CFFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle42">
+		<LineStyle>
+			<color>F000D6FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle43">
+		<LineStyle>
+			<color>F000D5FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle40">
+		<LineStyle>
+			<color>F000D8FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle41">
+		<LineStyle>
+			<color>F000D7FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle46">
+		<LineStyle>
+			<color>F000D2FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle47">
+		<LineStyle>
+			<color>F000D1FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle44">
+		<LineStyle>
+			<color>F000D4FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle45">
+		<LineStyle>
+			<color>F000D3FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle448">
+		<LineStyle>
+			<color>F0C000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle449">
+		<LineStyle>
+			<color>F0C100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle409">
+		<LineStyle>
+			<color>F09900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle408">
+		<LineStyle>
+			<color>F09800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle407">
+		<LineStyle>
+			<color>F09700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle406">
+		<LineStyle>
+			<color>F09600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle405">
+		<LineStyle>
+			<color>F09500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle404">
+		<LineStyle>
+			<color>F09400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle403">
+		<LineStyle>
+			<color>F09300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle402">
+		<LineStyle>
+			<color>F09200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle401">
+		<LineStyle>
+			<color>F09100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle400">
+		<LineStyle>
+			<color>F09000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle428">
+		<LineStyle>
+			<color>F0AC00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle311">
+		<LineStyle>
+			<color>F03700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle310">
+		<LineStyle>
+			<color>F03600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle250">
+		<LineStyle>
+			<color>F00006FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle251">
+		<LineStyle>
+			<color>F00005FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle102">
+		<LineStyle>
+			<color>F0009AFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle103">
+		<LineStyle>
+			<color>F00099FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle100">
+		<LineStyle>
+			<color>F0009CFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle101">
+		<LineStyle>
+			<color>F0009BFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle106">
+		<LineStyle>
+			<color>F00096FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle107">
+		<LineStyle>
+			<color>F00095FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle104">
+		<LineStyle>
+			<color>F00098FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle105">
+		<LineStyle>
+			<color>F00097FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle108">
+		<LineStyle>
+			<color>F00094FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle109">
+		<LineStyle>
+			<color>F00093FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle457">
+		<LineStyle>
+			<color>F0C900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle73">
+		<LineStyle>
+			<color>F000B7FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle72">
+		<LineStyle>
+			<color>F000B8FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle71">
+		<LineStyle>
+			<color>F000B9FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle70">
+		<LineStyle>
+			<color>F000BAFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle77">
+		<LineStyle>
+			<color>F000B3FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle76">
+		<LineStyle>
+			<color>F000B4FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle75">
+		<LineStyle>
+			<color>F000B5FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle74">
+		<LineStyle>
+			<color>F000B6FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle79">
+		<LineStyle>
+			<color>F000B1FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle78">
+		<LineStyle>
+			<color>F000B2FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle188">
+		<LineStyle>
+			<color>F00044FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle220">
+		<LineStyle>
+			<color>F00024FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle218">
+		<LineStyle>
+			<color>F00026FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle219">
+		<LineStyle>
+			<color>F00025FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle216">
+		<LineStyle>
+			<color>F00028FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle217">
+		<LineStyle>
+			<color>F00027FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle214">
+		<LineStyle>
+			<color>F0002AFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle215">
+		<LineStyle>
+			<color>F00029FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle212">
+		<LineStyle>
+			<color>F0002CFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle213">
+		<LineStyle>
+			<color>F0002BFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle210">
+		<LineStyle>
+			<color>F0002EFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle211">
+		<LineStyle>
+			<color>F0002DFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle195">
+		<LineStyle>
+			<color>F0003DFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle194">
+		<LineStyle>
+			<color>F0003EFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle197">
+		<LineStyle>
+			<color>F0003BFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle196">
+		<LineStyle>
+			<color>F0003CFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle191">
+		<LineStyle>
+			<color>F00041FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle190">
+		<LineStyle>
+			<color>F00042FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle193">
+		<LineStyle>
+			<color>F0003FFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle192">
+		<LineStyle>
+			<color>F00040FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle199">
+		<LineStyle>
+			<color>F00039FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle198">
+		<LineStyle>
+			<color>F0003AFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle229">
+		<LineStyle>
+			<color>F0001BFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle181">
+		<LineStyle>
+			<color>F0004BFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle443">
+		<LineStyle>
+			<color>F0BB00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle442">
+		<LineStyle>
+			<color>F0BA00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle368">
+		<LineStyle>
+			<color>F07000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle369">
+		<LineStyle>
+			<color>F07100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle447">
+		<LineStyle>
+			<color>F0BF00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle446">
+		<LineStyle>
+			<color>F0BE00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle445">
+		<LineStyle>
+			<color>F0BD00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle444">
+		<LineStyle>
+			<color>F0BC00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle362">
+		<LineStyle>
+			<color>F06A00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle363">
+		<LineStyle>
+			<color>F06B00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle360">
+		<LineStyle>
+			<color>F06800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle361">
+		<LineStyle>
+			<color>F06900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle366">
+		<LineStyle>
+			<color>F06E00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle367">
+		<LineStyle>
+			<color>F06F00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle364">
+		<LineStyle>
+			<color>F06C00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle365">
+		<LineStyle>
+			<color>F06D00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle506">
+		<LineStyle>
+			<color>F0FA00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle507">
+		<LineStyle>
+			<color>F0FB00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle504">
+		<LineStyle>
+			<color>F0F800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle505">
+		<LineStyle>
+			<color>F0F900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle502">
+		<LineStyle>
+			<color>F0F600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle503">
+		<LineStyle>
+			<color>F0F700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle500">
+		<LineStyle>
+			<color>F0F400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle501">
+		<LineStyle>
+			<color>F0F500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle508">
+		<LineStyle>
+			<color>F0FC00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle509">
+		<LineStyle>
+			<color>F0FD00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle146">
+		<LineStyle>
+			<color>F0006EFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle147">
+		<LineStyle>
+			<color>F0006DFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle144">
+		<LineStyle>
+			<color>F00070FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle145">
+		<LineStyle>
+			<color>F0006FFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle142">
+		<LineStyle>
+			<color>F00072FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle143">
+		<LineStyle>
+			<color>F00071FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle140">
+		<LineStyle>
+			<color>F00074FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle141">
+		<LineStyle>
+			<color>F00073FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle148">
+		<LineStyle>
+			<color>F0006CFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle149">
+		<LineStyle>
+			<color>F0006BFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle292">
+		<LineStyle>
+			<color>F02400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle293">
+		<LineStyle>
+			<color>F02500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle5">
+		<LineStyle>
+			<color>F000FBFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle4">
+		<LineStyle>
+			<color>F000FCFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle7">
+		<LineStyle>
+			<color>F000F9FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle6">
+		<LineStyle>
+			<color>F000FAFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle1">
+		<LineStyle>
+			<color>F000FFFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle0">
+		<LineStyle>
+			<color>F000E010</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle3">
+		<LineStyle>
+			<color>F000FDFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle2">
+		<LineStyle>
+			<color>F000FEFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle9">
+		<LineStyle>
+			<color>F000F7FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle8">
+		<LineStyle>
+			<color>F000F8FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle399">
+		<LineStyle>
+			<color>F08F00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle398">
+		<LineStyle>
+			<color>F08E00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle393">
+		<LineStyle>
+			<color>F08900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle392">
+		<LineStyle>
+			<color>F08800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle391">
+		<LineStyle>
+			<color>F08700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle390">
+		<LineStyle>
+			<color>F08600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle397">
+		<LineStyle>
+			<color>F08D00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle396">
+		<LineStyle>
+			<color>F08C00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle395">
+		<LineStyle>
+			<color>F08B00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle394">
+		<LineStyle>
+			<color>F08A00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle113">
+		<LineStyle>
+			<color>F0008FFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle112">
+		<LineStyle>
+			<color>F00090FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle487">
+		<LineStyle>
+			<color>F0E700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle486">
+		<LineStyle>
+			<color>F0E600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle485">
+		<LineStyle>
+			<color>F0E500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle484">
+		<LineStyle>
+			<color>F0E400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle483">
+		<LineStyle>
+			<color>F0E300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle482">
+		<LineStyle>
+			<color>F0E200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle328">
+		<LineStyle>
+			<color>F04800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle329">
+		<LineStyle>
+			<color>F04900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle326">
+		<LineStyle>
+			<color>F04600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle327">
+		<LineStyle>
+			<color>F04700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle324">
+		<LineStyle>
+			<color>F04400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle325">
+		<LineStyle>
+			<color>F04500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle322">
+		<LineStyle>
+			<color>F04200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle323">
+		<LineStyle>
+			<color>F04300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle320">
+		<LineStyle>
+			<color>F04000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle321">
+		<LineStyle>
+			<color>F04100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle245">
+		<LineStyle>
+			<color>F0000BFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle244">
+		<LineStyle>
+			<color>F0000CFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle247">
+		<LineStyle>
+			<color>F00009FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle246">
+		<LineStyle>
+			<color>F0000AFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle241">
+		<LineStyle>
+			<color>F0000FFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle240">
+		<LineStyle>
+			<color>F00010FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle243">
+		<LineStyle>
+			<color>F0000DFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle242">
+		<LineStyle>
+			<color>F0000EFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle249">
+		<LineStyle>
+			<color>F00007FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle248">
+		<LineStyle>
+			<color>F00008FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle39">
+		<LineStyle>
+			<color>F000D9FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle38">
+		<LineStyle>
+			<color>F000DAFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle37">
+		<LineStyle>
+			<color>F000DBFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle36">
+		<LineStyle>
+			<color>F000DCFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle35">
+		<LineStyle>
+			<color>F000DDFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle34">
+		<LineStyle>
+			<color>F000DEFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle33">
+		<LineStyle>
+			<color>F000DFFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle32">
+		<LineStyle>
+			<color>F000E0FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle31">
+		<LineStyle>
+			<color>F000E1FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle30">
+		<LineStyle>
+			<color>F000E2FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle438">
+		<LineStyle>
+			<color>F0B600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle439">
+		<LineStyle>
+			<color>F0B700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle456">
+		<LineStyle>
+			<color>F0C800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle432">
+		<LineStyle>
+			<color>F0B000FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle433">
+		<LineStyle>
+			<color>F0B100FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle430">
+		<LineStyle>
+			<color>F0AE00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle431">
+		<LineStyle>
+			<color>F0AF00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle436">
+		<LineStyle>
+			<color>F0B400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle437">
+		<LineStyle>
+			<color>F0B500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle434">
+		<LineStyle>
+			<color>F0B200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle435">
+		<LineStyle>
+			<color>F0B300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle458">
+		<LineStyle>
+			<color>F0CA00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle459">
+		<LineStyle>
+			<color>F0CB00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle296">
+		<LineStyle>
+			<color>F02800FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle297">
+		<LineStyle>
+			<color>F02900FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle294">
+		<LineStyle>
+			<color>F02600FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle295">
+		<LineStyle>
+			<color>F02700FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle119">
+		<LineStyle>
+			<color>F00089FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle118">
+		<LineStyle>
+			<color>F0008AFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle290">
+		<LineStyle>
+			<color>F02200FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle291">
+		<LineStyle>
+			<color>F02300FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle115">
+		<LineStyle>
+			<color>F0008DFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle114">
+		<LineStyle>
+			<color>F0008EFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle117">
+		<LineStyle>
+			<color>F0008BFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle116">
+		<LineStyle>
+			<color>F0008CFF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle111">
+		<LineStyle>
+			<color>F00091FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle110">
+		<LineStyle>
+			<color>F00092FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle298">
+		<LineStyle>
+			<color>F02A00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle299">
+		<LineStyle>
+			<color>F02B00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle269">
+		<LineStyle>
+			<color>F00D00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle268">
+		<LineStyle>
+			<color>F00C00FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle308">
+		<LineStyle>
+			<color>F03400FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle309">
+		<LineStyle>
+			<color>F03500FF</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+		<LatLonBox>
+			<north>-36.521730</north>
+			<south>-37.333824</south>
+			<east>175.302327</east>
+			<west>174.454287</west>
+		</LatLonBox>
+	<Placemark>
+		<styleUrl>#lineStyle13</styleUrl>
+		<name>Gulf Harbour Drive</name>
+		<description>Curvature: 497.05
+Distance: 1.15 mi
+Type: tertiary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.804076,-36.608281 174.804030,-36.608484 174.803704,-36.608973 174.803395,-36.609798 174.803249,-36.610186 174.803211,-36.610231 174.802871,-36.610627 174.802494,-36.611233 174.802470,-36.611401 174.802416,-36.611760 174.802413,-36.611782 174.802271,-36.612749 174.802082,-36.613493 174.801896,-36.613821 174.801867,-36.613872 174.801421,-36.614388 174.801209,-36.614569 174.800743,-36.614941 174.800232,-36.615193 174.799498,-36.615491 174.798795,-36.615794 174.798290,-36.616011 174.797936,-36.616158 174.797292,-36.616435 174.796971,-36.616529 174.796185,-36.616758 174.795501,-36.616727 174.795271,-36.616668 174.794846,-36.616473 174.794653,-36.616265 174.794505,-36.616094 174.794244,-36.615652 174.793996,-36.615309 174.793895,-36.615184 174.793507,-36.614836 174.793035,-36.614533 174.791585,-36.614104 174.791162,-36.613983 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle12</styleUrl>
+		<name>Sandringham Road</name>
+		<description>Curvature: 493.30
+Distance: 2.07 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.733473,-36.897073 174.733640,-36.896822 174.734154,-36.896159 174.734744,-36.895398 174.734789,-36.895344 174.735416,-36.894539 174.735592,-36.894299 174.736073,-36.893682 174.736332,-36.893339 174.736453,-36.893180 174.736501,-36.893094 174.736528,-36.893029 174.736536,-36.892985 174.736539,-36.892966 174.736535,-36.892902 174.736523,-36.892839 174.736491,-36.892731 174.736447,-36.892603 174.736389,-36.892421 174.736296,-36.892149 174.736270,-36.892057 174.736262,-36.892007 174.736263,-36.891967 174.736269,-36.891918 174.736288,-36.891854 174.736374,-36.891588 174.736568,-36.890985 174.736749,-36.890420 174.736852,-36.890094 174.737131,-36.889223 174.737379,-36.888457 174.737426,-36.888312 174.737609,-36.887737 174.737709,-36.887430 174.737775,-36.887225 174.737964,-36.886637 174.738043,-36.886375 174.738228,-36.885792 174.738288,-36.885603 174.738409,-36.885224 174.738432,-36.885127 174.738562,-36.884723 174.738636,-36.884521 174.738735,-36.884222 174.738941,-36.883580 174.739182,-36.882839 174.739452,-36.881988 174.739466,-36.881952 174.739752,-36.881072 174.740035,-36.880202 174.740322,-36.879310 174.740334,-36.879271 174.740608,-36.878439 174.740632,-36.878365 174.740880,-36.877590 174.740891,-36.877561 174.740998,-36.877230 174.741185,-36.876670 174.741224,-36.876558 174.741491,-36.875715 174.741536,-36.875567 174.741600,-36.875377 174.741658,-36.875207 174.741835,-36.874666 174.741867,-36.874575 174.741908,-36.874470 174.741964,-36.874367 174.742182,-36.873989 174.742321,-36.873831 174.742386,-36.873776 174.742757,-36.873521 174.743003,-36.873363 174.743168,-36.873248 174.743327,-36.873140 174.743392,-36.873106 174.743458,-36.873079 174.744284,-36.872769 174.744401,-36.872733 174.744519,-36.872713 174.744576,-36.872714 174.744651,-36.872719 174.744730,-36.872730 174.745041,-36.872796 174.745210,-36.872829 174.745341,-36.872858 174.745368,-36.872863 174.745380,-36.872866 174.745662,-36.872926 174.745710,-36.872936 174.745869,-36.872969 174.745960,-36.872988 174.746036,-36.872999 174.746055,-36.873001 174.746098,-36.873007 174.746205,-36.873006 174.746335,-36.872997 174.746375,-36.872984 174.746447,-36.872955 174.746551,-36.872901 174.746696,-36.872787 174.746756,-36.872718 174.746792,-36.872661 174.746813,-36.872620 174.746853,-36.872521 174.746859,-36.872500 174.746905,-36.872341 174.746982,-36.872055 174.747007,-36.871950 174.747033,-36.871847 174.747026,-36.871884 174.747097,-36.871544 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle12</styleUrl>
+		<name>Prince Regent Drive</name>
+		<description>Curvature: 492.18
+Distance: 1.11 mi
+Type: residential
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.900799,-36.884342 174.900321,-36.884260 174.900016,-36.884254 174.899620,-36.884304 174.899279,-36.884418 174.898959,-36.884618 174.898536,-36.884951 174.897590,-36.885846 174.896499,-36.886896 174.895770,-36.887582 174.895530,-36.887986 174.895452,-36.888309 174.895534,-36.888799 174.895701,-36.889160 174.896347,-36.889747 174.897055,-36.890184 174.897334,-36.890423 174.897510,-36.890640 174.897669,-36.890900 174.897755,-36.891360 174.897759,-36.891509 174.897737,-36.891710 174.897583,-36.892335 174.897181,-36.893818 174.897131,-36.894096 174.897180,-36.894344 174.897288,-36.894888 174.897293,-36.895301 174.897121,-36.895960 174.897046,-36.896266 174.897014,-36.896399 174.896872,-36.896974 174.896841,-36.897118 174.896831,-36.897260 174.896863,-36.897406 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle12</styleUrl>
+		<name>Green Road</name>
+		<description>Curvature: 489.94
+Distance: 1.38 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.644623,-36.678655 174.644434,-36.679244 174.649240,-36.693079 174.649541,-36.693492 174.649645,-36.693618 174.649870,-36.693704 174.650481,-36.693764 174.651104,-36.694013 174.651265,-36.694194 174.650760,-36.695072 174.650685,-36.695355 174.650696,-36.695975 174.650511,-36.696520 174.650682,-36.697016 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle12</styleUrl>
+		<name>Edmonton Road (13)</name>
+		<description>Curvature: 486.31
+Distance: 1.23 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.635347,-36.878078 174.635417,-36.878003 174.635759,-36.877764 174.635875,-36.877691 174.637478,-36.876902 174.637735,-36.876730 174.637967,-36.876586 174.638104,-36.876407 174.638250,-36.876105 174.638405,-36.875818 174.638894,-36.874911 174.639022,-36.874540 174.639040,-36.874224 174.639040,-36.873922 174.638969,-36.873368 174.638945,-36.873228 174.638801,-36.872355 174.638782,-36.871906 174.638793,-36.871778 174.638878,-36.871524 174.638914,-36.871445 174.639084,-36.871204 174.639727,-36.869789 174.639752,-36.869727 174.640423,-36.868551 174.640580,-36.868415 174.640947,-36.868091 174.641108,-36.867873 174.641264,-36.867500 174.641428,-36.867281 174.641750,-36.866994 174.642044,-36.866726 174.642212,-36.866557 174.642318,-36.866451 174.642433,-36.866332 174.642602,-36.866177 174.642885,-36.865957 174.643228,-36.865778 174.643634,-36.865708 174.644104,-36.865627 174.645331,-36.865394 174.645380,-36.865385 174.645471,-36.865370 174.645889,-36.865298 174.646572,-36.865184 174.646993,-36.865096 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle12</styleUrl>
+		<name>Kauri Road</name>
+		<description>Curvature: 485.80
+Distance: 1.65 mi
+Type: tertiary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.633626,-36.798923 174.633770,-36.798856 174.635100,-36.798172 174.635855,-36.797677 174.636173,-36.797437 174.636345,-36.797100 174.636722,-36.795787 174.637538,-36.792921 174.637366,-36.792536 174.637066,-36.792144 174.636856,-36.791874 174.636823,-36.791637 174.636979,-36.790982 174.637140,-36.790520 174.637244,-36.790218 174.637435,-36.789982 174.637640,-36.789815 174.638763,-36.788873 174.639778,-36.788056 174.640319,-36.787588 174.640889,-36.787210 174.642301,-36.786418 174.642653,-36.786212 174.642851,-36.785999 174.643039,-36.785746 174.643160,-36.785449 174.644121,-36.782232 174.644139,-36.782167 174.644174,-36.782040 174.644438,-36.781077 174.644653,-36.780355 174.645142,-36.778671 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle12</styleUrl>
+		<name>Papakura–Clevedon Road</name>
+		<description>Curvature: 485.46
+Distance: 3.01 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>175.014882,-37.027543 175.015114,-37.027441 175.015423,-37.027214 175.019389,-37.023487 175.023850,-37.021082 175.024384,-37.020794 175.024882,-37.020129 175.024985,-37.019677 175.025036,-37.019457 175.025053,-37.019183 175.025036,-37.018601 175.025096,-37.018361 175.025491,-37.016798 175.025491,-37.016497 175.025337,-37.015469 175.025208,-37.015106 175.024403,-37.013757 175.024317,-37.013428 175.024317,-37.012983 175.024360,-37.012613 175.024784,-37.011081 175.025380,-37.009095 175.025869,-37.008272 175.027886,-37.005229 175.028293,-37.004016 175.028331,-37.003810 175.028351,-37.003641 175.028346,-37.003441 175.028326,-37.003271 175.028280,-37.003086 175.028066,-37.002392 175.028060,-37.002159 175.028097,-37.001987 175.028178,-37.001797 175.028268,-37.001676 175.028362,-37.001552 175.028498,-37.001431 175.028641,-37.001335 175.028890,-37.001184 175.029391,-37.000904 175.030040,-37.000437 175.030394,-37.000198 175.030709,-37.000027 175.031460,-36.999628 175.032769,-36.998932 175.034707,-36.997898 175.034864,-36.997792 175.035131,-36.997550 175.035201,-36.997475 175.035386,-36.997212 175.035493,-36.996948 175.035544,-36.996816 175.035954,-36.995825 175.036353,-36.994728 175.036365,-36.994694 175.037446,-36.991832 175.037463,-36.991739 175.037532,-36.991638 175.037605,-36.991566 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle12</styleUrl>
+		<name>SH 17 (SH 17)</name>
+		<description>Curvature: 483.40
+Distance: 1.52 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.682387,-36.533684 174.683078,-36.533973 174.683807,-36.534216 174.684016,-36.534261 174.684245,-36.534290 174.684413,-36.534300 174.684581,-36.534295 174.684749,-36.534274 174.684943,-36.534248 174.686146,-36.534022 174.687461,-36.533788 174.688720,-36.533558 174.689319,-36.533445 174.689606,-36.533396 174.689872,-36.533372 174.690041,-36.533365 174.690188,-36.533370 174.690487,-36.533391 174.690739,-36.533423 174.691803,-36.533609 174.692735,-36.533787 174.693296,-36.533877 174.693551,-36.533920 174.693784,-36.533972 174.693922,-36.534012 174.694058,-36.534056 174.694294,-36.534142 174.694588,-36.534279 174.694951,-36.534472 174.696226,-36.535211 174.696423,-36.535291 174.696778,-36.535391 174.697012,-36.535438 174.697159,-36.535462 174.697317,-36.535467 174.697582,-36.535440 174.697876,-36.535396 174.698268,-36.535281 174.698464,-36.535225 174.698645,-36.535187 174.698901,-36.535166 174.699087,-36.535162 174.699243,-36.535167 174.699457,-36.535208 174.699792,-36.535308 174.700807,-36.535669 174.701001,-36.535753 174.701173,-36.535859 174.701339,-36.535985 174.701417,-36.536064 174.701480,-36.536151 174.701730,-36.536713 174.701966,-36.537032 174.702083,-36.537151 174.702200,-36.537246 174.702396,-36.537361 174.702525,-36.537404 174.702625,-36.537428 174.703084,-36.537539 174.703364,-36.537607 174.703620,-36.537690 174.703776,-36.537754 174.703906,-36.537816 174.704081,-36.537908 174.704305,-36.538046 174.704407,-36.538138 174.704481,-36.538234 174.704547,-36.538333 174.704620,-36.538484 174.704746,-36.538887 174.704836,-36.539127 174.704931,-36.539346 174.705027,-36.539515 174.705168,-36.539708 174.705339,-36.539929 174.705530,-36.540227 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle12</styleUrl>
+		<name>Smeeds Quarry Road</name>
+		<description>Curvature: 479.59
+Distance: 1.74 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.990105,-37.287335 174.990470,-37.287830 174.990684,-37.288684 174.990663,-37.289264 174.990963,-37.289708 174.991414,-37.289981 174.991972,-37.290681 174.992766,-37.291637 174.992980,-37.292081 174.992997,-37.292551 174.992873,-37.292935 174.991457,-37.295359 174.992358,-37.302869 174.992701,-37.304627 174.992594,-37.305054 174.989075,-37.307921 174.987938,-37.308911 174.987509,-37.309423 174.987622,-37.309903 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle11</styleUrl>
+		<name>Tennessee Avenue</name>
+		<description>Curvature: 478.71
+Distance: 1.07 mi
+Type: residential
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.821108,-36.954709 174.821121,-36.955347 174.821061,-36.955573 174.820932,-36.955793 174.820718,-36.955991 174.820173,-36.956455 174.818314,-36.958076 174.818211,-36.958248 174.818177,-36.958454 174.818220,-36.958639 174.818546,-36.959050 174.818658,-36.959188 174.818907,-36.959318 174.819190,-36.959393 174.819396,-36.959386 174.819859,-36.959311 174.820580,-36.959167 174.820752,-36.959174 174.821087,-36.959236 174.821678,-36.959442 174.821773,-36.959476 174.822265,-36.959657 174.823576,-36.960141 174.826217,-36.960897 174.828540,-36.961618 174.830454,-36.962206 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle11</styleUrl>
+		<name>McLarin Road</name>
+		<description>Curvature: 478.32
+Distance: 1.14 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.703425,-37.159359 174.703554,-37.159464 174.703615,-37.159484 174.703697,-37.159499 174.704275,-37.159635 174.706424,-37.160070 174.708928,-37.160457 174.709063,-37.160476 174.709193,-37.160495 174.709524,-37.160527 174.710666,-37.160511 174.711102,-37.160439 174.712313,-37.160238 174.712531,-37.160180 174.712758,-37.160062 174.712859,-37.159972 174.712973,-37.159852 174.713264,-37.159302 174.713358,-37.159115 174.713790,-37.158691 174.713836,-37.158646 174.714064,-37.158566 174.714118,-37.158534 174.714446,-37.158504 174.714529,-37.158501 174.714657,-37.158560 174.714884,-37.158747 174.717052,-37.161102 174.718006,-37.162327 174.718616,-37.164064 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle11</styleUrl>
+		<name>Bell Road</name>
+		<description>Curvature: 477.66
+Distance: 2.73 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>175.140177,-37.217250 175.138495,-37.220783 175.138268,-37.221322 175.138228,-37.221453 175.139301,-37.221691 175.141039,-37.221926 175.141372,-37.222012 175.141806,-37.222157 175.142005,-37.222260 175.142085,-37.222307 175.142230,-37.222409 175.142621,-37.222664 175.143351,-37.223725 175.143743,-37.224233 175.144703,-37.225288 175.145218,-37.225775 175.145352,-37.225848 175.145475,-37.225903 175.145631,-37.225959 175.148242,-37.226803 175.150136,-37.227414 175.150352,-37.227565 175.150421,-37.227744 175.151339,-37.229931 175.151773,-37.230965 175.151811,-37.231199 175.151778,-37.231437 175.151650,-37.231687 175.151596,-37.231768 175.151102,-37.232659 175.149901,-37.234651 175.147219,-37.237555 175.147090,-37.239861 175.146296,-37.243004 175.145922,-37.243958 175.143764,-37.248897 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle11</styleUrl>
+		<name>Neilson Street</name>
+		<description>Curvature: 475.86
+Distance: 1.92 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.782568,-36.926757 174.782840,-36.926725 174.783585,-36.926643 174.783988,-36.926611 174.784726,-36.926554 174.784837,-36.926544 174.785857,-36.926453 174.786071,-36.926458 174.786232,-36.926478 174.786292,-36.926485 174.786522,-36.926512 174.786979,-36.926563 174.787262,-36.926590 174.787501,-36.926655 174.787985,-36.926725 174.788090,-36.926736 174.788235,-36.926737 174.788412,-36.926738 174.792497,-36.926409 174.792657,-36.926396 174.794048,-36.926280 174.794219,-36.926264 174.794349,-36.926267 174.794484,-36.926279 174.794632,-36.926309 174.794755,-36.926343 174.794811,-36.926359 174.794995,-36.926423 174.795065,-36.926453 174.795185,-36.926503 174.795265,-36.926543 174.795413,-36.926595 174.795618,-36.926634 174.795920,-36.926647 174.796076,-36.926587 174.797121,-36.926473 174.797259,-36.926457 174.798032,-36.926372 174.798184,-36.926356 174.799513,-36.926210 174.800257,-36.926128 174.801072,-36.926036 174.801991,-36.925930 174.802440,-36.925880 174.803130,-36.925809 174.803443,-36.925776 174.804721,-36.925643 174.805042,-36.925610 174.805588,-36.925546 174.805627,-36.925541 174.806337,-36.925468 174.806565,-36.925442 174.806925,-36.925421 174.807585,-36.925468 174.808244,-36.925523 174.808573,-36.925511 174.808787,-36.925478 174.808996,-36.925411 174.809522,-36.925154 174.809607,-36.925110 174.809900,-36.924941 174.810132,-36.924769 174.810300,-36.924589 174.810339,-36.924547 174.810461,-36.924416 174.810573,-36.924296 174.811570,-36.922903 174.811892,-36.922419 174.812348,-36.921709 174.812630,-36.921247 174.813071,-36.920523 174.813296,-36.920155 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle11</styleUrl>
+		<name>Hull Road</name>
+		<description>Curvature: 474.11
+Distance: 1.89 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.763414,-37.266378 174.761569,-37.269827 174.761269,-37.269964 174.759042,-37.269223 174.753594,-37.267412 174.747718,-37.265458 174.745862,-37.264841 174.743882,-37.264199 174.741574,-37.263669 174.740805,-37.263541 174.739066,-37.263381 174.738826,-37.263388 174.738027,-37.263455 174.737573,-37.263471 174.737237,-37.263459 174.736866,-37.263377 174.736606,-37.263268 174.736158,-37.263035 174.735686,-37.262292 174.735131,-37.261212 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle11</styleUrl>
+		<name>West Coast Road</name>
+		<description>Curvature: 468.94
+Distance: 2.12 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.662728,-36.909612 174.662403,-36.909968 174.661433,-36.911032 174.661126,-36.911347 174.660895,-36.911583 174.660823,-36.911657 174.660609,-36.911904 174.660104,-36.912478 174.660069,-36.912519 174.659928,-36.912679 174.659628,-36.912933 174.659386,-36.913032 174.659071,-36.913121 174.658718,-36.913146 174.658421,-36.913146 174.657784,-36.912816 174.656050,-36.911917 174.655531,-36.911666 174.654704,-36.911265 174.654668,-36.911252 174.653617,-36.910726 174.653385,-36.910636 174.653197,-36.910590 174.652820,-36.910532 174.652427,-36.910426 174.652060,-36.910325 174.651749,-36.910236 174.651263,-36.910093 174.650738,-36.909948 174.649822,-36.909632 174.649528,-36.909531 174.648438,-36.909193 174.647769,-36.909042 174.646885,-36.908689 174.646807,-36.908658 174.646163,-36.908452 174.645588,-36.908404 174.644061,-36.908472 174.643407,-36.908487 174.642759,-36.908503 174.641846,-36.908438 174.641606,-36.908484 174.641486,-36.908507 174.639683,-36.908884 174.639244,-36.908925 174.638353,-36.908905 174.636980,-36.909110 174.636296,-36.909232 174.635396,-36.909393 174.635319,-36.909406 174.634881,-36.909393 174.634357,-36.909290 174.632920,-36.909003 174.631906,-36.908800 174.631438,-36.908707 174.630088,-36.908446 174.628521,-36.908144 174.628300,-36.908048 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle11</styleUrl>
+		<name>10</name>
+		<description>Curvature: 468.92
+Distance: 1.00 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.776347,-36.911960 174.776402,-36.912000 174.776433,-36.912014 174.776525,-36.912035 174.776661,-36.912061 174.776797,-36.912126 174.776824,-36.912132 174.776898,-36.912148 174.777155,-36.912210 174.777411,-36.912272 174.777566,-36.912308 174.777666,-36.912330 174.777871,-36.912377 174.777923,-36.912389 174.778154,-36.912441 174.778179,-36.912447 174.778358,-36.912487 174.778540,-36.912529 174.778585,-36.912539 174.778601,-36.912542 174.778782,-36.912583 174.778830,-36.912594 174.778977,-36.912627 174.779030,-36.912639 174.779056,-36.912644 174.779181,-36.912672 174.779249,-36.912687 174.779279,-36.912694 174.779406,-36.912723 174.779489,-36.912741 174.779535,-36.912752 174.779705,-36.912791 174.779876,-36.912831 174.780034,-36.912865 174.780079,-36.912874 174.780242,-36.912909 174.780363,-36.912937 174.780404,-36.912946 174.780540,-36.912978 174.780601,-36.912992 174.780659,-36.913005 174.780711,-36.913017 174.780912,-36.913064 174.780947,-36.913072 174.781056,-36.913097 174.781222,-36.913135 174.781355,-36.913166 174.781504,-36.913198 174.781675,-36.913234 174.781809,-36.913262 174.781903,-36.913283 174.782083,-36.913323 174.782240,-36.913357 174.782410,-36.913395 174.782484,-36.913411 174.782633,-36.913444 174.782810,-36.913483 174.782845,-36.913491 174.783029,-36.913532 174.783190,-36.913567 174.783212,-36.913572 174.783333,-36.913599 174.783412,-36.913617 174.783483,-36.913632 174.783824,-36.913709 174.784180,-36.913789 174.784595,-36.913880 174.784708,-36.913905 174.784813,-36.913928 174.784858,-36.913938 174.784889,-36.913944 174.785022,-36.913974 174.785070,-36.913984 174.785208,-36.914014 174.785242,-36.914022 174.785290,-36.914032 174.785533,-36.914087 174.785717,-36.914128 174.785913,-36.914172 174.786313,-36.914261 174.786334,-36.914265 174.786718,-36.914353 174.786798,-36.914371 174.786916,-36.914398 174.787093,-36.914438 174.787265,-36.914478 174.787420,-36.914513 174.787595,-36.914553 174.787918,-36.914627 174.787953,-36.914635 174.788083,-36.914665 174.788742,-36.914816 174.789211,-36.914919 174.789225,-36.914922 174.789278,-36.914934 174.789371,-36.914955 174.789528,-36.914990 174.789575,-36.915001 174.789779,-36.915047 174.789854,-36.915064 174.790062,-36.915110 174.790196,-36.915140 174.790267,-36.915156 174.790344,-36.915173 174.790438,-36.915194 174.790526,-36.915213 174.790648,-36.915240 174.790681,-36.915248 174.790847,-36.915285 174.791002,-36.915319 174.791070,-36.915334 174.791113,-36.915344 174.791265,-36.915378 174.791435,-36.915413 174.791547,-36.915434 174.791562,-36.915439 174.791879,-36.915457 174.792139,-36.915445 174.792276,-36.915464 174.792379,-36.915493 174.792510,-36.915559 174.792602,-36.915635 174.792909,-36.915776 174.792926,-36.915784 174.792645,-36.915725 174.792435,-36.915659 174.792391,-36.915644 174.792218,-36.915600 174.792176,-36.915590 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle11</styleUrl>
+		<name>Central Park Drive</name>
+		<description>Curvature: 465.54
+Distance: 1.71 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.630653,-36.851367 174.634969,-36.852595 174.635567,-36.852746 174.635867,-36.852826 174.636033,-36.852877 174.636250,-36.853005 174.636551,-36.853184 174.636612,-36.853249 174.636723,-36.853369 174.636902,-36.853561 174.637100,-36.853829 174.637161,-36.853935 174.637254,-36.854097 174.637340,-36.854420 174.637361,-36.854577 174.637383,-36.854749 174.637392,-36.855107 174.637340,-36.855457 174.637291,-36.855659 174.637100,-36.856439 174.637031,-36.856720 174.636894,-36.857078 174.636690,-36.857430 174.636568,-36.857641 174.636302,-36.858114 174.635791,-36.859015 174.635715,-36.859148 174.635680,-36.859211 174.635383,-36.859735 174.635194,-36.860072 174.635134,-36.860230 174.635115,-36.860309 174.635098,-36.860357 174.635074,-36.860443 174.635053,-36.860550 174.635023,-36.860704 174.634963,-36.861061 174.634967,-36.861112 174.634988,-36.861383 174.635023,-36.861747 174.635134,-36.862201 174.635315,-36.862503 174.635469,-36.862757 174.635913,-36.863307 174.636001,-36.863416 174.636088,-36.863523 174.636189,-36.863649 174.636285,-36.863767 174.636307,-36.863795 174.636338,-36.863833 174.636371,-36.863873 174.636645,-36.864213 174.636686,-36.864263 174.636851,-36.864467 174.636945,-36.864715 174.636963,-36.864762 174.637131,-36.865565 174.637251,-36.866107 174.637332,-36.866733 174.637340,-36.867056 174.637469,-36.868738 174.637510,-36.869256 174.637546,-36.869703 174.637551,-36.869767 174.637553,-36.869802 174.637563,-36.869926 174.637589,-36.870145 174.637706,-36.870420 174.637769,-36.870523 174.638006,-36.870863 174.638164,-36.870990 174.638914,-36.871445 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle10</styleUrl>
+		<name>Highbrook Drive</name>
+		<description>Curvature: 459.48
+Distance: 3.10 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.859930,-36.951529 174.859911,-36.951229 174.859842,-36.951011 174.859707,-36.950723 174.859579,-36.950226 174.859458,-36.949590 174.859466,-36.949152 174.859525,-36.948880 174.859602,-36.948490 174.859654,-36.948230 174.859987,-36.947525 174.860371,-36.946975 174.861223,-36.946176 174.861526,-36.945827 174.861869,-36.945304 174.862086,-36.944888 174.862254,-36.944496 174.862328,-36.944252 174.862386,-36.944023 174.862421,-36.943827 174.862445,-36.943498 174.862458,-36.943097 174.862463,-36.942974 174.862469,-36.942798 174.862658,-36.942192 174.862937,-36.941626 174.863345,-36.941111 174.863911,-36.940625 174.864440,-36.940278 174.865022,-36.939993 174.865737,-36.939739 174.866435,-36.939585 174.867347,-36.939379 174.867851,-36.939276 174.868516,-36.939079 174.869181,-36.938830 174.870610,-36.938154 174.870725,-36.938100 174.870842,-36.938044 174.873199,-36.936908 174.873623,-36.936704 174.874012,-36.936515 174.874491,-36.936398 174.875178,-36.936296 174.875555,-36.936328 174.875945,-36.936447 174.875200,-36.936415 174.874716,-36.936476 174.874359,-36.936571 174.874036,-36.936701 174.873328,-36.937079 174.872363,-36.937553 174.872103,-36.937690 174.871635,-36.937893 174.870947,-36.938225 174.870824,-36.938284 174.870436,-36.938471 174.869382,-36.938976 174.868692,-36.939230 174.868162,-36.939377 174.867346,-36.939550 174.866425,-36.939755 174.865676,-36.939920 174.865325,-36.940033 174.865072,-36.940141 174.864378,-36.940524 174.864102,-36.940706 174.863800,-36.940965 174.863412,-36.941380 174.863176,-36.941733 174.862892,-36.942372 174.862786,-36.942803 174.862704,-36.943138 174.862655,-36.943340 174.862521,-36.944078 174.862347,-36.944570 174.862211,-36.944912 174.861976,-36.945333 174.861711,-36.945739 174.861322,-36.946261 174.860619,-36.946985 174.860199,-36.947593 174.859824,-36.948399 174.859707,-36.948783 174.859656,-36.949050 174.859648,-36.949451 174.859775,-36.950230 174.859919,-36.950721 174.860104,-36.951190 174.860174,-36.951339 174.860310,-36.951439 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle10</styleUrl>
+		<name>Dunn Road</name>
+		<description>Curvature: 458.76
+Distance: 1.46 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>175.036026,-37.144791 175.039224,-37.145723 175.039600,-37.145789 175.039995,-37.145836 175.043353,-37.145632 175.043632,-37.145640 175.043739,-37.145683 175.048396,-37.147103 175.052327,-37.149595 175.052761,-37.154275 175.052966,-37.154431 175.053249,-37.154544 175.053406,-37.154525 175.053771,-37.154535 175.053952,-37.154399 175.054001,-37.154382 175.054144,-37.154377 175.054311,-37.154468 175.054308,-37.154624 175.054168,-37.154702 175.054022,-37.154704 175.053876,-37.154640 175.053771,-37.154535 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle10</styleUrl>
+		<name>Given Road</name>
+		<description>Curvature: 457.02
+Distance: 1.87 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.605120,-37.155354 174.605671,-37.155059 174.606114,-37.154584 174.606995,-37.154172 174.607761,-37.153519 174.608795,-37.153202 174.610458,-37.153134 174.611288,-37.152720 174.612364,-37.152498 174.613871,-37.151917 174.614699,-37.151743 174.615265,-37.151758 174.615967,-37.151892 174.616567,-37.151905 174.616938,-37.151763 174.617462,-37.151571 174.617780,-37.151380 174.618601,-37.150572 174.618958,-37.150439 174.619476,-37.150336 174.620188,-37.149974 174.620825,-37.149821 174.621506,-37.149658 174.623033,-37.149399 174.623416,-37.149242 174.624304,-37.148847 174.625953,-37.146872 174.626534,-37.146537 174.628477,-37.146452 174.631049,-37.146302 174.631477,-37.146157 174.632265,-37.145798 174.632830,-37.145798 174.633433,-37.146027 174.634849,-37.146335 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle10</styleUrl>
+		<name>East Coast Road</name>
+		<description>Curvature: 454.70
+Distance: 1.23 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>175.302327,-37.093747 175.302284,-37.094021 175.302113,-37.094260 175.300482,-37.095937 175.299838,-37.096827 175.299495,-37.097478 175.298851,-37.099771 175.298851,-37.100353 175.298937,-37.100969 175.299066,-37.101448 175.299323,-37.101825 175.299667,-37.102441 175.299667,-37.102920 175.299395,-37.103908 175.299280,-37.104700 175.299205,-37.105631 175.299110,-37.106810 175.299023,-37.107883 175.298937,-37.108739 175.298851,-37.108978 175.298602,-37.109118 175.298124,-37.109182 175.297558,-37.109243 175.297478,-37.109252 175.297220,-37.109355 175.297049,-37.109492 175.297003,-37.109576 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle10</styleUrl>
+		<name>6</name>
+		<description>Curvature: 448.66
+Distance: 2.49 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.850282,-36.898735 174.849309,-36.898488 174.848742,-36.898359 174.848697,-36.898349 174.848256,-36.898247 174.847877,-36.898159 174.847688,-36.898113 174.847394,-36.898045 174.847265,-36.898015 174.846906,-36.897932 174.846330,-36.897797 174.845411,-36.897581 174.844926,-36.898341 174.844601,-36.898879 174.844202,-36.899540 174.843813,-36.900182 174.843548,-36.900622 174.843204,-36.901193 174.842966,-36.901596 174.842552,-36.902296 174.842428,-36.902506 174.841931,-36.903349 174.841767,-36.903600 174.841018,-36.904812 174.841010,-36.904825 174.840801,-36.905162 174.839416,-36.907498 174.839205,-36.907841 174.838779,-36.908516 174.838086,-36.909560 174.838080,-36.909570 174.837836,-36.909955 174.837764,-36.910085 174.837713,-36.910223 174.837697,-36.910430 174.837711,-36.910574 174.838074,-36.911845 174.838528,-36.913424 174.838584,-36.913502 174.838605,-36.913578 174.838819,-36.914328 174.838995,-36.914944 174.839012,-36.915012 174.839092,-36.915326 174.839178,-36.915667 174.839346,-36.916407 174.839363,-36.916468 174.839382,-36.916534 174.839435,-36.916721 174.839703,-36.917616 174.839912,-36.918412 174.839937,-36.918499 174.840114,-36.919186 174.840174,-36.919368 174.840319,-36.919948 174.840366,-36.920130 174.840634,-36.921126 174.840652,-36.921308 174.840529,-36.921157 174.840466,-36.921017 174.840307,-36.920529 174.840149,-36.919957 174.840019,-36.919371 174.839966,-36.919156 174.839798,-36.918521 174.839769,-36.918391 174.839635,-36.917935 174.839503,-36.917494 174.839252,-36.916484 174.839235,-36.916420 174.839157,-36.916102 174.838990,-36.915417 174.838893,-36.915031 174.838885,-36.915002 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle10</styleUrl>
+		<name>Wilks Road</name>
+		<description>Curvature: 446.23
+Distance: 1.63 mi
+Type: tertiary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.646458,-36.641725 174.648148,-36.642648 174.650380,-36.643785 174.652474,-36.644728 174.652886,-36.645024 174.653358,-36.645665 174.653745,-36.645926 174.655487,-36.646760 174.656019,-36.647104 174.656370,-36.647667 174.656457,-36.647806 174.658122,-36.651201 174.658379,-36.651518 174.658791,-36.651697 174.661109,-36.652028 174.661701,-36.651959 174.662776,-36.651723 174.663848,-36.651489 174.664628,-36.651318 174.666585,-36.649976 174.666945,-36.649845 174.667297,-36.649879 174.667718,-36.650168 174.668190,-36.650196 174.668950,-36.650177 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle9</styleUrl>
+		<name>Norman Lesser Drive</name>
+		<description>Curvature: 440.16
+Distance: 1.24 mi
+Type: residential
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.837579,-36.883114 174.837391,-36.883019 174.836483,-36.882433 174.836383,-36.882384 174.836346,-36.882356 174.836325,-36.882329 174.836348,-36.882275 174.836459,-36.882128 174.836692,-36.881888 174.836840,-36.881752 174.836918,-36.881696 174.837669,-36.881283 174.837788,-36.881203 174.837988,-36.881028 174.838114,-36.880903 174.838211,-36.880799 174.838307,-36.880675 174.838394,-36.880530 174.838495,-36.880343 174.838795,-36.879629 174.839440,-36.878752 174.839525,-36.878571 174.839750,-36.877933 174.839776,-36.877808 174.839914,-36.877311 174.839987,-36.876876 174.839955,-36.876635 174.839873,-36.876284 174.839725,-36.875940 174.838678,-36.874899 174.838450,-36.874753 174.838062,-36.874618 174.837689,-36.874510 174.836813,-36.874263 174.835966,-36.874166 174.835523,-36.874162 174.835126,-36.874198 174.834616,-36.874304 174.834146,-36.874534 174.834000,-36.874614 174.833877,-36.874687 174.833781,-36.874754 174.833642,-36.874852 174.833101,-36.875333 174.832303,-36.876050 174.832181,-36.876150 174.831994,-36.876290 174.831780,-36.876420 174.831468,-36.876591 174.830320,-36.877175 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle9</styleUrl>
+		<name>3</name>
+		<description>Curvature: 437.18
+Distance: 3.64 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.884975,-36.991882 174.885086,-36.991988 174.885207,-36.992193 174.885375,-36.992510 174.885451,-36.992682 174.885612,-36.993247 174.885685,-36.993507 174.885749,-36.993910 174.885730,-36.994402 174.885578,-36.995607 174.885530,-36.996134 174.885494,-36.996504 174.885455,-36.997020 174.885456,-36.997107 174.885498,-36.997466 174.885710,-36.998243 174.885807,-36.998597 174.885910,-36.998843 174.886099,-36.999131 174.886331,-36.999392 174.887023,-36.999827 174.887264,-36.999978 174.887489,-37.000120 174.888382,-37.000681 174.889034,-37.001106 174.889223,-37.001318 174.889361,-37.001565 174.889481,-37.002024 174.889543,-37.003903 174.889557,-37.004934 174.889616,-37.005852 174.889661,-37.006616 174.889676,-37.006707 174.889705,-37.006877 174.889723,-37.006973 174.889745,-37.007106 174.889814,-37.007525 174.889835,-37.007624 174.889927,-37.008049 174.890440,-37.009263 174.891206,-37.010434 174.891832,-37.012531 174.892007,-37.013078 174.892133,-37.013470 174.892485,-37.014704 174.892665,-37.015316 174.893472,-37.018055 174.893566,-37.018309 174.893692,-37.018470 174.894425,-37.019391 174.894750,-37.019801 174.895637,-37.020873 174.895703,-37.020954 174.895868,-37.021143 174.897387,-37.022307 174.898896,-37.023421 174.899540,-37.023901 174.899841,-37.024243 174.900098,-37.024627 174.900145,-37.024689 174.900765,-37.025505 174.901968,-37.027088 174.902355,-37.027633 174.902480,-37.027808 174.902502,-37.028071 174.902507,-37.028138 174.902481,-37.028417 174.902554,-37.028615 174.903272,-37.029298 174.903591,-37.029540 174.904745,-37.031222 174.905763,-37.032781 174.906407,-37.033514 174.907499,-37.034355 174.908569,-37.035179 174.909050,-37.035590 174.909169,-37.035681 174.909835,-37.036192 174.910312,-37.036549 174.911602,-37.037506 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle9</styleUrl>
+		<name>Riverlea Road</name>
+		<description>Curvature: 436.63
+Distance: 1.09 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.608236,-36.787502 174.609170,-36.784167 174.610260,-36.780180 174.610569,-36.779039 174.610775,-36.778956 174.610963,-36.778908 174.611212,-36.778935 174.613101,-36.779107 174.613307,-36.779135 174.614783,-36.778970 174.614903,-36.778860 174.614989,-36.778715 174.615598,-36.776797 174.616062,-36.775416 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle9</styleUrl>
+		<name>Trig Road</name>
+		<description>Curvature: 436.16
+Distance: 1.42 mi
+Type: tertiary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.625345,-36.815528 174.623255,-36.813593 174.622552,-36.812906 174.620375,-36.810949 174.619591,-36.810109 174.619537,-36.810043 174.619413,-36.809892 174.618855,-36.809142 174.618356,-36.808410 174.618306,-36.808336 174.618292,-36.808288 174.618233,-36.808087 174.618197,-36.807917 174.618281,-36.807592 174.618709,-36.806011 174.619070,-36.804333 174.619522,-36.803107 174.619597,-36.802948 174.619726,-36.802831 174.620912,-36.801636 174.621221,-36.801285 174.621331,-36.800985 174.621399,-36.800728 174.621401,-36.800179 174.621410,-36.799629 174.621384,-36.799299 174.620543,-36.797808 174.620567,-36.797709 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle9</styleUrl>
+		<name>Top Road</name>
+		<description>Curvature: 431.65
+Distance: 1.13 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.662087,-36.661978 174.663735,-36.662323 174.667597,-36.663452 174.668439,-36.663534 174.669726,-36.663672 174.670026,-36.663865 174.670670,-36.664726 174.670971,-36.664815 174.671769,-36.664829 174.672112,-36.665022 174.675108,-36.671968 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle9</styleUrl>
+		<name>The Parade</name>
+		<description>Curvature: 431.51
+Distance: 1.20 mi
+Type: residential
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.900522,-36.860150 174.900373,-36.860178 174.900207,-36.860197 174.900052,-36.860232 174.899528,-36.860826 174.899138,-36.861263 174.899105,-36.861358 174.899110,-36.861462 174.899201,-36.861738 174.899417,-36.862195 174.899752,-36.862799 174.899883,-36.863037 174.900844,-36.864418 174.901452,-36.865124 174.901738,-36.865567 174.901989,-36.865985 174.902359,-36.866570 174.902582,-36.866965 174.903067,-36.867843 174.903253,-36.868291 174.903430,-36.868535 174.903484,-36.868677 174.903524,-36.868825 174.903548,-36.869045 174.903637,-36.869493 174.903737,-36.870025 174.904046,-36.870665 174.904198,-36.870849 174.904427,-36.871028 174.904739,-36.871226 174.905387,-36.872213 174.905694,-36.872798 174.905909,-36.873549 174.906085,-36.874282 174.906108,-36.875160 174.906036,-36.875632 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle9</styleUrl>
+		<name>21</name>
+		<description>Curvature: 428.82
+Distance: 1.46 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.741177,-36.772455 174.741331,-36.772391 174.741852,-36.772158 174.742333,-36.771973 174.743027,-36.771759 174.743579,-36.771588 174.744694,-36.771275 174.745937,-36.770990 174.747930,-36.770419 174.749287,-36.770059 174.748694,-36.768722 174.748305,-36.767864 174.748066,-36.767356 174.748004,-36.767147 174.747981,-36.766937 174.748228,-36.764804 174.748258,-36.764500 174.748516,-36.763173 174.748679,-36.762410 174.748762,-36.761938 174.749068,-36.760638 174.749177,-36.760166 174.749305,-36.759804 174.749415,-36.759587 174.749537,-36.759405 174.749855,-36.759054 174.750464,-36.758552 174.750584,-36.758403 174.750747,-36.758202 174.750868,-36.757975 174.750958,-36.757601 174.751037,-36.756822 174.751044,-36.756556 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle9</styleUrl>
+		<name>Great North Road</name>
+		<description>Curvature: 428.76
+Distance: 1.28 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.627607,-36.875112 174.627774,-36.875293 174.628435,-36.875970 174.628716,-36.876297 174.628987,-36.876639 174.629240,-36.876970 174.629535,-36.877238 174.629839,-36.877464 174.630084,-36.877649 174.630398,-36.877878 174.630484,-36.877937 174.630620,-36.878037 174.630843,-36.878231 174.631442,-36.878884 174.631485,-36.878940 174.631812,-36.879346 174.631948,-36.879484 174.632114,-36.879601 174.632303,-36.879703 174.632757,-36.879800 174.633002,-36.879807 174.633150,-36.879796 174.633432,-36.879765 174.633590,-36.879760 174.633830,-36.879721 174.634130,-36.879653 174.634726,-36.879673 174.634810,-36.879676 174.634879,-36.879677 174.635112,-36.879683 174.635331,-36.879689 174.635988,-36.879852 174.637322,-36.880284 174.637876,-36.880577 174.638521,-36.880937 174.638828,-36.881108 174.639770,-36.881634 174.641298,-36.882192 174.641684,-36.882726 174.641899,-36.882947 174.642268,-36.883282 174.642371,-36.883508 174.642516,-36.884147 174.642602,-36.884346 174.643444,-36.885226 174.644281,-36.886064 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle9</styleUrl>
+		<name>Hepburn Road</name>
+		<description>Curvature: 428.00
+Distance: 1.36 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.649748,-36.898315 174.649894,-36.898149 174.650001,-36.897959 174.650058,-36.897787 174.650531,-36.896609 174.650704,-36.896192 174.650850,-36.895833 174.650978,-36.895616 174.651154,-36.895421 174.651329,-36.895256 174.651738,-36.894864 174.652941,-36.893709 174.653853,-36.892814 174.656184,-36.890528 174.656678,-36.890043 174.657232,-36.889566 174.657796,-36.889079 174.659322,-36.887776 174.660172,-36.887064 174.658856,-36.885611 174.658814,-36.885564 174.658549,-36.885272 174.658346,-36.885047 174.657513,-36.883681 174.656706,-36.882376 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle8</styleUrl>
+		<name>SH 16</name>
+		<description>Curvature: 425.40
+Distance: 3.02 mi
+Type: trunk
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.733695,-36.868027 174.734722,-36.868088 174.738635,-36.868463 174.741696,-36.868735 174.742492,-36.868787 174.742972,-36.868806 174.743551,-36.868791 174.744112,-36.868755 174.744634,-36.868673 174.745683,-36.868438 174.746749,-36.868025 174.747546,-36.867600 174.748342,-36.867064 174.749056,-36.866453 174.749271,-36.866234 174.751834,-36.863918 174.753031,-36.862890 174.753784,-36.862215 174.754139,-36.861879 174.754289,-36.861748 174.755671,-36.860643 174.755844,-36.860533 174.755990,-36.860437 174.756210,-36.860328 174.756422,-36.860229 174.756573,-36.860163 174.756805,-36.860072 174.756977,-36.860016 174.757609,-36.859865 174.758100,-36.859798 174.758472,-36.859788 174.759470,-36.859790 174.759582,-36.859790 174.759800,-36.859811 174.759968,-36.859829 174.760154,-36.859859 174.760265,-36.859877 174.760646,-36.859961 174.760739,-36.859987 174.760857,-36.860026 174.761151,-36.860128 174.761312,-36.860196 174.761585,-36.860303 174.761964,-36.860447 174.762225,-36.860533 174.762549,-36.860635 174.763040,-36.860727 174.763491,-36.860773 174.763803,-36.860769 174.764037,-36.860753 174.764117,-36.860747 174.764404,-36.860690 174.764820,-36.860561 174.765074,-36.860441 174.765365,-36.860286 174.765564,-36.860156 174.765738,-36.860015 174.765876,-36.859885 174.766000,-36.859747 174.766130,-36.859573 174.766260,-36.859384 174.766696,-36.858713 174.767432,-36.857662 174.768435,-36.856546 174.769667,-36.855348 174.769977,-36.855100 174.770657,-36.854564 174.771458,-36.854050 174.771790,-36.853903 174.772454,-36.853568 174.772736,-36.853389 174.772896,-36.853282 174.773185,-36.853034 174.773728,-36.852480 174.773784,-36.852419 174.773882,-36.852313 174.773896,-36.852298 174.774142,-36.852049 174.774370,-36.851825 174.774521,-36.851688 174.774744,-36.851486 174.774886,-36.851335 174.774939,-36.851280 174.775024,-36.851147 174.775075,-36.851049 174.775136,-36.850951 174.775171,-36.850894 174.775237,-36.850812 174.775380,-36.850609 174.775517,-36.850496 174.775716,-36.850355 174.775927,-36.850246 174.775965,-36.850227 174.776288,-36.850125 174.776577,-36.850066 174.776800,-36.849999 174.777224,-36.849759 174.777344,-36.849730 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle8</styleUrl>
+		<name>Kaipara Road</name>
+		<description>Curvature: 423.31
+Distance: 1.02 mi
+Type: residential
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.981259,-37.052150 174.979423,-37.052834 174.974968,-37.054493 174.974908,-37.054595 174.975457,-37.054972 174.976710,-37.056089 174.978350,-37.057267 174.979011,-37.057918 174.979820,-37.058288 174.981989,-37.059281 174.982135,-37.059411 174.982186,-37.059623 174.982152,-37.059794 174.981834,-37.060294 174.982444,-37.060637 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle8</styleUrl>
+		<name>Brigham Creek Road</name>
+		<description>Curvature: 422.68
+Distance: 2.50 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.636471,-36.799575 174.636290,-36.799571 174.636177,-36.799548 174.636078,-36.799530 174.635938,-36.799511 174.635621,-36.799480 174.635313,-36.799476 174.634852,-36.799448 174.634536,-36.799390 174.634169,-36.799275 174.633913,-36.799128 174.633626,-36.798923 174.633222,-36.798590 174.632112,-36.797675 174.631622,-36.797318 174.631408,-36.797181 174.631047,-36.796974 174.630618,-36.796782 174.630249,-36.796644 174.629262,-36.796424 174.628610,-36.796335 174.627949,-36.796321 174.627580,-36.796321 174.627176,-36.796390 174.621915,-36.797627 174.621537,-36.797709 174.621211,-36.797730 174.620885,-36.797751 174.620567,-36.797709 174.619907,-36.797593 174.619546,-36.797414 174.619065,-36.797111 174.618808,-36.796850 174.618533,-36.796507 174.618405,-36.796218 174.618319,-36.795833 174.618190,-36.795283 174.618164,-36.795180 174.618087,-36.794871 174.617932,-36.794500 174.617734,-36.794179 174.617659,-36.794069 174.617633,-36.794048 174.617230,-36.793711 174.616848,-36.793471 174.616415,-36.793306 174.614151,-36.792880 174.613051,-36.792679 174.612441,-36.792763 174.611174,-36.793040 174.610269,-36.793237 174.603574,-36.794708 174.602061,-36.795267 174.601583,-36.795443 174.601283,-36.795567 174.599171,-36.796131 174.598141,-36.796375 174.597811,-36.796481 174.597577,-36.796555 174.597383,-36.796629 174.597003,-36.796796 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle8</styleUrl>
+		<name>Kerwyn Avenue</name>
+		<description>Curvature: 420.73
+Distance: 1.08 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.878718,-36.940779 174.879026,-36.940906 174.880542,-36.941219 174.880862,-36.941314 174.881253,-36.941472 174.881481,-36.941677 174.881710,-36.941950 174.881790,-36.942118 174.881856,-36.942368 174.881916,-36.942797 174.881931,-36.943155 174.881765,-36.943783 174.881396,-36.944909 174.881359,-36.945053 174.881399,-36.945210 174.881514,-36.945477 174.881650,-36.945640 174.881847,-36.945811 174.882052,-36.945935 174.882363,-36.946021 174.882868,-36.946083 174.883207,-36.946177 174.883445,-36.946265 174.883691,-36.946354 174.884408,-36.946642 174.885175,-36.946892 174.885605,-36.946995 174.885999,-36.947040 174.886550,-36.947076 174.886675,-36.947084 174.887456,-36.947105 174.887727,-36.947136 174.887978,-36.947188 174.888195,-36.947263 174.888625,-36.947431 174.892225,-36.948712 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle8</styleUrl>
+		<name>Taupaki Road</name>
+		<description>Curvature: 415.93
+Distance: 2.24 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.573814,-36.799690 174.573615,-36.799913 174.573373,-36.800136 174.571013,-36.801872 174.570597,-36.802225 174.570412,-36.802395 174.568970,-36.804060 174.567056,-36.806271 174.564824,-36.808806 174.564258,-36.809466 174.564129,-36.809672 174.564061,-36.809844 174.564026,-36.810043 174.564009,-36.810318 174.563975,-36.810627 174.563958,-36.810833 174.563915,-36.811012 174.563417,-36.813170 174.563219,-36.813513 174.563005,-36.813857 174.562833,-36.814049 174.562687,-36.814290 174.561872,-36.816626 174.561863,-36.816894 174.561700,-36.817581 174.561606,-36.817980 174.561503,-36.818248 174.561185,-36.818873 174.561022,-36.819134 174.560739,-36.819381 174.559846,-36.820000 174.559220,-36.820460 174.558911,-36.820646 174.558825,-36.820707 174.558670,-36.820762 174.558403,-36.820811 174.558293,-36.820831 174.557726,-36.820831 174.556958,-36.820793 174.554660,-36.820630 174.553737,-36.820591 174.552959,-36.820544 174.552614,-36.820522 174.550697,-36.820419 174.550431,-36.820433 174.549692,-36.820714 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle7</styleUrl>
+		<name>Batty Road</name>
+		<description>Curvature: 407.38
+Distance: 3.26 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.833613,-37.113875 174.835671,-37.117670 174.835842,-37.117841 174.839039,-37.119861 174.839362,-37.120066 174.841670,-37.121196 174.845253,-37.128569 174.845285,-37.128817 174.845150,-37.129197 174.844539,-37.130917 174.842936,-37.135421 174.842732,-37.135712 174.838655,-37.138936 174.838258,-37.139295 174.838097,-37.139731 174.836756,-37.145248 174.836059,-37.147394 174.836005,-37.147907 174.836048,-37.148224 174.836213,-37.149836 174.836119,-37.150127 174.835424,-37.150782 174.835252,-37.150953 174.835252,-37.151193 174.837441,-37.155092 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle7</styleUrl>
+		<name>Kopuku Road</name>
+		<description>Curvature: 406.68
+Distance: 1.13 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>175.270002,-37.331094 175.270644,-37.331879 175.271933,-37.332220 175.275366,-37.333517 175.276182,-37.333482 175.277727,-37.333073 175.278456,-37.333107 175.279958,-37.333824 175.281074,-37.333790 175.281804,-37.333312 175.286954,-37.332288 175.288918,-37.332631 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle7</styleUrl>
+		<name>Kitchener Road</name>
+		<description>Curvature: 403.77
+Distance: 1.25 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.750571,-37.249793 174.750421,-37.249740 174.749889,-37.249330 174.749296,-37.248946 174.748326,-37.248268 174.747890,-37.248046 174.747173,-37.247791 174.744705,-37.247127 174.743181,-37.246705 174.742293,-37.246461 174.741795,-37.246256 174.740845,-37.246203 174.740552,-37.246203 174.739197,-37.246202 174.738062,-37.246235 174.736163,-37.246650 174.735316,-37.246855 174.735143,-37.246959 174.734506,-37.247543 174.733488,-37.248454 174.733274,-37.248630 174.732747,-37.249106 174.732498,-37.249235 174.731916,-37.249469 174.731826,-37.249510 174.731597,-37.249591 174.731342,-37.249584 174.731215,-37.249570 174.730641,-37.249512 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle7</styleUrl>
+		<name>Elliot Street</name>
+		<description>Curvature: 403.47
+Distance: 1.17 mi
+Type: tertiary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.932141,-37.073705 174.932275,-37.072960 174.932232,-37.072848 174.931800,-37.071642 174.931503,-37.070797 174.931234,-37.070058 174.930795,-37.069518 174.930343,-37.068962 174.930257,-37.068782 174.930221,-37.068658 174.930204,-37.068525 174.930219,-37.068345 174.930268,-37.068191 174.930374,-37.068074 174.930560,-37.067945 174.931242,-37.067609 174.932754,-37.066840 174.932944,-37.066757 174.933246,-37.066629 174.933406,-37.066589 174.934575,-37.066014 174.935163,-37.065732 174.935274,-37.065676 174.935495,-37.065573 174.935592,-37.065489 174.935904,-37.065345 174.936038,-37.065283 174.937413,-37.064629 174.938386,-37.064165 174.939354,-37.063704 174.940890,-37.062969 174.942032,-37.062405 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle7</styleUrl>
+		<name>Brookside Road</name>
+		<description>Curvature: 399.46
+Distance: 1.55 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.727772,-37.199189 174.730556,-37.199211 174.731330,-37.199298 174.734500,-37.199920 174.734689,-37.199973 174.734851,-37.199949 174.734966,-37.200077 174.735064,-37.200126 174.736991,-37.200496 174.737142,-37.200515 174.737696,-37.200450 174.737966,-37.200417 174.738188,-37.200500 174.738554,-37.200670 174.739178,-37.200695 174.739511,-37.200828 174.740504,-37.201362 174.742096,-37.202163 174.742866,-37.202407 174.743379,-37.202459 174.746879,-37.202623 174.749145,-37.202686 174.749456,-37.202693 174.754330,-37.202788 174.754971,-37.202835 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle7</styleUrl>
+		<name>Laing Road</name>
+		<description>Curvature: 396.83
+Distance: 1.56 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.850129,-37.107576 174.847840,-37.103513 174.847315,-37.102563 174.846328,-37.100963 174.845552,-37.099588 174.844021,-37.096873 174.844450,-37.096026 174.843495,-37.093715 174.844782,-37.093232 174.852025,-37.090514 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle7</styleUrl>
+		<name>Awa Road</name>
+		<description>Curvature: 396.05
+Distance: 1.78 mi
+Type: unclassified
+Surface: paved</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.521390,-36.799172 174.519896,-36.799789 174.519613,-36.800078 174.519209,-36.800236 174.518909,-36.800236 174.518394,-36.800188 174.517922,-36.800305 174.517089,-36.800477 174.515802,-36.800374 174.515459,-36.800009 174.514660,-36.797281 174.514145,-36.795996 174.514096,-36.795408 174.514077,-36.792091 174.512532,-36.790923 174.512085,-36.789397 174.510300,-36.787136 174.510626,-36.784372 174.509957,-36.780763 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle7</styleUrl>
+		<name>Papakura–Clevedon Road</name>
+		<description>Curvature: 395.91
+Distance: 2.48 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.948078,-37.062366 174.948152,-37.062208 174.948333,-37.062004 174.949808,-37.061041 174.950227,-37.060744 174.950450,-37.060599 174.951403,-37.059944 174.951482,-37.059891 174.953792,-37.058319 174.954405,-37.057897 174.955679,-37.057027 174.956083,-37.056751 174.957746,-37.055650 174.958274,-37.055302 174.958585,-37.055097 174.960259,-37.053991 174.960407,-37.053910 174.960452,-37.053897 174.960611,-37.053851 174.961080,-37.053780 174.961182,-37.053772 174.962681,-37.053660 174.964452,-37.053533 174.966225,-37.053396 174.968122,-37.053228 174.968766,-37.053146 174.972456,-37.051844 174.972688,-37.051694 174.972946,-37.051433 174.973169,-37.051146 174.973358,-37.050817 174.973426,-37.050543 174.973461,-37.050235 174.973401,-37.049118 174.973426,-37.048933 174.973486,-37.048776 174.973658,-37.048488 174.973855,-37.048228 174.974860,-37.047268 174.975764,-37.046136 174.976137,-37.045668 174.977889,-37.043473 174.979057,-37.041898 174.979288,-37.041671 174.979589,-37.041452 174.979846,-37.041329 174.980061,-37.041281 174.980430,-37.041260 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle7</styleUrl>
+		<name>Boundary Road</name>
+		<description>Curvature: 395.85
+Distance: 1.07 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.665858,-37.233260 174.662714,-37.234011 174.662382,-37.234133 174.662276,-37.234200 174.662096,-37.234280 174.660856,-37.235146 174.660454,-37.235247 174.657999,-37.235684 174.655898,-37.235642 174.655607,-37.235680 174.655454,-37.235739 174.653205,-37.236832 174.652999,-37.236857 174.650987,-37.236819 174.650781,-37.236857 174.650686,-37.236941 174.649620,-37.238076 174.649525,-37.238093 174.649335,-37.238089 174.648458,-37.237954 174.648279,-37.237942 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle6</styleUrl>
+		<name>Tram Gully Road</name>
+		<description>Curvature: 392.64
+Distance: 1.32 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.614746,-37.066998 174.614094,-37.068318 174.614010,-37.069614 174.614394,-37.070360 174.615011,-37.070917 174.615463,-37.071435 174.615823,-37.072418 174.616217,-37.072724 174.616902,-37.073119 174.617613,-37.073614 174.618122,-37.073944 174.618848,-37.074305 174.619720,-37.074781 174.620524,-37.075179 174.621964,-37.075873 174.623170,-37.076444 174.623753,-37.076733 174.624694,-37.077336 174.625090,-37.077702 174.625403,-37.077969 174.625683,-37.078234 174.625881,-37.078434 174.626043,-37.078757 174.626036,-37.078973 174.625900,-37.079230 174.625743,-37.079480 174.625617,-37.079758 174.625607,-37.080013 174.625685,-37.080411 174.625784,-37.080820 174.625949,-37.081419 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle6</styleUrl>
+		<name>Pavilion Drive</name>
+		<description>Curvature: 390.52
+Distance: 1.18 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.776441,-36.979488 174.776427,-36.979582 174.776189,-36.980168 174.775926,-36.980624 174.775666,-36.980865 174.775367,-36.981143 174.775246,-36.981258 174.774995,-36.981500 174.774732,-36.981712 174.774480,-36.981861 174.774164,-36.981996 174.773878,-36.982073 174.772229,-36.982474 174.771046,-36.982760 174.770586,-36.982875 174.770489,-36.982930 174.770421,-36.982990 174.770351,-36.983086 174.770323,-36.983153 174.770310,-36.983221 174.770317,-36.983302 174.770433,-36.983626 174.770871,-36.984794 174.770918,-36.984911 174.770991,-36.984999 174.771066,-36.985058 174.771150,-36.985102 174.771246,-36.985131 174.771339,-36.985144 174.771464,-36.985139 174.775240,-36.984227 174.775576,-36.984132 174.775882,-36.984029 174.776209,-36.983877 174.776517,-36.983695 174.777700,-36.982652 174.778186,-36.982169 174.778450,-36.981920 174.778764,-36.981427 174.778874,-36.981216 174.778967,-36.981000 174.779032,-36.980810 174.779119,-36.980551 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle6</styleUrl>
+		<name>Taha Road</name>
+		<description>Curvature: 390.36
+Distance: 1.16 mi
+Type: residential
+Surface: asphalt</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.466527,-36.788217 174.470271,-36.783597 174.470701,-36.783288 174.471323,-36.782961 174.471902,-36.782446 174.472696,-36.782325 174.473190,-36.781776 174.473359,-36.781656 174.473554,-36.781518 174.474649,-36.781191 174.475185,-36.781157 174.475893,-36.780813 174.478275,-36.780538 174.482904,-36.779411 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle6</styleUrl>
+		<name>Island Block Road</name>
+		<description>Curvature: 388.71
+Distance: 1.12 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>175.087191,-37.305780 175.088785,-37.305176 175.097001,-37.302363 175.097332,-37.302457 175.097837,-37.302969 175.098140,-37.303760 175.098400,-37.304250 175.098980,-37.305250 175.098920,-37.305580 175.098250,-37.307340 175.098310,-37.307680 175.098400,-37.308750 175.098603,-37.309091 175.098877,-37.309261 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle6</styleUrl>
+		<name>Markham Road</name>
+		<description>Curvature: 388.28
+Distance: 1.44 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>175.042258,-37.137069 175.046025,-37.138944 175.046186,-37.139012 175.046314,-37.139055 175.056818,-37.141903 175.057011,-37.141860 175.057107,-37.141774 175.057193,-37.141647 175.058198,-37.139140 175.058513,-37.138371 175.058642,-37.138302 175.058717,-37.138311 175.059366,-37.138460 175.059724,-37.138406 175.061667,-37.138089 175.063373,-37.139226 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle6</styleUrl>
+		<name>14</name>
+		<description>Curvature: 386.94
+Distance: 2.72 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.795921,-36.953627 174.795727,-36.953676 174.795679,-36.953688 174.794966,-36.953860 174.793291,-36.954265 174.791640,-36.954665 174.791508,-36.954692 174.791450,-36.954704 174.791408,-36.954713 174.790682,-36.954896 174.790501,-36.955269 174.790051,-36.956144 174.789946,-36.956361 174.789739,-36.956781 174.789581,-36.957100 174.789480,-36.957322 174.789352,-36.957573 174.789155,-36.957981 174.788499,-36.959364 174.787797,-36.960878 174.787619,-36.961287 174.787283,-36.961961 174.787197,-36.962147 174.785687,-36.965335 174.785587,-36.965546 174.785576,-36.965568 174.785536,-36.965656 174.785470,-36.965793 174.785405,-36.965965 174.785379,-36.966130 174.785347,-36.966389 174.785351,-36.966553 174.785480,-36.967666 174.785614,-36.968677 174.785719,-36.969419 174.785763,-36.969656 174.785796,-36.969759 174.785819,-36.969830 174.786068,-36.970410 174.786497,-36.971402 174.786556,-36.971604 174.786627,-36.971804 174.786709,-36.971986 174.786820,-36.972163 174.786882,-36.972216 174.787029,-36.972350 174.787256,-36.972520 174.787367,-36.972582 174.788543,-36.973258 174.788602,-36.973290 174.788657,-36.973320 174.788726,-36.973358 174.789004,-36.973508 174.789286,-36.973679 174.789433,-36.973756 174.789793,-36.973992 174.790986,-36.974705 174.791140,-36.974795 174.791458,-36.974958 174.791767,-36.975061 174.792927,-36.975407 174.793294,-36.975512 174.794131,-36.975767 174.795145,-36.976059 174.795419,-36.976133 174.795518,-36.976152 174.795781,-36.976170 174.796274,-36.976145 174.797312,-36.976103 174.797724,-36.976069 174.799372,-36.975987 174.799784,-36.975994 174.800179,-36.976062 174.800531,-36.976172 174.800820,-36.976295 174.801814,-36.976716 174.802460,-36.976990 174.804041,-36.977660 174.804658,-36.977889 174.804886,-36.977942 174.805131,-36.977975 174.805238,-36.977978 174.805449,-36.977982 174.805705,-36.977958 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle6</styleUrl>
+		<name>Ladies Mile</name>
+		<description>Curvature: 383.86
+Distance: 1.20 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.809040,-36.897797 174.809320,-36.897300 174.809333,-36.897277 174.809473,-36.897018 174.809651,-36.896704 174.809791,-36.896449 174.809818,-36.896400 174.809914,-36.896225 174.809958,-36.896145 174.809987,-36.896090 174.810090,-36.895896 174.810827,-36.894511 174.811082,-36.894043 174.812212,-36.891972 174.812352,-36.891711 174.813002,-36.890485 174.813105,-36.890291 174.812246,-36.889637 174.811408,-36.888931 174.809551,-36.887332 174.809496,-36.887266 174.809444,-36.887164 174.809346,-36.886543 174.809275,-36.885847 174.809244,-36.885522 174.809157,-36.884898 174.809117,-36.884608 174.809152,-36.883792 174.809164,-36.883238 174.809204,-36.882362 174.809126,-36.882238 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle6</styleUrl>
+		<name>Matheson Road</name>
+		<description>Curvature: 382.53
+Distance: 1.06 mi
+Type: residential
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>175.126480,-37.160350 175.127040,-37.159030 175.127880,-37.155000 175.128670,-37.153010 175.128750,-37.152990 175.129010,-37.152240 175.129100,-37.150310 175.129040,-37.149210 175.127880,-37.147280 175.126660,-37.146700 175.126250,-37.146490 175.126034,-37.146414 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle6</styleUrl>
+		<name>Awhitu Road</name>
+		<description>Curvature: 381.27
+Distance: 1.39 mi
+Type: tertiary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.638886,-37.181392 174.639529,-37.181939 174.640431,-37.182007 174.643392,-37.181631 174.645924,-37.180981 174.646682,-37.181039 174.646917,-37.181308 174.647168,-37.181597 174.647683,-37.183204 174.647941,-37.185529 174.648155,-37.186178 174.649614,-37.189050 174.650258,-37.189768 174.653553,-37.191243 174.654092,-37.191453 174.654489,-37.191526 174.655010,-37.191496 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle6</styleUrl>
+		<name>Wairau Road</name>
+		<description>Curvature: 381.19
+Distance: 1.90 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.721926,-36.769765 174.722206,-36.769738 174.722423,-36.769693 174.724939,-36.769079 174.725399,-36.769023 174.725822,-36.769068 174.726018,-36.769110 174.726418,-36.769234 174.727192,-36.769652 174.727671,-36.769961 174.728152,-36.770167 174.728598,-36.770277 174.729119,-36.770310 174.729542,-36.770298 174.730056,-36.770159 174.730149,-36.770134 174.730902,-36.769930 174.731043,-36.769899 174.731567,-36.769808 174.732186,-36.769715 174.732720,-36.769664 174.732993,-36.769638 174.733615,-36.769662 174.733630,-36.769663 174.734664,-36.769703 174.735145,-36.769725 174.736136,-36.769771 174.736589,-36.769878 174.736602,-36.769881 174.736917,-36.770026 174.737307,-36.770279 174.737419,-36.770369 174.737718,-36.770646 174.738088,-36.770928 174.738612,-36.771279 174.739438,-36.771501 174.740218,-36.771748 174.740262,-36.771762 174.740777,-36.772051 174.741177,-36.772455 174.742487,-36.774407 174.744182,-36.776968 174.744925,-36.778141 174.745166,-36.778504 174.745306,-36.778715 174.745724,-36.779160 174.746017,-36.779362 174.746259,-36.779500 174.746522,-36.779631 174.746936,-36.779750 174.747192,-36.779790 174.748113,-36.779892 174.749207,-36.779980 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle6</styleUrl>
+		<name>Bradbury Road</name>
+		<description>Curvature: 378.75
+Distance: 1.03 mi
+Type: residential
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.907874,-36.911877 174.908299,-36.911813 174.909384,-36.911899 174.909615,-36.911870 174.909848,-36.911774 174.910053,-36.911508 174.910151,-36.911242 174.910144,-36.910834 174.910096,-36.910499 174.910006,-36.909663 174.910042,-36.909515 174.910315,-36.909040 174.911270,-36.907723 174.912242,-36.906216 174.912216,-36.905894 174.912156,-36.905475 174.912336,-36.905187 174.913812,-36.904453 174.914338,-36.904202 174.916647,-36.903034 174.918550,-36.901551 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle5</styleUrl>
+		<name>Hobsonville Road</name>
+		<description>Curvature: 376.24
+Distance: 2.66 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.651400,-36.794873 174.650614,-36.796010 174.650100,-36.796803 174.649717,-36.797336 174.649517,-36.797615 174.649391,-36.797755 174.649174,-36.797949 174.649041,-36.798033 174.648984,-36.798068 174.648787,-36.798156 174.648623,-36.798209 174.648382,-36.798274 174.647669,-36.798349 174.647202,-36.798449 174.646912,-36.798559 174.646186,-36.798972 174.644691,-36.799825 174.644090,-36.800148 174.644007,-36.800180 174.643790,-36.800253 174.643371,-36.800419 174.641799,-36.801014 174.641452,-36.801151 174.641200,-36.801261 174.640887,-36.801464 174.640661,-36.801671 174.640416,-36.801964 174.638851,-36.803834 174.637461,-36.805451 174.636893,-36.806114 174.635274,-36.808064 174.633705,-36.809927 174.633516,-36.810182 174.633327,-36.810566 174.633185,-36.811018 174.632658,-36.812697 174.632327,-36.813232 174.632308,-36.813251 174.631866,-36.813672 174.631744,-36.813758 174.631573,-36.813845 174.631301,-36.813947 174.630103,-36.814274 174.627147,-36.815081 174.627018,-36.815113 174.625345,-36.815528 174.625283,-36.815556 174.624420,-36.815948 174.623456,-36.816387 174.623342,-36.816434 174.623002,-36.816558 174.622783,-36.816604 174.621965,-36.816778 174.620564,-36.817014 174.619977,-36.817138 174.619590,-36.817309 174.619371,-36.817465 174.618832,-36.817768 174.618221,-36.817946 174.617534,-36.817987 174.616767,-36.817972 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle5</styleUrl>
+		<name>Nelson Road</name>
+		<description>Curvature: 376.23
+Distance: 1.01 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.561022,-36.819134 174.561391,-36.818955 174.561717,-36.818846 174.562061,-36.818763 174.562275,-36.818736 174.562593,-36.818694 174.563005,-36.818605 174.563202,-36.818598 174.563520,-36.818612 174.563829,-36.818667 174.566292,-36.819278 174.569210,-36.820041 174.569674,-36.820151 174.569803,-36.820233 174.569906,-36.820405 174.570549,-36.821195 174.570721,-36.821278 174.570910,-36.821319 174.574120,-36.821841 174.574772,-36.821958 174.577951,-36.822735 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle5</styleUrl>
+		<name>Heights Road</name>
+		<description>Curvature: 372.04
+Distance: 1.42 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.899515,-37.175456 174.898903,-37.175229 174.898662,-37.175243 174.898310,-37.175359 174.897838,-37.175448 174.897109,-37.175462 174.896843,-37.175489 174.896542,-37.175557 174.895323,-37.176050 174.894216,-37.176679 174.894036,-37.176843 174.893066,-37.177992 174.892877,-37.178375 174.892465,-37.179503 174.891985,-37.180372 174.891736,-37.180618 174.891487,-37.180679 174.889927,-37.180995 174.886901,-37.181608 174.885273,-37.181938 174.885135,-37.181986 174.885041,-37.182047 174.885041,-37.182204 174.885448,-37.184046 174.886337,-37.187839 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle5</styleUrl>
+		<name>Orakei Road</name>
+		<description>Curvature: 366.99
+Distance: 1.06 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.807066,-36.866950 174.806644,-36.867364 174.806482,-36.867511 174.805908,-36.868050 174.805796,-36.868173 174.805719,-36.868311 174.805630,-36.868985 174.805602,-36.869110 174.805214,-36.870136 174.805056,-36.870817 174.804899,-36.871530 174.804892,-36.871576 174.804886,-36.871631 174.804893,-36.871689 174.805004,-36.872459 174.805012,-36.872533 174.805011,-36.872607 174.804986,-36.872713 174.804894,-36.872991 174.804841,-36.873137 174.804804,-36.873200 174.804776,-36.873248 174.804746,-36.873284 174.804035,-36.873831 174.803941,-36.873913 174.803885,-36.873978 174.803838,-36.874051 174.803800,-36.874125 174.803597,-36.874673 174.803297,-36.875444 174.803280,-36.875487 174.803266,-36.875541 174.803254,-36.875590 174.803254,-36.875632 174.803253,-36.875713 174.803536,-36.876840 174.803692,-36.877459 174.803833,-36.878075 174.803849,-36.878149 174.803859,-36.878222 174.803862,-36.878296 174.803860,-36.878349 174.803832,-36.878466 174.803788,-36.878601 174.803414,-36.879629 174.803331,-36.879880 174.803194,-36.880152 174.802645,-36.881208 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle5</styleUrl>
+		<name>Bombay Road</name>
+		<description>Curvature: 366.89
+Distance: 1.14 mi
+Type: tertiary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.991870,-37.190055 174.991464,-37.186757 174.991286,-37.186574 174.989205,-37.185070 174.988390,-37.184420 174.987669,-37.183736 174.984132,-37.180187 174.983137,-37.179599 174.982907,-37.179427 174.982725,-37.179291 174.982304,-37.178819 174.982227,-37.178655 174.982227,-37.178457 174.982811,-37.177773 174.982896,-37.177588 174.982991,-37.177082 174.982948,-37.176925 174.982811,-37.176699 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle5</styleUrl>
+		<name>Riverhead Road</name>
+		<description>Curvature: 365.20
+Distance: 1.22 mi
+Type: tertiary
+Surface: paved</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.587398,-36.762716 174.585029,-36.762267 174.583012,-36.761884 174.582677,-36.761836 174.582428,-36.761836 174.582111,-36.761836 174.578669,-36.762131 174.578384,-36.762173 174.578154,-36.762207 174.577740,-36.762322 174.577553,-36.762410 174.577374,-36.762534 174.577237,-36.762656 174.577125,-36.762802 174.577028,-36.762999 174.576977,-36.763173 174.576805,-36.764341 174.576664,-36.765151 174.576493,-36.766398 174.576350,-36.767320 174.576163,-36.768719 174.576008,-36.768959 174.575837,-36.769110 174.575519,-36.769282 174.575167,-36.769406 174.574824,-36.769468 174.574283,-36.769550 174.572678,-36.769783 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle4</styleUrl>
+		<name>SH 17</name>
+		<description>Curvature: 353.55
+Distance: 1.80 mi
+Type: primary
+Surface: paved</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.691055,-36.721758 174.690971,-36.721704 174.690733,-36.721604 174.690354,-36.721468 174.689956,-36.721416 174.689585,-36.721416 174.689202,-36.721468 174.688845,-36.721532 174.687176,-36.721851 174.686271,-36.722029 174.684819,-36.722294 174.684367,-36.722361 174.684045,-36.722392 174.683542,-36.722353 174.683075,-36.722275 174.682448,-36.722076 174.681901,-36.721810 174.681438,-36.721470 174.681083,-36.721106 174.680454,-36.720175 174.680031,-36.719716 174.679797,-36.719533 174.679546,-36.719394 174.678312,-36.718714 174.677979,-36.718499 174.677706,-36.718249 174.677497,-36.717967 174.677348,-36.717701 174.677245,-36.717467 174.677126,-36.717001 174.676950,-36.716583 174.676409,-36.715770 174.675494,-36.715140 174.674565,-36.714553 174.674074,-36.714191 174.673314,-36.713302 174.672953,-36.712917 174.672481,-36.712621 174.668020,-36.710724 174.667443,-36.710227 174.667048,-36.709876 174.666756,-36.709539 174.666576,-36.709009 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle4</styleUrl>
+		<name>River Road</name>
+		<description>Curvature: 352.07
+Distance: 1.79 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.946916,-37.297064 174.947335,-37.296592 174.947192,-37.295798 174.947160,-37.295620 174.946780,-37.295035 174.946637,-37.294815 174.946012,-37.293945 174.945939,-37.293844 174.945590,-37.293233 174.945416,-37.292484 174.944997,-37.290513 174.944578,-37.289958 174.944403,-37.289679 174.944085,-37.289352 174.942869,-37.288542 174.942267,-37.288214 174.941781,-37.287873 174.940709,-37.287123 174.938581,-37.285570 174.938230,-37.284763 174.938382,-37.283836 174.938401,-37.283718 174.938885,-37.283245 174.939656,-37.282581 174.940348,-37.281990 174.941227,-37.280926 174.942242,-37.279714 174.944195,-37.277280 174.944663,-37.276652 174.944886,-37.276165 174.944950,-37.275753 174.944971,-37.275480 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle4</styleUrl>
+		<name>Kennedy Road</name>
+		<description>Curvature: 351.42
+Distance: 1.19 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.656640,-36.683549 174.658839,-36.689442 174.659848,-36.691344 174.660835,-36.692531 174.661983,-36.692901 174.663614,-36.695060 174.663699,-36.696488 174.663689,-36.696712 174.663710,-36.696961 174.663946,-36.697365 174.664096,-36.697452 174.664397,-36.697641 174.664622,-36.697684 174.664869,-36.697804 174.665051,-36.697985 174.665148,-36.698166 174.665191,-36.698363 174.665118,-36.698553 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle4</styleUrl>
+		<name>Ponsford Road</name>
+		<description>Curvature: 350.83
+Distance: 2.08 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.637629,-37.179585 174.637875,-37.179413 174.638564,-37.178844 174.639135,-37.178535 174.640384,-37.178218 174.642700,-37.177633 174.643561,-37.177532 174.645188,-37.177517 174.646643,-37.177510 174.647868,-37.176785 174.649209,-37.175833 174.650318,-37.175042 174.650591,-37.174899 174.651475,-37.174589 174.652292,-37.174418 174.652923,-37.174105 174.653707,-37.173645 174.654385,-37.173490 174.655486,-37.173399 174.656115,-37.173275 174.656756,-37.172917 174.657479,-37.172442 174.658591,-37.171739 174.659582,-37.171195 174.660487,-37.170535 174.660829,-37.170129 174.662026,-37.168538 174.662388,-37.168320 174.663572,-37.167903 174.664288,-37.167582 174.664628,-37.167285 174.664652,-37.166843 174.664595,-37.166063 174.664598,-37.165601 174.664656,-37.165141 174.664881,-37.164724 174.665364,-37.164223 174.665709,-37.163789 174.666076,-37.163419 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle4</styleUrl>
+		<name>10</name>
+		<description>Curvature: 349.76
+Distance: 1.19 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.705970,-36.871213 174.706154,-36.871224 174.706687,-36.871264 174.707401,-36.871270 174.707989,-36.871241 174.708570,-36.871162 174.709179,-36.871070 174.709492,-36.870986 174.709629,-36.870943 174.709872,-36.870834 174.709924,-36.871051 174.709932,-36.871190 174.709909,-36.871260 174.709959,-36.871706 174.709999,-36.871944 174.710030,-36.872277 174.710060,-36.872641 174.710108,-36.873226 174.710160,-36.873964 174.710171,-36.874084 174.710256,-36.874786 174.710298,-36.875234 174.710476,-36.876109 174.710679,-36.877014 174.710863,-36.877870 174.710932,-36.878198 174.711213,-36.879457 174.711220,-36.879483 174.711243,-36.879567 174.711347,-36.879845 174.711454,-36.880157 174.711655,-36.880645 174.711873,-36.881256 174.711888,-36.881298 174.711907,-36.881349 174.711944,-36.881412 174.712000,-36.881523 174.712073,-36.881637 174.712186,-36.881760 174.712700,-36.882107 174.712898,-36.882243 174.713442,-36.882613 174.713731,-36.882814 174.714199,-36.883148 174.714455,-36.883342 174.714898,-36.883644 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle4</styleUrl>
+		<name>Wheturangi Road</name>
+		<description>Curvature: 349.64
+Distance: 1.05 mi
+Type: residential
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.794382,-36.898672 174.794442,-36.898378 174.794480,-36.898087 174.794485,-36.897598 174.794459,-36.897227 174.794413,-36.896882 174.794286,-36.896357 174.794084,-36.895776 174.793938,-36.895433 174.793777,-36.895094 174.793636,-36.894850 174.793499,-36.894614 174.793282,-36.894324 174.793082,-36.894073 174.792621,-36.893577 174.791768,-36.892745 174.791674,-36.892663 174.791586,-36.892605 174.791358,-36.892444 174.791230,-36.892375 174.790720,-36.892019 174.790182,-36.891616 174.790086,-36.891545 174.789792,-36.891332 174.788992,-36.890745 174.788887,-36.890670 174.788774,-36.890609 174.788591,-36.890540 174.788216,-36.890406 174.787990,-36.890326 174.787702,-36.890192 174.787613,-36.890147 174.787315,-36.890002 174.786932,-36.889711 174.786664,-36.889491 174.786351,-36.889251 174.786232,-36.889164 174.785497,-36.888798 174.784826,-36.888553 174.784533,-36.888487 174.783857,-36.888334 174.783783,-36.888303 174.783725,-36.888263 174.783698,-36.888213 174.783696,-36.888218 174.783681,-36.888158 174.783795,-36.887763 174.783801,-36.887697 174.783778,-36.887638 174.783728,-36.887585 174.783670,-36.887554 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle4</styleUrl>
+		<name>J Renall Road</name>
+		<description>Curvature: 349.51
+Distance: 1.33 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.664449,-37.163090 174.656930,-37.162884 174.656409,-37.162884 174.654359,-37.163078 174.654123,-37.163110 174.653744,-37.163067 174.653548,-37.163024 174.645200,-37.160857 174.643766,-37.160199 174.643501,-37.160131 174.643063,-37.160126 174.642701,-37.160182 174.642530,-37.160284 174.641844,-37.160760 174.641520,-37.160862 174.641295,-37.160884 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle4</styleUrl>
+		<name>Portage Road</name>
+		<description>Curvature: 345.82
+Distance: 1.02 mi
+Type: tertiary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.827699,-36.982079 174.827758,-36.982087 174.827884,-36.982105 174.828030,-36.982119 174.829198,-36.982025 174.829301,-36.982016 174.829740,-36.981830 174.830365,-36.981200 174.831192,-36.980389 174.832828,-36.978759 174.833894,-36.977668 174.834347,-36.977224 174.834537,-36.977034 174.835480,-36.976092 174.836562,-36.975009 174.836974,-36.974556 174.837102,-36.974384 174.837162,-36.974343 174.837428,-36.974226 174.837702,-36.974185 174.837742,-36.974176 174.837952,-36.974132 174.838999,-36.973762 174.839214,-36.973639 174.840010,-36.972961 174.840270,-36.972740 174.840390,-36.972637 174.840519,-36.972473 174.840613,-36.972301 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle4</styleUrl>
+		<name>Kauri Road</name>
+		<description>Curvature: 345.55
+Distance: 1.00 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.638018,-37.082614 174.638372,-37.082571 174.638812,-37.082682 174.639402,-37.082939 174.639734,-37.083067 174.639981,-37.083133 174.640183,-37.083107 174.640438,-37.083057 174.640688,-37.082994 174.640898,-37.082965 174.640927,-37.082963 174.641805,-37.082927 174.643553,-37.082853 174.643950,-37.082948 174.646423,-37.083940 174.646622,-37.083889 174.646793,-37.083872 174.647732,-37.083709 174.649132,-37.083179 174.650221,-37.082682 174.650752,-37.082477 174.650881,-37.082443 174.651616,-37.082331 174.652056,-37.082289 174.652501,-37.082177 174.653494,-37.081570 174.653724,-37.081467 174.654121,-37.081339 174.654309,-37.081287 174.654701,-37.081287 174.654878,-37.081339 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle4</styleUrl>
+		<name>26</name>
+		<description>Curvature: 344.44
+Distance: 1.06 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.763364,-36.794684 174.763309,-36.794486 174.763290,-36.794285 174.763274,-36.794106 174.763272,-36.793843 174.763240,-36.793394 174.763214,-36.793040 174.763128,-36.791375 174.763095,-36.791290 174.763059,-36.791196 174.762987,-36.791059 174.762880,-36.790888 174.762767,-36.790766 174.762222,-36.790310 174.762153,-36.790124 174.762054,-36.790118 174.761827,-36.790013 174.761463,-36.789741 174.761056,-36.789402 174.760920,-36.789289 174.759201,-36.787861 174.759184,-36.787847 174.758658,-36.787410 174.757803,-36.786723 174.756309,-36.785463 174.755405,-36.784697 174.754596,-36.784068 174.754515,-36.784005 174.753479,-36.783141 174.752976,-36.782722 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle4</styleUrl>
+		<name>5</name>
+		<description>Curvature: 344.43
+Distance: 2.12 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.847688,-36.898113 174.847394,-36.898045 174.847265,-36.898015 174.846906,-36.897932 174.846330,-36.897797 174.845411,-36.897581 174.844072,-36.897268 174.843152,-36.897043 174.842339,-36.896845 174.841369,-36.896606 174.840743,-36.896455 174.839441,-36.896156 174.839307,-36.896135 174.839182,-36.896125 174.839041,-36.896127 174.838865,-36.896132 174.838359,-36.896158 174.836497,-36.896248 174.836148,-36.896263 174.835920,-36.896291 174.835782,-36.896316 174.835455,-36.896397 174.835184,-36.896467 174.834447,-36.896643 174.834320,-36.896673 174.834210,-36.896694 174.834108,-36.896708 174.834013,-36.896716 174.832431,-36.896794 174.831933,-36.896810 174.831277,-36.896841 174.830882,-36.896858 174.830827,-36.896861 174.829574,-36.896908 174.828404,-36.896965 174.827735,-36.897106 174.826400,-36.897427 174.826113,-36.897494 174.822953,-36.898250 174.822760,-36.898296 174.822421,-36.898368 174.821066,-36.898681 174.820783,-36.898772 174.820660,-36.898821 174.820305,-36.898982 174.819924,-36.899158 174.819754,-36.899222 174.819588,-36.899276 174.819375,-36.899299 174.819111,-36.899284 174.818192,-36.899148 174.818078,-36.899147 174.817951,-36.899158 174.817772,-36.899193 174.817440,-36.899338 174.816969,-36.899518 174.816488,-36.899678 174.815845,-36.899912 174.815376,-36.900079 174.814481,-36.900407 174.813661,-36.900734 174.813823,-36.900615 174.813983,-36.900524 174.814236,-36.900407 174.814735,-36.900209 174.815004,-36.900112 174.815261,-36.900020 174.815465,-36.899947 174.815478,-36.899942 174.816053,-36.899734 174.816305,-36.899647 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle3</styleUrl>
+		<name>Wright Road</name>
+		<description>Curvature: 339.63
+Distance: 2.27 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.769619,-37.128542 174.769769,-37.128345 174.773396,-37.126301 174.773589,-37.126061 174.774705,-37.122896 174.774705,-37.122777 174.773997,-37.120484 174.773812,-37.120200 174.773460,-37.119936 174.773353,-37.119714 174.773374,-37.119509 174.780336,-37.107965 174.780327,-37.107651 174.780219,-37.107462 174.780057,-37.107289 174.778308,-37.106348 174.777857,-37.106006 174.777417,-37.105621 174.777213,-37.105458 174.776924,-37.105356 174.776141,-37.105167 174.775626,-37.105031 174.771050,-37.103270 174.770995,-37.103243 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle3</styleUrl>
+		<name>Wiseley Road</name>
+		<description>Curvature: 338.25
+Distance: 1.06 mi
+Type: tertiary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.648623,-36.798209 174.648724,-36.798343 174.648754,-36.798454 174.648332,-36.798793 174.648209,-36.798938 174.648115,-36.799064 174.647852,-36.799425 174.647556,-36.799796 174.647333,-36.800072 174.646787,-36.800751 174.646270,-36.801354 174.645477,-36.802281 174.645126,-36.802636 174.644649,-36.803107 174.644573,-36.803205 174.644357,-36.803428 174.643492,-36.804338 174.643156,-36.804669 174.643039,-36.804769 174.642431,-36.805224 174.642297,-36.805368 174.642044,-36.805627 174.641951,-36.805758 174.641883,-36.805852 174.641741,-36.806113 174.641699,-36.806206 174.641619,-36.806367 174.641456,-36.806834 174.641418,-36.806987 174.641379,-36.807144 174.641134,-36.807984 174.641027,-36.808362 174.640993,-36.808662 174.641006,-36.808802 174.641027,-36.808978 174.640950,-36.809315 174.640847,-36.809569 174.640824,-36.809632 174.640724,-36.809886 174.640674,-36.809975 174.640371,-36.810129 174.639768,-36.810313 174.639347,-36.810441 174.638941,-36.810552 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle3</styleUrl>
+		<name>5</name>
+		<description>Curvature: 337.64
+Distance: 2.63 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.894064,-36.904028 174.894458,-36.903872 174.894558,-36.903815 174.897449,-36.901813 174.897894,-36.901505 174.898444,-36.901162 174.899308,-36.900664 174.900455,-36.900069 174.900625,-36.899981 174.901033,-36.899757 174.901340,-36.899588 174.901783,-36.899350 174.902325,-36.899060 174.904277,-36.898072 174.904461,-36.897987 174.904913,-36.897829 174.905234,-36.897769 174.905564,-36.897722 174.905688,-36.897710 174.905940,-36.897724 174.906429,-36.897753 174.906748,-36.897814 174.907006,-36.897888 174.907262,-36.897962 174.907506,-36.898031 174.908031,-36.898209 174.908201,-36.898266 174.908996,-36.898558 174.909226,-36.898613 174.909337,-36.898627 174.909706,-36.898676 174.911055,-36.898722 174.912476,-36.898802 174.914853,-36.898891 174.915448,-36.898913 174.917177,-36.898978 174.918945,-36.899065 174.919270,-36.898994 174.919463,-36.898891 174.920167,-36.898342 174.921638,-36.896919 174.922441,-36.895726 174.924325,-36.892950 174.925782,-36.892553 174.926023,-36.892561 174.926422,-36.892618 174.926926,-36.892669 174.927784,-36.892696 174.928823,-36.892559 174.929492,-36.892504 174.929923,-36.892834 174.930196,-36.893026 174.930947,-36.893557 174.931760,-36.894116 174.932959,-36.894996 174.933103,-36.895110 174.933338,-36.895295 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle3</styleUrl>
+		<name>Waikoukou Valley Road</name>
+		<description>Curvature: 333.60
+Distance: 1.86 mi
+Type: tertiary
+Surface: asphalt</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.493098,-36.763355 174.493306,-36.763371 174.494112,-36.763064 174.494432,-36.762920 174.494659,-36.762701 174.495243,-36.761945 174.496293,-36.761223 174.497616,-36.760585 174.498450,-36.759843 174.499261,-36.759267 174.499327,-36.759042 174.499544,-36.758069 174.499683,-36.757723 174.500713,-36.756623 174.502344,-36.755777 174.503717,-36.755399 174.504575,-36.754450 174.506622,-36.750338 174.507562,-36.747215 174.507863,-36.744258 174.507948,-36.743997 174.509729,-36.741773 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle3</styleUrl>
+		<name>Metcalfe Road</name>
+		<description>Curvature: 332.07
+Distance: 1.30 mi
+Type: tertiary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.597076,-36.874993 174.599333,-36.873764 174.599556,-36.873620 174.600381,-36.872925 174.600690,-36.872712 174.601196,-36.872403 174.601879,-36.871936 174.601922,-36.871907 174.602981,-36.871182 174.603925,-36.870536 174.604063,-36.870399 174.604131,-36.870247 174.604150,-36.870010 174.604202,-36.869296 174.604236,-36.869214 174.604279,-36.869104 174.604348,-36.869028 174.604399,-36.868980 174.604833,-36.868676 174.605143,-36.868448 174.605413,-36.868254 174.605466,-36.868222 174.605536,-36.868165 174.606428,-36.867517 174.606811,-36.867239 174.607170,-36.866979 174.607811,-36.866513 174.608528,-36.865993 174.608656,-36.865876 174.610243,-36.863752 174.610716,-36.863102 174.610819,-36.863006 174.610999,-36.862882 174.611308,-36.862772 174.611969,-36.862553 174.612261,-36.862429 174.613018,-36.861951 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle3</styleUrl>
+		<name>Jericho Road</name>
+		<description>Curvature: 329.41
+Distance: 2.31 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.958674,-37.200662 174.958867,-37.200884 174.959018,-37.201123 174.961099,-37.216145 174.961292,-37.216299 174.964425,-37.215974 174.964682,-37.216025 174.965433,-37.216538 174.966034,-37.219631 174.966034,-37.219836 174.965906,-37.220058 174.965305,-37.220571 174.959494,-37.223492 174.959425,-37.223527 174.958996,-37.223612 174.954233,-37.223321 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle3</styleUrl>
+		<name>Capes Road</name>
+		<description>Curvature: 329.06
+Distance: 1.11 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.634849,-37.146335 174.635827,-37.145893 174.636325,-37.145636 174.636526,-37.145326 174.636985,-37.144897 174.637497,-37.144591 174.638034,-37.144382 174.638637,-37.144135 174.639275,-37.144062 174.640445,-37.143961 174.641108,-37.143776 174.641960,-37.143165 174.643036,-37.142270 174.643582,-37.141646 174.644024,-37.140827 174.644418,-37.140233 174.644783,-37.140032 174.645489,-37.139781 174.646250,-37.139483 174.648443,-37.138731 174.648789,-37.138476 174.648945,-37.138215 174.649352,-37.137648 174.650352,-37.137162 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle2</styleUrl>
+		<name>Okaroro Road</name>
+		<description>Curvature: 320.95
+Distance: 1.30 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>175.010748,-36.901010 175.010895,-36.901091 175.011109,-36.901280 175.011442,-36.901649 175.011592,-36.901855 175.011742,-36.902095 175.011957,-36.902369 175.012172,-36.902627 175.012322,-36.902850 175.012515,-36.903090 175.012708,-36.903313 175.012890,-36.903519 175.013116,-36.903708 175.013416,-36.903931 175.013717,-36.904068 175.014103,-36.904188 175.014489,-36.904291 175.014832,-36.904377 175.015347,-36.904514 175.015712,-36.904617 175.016034,-36.904771 175.016356,-36.904926 175.016635,-36.905132 175.016806,-36.905269 175.017075,-36.905441 175.017279,-36.905664 175.017515,-36.906075 175.017622,-36.906333 175.017729,-36.906745 175.017847,-36.907182 175.017965,-36.907465 175.018115,-36.907826 175.018276,-36.908117 175.018480,-36.908375 175.018716,-36.908632 175.018974,-36.908932 175.019338,-36.909215 175.019725,-36.909473 175.020368,-36.909833 175.020883,-36.910099 175.021634,-36.910434 175.021956,-36.910562 175.022289,-36.910708 175.022739,-36.910897 175.023480,-36.911240 175.023845,-36.911463 175.024338,-36.911789 175.024724,-36.912132 175.025068,-36.912561 175.025368,-36.912990 175.025583,-36.913402 175.025724,-36.913795 175.025904,-36.914294 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle2</styleUrl>
+		<name>Hobsonville Road</name>
+		<description>Curvature: 318.12
+Distance: 1.15 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.607417,-36.821419 174.607801,-36.821275 174.609476,-36.820652 174.609518,-36.820636 174.611767,-36.819645 174.611902,-36.819586 174.612735,-36.819246 174.613304,-36.819001 174.613757,-36.818795 174.613936,-36.818707 174.614596,-36.818368 174.614901,-36.818197 174.615090,-36.818119 174.615289,-36.818055 174.615433,-36.818009 174.615696,-36.817943 174.615948,-36.817909 174.616205,-36.817900 174.616463,-36.817919 174.616767,-36.817972 174.616372,-36.818003 174.616093,-36.818029 174.615851,-36.818055 174.615524,-36.818110 174.615229,-36.818205 174.614918,-36.818349 174.614698,-36.818471 174.614033,-36.818803 174.613883,-36.818876 174.613658,-36.818984 174.613606,-36.819006 174.613486,-36.819057 174.613202,-36.819181 174.612724,-36.819392 174.612245,-36.819593 174.611974,-36.819728 174.611938,-36.819746 174.611848,-36.819783 174.611754,-36.819822 174.609533,-36.820732 174.609274,-36.820829 174.608833,-36.820995 174.608249,-36.821215 174.607844,-36.821368 174.607563,-36.821540 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle2</styleUrl>
+		<name>Tuhirangi Road</name>
+		<description>Curvature: 317.82
+Distance: 1.91 mi
+Type: residential
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.454287,-36.524056 174.454810,-36.524133 174.455503,-36.524226 174.456490,-36.524600 174.460250,-36.523340 174.462451,-36.521747 174.462780,-36.521730 174.465330,-36.524580 174.467690,-36.524540 174.469540,-36.524180 174.471130,-36.523210 174.473400,-36.522990 174.473980,-36.523170 174.474300,-36.523440 174.475930,-36.524330 174.477320,-36.525010 174.477890,-36.525500 174.478480,-36.525733 174.478862,-36.525838 174.479580,-36.525680 174.480168,-36.526056 174.480970,-36.526410 174.482190,-36.527480 174.482570,-36.528210 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle2</styleUrl>
+		<name>Glenbrook Station Road</name>
+		<description>Curvature: 316.17
+Distance: 1.14 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.782921,-37.204599 174.783124,-37.204705 174.783247,-37.204790 174.784516,-37.206339 174.786099,-37.207913 174.787660,-37.208476 174.787811,-37.208539 174.787903,-37.208622 174.787846,-37.208828 174.787779,-37.209030 174.787736,-37.209180 174.787802,-37.209375 174.788816,-37.210106 174.790991,-37.211135 174.791511,-37.211347 174.794215,-37.212578 174.795609,-37.213398 174.797197,-37.214560 174.797927,-37.215090 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle2</styleUrl>
+		<name>Triangle Road</name>
+		<description>Curvature: 314.48
+Distance: 1.47 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.624908,-36.844266 174.624081,-36.843652 174.623012,-36.842885 174.622695,-36.842664 174.622131,-36.842256 174.621783,-36.841960 174.621624,-36.841824 174.621435,-36.841639 174.621247,-36.841452 174.621100,-36.841213 174.621020,-36.841014 174.620832,-36.840581 174.620548,-36.840149 174.620311,-36.839913 174.620165,-36.839761 174.619985,-36.839597 174.619513,-36.839261 174.617591,-36.837777 174.617385,-36.837612 174.617316,-36.837563 174.617184,-36.837529 174.616927,-36.837457 174.616587,-36.837371 174.615745,-36.837252 174.613863,-36.837042 174.613299,-36.836973 174.611471,-36.836753 174.610246,-36.836602 174.610148,-36.836584 174.609697,-36.836537 174.606836,-36.836195 174.606449,-36.836153 174.605119,-36.835950 174.604848,-36.835854 174.604767,-36.835826 174.604650,-36.835789 174.604553,-36.835758 174.604306,-36.835579 174.604089,-36.835400 174.603866,-36.835084 174.603772,-36.834913 174.603686,-36.834597 174.603621,-36.834456 174.603553,-36.834350 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle2</styleUrl>
+		<name>9</name>
+		<description>Curvature: 312.27
+Distance: 3.34 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.739559,-36.885374 174.742150,-36.885917 174.742388,-36.885968 174.742796,-36.886054 174.743473,-36.886196 174.743508,-36.886204 174.744515,-36.886416 174.745485,-36.886614 174.745986,-36.886776 174.746304,-36.886881 174.746354,-36.886895 174.746550,-36.886948 174.746957,-36.887036 174.746977,-36.887040 174.747411,-36.887133 174.748188,-36.887292 174.748316,-36.887323 174.748522,-36.887371 174.748674,-36.887407 174.749266,-36.887469 174.749291,-36.887472 174.749724,-36.887527 174.749801,-36.887548 174.750547,-36.887712 174.751772,-36.887987 174.753136,-36.888293 174.754152,-36.888516 174.754842,-36.888668 174.755078,-36.888723 174.756207,-36.888977 174.757978,-36.889358 174.758125,-36.889390 174.758880,-36.889666 174.759547,-36.889824 174.759887,-36.889893 174.760570,-36.890035 174.760910,-36.890105 174.761861,-36.890187 174.762152,-36.890247 174.762230,-36.890265 174.763686,-36.890560 174.764876,-36.890804 174.765100,-36.890862 174.766136,-36.891083 174.767748,-36.891443 174.767996,-36.891510 174.768217,-36.891580 174.768482,-36.891683 174.768932,-36.891890 174.769485,-36.892176 174.769954,-36.892402 174.770153,-36.892486 174.770445,-36.892606 174.770767,-36.892740 174.771171,-36.892880 174.771496,-36.892981 174.771798,-36.893059 174.772125,-36.893133 174.772418,-36.893183 174.772710,-36.893229 174.773291,-36.893292 174.773693,-36.893305 174.773932,-36.893313 174.774027,-36.893313 174.774447,-36.893323 174.775509,-36.893287 174.775894,-36.893314 174.775949,-36.893311 174.776368,-36.893289 174.776842,-36.893265 174.776906,-36.893261 174.777214,-36.893245 174.777432,-36.893234 174.777511,-36.893230 174.778006,-36.893204 174.778444,-36.893182 174.779426,-36.893131 174.780471,-36.893094 174.780971,-36.893076 174.781096,-36.893071 174.782041,-36.893037 174.782160,-36.893033 174.782228,-36.893031 174.782909,-36.893006 174.783379,-36.892989 174.786706,-36.892870 174.787012,-36.892859 174.787399,-36.892845 174.788456,-36.892807 174.788985,-36.892788 174.789118,-36.892784 174.789949,-36.892754 174.790193,-36.892735 174.790356,-36.892707 174.790604,-36.892651 174.790757,-36.892598 174.791230,-36.892375 174.792953,-36.891377 174.793563,-36.891007 174.794234,-36.890574 174.794607,-36.890361 174.794731,-36.890298 174.794934,-36.890231 174.795126,-36.890126 174.795391,-36.889970 174.795622,-36.889832 174.796141,-36.889518 174.796311,-36.889421 174.796603,-36.889253 174.796813,-36.889199 174.796990,-36.889176 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle2</styleUrl>
+		<name>Awhitu Road</name>
+		<description>Curvature: 308.95
+Distance: 3.19 mi
+Type: tertiary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.684811,-37.210728 174.684818,-37.210764 174.684907,-37.210991 174.685018,-37.211217 174.686131,-37.213219 174.687852,-37.214734 174.689138,-37.215865 174.692180,-37.216666 174.694165,-37.218000 174.696231,-37.219424 174.699711,-37.221008 174.700124,-37.221197 174.700853,-37.222684 174.700701,-37.223686 174.700403,-37.225648 174.700607,-37.226321 174.700811,-37.226992 174.701000,-37.227348 174.701395,-37.228530 174.702013,-37.231366 174.702139,-37.231559 174.702328,-37.231847 174.702416,-37.231981 174.703375,-37.232748 174.703705,-37.233096 174.704653,-37.234278 174.705368,-37.235249 174.705403,-37.235309 174.705791,-37.235942 174.706648,-37.238555 174.706768,-37.238760 174.706941,-37.238929 174.707323,-37.239184 174.712067,-37.241656 174.714360,-37.242769 174.717288,-37.244270 174.717979,-37.244582 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle2</styleUrl>
+		<name>Brownhill Road</name>
+		<description>Curvature: 308.71
+Distance: 1.17 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.962527,-36.971605 174.962355,-36.971262 174.962376,-36.970696 174.962398,-36.970371 174.962462,-36.970062 174.962655,-36.969531 174.963063,-36.968639 174.963149,-36.968313 174.963406,-36.967748 174.963664,-36.967319 174.965595,-36.965742 174.965895,-36.965382 174.966024,-36.964936 174.966217,-36.964593 174.966325,-36.964370 174.966861,-36.963736 174.967269,-36.962433 174.967698,-36.961215 174.967955,-36.960718 174.968191,-36.960290 174.968277,-36.959827 174.968234,-36.959432 174.968857,-36.957941 174.968964,-36.957632 174.969071,-36.957066 174.969157,-36.956809 174.969457,-36.956586 174.969864,-36.956328 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle1</styleUrl>
+		<name>Albany Highway</name>
+		<description>Curvature: 308.19
+Distance: 2.30 mi
+Type: primary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.692816,-36.743026 174.692894,-36.743940 174.692943,-36.744354 174.693136,-36.745984 174.693155,-36.746143 174.693398,-36.748197 174.693553,-36.749499 174.693621,-36.750073 174.693859,-36.750675 174.693900,-36.750778 174.694492,-36.751475 174.695246,-36.752053 174.695644,-36.752284 174.696649,-36.752868 174.698067,-36.753905 174.698862,-36.754484 174.699469,-36.754796 174.699652,-36.754889 174.700515,-36.755182 174.700765,-36.755293 174.701142,-36.755478 174.701512,-36.755742 174.701799,-36.755980 174.702156,-36.756279 174.702505,-36.756560 174.702808,-36.756810 174.703229,-36.757170 174.703289,-36.757214 174.703736,-36.757588 174.703826,-36.757661 174.704519,-36.758106 174.704894,-36.758317 174.705280,-36.758569 174.705469,-36.758823 174.705623,-36.759140 174.705915,-36.759704 174.706109,-36.760000 174.706464,-36.760278 174.706797,-36.760381 174.707297,-36.760417 174.707809,-36.760452 174.708248,-36.760525 174.708718,-36.760697 174.709301,-36.760983 174.709985,-36.761423 174.710473,-36.761746 174.711074,-36.762076 174.711700,-36.762337 174.712704,-36.762708 174.713219,-36.762849 174.713648,-36.762901 174.714335,-36.762915 174.714873,-36.762888 174.715304,-36.762909 174.715789,-36.763001 174.716024,-36.763081 174.716167,-36.763165 174.716409,-36.763330 174.717323,-36.764121 174.718701,-36.765217 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle1</styleUrl>
+		<name>Hanham Road</name>
+		<description>Curvature: 306.86
+Distance: 1.39 mi
+Type: unclassified
+Surface: paved</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.546843,-36.801824 174.545693,-36.802504 174.544508,-36.803260 174.543710,-36.803686 174.543169,-36.804009 174.542517,-36.804360 174.541805,-36.804800 174.541461,-36.805033 174.541367,-36.805088 174.540800,-36.805453 174.540337,-36.805700 174.539959,-36.805879 174.539685,-36.806016 174.539376,-36.806140 174.537908,-36.806690 174.533342,-36.808442 174.533179,-36.808463 174.533041,-36.808408 174.530338,-36.807535 174.529960,-36.807535 174.529505,-36.807480 174.528664,-36.807233 174.528441,-36.807219 174.527531,-36.807521 174.527428,-36.807555 174.526570,-36.807562 174.526355,-36.807597 174.525986,-36.807741 174.524786,-36.808327 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle1</styleUrl>
+		<name>Coronation Road</name>
+		<description>Curvature: 305.87
+Distance: 1.09 mi
+Type: tertiary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.724249,-36.792592 174.724329,-36.792545 174.724450,-36.792490 174.724656,-36.792318 174.725305,-36.791776 174.725431,-36.791693 174.725538,-36.791652 174.725651,-36.791626 174.725756,-36.791606 174.725830,-36.791598 174.725931,-36.791593 174.726042,-36.791587 174.726308,-36.791590 174.726623,-36.791609 174.726803,-36.791610 174.726961,-36.791607 174.727190,-36.791588 174.728446,-36.791439 174.728661,-36.791408 174.728818,-36.791371 174.728950,-36.791316 174.729136,-36.791199 174.729894,-36.790692 174.730646,-36.790216 174.730812,-36.790142 174.731472,-36.790037 174.733353,-36.789736 174.735035,-36.789461 174.736752,-36.789181 174.737284,-36.789083 174.738659,-36.788626 174.739207,-36.788410 174.740013,-36.788135 174.740297,-36.788004 174.740752,-36.787722 174.741396,-36.787216 174.741931,-36.786797 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle1</styleUrl>
+		<name>Honey Road</name>
+		<description>Curvature: 305.40
+Distance: 1.26 mi
+Type: unclassified
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.703846,-37.261762 174.703715,-37.262562 174.703638,-37.262885 174.703325,-37.263227 174.702326,-37.263923 174.701935,-37.264265 174.701600,-37.264526 174.701475,-37.264712 174.701303,-37.265035 174.701209,-37.265197 174.701100,-37.265452 174.700983,-37.265657 174.699382,-37.267620 174.697126,-37.270217 174.696564,-37.270565 174.696291,-37.270701 174.696111,-37.270782 174.695495,-37.271031 174.695120,-37.271205 174.693707,-37.272223 174.693402,-37.272553 174.693238,-37.272758 174.693074,-37.272957 174.692817,-37.273124 174.692590,-37.273261 174.691380,-37.273826 174.691138,-37.273982 174.690888,-37.274137 174.690592,-37.274348 174.690436,-37.274522 174.689805,-37.275583 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle1</styleUrl>
+		<name>Henderson Valley Road</name>
+		<description>Curvature: 301.92
+Distance: 1.30 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.619845,-36.893417 174.620045,-36.893357 174.620392,-36.893123 174.620871,-36.892800 174.622969,-36.891386 174.624808,-36.890177 174.626231,-36.889253 174.627781,-36.888207 174.627908,-36.888074 174.627997,-36.887915 174.628068,-36.887785 174.628122,-36.887625 174.628129,-36.887560 174.628222,-36.887083 174.628323,-36.886540 174.628654,-36.884756 174.628935,-36.883782 174.628963,-36.883678 174.629117,-36.881254 174.629126,-36.881138 174.629170,-36.880556 174.629203,-36.880128 174.629220,-36.879950 174.629340,-36.879579 174.629486,-36.879311 174.629632,-36.879092 174.629857,-36.878841 174.629939,-36.878795 174.630196,-36.878644 174.630361,-36.878569 174.630523,-36.878493 174.630643,-36.878419 174.630843,-36.878231 </coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<styleUrl>#lineStyle1</styleUrl>
+		<name>Saint Heliers Bay Road</name>
+		<description>Curvature: 301.91
+Distance: 1.48 mi
+Type: secondary
+Surface: unknown</description>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>174.857951,-36.851447 174.858238,-36.851949 174.858538,-36.852500 174.859254,-36.853799 174.859478,-36.854178 174.859885,-36.854614 174.860065,-36.854861 174.860134,-36.855053 174.860153,-36.855622 174.860208,-36.857369 174.860248,-36.858224 174.860288,-36.859249 174.860303,-36.859385 174.859610,-36.860420 174.859511,-36.860565 174.859370,-36.860710 174.858757,-36.861141 174.857864,-36.861742 174.856341,-36.862774 174.854753,-36.863875 174.854331,-36.864169 174.852586,-36.865354 174.851920,-36.865814 174.851830,-36.865873 174.851527,-36.866086 174.850103,-36.867038 174.849609,-36.867367 174.849098,-36.867682 174.848931,-36.867752 174.848197,-36.867910 </coordinates>
+		</LineString>
+	</Placemark>
+</Document>
+</kml>

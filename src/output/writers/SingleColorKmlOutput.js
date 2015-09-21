@@ -65,7 +65,7 @@ var SingleColorKmlOutput = module.exports = function (_relativeColor, defaultFil
 
             var tempResult =    '	<Placemark>\n' +
 								'		<styleUrl>#' + lineStyle(way) + '</styleUrl>\n' +
-								'		<name>' + escape(way.name).replace(_allowWhitespaceRegex, ' ') + '</name>\n' +
+								'		<name>' + way.name + '</name>\n' +
 								'		<description>' + _self.getDescription(way) + '</description>\n' +
 								'		<LineString>\n' +
 								'			<tessellate>1</tessellate>\n' +

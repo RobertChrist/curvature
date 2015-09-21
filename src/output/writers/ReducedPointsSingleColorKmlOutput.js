@@ -27,7 +27,7 @@ _util.inherits(ReducedPointsSingleColorKmlOutput, SingleColorKmlOutput);
 /* @inheritDoc
  * @augments writeSegments on SingleColorKmlOutput
  */
-SingleColorKmlOutput.prototype.writeSegments = function (segments) {
+ReducedPointsSingleColorKmlOutput.prototype.writeSegments = function (segments) {
 	var numSegments = segments.length;
 	var interval = Math.ceil(numSegments / (this.limitPoints - 1));
 

@@ -75,10 +75,10 @@ var KmlOutput = module.exports = function (defaultFilter) {
 	 * @returns {string} - the kml string.
 	 */
 	function writeRegion (ways) {
-		var minLat = ways[0].segments[0].start[0];
-		var maxLat = ways[0].segments[0].start[0];
-		var minLon = ways[0].segments[0].start[1];
-		var maxLon = ways[0].segments[0].start[1];
+		var minLat = ways[0].segments[0].start.lat;
+		var maxLat = ways[0].segments[0].start.lat;
+		var minLon = ways[0].segments[0].start.lon;
+		var maxLon = ways[0].segments[0].start.lon;
 
 		for (var i = 0, j = ways.length; i < j; i++) {
 			var way = ways[i];
@@ -94,20 +94,14 @@ var KmlOutput = module.exports = function (defaultFilter) {
 			if (wayMinLon < minLon) minLon = wayMinLon;
 		}
 
-			return	'	<!--\n' +
-					'	<Region>\n' +
-					'	<!--\n' +
-					'	<Region>\n' +
-					'		<LatLonBox>\n' +
-		_util.format('			<north>%s</north>\n', maxLat) +
-		_util.format('			<south>%.6f</south>\n', minLat) +
 // Note that this won't work for regions crossing longitude 180, but this
 // should only affect the Russian asian file
-		_util.format('			<east>%.6f</east>\n', maxLon) +
-		_util.format('			<west>%.6f</west>\n', minLon) +
-					'		</LatLonBox>\n' +
-					'	</Region>\n' +
-					'	-->\n';
+			return	'		<LatLonBox>\n' +
+		_util.format('			<north>%s</north>\n', maxLat.toFixed(6)) +
+		_util.format('			<south>%s</south>\n', minLat.toFixed(6)) +
+		_util.format('			<east>%s</east>\n', maxLon.toFixed(6)) +
+		_util.format('			<west>%s</west>\n', minLon.toFixed(6)) +
+					'		</LatLonBox>\n';
 	}
 
 	/* Gets the min/max lat/lon value from the way.
@@ -124,18 +118,18 @@ var KmlOutput = module.exports = function (defaultFilter) {
 	
 	/* Sets the min/max lat/lon properties on the passed in way */
 	function storeWayRegion(way) {
-		way.maxLat = way.segments[0].start[0];
-		way.minLat = way.segments[0].start[0];
-		way.maxLon = way.segments[0].start[1];
-		way.minLon = way.segments[0].start[1];
+		way.maxLat = way.segments[0].start.lat;
+		way.minLat = way.segments[0].start.lat;
+		way.maxLon = way.segments[0].start.lon;
+		way.minLon = way.segments[0].start.lon;
 
 		for (var i = 0, j = way.segments.length; i < j; i++) {
 			var segment = way.segments[i];
 
-			if (segment.end[0] > way.maxLat) way.maxLat = segment.end[0];
-			if (segment.end[0] < way.minLat) way.minLat = segment.end[0];
-			if (segment.end[1] > way.maxLon) way.maxLon = segment.end[1];
-			if (segment.end[1] < way.minLon) way.minLon = segment.end[1];
+			if (segment.end[0] > way.maxLat) way.maxLat = segment.end.lat;
+			if (segment.end[0] < way.minLat) way.minLat = segment.end.lat;
+			if (segment.end[1] > way.maxLon) way.maxLon = segment.end.lon;
+			if (segment.end[1] < way.minLon) way.minLon = segment.end.lon;
 		}
 	}
 
