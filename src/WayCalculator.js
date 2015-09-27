@@ -190,7 +190,7 @@ module.exports = function (_logger,
 			var firstThirdLength = _mathUtils.distanceBetweenPoints(first.lat, first.lon, third.lat, third.lon);
 			var r = 0;
 			if (firstThirdLength > 0 && firstSecondLength > 0 && secondThirdLength > 0) {
-				r = _mathUtils.circumcircleRadius(firstThirdLength, firstSecondLength, secondThirdLength);
+				r = _mathUtils.circumcircleRadius(firstSecondLength, secondThirdLength, firstThirdLength);
 			} else {
 				r = 100000;
 			}
