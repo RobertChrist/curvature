@@ -1,6 +1,6 @@
-var WayFilter = require('../../../../src/WayFilter');
-var KmlOutput = require('../../../../src/output/writers/KmlOutput');
-var MultiColorKmlOutput = require('../../../../src/output/writers/MultiColorKmlOutput');
+var WayFilter = require('../../../src/WayFilter');
+var KmlOutput = require('../../../src/output/KmlOutput');
+var MultiColorKmlOutput = require('../../../src/output/MultiColorKmlOutput');
 
 var filter = new WayFilter();
 

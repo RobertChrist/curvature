@@ -1,6 +1,6 @@
 var proxyquire = require('proxyquire').noPreserveCache();
-var WayFilter = require('../../../../src/WayFilter');
-var KmlOutput = require('../../../../src/output/writers/KmlOutput');
+var WayFilter = require('../../../src/WayFilter');
+var KmlOutput = require('../../../src/output/KmlOutput');
 
 var filter = new WayFilter();
 
@@ -13,7 +13,7 @@ describe ('KmlOutput.js', function () {
 		it ('inherits from OutputBase', function () {
 			var target = new KmlOutput(filter);
 
-			var base = new require('../../../../src/output/writers/OutputBase');
+			var base = new require('../../../src/output/OutputBase');
 			var keys = Object.keys(base);
 
 			for (var i = 0, j = keys.length; i < j; i++) {
@@ -91,15 +91,15 @@ describe ('KmlOutput.js', function () {
 				length: 1000,
 				curvature: 1,
 				segments: [{
-					start: [0,1],
-					end: [0,1]
+					start: { lat: 0, lon: 1},
+					end: { lat: 0, lon: 1}
 				}]
 			}, {
 				length: 2000,
 				curvature: 3,
 				segments: [{
-					start: [0,1],
-					end: [0,1]
+					start: { lat: 0, lon: 1},
+					end: { lat: 0, lon: 1}
 				}]
 			}];
 
@@ -108,7 +108,7 @@ describe ('KmlOutput.js', function () {
 		});
 
 		it ('writes to disk', function () {
-			var KmlOutputMocked = proxyquire('../../../../src/output/writers/KmlOutput', { 'fs': fsMock });
+			var KmlOutputMocked = proxyquire('../../../src/output/KmlOutput', { 'fs': fsMock });
 
 			var target = new KmlOutputMocked(filter);
 
@@ -118,7 +118,7 @@ describe ('KmlOutput.js', function () {
 		});
 
 		it ('includes each expected section of the file in the final output', function () {
-			var KmlOutputMocked = proxyquire('../../../../src/output/writers/KmlOutput', { 'fs': fsMock });
+			var KmlOutputMocked = proxyquire('../../../src/output/KmlOutput', { 'fs': fsMock });
 
 			var target = new KmlOutputMocked(new WayFilter(1, 0, 0, 0));
 

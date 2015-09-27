@@ -1,6 +1,6 @@
-var WayFilter = require('../../../../src/WayFilter');
-var SingleColorKmlOutput = require('../../../../src/output/writers/SingleColorKmlOutput');
-var ReducedPointsSingleColorKmlOutput = require('../../../../src/output/writers/ReducedPointsSingleColorKmlOutput');
+var WayFilter = require('../../../src/WayFilter');
+var SingleColorKmlOutput = require('../../../src/output/SingleColorKmlOutput');
+var ReducedPointsSingleColorKmlOutput = require('../../../src/output/ReducedPointsSingleColorKmlOutput');
 
 var filter = new WayFilter();
 

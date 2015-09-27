@@ -1,6 +1,6 @@
 var _ = require('lodash');
-var WayFilter = require('../../../../src/WayFilter');
-var OutputBase = require('../../../../src/output/writers/OutputBase');
+var WayFilter = require('../../../src/WayFilter');
+var OutputBase = require('../../../src/output/OutputBase');
 
 var filter = new WayFilter(0, 0, 0, 0);
 

@@ -56,8 +56,8 @@ console.log(command);
 					expectedJson = deepSorter(expectedJson);
 					actualJson = deepSorter(actualJson);
 
-_fs.writeFileSync('/home/bobito/expected', JSON.stringify(expectedJson));
-_fs.writeFileSync('/home/bobito/actual', JSON.stringify(actualJson));
+_fs.writeFileSync('/home/bobito/expected', JSON.stringify(expectedJson, null, 4));
+_fs.writeFileSync('/home/bobito/actual', JSON.stringify(actualJson, null, 4));
 
 					expect(_.isEqual(expectedJson, actualJson)).toBe(true);
 					done();

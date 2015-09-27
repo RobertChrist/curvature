@@ -36,18 +36,25 @@ var Logger = require('./logging/Logger');
 var WayFilter = require('./WayFilter');
 var WayParser = require('./WayParser');
 var WayCollector = require('./WayCollector');
+var DeflectionFilter = require('./calculators/DeflectionFilter');
+var CurvatureAndDistanceCalculator = require('./calculators/CurvatureAndDistanceCalculator');
+var WaySplitterCalculator = require('./calculators/WaySplitterCalculator');
 var WayCalculator = require('./WayCalculator');
-var OutputService = require('./output/OutputService');
+var OutputService = require('./OutputService');
 
 
-/* ---------- New up dependencies ---------- */
+/* ---------- Read the command line arguments ---------- */
 
 var config = _cmlParser.parseArgs();
 var settings = config.settings;
+
+/* ---------- New up dependencies ---------- */
+
 var logger = new Logger(settings.verbose.value);
 
 logger.forceLog('curvature is starting.');
 
+// Input File Readers
 var wayParser = new WayParser(settings.wayTypes.value.split(','), 
 							settings.ignoredSurfaces.value.split(','),
 							settings.minLatBound.value, 
@@ -55,21 +62,33 @@ var wayParser = new WayParser(settings.wayTypes.value.split(','),
 							settings.minLonBound.value, 
 							settings.maxLatBound.value);
 
-var calculator = new WayCalculator(logger,
-                                   settings.straightSegmentSplitThreshold.value, 
-								   settings.level1MaxRadius.value, 
-								   settings.level1Weight.value, 
-								   settings.level2MaxRadius.value, 
-								   settings.level2Weight.value, 
-								   settings.level3MaxRadius.value, 
-								   settings.level3Weight.value, 
-								   settings.level4MaxRadius.value, 
-								   settings.level4Weight.value);
+var collector = new WayCollector(logger, wayParser);
 
-var collector = new WayCollector( logger,
-								  wayParser,
-                                  calculator);
+// Calculation Classes
+var deflectionFilter = new DeflectionFilter(false, settings.level1MaxRadius.value);
 
+var waySplitter = new WaySplitterCalculator(settings.straightSegmentSplitThreshold.value, 
+											settings.level1MaxRadius.value, 
+											settings.level1Weight.value, 
+											settings.level2MaxRadius.value, 
+											settings.level2Weight.value, 
+											settings.level3MaxRadius.value, 
+											settings.level3Weight.value, 
+											settings.level4MaxRadius.value, 
+											settings.level4Weight.value);
+
+var cAndDCalculator = new CurvatureAndDistanceCalculator(settings.level1MaxRadius.value, 
+														settings.level1Weight.value, 
+														settings.level2MaxRadius.value, 
+														settings.level2Weight.value, 
+														settings.level3MaxRadius.value, 
+														settings.level3Weight.value, 
+														settings.level4MaxRadius.value, 
+														settings.level4Weight.value);
+
+var calculator = new WayCalculator(logger, deflectionFilter, waySplitter, cAndDCalculator);
+
+// Output File Writers
 var filter = new WayFilter(settings.minLength.value, 
 								   settings.maxLength.value, 
 								   settings.minCurvature.value, 
@@ -94,9 +113,14 @@ var path = !outputPath ? _path.dirname(fileNameAndPath) : outputPath;
 
 logger.log('Now loading ' + fileNameAndPath + ', this operation may take awhile.');
 
-collector.loadFile(fileNameAndPath, function (err, ways) {
+collector.loadFile(fileNameAndPath, function (err, parsedResults) {
     if (err)
         throw err;
+    
+    logger.log('Calulating curvature, this may take a while.');
+    var ways = calculator.calculate(parsedResults.ways, parsedResults.coords);
+
+    logger.log("Calculations complete.");
 
     logger.log('Building output.');
 

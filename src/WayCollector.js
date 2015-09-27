@@ -7,9 +7,8 @@ var _osm = require('openstreetmap-stream'),
  * @class
  * @param {Logger} _logger - Our logging instance.
  * @param {WayParser} _wayParser - The instance we should use to parse information from the osm file.
- * @param {WayCalculator} _wayCalculator - The instance we should use to calculate way curvature.
  */
-module.exports = function (_logger, _wayParser, _wayCalculator) {
+module.exports = function (_logger, _wayParser) {
 
 	var _self = this;
 
@@ -55,12 +54,7 @@ module.exports = function (_logger, _wayParser, _wayCalculator) {
 
         _logger.log('FILE LOADING COMPLETE!');
 
-        _logger.log('Calulating curvature, this may take a while.');
-        var ways = _wayCalculator.calculate(results.ways, results.coords);
-
-        _logger.log("Calculations complete.");
-
-        cb(null, ways);
+        cb(null, results);
     };
 
     /* Will parse the file located at the input fileNameAndPath looking for ways and coordinates,

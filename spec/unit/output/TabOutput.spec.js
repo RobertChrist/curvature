@@ -1,5 +1,5 @@
-var WayFilter = require('../../../../src/WayFilter');
-var TabOutput = require('../../../../src/output/writers/TabOutput');
+var WayFilter = require('../../../src/WayFilter');
+var TabOutput = require('../../../src/output/TabOutput');
 
 var filter = new WayFilter();
 

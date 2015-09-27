@@ -1,8 +1,8 @@
-﻿var TabOutput = require('./writers/TabOutput');
-var SingleColorKmlOutput = require('./writers/SingleColorKmlOutput');
-var MultiColorKmlOutput = require('./writers/MultiColorKmlOutput');
-var ReducedPointsSingleColorKmlOutput = require('./writers/ReducedPointsSingleColorKmlOutput');
-var WayFilter = require('../WayFilter');
+﻿var TabOutput = require('./output/TabOutput');
+var SingleColorKmlOutput = require('./output/SingleColorKmlOutput');
+var MultiColorKmlOutput = require('./output/MultiColorKmlOutput');
+var ReducedPointsSingleColorKmlOutput = require('./output/ReducedPointsSingleColorKmlOutput');
+var WayFilter = require('./WayFilter');
 
 /* This module is responsible for newing up the correct output writing classes,
  * and using them to write the result output in the correct formats and locations.

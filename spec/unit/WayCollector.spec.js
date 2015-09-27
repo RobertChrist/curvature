@@ -162,22 +162,6 @@ describe ('WayCollector', function () {
 			expect(_getResultsCalled).toBe(true);
 		});
 
-		it ('calls for ways to be calculated', function () {
-			_wayParserMock.getResults = function () {
-				return {
-					ways: [{}],
-					coords: []
-				};
-			};
-
-			_wayCalculatorMock.calculate = function () { return true; };
-
-			_target._afterAllParsed(function (err, res) {
-				expect(err).toBeNull();
-				expect(res).toBe(true);
-			});
-		});
-
 		describe ('loadFile', function () {
 			// I'm going to skip this, as the amount of logic that isn't boilerplate is minimal.
 			// if you're reading this and disagree, its pretty easy to use proxyquire to mock out

@@ -1,9 +1,9 @@
 var proxyquire = require('proxyquire');
 var _ = require('lodash');
 
-var WayFilter = require('../../../src/WayFilter');
-var OutputService = require('../../../src/output/OutputService');
-var Logger = require('../../../src/logging/Logger');
+var WayFilter = require('../../src/WayFilter');
+var OutputService = require('../../src/OutputService');
+var Logger = require('../../src/logging/Logger');
 
 describe ('OutputService.js', function () {
 	describe ('constructor', function () {
@@ -46,11 +46,11 @@ describe ('OutputService.js', function () {
 			else if (mockType === 'MultiColorKmlOutput' || mockType === 'TabOutput')
 				returnMe = function (filter) { mockFilter = filter; this.write = mockWrite;  };
 
-			var locationString = './writers/' + mockType;
+			var locationString = './output/' + mockType;
 			var proxyQuireMock = {};
 			proxyQuireMock[locationString] = returnMe;
 
-			return proxyquire('../../../src/output/OutputService', proxyQuireMock);
+			return proxyquire('../../src/OutputService', proxyQuireMock);
 		}
 
 		beforeEach(function () {
