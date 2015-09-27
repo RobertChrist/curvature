@@ -11,7 +11,7 @@ module.exports = function () {
 		verbose:						{ name: 'v', 				value: false					}, 
 		tabularOutput: 					{ name: 't', 				value: false					},
 		noKML: 			 				{ name: 'noKML',			value: false 					},
-		km: 			 				{ name: 'km',				value: true 					},
+		km: 			 				{ name: 'km',				value: false 					},
 		colorize: 		 				{ name: 'colorize',			value: false 					},
 		limitPoints:					{ name: 'limitPoints',		value: 0						},
 		relativeColor: 					{ name: 'relativeColor', 	value: false					},
