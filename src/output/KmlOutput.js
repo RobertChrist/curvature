@@ -162,7 +162,7 @@ var KmlOutput = module.exports = function (defaultFilter) {
 	this.getDescription = function (way) {
 		var divideBy = this.units === 'km' ? 1000 : 1609;
 
-		return _util.format('Curvature: %d\nDistance: %d km\nType: %s\nSurface: %s', way.curvature.toFixed(2), (way.length / divideBy).toFixed(2), way.type, way.surface);
+		return _util.format('Curvature: %d\nDistance: %d ' + this.units + '\nType: %s\nSurface: %s', way.curvature.toFixed(2), (way.length / divideBy).toFixed(2), way.type, way.surface);
 	};
 
 	/* Takes in an array of ways, and returns the serialized string version of the object in kml format.
