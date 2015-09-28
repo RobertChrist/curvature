@@ -74,7 +74,7 @@ module.exports = function (_wayTypes, _ignoredSurfaces,
         if (!tags.name)
             newWay.name = tags.ref;
         else if (tags.ref)
-            newWay.name = tags.name + "(" + tags.ref + ")";
+            newWay.name = tags.name + " (" + tags.ref + ")";
         else
             newWay.name = tags.name;
 

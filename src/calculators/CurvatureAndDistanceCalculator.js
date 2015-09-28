@@ -104,14 +104,14 @@ var thisObject = module.exports = function (  _level1MaxRadius, _level1Weight,
 	this.calculate = function (way, coords) {
 		
 		way.distance = getWayDistance(way, coords);
-		way.segments = getSegments(way, coords);
+		way.segments = _self.getSegments(way, coords);
 
 		delete way.refs;  // refs are no longer needed now that we have loaded our segments.
 
 		// calculate the curvature as a weighted distance traveled at each curvature.
 		way.curvature = 0;
-		for (var k = 0, l = segments.length; k < l; k++) {
-			var segment = segments[k];
+		for (var k = 0, l = way.segments.length; k < l; k++) {
+			var segment = way.segments[k];
 
 			if (segment.radius < _level4MaxRadius)
 				segment.curvatureLevel = 4;
